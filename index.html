@@ -7,6 +7,11 @@
     <title>JMD'S ROYAL MAKKAL NALASANGAM</title>
 
     <style>
+
+        /* ==============================
+           GENERAL
+        ============================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -15,172 +20,203 @@
         }
 
         body {
-            font-family: Arial, "Noto Sans Tamil", sans-serif;
-            background: #f5f7fa;
-            color: #12263a;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #163b5c;
+            background: #ffffff;
         }
 
-        /* NAVBAR */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+
+        /* ==============================
+           NAVIGATION BAR
+        ============================== */
 
         nav {
-            height: 82px;
-            background: #071d35;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6%;
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
 
-        .brand {
+            height: 78px;
+            background: #071d33;
+
             display: flex;
             align-items: center;
-            gap: 14px;
+            justify-content: space-between;
+
+            padding: 0 6%;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
         }
 
-        .brand img {
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-area img {
             width: 52px;
             height: 52px;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 6px;
         }
 
-        .brand-text {
+        .logo-text {
+            display: flex;
+            flex-direction: column;
             line-height: 1.15;
         }
 
-        .brand-english {
-            font-size: 18px;
+        .logo-english {
+            font-size: 17px;
             font-weight: bold;
             color: white;
         }
 
-        .brand-english span {
-            color: #fdbb3d;
+        .logo-english span {
+            color: #f5b52e;
         }
 
-        .brand-tamil {
-            font-size: 15px;
+        .logo-tamil {
+            font-size: 14px;
+            font-weight: bold;
             color: white;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
-        .nav-links {
+        nav ul {
+            list-style: none;
             display: flex;
             gap: 30px;
-            list-style: none;
         }
 
-        .nav-links a {
-            color: white;
+        nav ul li a {
             text-decoration: none;
+            color: white;
             font-size: 15px;
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: #fdbb3d;
+        nav ul li a:hover {
+            color: #f5b52e;
         }
 
-        /* HERO */
+
+        /* ==============================
+           HERO / HOME
+        ============================== */
 
         .hero {
-            min-height: calc(100vh - 82px);
-            background: linear-gradient(135deg, #09223e, #123b61);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 70px 20px;
-            position: relative;
-            overflow: hidden;
-        }
+            min-height: 720px;
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            border: 1px solid rgba(253,187,61,0.25);
-            border-radius: 50%;
-            top: -200px;
-            right: -120px;
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(245,181,46,0.10),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0a2745,
+                    #08223c
+                );
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
             max-width: 1000px;
         }
 
         .hero-logo {
-            width: 165px;
-            height: 165px;
+            width: 155px;
+            height: 155px;
+
             object-fit: cover;
+
+            border-radius: 10px;
+
             margin-bottom: 28px;
-            border-radius: 8px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
         }
 
-        .english-name {
-            font-size: 46px;
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.05;
+            margin-bottom: 15px;
             font-weight: 800;
-            color: white;
-            line-height: 1.15;
         }
 
-        .english-name span {
-            color: #fdbb3d;
+        .hero h1 span {
+            color: #f5b52e;
         }
 
-        .tamil-name {
-            font-size: 34px;
-            font-weight: 700;
-            color: white;
-            margin-top: 16px;
+        .hero-tamil-name {
+            font-size: 32px;
+            font-weight: bold;
             line-height: 1.4;
+
+            margin-bottom: 25px;
         }
 
-        .slogan {
-            font-size: 23px;
-            color: #fdbb3d;
-            margin-top: 28px;
+        .hero-slogan {
+            color: #f5b52e;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.6;
+
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            opacity: 0.95;
             line-height: 1.7;
-            font-weight: 600;
+
+            max-width: 800px;
+            margin: auto auto 30px;
         }
 
-        .slogan-small {
-            font-size: 16px;
-            color: white;
-            margin-top: 8px;
-            opacity: 0.85;
-        }
-
-        .buttons {
-            margin-top: 35px;
+        .hero-buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
+            display: inline-block;
+
             padding: 14px 28px;
+
             border-radius: 7px;
+
             text-decoration: none;
+
             font-weight: bold;
+
             transition: 0.3s;
         }
 
-        .btn-primary {
-            background: #fdbb3d;
-            color: #071d35;
+        .btn-gold {
+            background: #f5b52e;
+            color: #071d33;
         }
 
-        .btn-primary:hover {
+        .btn-gold:hover {
             transform: translateY(-3px);
-            background: #ffc957;
+            background: #ffc84d;
         }
 
         .btn-outline {
@@ -190,307 +226,529 @@
 
         .btn-outline:hover {
             background: white;
-            color: #071d35;
+            color: #071d33;
         }
 
-        /* ABOUT */
 
-        .about {
-            background: white;
-            padding: 100px 8%;
-            text-align: center;
+        /* ==============================
+           COMMON SECTION
+        ============================== */
+
+        .section {
+            padding: 90px 7%;
         }
 
         .section-title {
-            font-size: 38px;
-            color: #0b2b4c;
-            margin-bottom: 10px;
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 55px;
         }
 
-        .section-tamil {
-            font-size: 25px;
-            font-weight: bold;
-            color: #d49316;
-            margin-bottom: 30px;
-        }
-
-        .about-intro {
-            max-width: 900px;
-            margin: auto;
-            font-size: 18px;
-            line-height: 1.9;
-            color: #555;
-        }
-
-        .about-intro-tamil {
-            max-width: 900px;
-            margin: 25px auto 0;
-            font-size: 19px;
-            line-height: 2;
-            color: #555;
-        }
-
-        /* VISION MISSION */
-
-        .info-container {
-            max-width: 1100px;
-            margin: 60px auto 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .info-box {
-            background: #f7f9fc;
-            border-radius: 14px;
-            padding: 40px 30px;
-            border-top: 5px solid #fdbb3d;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .info-box:hover {
-            transform: translateY(-6px);
-        }
-
-        .info-icon {
+        .section-title h2 {
             font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .info-box h3 {
-            font-size: 26px;
-            color: #0b2b4c;
+            color: #0b3154;
             margin-bottom: 8px;
         }
 
-        .info-tamil {
-            color: #d49316;
-            font-size: 21px;
-            font-weight: bold;
-            margin-bottom: 18px;
+        .section-title h3 {
+            color: #e2a719;
+            font-size: 25px;
+            margin-bottom: 20px;
         }
 
-        .info-box p {
-            font-size: 17px;
-            line-height: 1.8;
+        .section-title p {
             color: #555;
+            line-height: 1.8;
+            font-size: 16px;
         }
 
-        /* HIGHLIGHTS */
 
-        .highlights {
-            background: #f1f4f8;
-            padding: 90px 8%;
+        /* ==============================
+           ABOUT
+        ============================== */
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: auto;
             text-align: center;
         }
 
-        .highlight-container {
+        .about-content p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .about-tamil {
+            font-size: 20px !important;
+        }
+
+
+        /* ==============================
+           VISION / MISSION
+        ============================== */
+
+        .vision-mission {
+            background: #f4f7fb;
+        }
+
+        .vm-container {
             max-width: 1100px;
-            margin: 45px auto 0;
+            margin: auto;
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 30px;
         }
 
-        .highlight {
-            background: white;
-            padding: 35px 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        .vm-card {
+            background: #ffffff;
+
+            padding: 45px 35px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            border-top: 4px solid #f5b52e;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
         }
 
-        .highlight h3 {
-            color: #0b2b4c;
-            margin: 15px 0 10px;
+        .vm-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .vm-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .vm-card h3 {
+            font-size: 27px;
+            color: #0b3154;
+            margin-bottom: 8px;
+        }
+
+        .vm-card h4 {
+            color: #e2a719;
             font-size: 21px;
+            margin-bottom: 20px;
         }
 
-        .highlight p {
+        .vm-card p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+
+        /* ==============================
+           VALUES
+        ============================== */
+
+        .values {
+            background: #eef3f8;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+        .value-card {
+            background: white;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            border-radius: 13px;
+
+            box-shadow: 0 7px 20px rgba(0,0,0,0.07);
+
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .value-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .value-card h3 {
+            color: #0b3154;
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .value-card h4 {
+            color: #e2a719;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
             color: #666;
-            line-height: 1.7;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
-        /* ACTIVITIES */
+
+        /* ==============================
+           ACTIVITIES
+        ============================== */
 
         .activities {
-            padding: 90px 8%;
             background: white;
-            text-align: center;
         }
 
-        .activity-container {
-            max-width: 1100px;
-            margin: 45px auto 0;
+        .activities-container {
+            max-width: 1200px;
+            margin: auto;
+
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+
             gap: 25px;
         }
 
         .activity-card {
+            background: #f8fafc;
+
             padding: 35px 25px;
-            border-radius: 12px;
-            background: #f7f9fc;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            border-top: 4px solid #f5b52e;
+
             box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+
             transition: 0.3s;
         }
 
         .activity-card:hover {
-            transform: translateY(-7px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
 
-        .activity-card .icon {
-            font-size: 40px;
-        }
-
-        .activity-card h3 {
-            color: #0b2b4c;
-            margin: 15px 0 10px;
-        }
-
-        .activity-card p {
-            color: #666;
-            line-height: 1.7;
-        }
-
-        /* ANNOUNCEMENTS */
-
-        .announcements {
-            padding: 90px 8%;
-            background: #f1f4f8;
-            text-align: center;
-        }
-
-        .announcement-box {
-            max-width: 850px;
-            margin: 40px auto 0;
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-        }
-
-        .announcement-box h3 {
-            color: #0b2b4c;
-            margin-bottom: 12px;
-        }
-
-        .announcement-box p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* CONTACT */
-
-        .contact {
-            padding: 90px 8%;
-            background: white;
-            text-align: center;
-        }
-
-        .contact-box {
-            max-width: 800px;
-            margin: 40px auto 0;
-            background: #071d35;
-            color: white;
-            padding: 45px 30px;
-            border-radius: 15px;
-        }
-
-        .contact-box h3 {
-            font-size: 27px;
+        .activity-icon {
+            font-size: 45px;
             margin-bottom: 15px;
         }
 
-        .contact-box p {
-            color: #ddd;
-            line-height: 1.8;
+        .activity-card h3 {
+            color: #0b3154;
+            font-size: 22px;
+            margin-bottom: 7px;
         }
 
-        /* FOOTER */
+        .activity-card h4 {
+            color: #e2a719;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .activity-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+
+        /* ==============================
+           ANNOUNCEMENTS
+        ============================== */
+
+        .announcements {
+            background: #f4f7fb;
+        }
+
+        .announcement-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .announcement-card {
+            background: white;
+
+            display: flex;
+
+            gap: 25px;
+
+            padding: 28px;
+
+            margin-bottom: 20px;
+
+            border-radius: 12px;
+
+            border-left: 5px solid #f5b52e;
+
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+        }
+
+        .announcement-date {
+            min-width: 75px;
+            height: 75px;
+
+            background: #0b3154;
+            color: white;
+
+            border-radius: 10px;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .announcement-date strong {
+            font-size: 25px;
+        }
+
+        .announcement-date span {
+            font-size: 12px;
+        }
+
+        .announcement-info h3 {
+            color: #0b3154;
+            margin-bottom: 7px;
+        }
+
+        .announcement-info h4 {
+            color: #e2a719;
+            margin-bottom: 8px;
+        }
+
+        .announcement-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+
+        /* ==============================
+           CONTACT
+        ============================== */
+
+        .contact {
+            background: #0a2745;
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title h3 {
+            color: #f5b52e;
+        }
+
+        .contact .section-title p {
+            color: #dce7f1;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .contact-card {
+            text-align: center;
+
+            padding: 35px 20px;
+
+            background: rgba(255,255,255,0.07);
+
+            border-radius: 12px;
+        }
+
+        .contact-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            color: #f5b52e;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #e1e9f1;
+            line-height: 1.7;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
 
         footer {
-            background: #071d35;
+            background: #051526;
             color: white;
+
             text-align: center;
-            padding: 35px 20px;
+
+            padding: 30px 20px;
         }
 
-        .footer-name {
-            font-size: 20px;
-            font-weight: bold;
+        footer h3 {
+            margin-bottom: 8px;
         }
 
-        .footer-tamil {
-            margin-top: 8px;
-            font-size: 18px;
+        footer h3 span {
+            color: #f5b52e;
         }
 
         footer p {
-            margin-top: 15px;
-            color: #bbb;
+            color: #b8c7d6;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
-        /* MOBILE */
 
-        @media (max-width: 800px) {
+        /* ==============================
+           MOBILE MENU / RESPONSIVE
+        ============================== */
+
+        @media (max-width: 950px) {
+
+            nav {
+                padding: 0 4%;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero-tamil-name {
+                font-size: 27px;
+            }
+
+            .values-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .activities-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
 
             nav {
                 height: auto;
-                padding: 15px 5%;
+                padding: 15px 20px;
+
                 flex-direction: column;
+
                 gap: 15px;
             }
 
-            .nav-links {
-                gap: 15px;
+            nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 15px;
             }
 
-            .english-name {
-                font-size: 34px;
-            }
-
-            .tamil-name {
-                font-size: 25px;
+            .hero {
+                min-height: 650px;
             }
 
             .hero-logo {
-                width: 130px;
-                height: 130px;
+                width: 120px;
+                height: 120px;
             }
 
-            .info-container,
-            .highlight-container,
-            .activity-container {
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero-tamil-name {
+                font-size: 23px;
+            }
+
+            .hero-slogan {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 70px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .vm-container,
+            .values-container,
+            .activities-container,
+            .contact-container {
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
-                font-size: 31px;
+            .announcement-card {
+                flex-direction: column;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-<!-- NAVBAR -->
+
+<!-- ==============================
+     NAVIGATION
+============================== -->
 
 <nav>
 
-    <div class="brand">
+    <div class="logo-area">
 
         <img src="LOGO.png" alt="JMD'S Royal Logo">
 
-        <div class="brand-text">
+        <div class="logo-text">
 
-            <div class="brand-english">
+            <div class="logo-english">
                 JMD'S <span>ROYAL</span>
             </div>
 
-            <div class="brand-tamil">
+            <div class="logo-tamil">
                 மக்கள் நலச்சங்கம்
             </div>
 
@@ -498,49 +756,71 @@
 
     </div>
 
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#announcements">Announcements</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+    <ul>
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#activities">Activities</a>
+        </li>
+
+        <li>
+            <a href="#announcements">Announcements</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
     </ul>
 
 </nav>
 
 
-<!-- HOME -->
 
-<section class="hero" id="home">
+<!-- ==============================
+     HOME
+============================== -->
+
+<section id="home" class="hero">
 
     <div class="hero-content">
 
-        <img src="LOGO.png"
-             alt="JMD'S Royal Makkal Nalasangam Logo"
-             class="hero-logo">
+        <img
+            src="LOGO.png"
+            alt="JMD'S Royal Makkal Nalasangam Logo"
+            class="hero-logo"
+        >
 
-        <h1 class="english-name">
+        <h1>
             JMD'S <span>ROYAL</span><br>
             MAKKAL NALASANGAM
         </h1>
 
-        <h2 class="tamil-name">
-            ஜேஎம்டி'ஸ் ராயல்<br>
+        <div class="hero-tamil-name">
+            ஜேடிஎம்'ஸ் ராயல்<br>
             மக்கள் நலச்சங்கம்
-        </h2>
+        </div>
 
-        <div class="slogan">
+        <div class="hero-slogan">
             "ஒற்றுமையே பலம்!<br>
             மக்கள் நலமே எங்கள் இலட்சியம்!"
         </div>
 
-        <div class="slogan-small">
+        <p class="hero-subtitle">
             Unity is our strength • People's welfare is our mission
-        </div>
+        </p>
 
-        <div class="buttons">
+        <div class="hero-buttons">
 
-            <a href="#about" class="btn btn-primary">
+            <a href="#about" class="btn btn-gold">
                 மேலும் அறிய
             </a>
 
@@ -555,62 +835,102 @@
 </section>
 
 
-<!-- ABOUT -->
 
-<section class="about" id="about">
+<!-- ==============================
+     ABOUT
+============================== -->
 
-    <h2 class="section-title">
-        About Our Association
-    </h2>
+<section id="about" class="section about">
 
-    <div class="section-tamil">
-        எங்கள் சங்கத்தைப் பற்றி
+    <div class="section-title">
+
+        <h2>About Our Association</h2>
+
+        <h3>எங்கள் சங்கத்தைப் பற்றி</h3>
+
     </div>
 
-    <p class="about-intro">
-        JMD'S ROYAL MAKKAL NALASANGAM is a community-focused
-        association dedicated to the welfare, development and
-        well-being of our people.
-    </p>
 
-    <p class="about-intro-tamil">
-        ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்,
-        மக்களின் நலன், வளர்ச்சி மற்றும் சமூக முன்னேற்றத்திற்காக
-        அர்ப்பணிப்புடன் செயல்படும் ஒரு மக்கள் நல அமைப்பாகும்.
-    </p>
+    <div class="about-content">
+
+        <p>
+            JMD'S ROYAL MAKKAL NALASANGAM is a community-focused
+            organization dedicated to the welfare, development and
+            well-being of our people.
+        </p>
+
+        <p class="about-tamil">
+            ஜேடிஎம்'ஸ் ராயல் மக்கள் நலச்சங்கம்,
+            மக்களின் நலன், வளர்ச்சி மற்றும் சமூக முன்னேற்றத்திற்காக
+            அர்ப்பணிப்புடன் செயல்படும் ஒரு மக்கள் நல அமைப்பாகும்.
+        </p>
+
+        <p>
+            We believe that when people come together with unity,
+            responsibility and compassion, we can create a stronger
+            and better community for everyone.
+        </p>
+
+        <p class="about-tamil">
+            ஒற்றுமை, பொறுப்பு மற்றும் அக்கறையுடன் மக்கள் ஒன்றிணைந்து
+            செயல்பட்டால், அனைவருக்கும் சிறந்த மற்றும் வலிமையான
+            சமூகத்தை உருவாக்க முடியும் என்பதே எங்கள் நம்பிக்கை.
+        </p>
+
+    </div>
+
+</section>
 
 
-    <!-- VISION & MISSION -->
 
-    <div class="info-container">
+<!-- ==============================
+     VISION & MISSION
+============================== -->
 
-        <div class="info-box">
+<section class="section vision-mission">
 
-            <div class="info-icon">👁️</div>
+    <div class="section-title">
+
+        <h2>Our Vision & Mission</h2>
+
+        <h3>எங்கள் பார்வை மற்றும் நோக்கம்</h3>
+
+    </div>
+
+
+    <div class="vm-container">
+
+        <div class="vm-card">
+
+            <div class="vm-icon">👁️</div>
 
             <h3>Our Vision</h3>
 
-            <div class="info-tamil">
-                எங்கள் பார்வை
-            </div>
+            <h4>எங்கள் பார்வை</h4>
 
             <p>
-                To build a united, caring and progressive
-                community where everyone can grow together.
+                To build a united, caring and progressive community
+                where everyone can grow together.
+            </p>
+
+            <br>
+
+            <p>
+                அனைவரும் ஒன்றிணைந்து வளரக்கூடிய,
+                அக்கறையும் முன்னேற்றமும் நிறைந்த
+                ஒரு வலிமையான சமூகத்தை உருவாக்குதல்.
             </p>
 
         </div>
 
 
-        <div class="info-box">
+        <div class="vm-card">
 
-            <div class="info-icon">❤️</div>
+            <div class="vm-icon">❤️</div>
 
             <h3>Our Mission</h3>
 
-            <div class="info-tamil">
-                எங்கள் நோக்கம்
-            </div>
+            <h4>எங்கள் நோக்கம்</h4>
 
             <p>
                 To serve people with responsibility, compassion,
@@ -618,6 +938,14 @@
                 welfare and development.
             </p>
 
+            <br>
+
+            <p>
+                பொறுப்பு, அன்பு, ஒற்றுமை மற்றும் அர்ப்பணிப்புடன்
+                மக்களுக்கு சேவை செய்து சமூக நலன் மற்றும்
+                வளர்ச்சிக்கு துணை நிற்றல்.
+            </p>
+
         </div>
 
     </div>
@@ -625,57 +953,80 @@
 </section>
 
 
-<!-- HIGHLIGHTS -->
 
-<section class="highlights">
+<!-- ==============================
+     VALUES
+============================== -->
 
-    <h2 class="section-title">
-        What We Stand For
-    </h2>
+<section class="section values">
 
-    <div class="section-tamil">
-        எங்கள் கொள்கைகள்
+    <div class="section-title">
+
+        <h2>What We Stand For</h2>
+
+        <h3>எங்கள் கொள்கைகள்</h3>
+
+        <p>
+            Our work is guided by values that bring people together
+            and strengthen our community.
+        </p>
+
     </div>
 
-    <div class="highlight-container">
 
-        <div class="highlight">
+    <div class="values-container">
 
-            <div class="info-icon">🤝</div>
+        <div class="value-card">
+
+            <div class="value-icon">🤝</div>
 
             <h3>Unity</h3>
+            <h4>ஒற்றுமை</h4>
 
             <p>
-                Together we can create a stronger and
-                more supportive community.
+                Together we are stronger.
             </p>
 
         </div>
 
 
-        <div class="highlight">
+        <div class="value-card">
 
-            <div class="info-icon">❤️</div>
+            <div class="value-icon">❤️</div>
 
-            <h3>People's Welfare</h3>
+            <h3>Compassion</h3>
+            <h4>அன்பும் அக்கறையும்</h4>
 
             <p>
-                The welfare and happiness of our people
-                remain at the heart of our work.
+                Caring for every member of our community.
             </p>
 
         </div>
 
 
-        <div class="highlight">
+        <div class="value-card">
 
-            <div class="info-icon">🌱</div>
+            <div class="value-icon">⚖️</div>
+
+            <h3>Responsibility</h3>
+            <h4>பொறுப்பு</h4>
+
+            <p>
+                Working honestly and responsibly.
+            </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+            <div class="value-icon">🌱</div>
 
             <h3>Development</h3>
+            <h4>வளர்ச்சி</h4>
 
             <p>
-                We encourage positive development and
-                meaningful progress in our community.
+                Building a better future for everyone.
             </p>
 
         </div>
@@ -685,157 +1036,324 @@
 </section>
 
 
-<!-- ACTIVITIES -->
 
-<section class="activities" id="activities">
+<!-- ==============================
+     ACTIVITIES
+============================== -->
 
-    <h2 class="section-title">
-        Our Activities
-    </h2>
+<section id="activities" class="section activities">
 
-    <div class="section-tamil">
-        எங்கள் செயல்பாடுகள்
+    <div class="section-title">
+
+        <h2>Our Activities</h2>
+
+        <h3>எங்கள் செயல்பாடுகள்</h3>
+
+        <p>
+            We work together for the welfare, development and
+            happiness of our community.
+        </p>
+
+        <p>
+            சமூக நலன், வளர்ச்சி மற்றும் மக்களின் மகிழ்ச்சிக்காக
+            ஒன்றிணைந்து செயல்படுகிறோம்.
+        </p>
+
     </div>
 
-    <div class="activity-container">
 
-        <div class="activity-card">
-
-            <div class="icon">🤝</div>
-
-            <h3>Community Service</h3>
-
-            <p>
-                Supporting people and helping our community
-                whenever assistance is needed.
-            </p>
-
-        </div>
-
-
-        <div class="activity-card">
-
-            <div class="icon">❤️</div>
-
-            <h3>Welfare Activities</h3>
-
-            <p>
-                Working for the welfare and well-being
-                of our community members.
-            </p>
-
-        </div>
+    <div class="activities-container">
 
 
         <div class="activity-card">
 
-            <div class="icon">🌱</div>
+            <div class="activity-icon">🤝</div>
 
-            <h3>Community Development</h3>
+            <h3>Community Welfare</h3>
+            <h4>சமூக நலப்பணி</h4>
 
             <p>
-                Encouraging unity and positive development
-                within our community.
+                Supporting people in need and working together
+                for a stronger community.
             </p>
 
         </div>
 
+
+        <div class="activity-card">
+
+            <div class="activity-icon">❤️</div>
+
+            <h3>Helping People</h3>
+            <h4>மக்களுக்கு உதவி</h4>
+
+            <p>
+                Extending a helping hand to families and
+                individuals whenever support is needed.
+            </p>
+
+        </div>
+
+
+        <div class="activity-card">
+
+            <div class="activity-icon">🌱</div>
+
+            <h3>Social Development</h3>
+            <h4>சமூக வளர்ச்சி</h4>
+
+            <p>
+                Encouraging positive development and creating
+                opportunities for our community.
+            </p>
+
+        </div>
+
+
+        <div class="activity-card">
+
+            <div class="activity-icon">🎓</div>
+
+            <h3>Education Support</h3>
+            <h4>கல்வி உதவி</h4>
+
+            <p>
+                Encouraging students and supporting education
+                for a better future.
+            </p>
+
+        </div>
+
+
+        <div class="activity-card">
+
+            <div class="activity-icon">🌿</div>
+
+            <h3>Environmental Care</h3>
+            <h4>சுற்றுச்சூழல் பாதுகாப்பு</h4>
+
+            <p>
+                Promoting cleanliness, environmental awareness
+                and a greener community.
+            </p>
+
+        </div>
+
+
+        <div class="activity-card">
+
+            <div class="activity-icon">👥</div>
+
+            <h3>Unity & Awareness</h3>
+            <h4>ஒற்றுமை மற்றும் விழிப்புணர்வு</h4>
+
+            <p>
+                Bringing people together and spreading awareness
+                about important community issues.
+            </p>
+
+        </div>
+
+
     </div>
 
 </section>
 
 
-<!-- ANNOUNCEMENTS -->
 
-<section class="announcements" id="announcements">
+<!-- ==============================
+     ANNOUNCEMENTS
+============================== -->
 
-    <h2 class="section-title">
-        Announcements
-    </h2>
+<section id="announcements" class="section announcements">
 
-    <div class="section-tamil">
-        அறிவிப்புகள்
+    <div class="section-title">
+
+        <h2>Announcements</h2>
+
+        <h3>அறிவிப்புகள்</h3>
+
+        <p>
+            Stay updated with our latest community activities
+            and important announcements.
+        </p>
+
     </div>
 
-    <div class="announcement-box">
 
-        <h3>
-            Important Association Updates
-        </h3>
+    <div class="announcement-container">
 
-        <p>
-            Association announcements, upcoming activities
-            and important community updates will be displayed
-            here.
-        </p>
 
-        <br>
+        <div class="announcement-card">
 
-        <p>
-            சங்கத்தின் முக்கிய அறிவிப்புகள்,
-            நிகழ்ச்சிகள் மற்றும் மக்கள் நலத் தகவல்கள்
-            இங்கே வெளியிடப்படும்.
-        </p>
+            <div class="announcement-date">
+
+                <strong>01</strong>
+                <span>NEWS</span>
+
+            </div>
+
+            <div class="announcement-info">
+
+                <h3>Community Welfare Activities</h3>
+
+                <h4>சமூக நலப்பணிகள்</h4>
+
+                <p>
+                    Our association continues to work towards
+                    supporting the needs of our community members.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="announcement-card">
+
+            <div class="announcement-date">
+
+                <strong>02</strong>
+                <span>EVENT</span>
+
+            </div>
+
+            <div class="announcement-info">
+
+                <h3>Upcoming Community Programs</h3>
+
+                <h4>வரவிருக்கும் நிகழ்ச்சிகள்</h4>
+
+                <p>
+                    Details of upcoming programs and community
+                    events will be announced here.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="announcement-card">
+
+            <div class="announcement-date">
+
+                <strong>03</strong>
+                <span>INFO</span>
+
+            </div>
+
+            <div class="announcement-info">
+
+                <h3>Important Information</h3>
+
+                <h4>முக்கிய தகவல்</h4>
+
+                <p>
+                    Please check this section regularly for
+                    important updates from the association.
+                </p>
+
+            </div>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- CONTACT -->
 
-<section class="contact" id="contact">
+<!-- ==============================
+     CONTACT
+============================== -->
 
-    <h2 class="section-title">
-        Contact Us
-    </h2>
+<section id="contact" class="section contact">
 
-    <div class="section-tamil">
-        எங்களை தொடர்பு கொள்ள
+    <div class="section-title">
+
+        <h2>Contact Us</h2>
+
+        <h3>தொடர்பு கொள்ள</h3>
+
+        <p>
+            We are always happy to hear from our community.
+        </p>
+
     </div>
 
-    <div class="contact-box">
 
-        <h3>
-            JMD'S ROYAL MAKKAL NALASANGAM
-        </h3>
+    <div class="contact-container">
 
-        <p>
-            For association-related information,
-            activities and enquiries, please contact
-            the association representatives.
-        </p>
 
-        <br>
+        <div class="contact-card">
 
-        <p>
-            சங்கம் தொடர்பான தகவல்கள் மற்றும்
-            செயல்பாடுகளுக்கு சங்க நிர்வாகிகளை
-            தொடர்பு கொள்ளவும்.
-        </p>
+            <div class="contact-icon">📍</div>
+
+            <h3>Address</h3>
+
+            <p>
+                JMD'S ROYAL MAKKAL NALASANGAM<br>
+                Tamil Nadu, India
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">📞</div>
+
+            <h3>Phone</h3>
+
+            <p>
+                Contact details will be updated soon.
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">✉️</div>
+
+            <h3>Email</h3>
+
+            <p>
+                Email details will be updated soon.
+            </p>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- ==============================
+     FOOTER
+============================== -->
 
 <footer>
 
-    <div class="footer-name">
-        JMD'S ROYAL MAKKAL NALASANGAM
-    </div>
-
-    <div class="footer-tamil">
-        ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
-    </div>
+    <h3>
+        JMD'S <span>ROYAL</span> MAKKAL NALASANGAM
+    </h3>
 
     <p>
-        © 2026 JMD'S ROYAL MAKKAL NALASANGAM. All Rights Reserved.
+        ஜேடிஎம்'ஸ் ராயல் மக்கள் நலச்சங்கம்
+    </p>
+
+    <p>
+        © 2026 JMD'S ROYAL MAKKAL NALASANGAM.
+        All Rights Reserved.
     </p>
 
 </footer>
+
 
 </body>
 </html>
