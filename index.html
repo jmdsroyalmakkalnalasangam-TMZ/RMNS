@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JMD'S ROYAL MAKKAL NALASANGAM</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #102a43;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #f5b942;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #f5b942;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+
+            background:
+                linear-gradient(rgba(16,42,67,0.88), rgba(16,42,67,0.88)),
+                linear-gradient(135deg, #102a43, #243b53);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: #f5b942;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #e5e7eb;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #f5b942;
+            color: #102a43;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: #ffd166;
+        }
+
+        .button-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .button-outline:hover {
+            background: white;
+            color: #102a43;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 75px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            color: #102a43;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #667085;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-container p {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #475467;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #102a43;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #667085;
+            line-height: 1.6;
+        }
+
+        /* ANNOUNCEMENTS */
+        .announcements {
+            background: #eef2f7;
+        }
+
+        .announcement-box {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-left: 5px solid #f5b942;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        .announcement-box h3 {
+            color: #102a43;
+            margin-bottom: 8px;
+        }
+
+        .announcement-box p {
+            color: #667085;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: white;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 25px;
+        }
+
+        .contact-item h3 {
+            color: #102a43;
+            margin: 10px 0;
+        }
+
+        .contact-item p {
+            color: #667085;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin: 7px;
+            color: #d9e2ec;
+        }
+
+        .footer-highlight {
+            color: #f5b942;
+            font-weight: bold;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            JMD'S <span>ROYAL</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Activities</a></li>
+            <li><a href="#announcements">Announcements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                JMD'S <span>ROYAL</span><br>
+                MAKKAL NALASANGAM
+            </h1>
+
+            <p>
+                Serving our community with unity, responsibility,
+                compassion and dedication.
+            </p>
+
+            <a href="#about" class="button">
+                Learn More
+            </a>
+
+            <a href="#contact" class="button button-outline">
+                Contact Us
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <h2>About Our Association</h2>
+            <p>Working together for the welfare of our community</p>
+        </div>
+
+        <div class="about-container">
+
+            <p>
+                JMD'S ROYAL MAKKAL NALASANGAM is a community-focused
+                association dedicated to supporting its members and
+                contributing to the welfare and development of society.
+                Through unity, cooperation and responsible service,
+                we work together to create a better future for everyone.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACTIVITIES -->
+    <section id="services">
+
+        <div class="section-title">
+            <h2>Our Activities</h2>
+            <p>Our commitment to the community</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Community Welfare</h3>
+                <p>
+                    Supporting people and working together
+                    for the welfare of our community.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Member Support</h3>
+                <p>
+                    Building a strong and united association
+                    through cooperation and support.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3>Social Development</h3>
+                <p>
+                    Participating in activities that contribute
+                    positively to our society.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANNOUNCEMENTS -->
+    <section class="announcements" id="announcements">
+
+        <div class="section-title">
+            <h2>Announcements</h2>
+            <p>Latest information from our association</p>
+        </div>
+
+        <div class="announcement-box">
+            <h3>Welcome to our official website</h3>
+            <p>
+                Our new official association website is now online.
+            </p>
+        </div>
+
+        <div class="announcement-box">
+            <h3>Monthly Activities</h3>
+            <p>
+                Details about upcoming association activities
+                will be published here.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch with our association</p>
+        </div>
+
+        <div class="contact-container">
+
+            <div class="contact-item">
+                <div class="card-icon">📞</div>
+                <h3>Phone</h3>
+                <p>Add association phone number</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="card-icon">📧</div>
+                <h3>Email</h3>
+                <p>Add association email</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="card-icon">📍</div>
+                <h3>Location</h3>
+                <p>Add association location</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026
+            <span class="footer-highlight">
+                JMD'S ROYAL MAKKAL NALASANGAM
+            </span>
+        </p>
+
+        <p>
+            Official Association Website
+        </p>
+
+    </footer>
+
+</body>
+</html>
