@@ -1,0 +1,2 @@
+# RMNS
+Official website of JMD'S ROYAL MAKKAL NALASANGAM
