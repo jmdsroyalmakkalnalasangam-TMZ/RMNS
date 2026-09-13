@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>JMD'S ROYAL MAKKAL NALASANGAM</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+/* ================= GENERAL ================= */
 
 * {
     margin: 0;
@@ -21,23 +22,43 @@
 
 body {
     font-family: Arial, "Noto Sans Tamil", sans-serif;
-    color: #08233f;
-    background: #f5f7fa;
+    background: #07111f;
+    color: white;
+    line-height: 1.6;
 }
+
+section {
+    padding: 80px 8%;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+section h2 {
+    text-align: center;
+    color: #d4af37;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
 
 /* ================= NAVBAR ================= */
 
-.navbar {
+nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    height: 76px;
-    background: #061d35;
+
+    background: #07111f;
+    border-bottom: 1px solid #d4af37;
+
+    padding: 12px 6%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 6%;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.15);
 }
 
 .logo-area {
@@ -47,674 +68,687 @@ body {
 }
 
 .logo-area img {
-    width: 46px;
-    height: 46px;
-    object-fit: cover;
-    border-radius: 6px;
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 .logo-text {
-    line-height: 1.15;
-}
-
-.logo-text .english {
-    font-size: 18px;
-    font-weight: 800;
-    color: white;
-}
-
-.logo-text .royal {
-    color: #ffb72e;
-}
-
-.logo-text .tamil {
-    margin-top: 4px;
-    font-family: "Noto Sans Tamil", sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
+    font-weight: bold;
+    color: #d4af37;
+    font-size: 16px;
 }
 
 .nav-links {
     display: flex;
-    gap: 28px;
-    list-style: none;
+    gap: 22px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-weight: bold;
     transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: #ffb72e;
+    color: #d4af37;
 }
+
 
 /* ================= HERO ================= */
 
 .hero {
-    min-height: 720px;
-    background:
-        radial-gradient(circle at 80% 20%, rgba(255,183,46,0.10), transparent 25%),
-        linear-gradient(135deg, #0a2b4c, #061d35);
-    color: white;
+    min-height: 90vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
-    padding: 80px 20px;
+
+    padding: 60px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #132b49 0%,
+            #07111f 60%
+        );
 }
 
-.hero-content {
-    max-width: 900px;
-}
-
-.hero-logo {
+.hero img {
     width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    max-width: 45%;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    line-height: 1.15;
-    font-weight: 800;
+    font-size: clamp(32px, 6vw, 65px);
+    color: #d4af37;
+    line-height: 1.1;
 }
 
-.hero h1 .royal {
-    color: #ffb72e;
+.hero h2 {
+    font-size: clamp(22px, 4vw, 40px);
+    margin-top: 10px;
 }
 
-.hero-tamil {
-    font-family: "Noto Sans Tamil", sans-serif;
-    font-size: 30px;
-    font-weight: 800;
+.tamil {
+    font-family: "Noto Sans Tamil", Arial, sans-serif;
+}
+
+.hero .tamil {
     margin-top: 15px;
+    font-size: 22px;
+    color: #f2d675;
 }
 
 .slogan {
-    font-family: "Noto Sans Tamil", sans-serif;
-    color: #ffb72e;
-    font-size: 22px;
-    font-weight: 700;
-    margin-top: 18px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ddd;
 }
 
-.sub-slogan {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #dce8f4;
-}
-
-.buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-}
-
-.btn {
-    padding: 13px 25px;
-    border-radius: 7px;
-    text-decoration: none;
-    font-weight: 700;
-    border: 2px solid #ffb72e;
-    transition: 0.3s;
-}
-
-.btn-primary {
-    background: #ffb72e;
-    color: #061d35;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-}
-
-.btn-outline {
-    color: white;
-    border-color: white;
-}
-
-.btn-outline:hover {
-    background: white;
-    color: #061d35;
-}
-
-/* ================= GENERAL ================= */
-
-section {
-    padding: 90px 7%;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-title h2 {
-    font-size: 38px;
-    color: #082d52;
-}
-
-.section-title .tamil {
-    font-family: "Noto Sans Tamil", sans-serif;
-    color: #e49b00;
-    font-size: 21px;
-    font-weight: 700;
-    margin-top: 7px;
-}
 
 /* ================= ABOUT ================= */
-
-.about {
-    background: white;
-}
 
 .about-text {
     max-width: 900px;
     margin: auto;
     text-align: center;
-    font-size: 17px;
-    line-height: 1.9;
-    color: #536b82;
+    color: #ddd;
+    font-size: 18px;
 }
 
-.about-text .tamil {
-    font-family: "Noto Sans Tamil", sans-serif;
-    margin-top: 20px;
-}
 
-/* ================= VISION / MISSION ================= */
+/* ================= CARDS ================= */
 
-.vm {
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
     gap: 25px;
-    max-width: 1000px;
-    margin: auto;
 }
 
 .card {
-    background: #f7f9fc;
-    padding: 45px 35px;
-    text-align: center;
+    background: #0d1b2d;
+
+    border: 1px solid #243b55;
+
     border-radius: 15px;
-    border-top: 4px solid #ffb72e;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-}
 
-.card .icon {
-    font-size: 40px;
-    margin-bottom: 18px;
-}
+    padding: 30px;
 
-.card h3 {
-    font-size: 24px;
-    margin-bottom: 5px;
-}
-
-.card .tamil {
-    font-family: "Noto Sans Tamil", sans-serif;
-    color: #e49b00;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 18px;
-}
-
-.card p {
-    color: #60758a;
-    line-height: 1.7;
-}
-
-/* ================= VALUES ================= */
-
-.values {
-    background: #eef3f8;
-}
-
-.value-grid {
-    max-width: 1050px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.value-card {
-    background: white;
-    padding: 35px 20px;
     text-align: center;
-    border-radius: 12px;
+
     transition: 0.3s;
 }
 
-.value-card:hover {
-    transform: translateY(-6px);
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
 }
 
-.value-card .icon {
-    font-size: 35px;
-    margin-bottom: 15px;
+.card h3 {
+    color: #d4af37;
+    margin-bottom: 12px;
 }
 
-.value-card h3 {
-    margin-bottom: 8px;
+.card p {
+    color: #ddd;
 }
 
-.value-card p {
-    font-family: "Noto Sans Tamil", sans-serif;
-    color: #687b8e;
+
+/* ================= ACTIVITIES ================= */
+
+.activity {
+    text-align: left;
 }
 
-/* ================= GALLERY ================= */
+
+/* ================= NORMAL GALLERY ================= */
 
 .gallery {
-    background: white;
+    background: #050c16;
 }
 
 .gallery-grid {
-    max-width: 1150px;
+    max-width: 1200px;
+
     margin: auto;
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
 }
 
 .gallery-item {
-    height: 240px;
+    height: 220px;
+
     overflow: hidden;
-    border-radius: 12px;
+
+    border-radius: 15px;
+
+    border: 2px solid #243b55;
+
     cursor: pointer;
-    position: relative;
-    background: #e9eef3;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+
+    transition: 0.3s;
+}
+
+.gallery-item:hover {
+    border-color: #d4af37;
+    transform: scale(1.02);
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: 0.4s;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.08);
+
+/* ================= FESTIVAL GALLERY ================= */
+
+.festival-gallery {
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1c2740,
+            #050c16 70%
+        );
+
 }
 
-.gallery-item::after {
-    content: "🔍";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-    background: rgba(0,0,0,0.35);
-    opacity: 0;
-    transition: 0.3s;
-}
+.festival-title {
 
-.gallery-item:hover::after {
-    opacity: 1;
-}
+    text-align: center;
 
-/* ================= LIGHTBOX ================= */
+    margin-bottom: 15px;
 
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox.active {
-    display: flex;
-}
-
-.lightbox img {
-    max-width: 85%;
-    max-height: 82vh;
-    border-radius: 8px;
-    object-fit: contain;
-}
-
-.close {
-    position: absolute;
-    top: 25px;
-    right: 35px;
-    color: white;
     font-size: 42px;
-    cursor: pointer;
+
+    color: #d4af37;
+
 }
 
-.prev,
-.next {
+.festival-subtitle {
+
+    text-align: center;
+
+    color: #ddd;
+
+    margin-bottom: 40px;
+
+    font-size: 18px;
+
+}
+
+.festival-subtitle.tamil {
+
+    color: #f2d675;
+
+    margin-top: -25px;
+
+}
+
+.festival-grid {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 22px;
+
+}
+
+.festival-item {
+
+    height: 250px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    border: 2px solid #d4af37;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+
+    background: #0d1b2d;
+
+}
+
+.festival-item:hover {
+
+    transform: translateY(-7px) scale(1.02);
+
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+
+}
+
+.festival-item img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.4s;
+
+}
+
+.festival-item:hover img {
+
+    transform: scale(1.08);
+
+}
+
+.festival-label {
+
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+
+    bottom: 0;
+
+    left: 0;
+
+    right: 0;
+
+    padding: 12px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.9)
+        );
+
     color: white;
-    font-size: 45px;
-    cursor: pointer;
-    padding: 20px;
-    user-select: none;
+
+    font-weight: bold;
+
+    text-align: center;
+
 }
 
-.prev {
-    left: 20px;
-}
-
-.next {
-    right: 20px;
-}
-
-.prev:hover,
-.next:hover,
-.close:hover {
-    color: #ffb72e;
-}
 
 /* ================= ANNOUNCEMENTS ================= */
 
 .announcements {
-    background: #eef3f8;
+    background: #07111f;
 }
 
 .announcement-list {
-    max-width: 850px;
+
+    max-width: 950px;
+
     margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
 }
 
 .announcement {
-    background: white;
+
     display: flex;
-    align-items: center;
+
     gap: 25px;
+
+    align-items: flex-start;
+
+    background: #0d1b2d;
+
+    border-left: 5px solid #d4af37;
+
+    border-radius: 12px;
+
     padding: 25px;
-    margin-bottom: 18px;
-    border-left: 4px solid #ffb72e;
-    border-radius: 10px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+
 }
 
 .date {
-    min-width: 65px;
-    height: 65px;
-    background: #061d35;
-    color: white;
-    border-radius: 8px;
+
+    min-width: 85px;
+
+    height: 85px;
+
+    border-radius: 12px;
+
+    background: #d4af37;
+
+    color: #07111f;
+
     display: flex;
+
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
-    font-weight: 800;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    font-size: 28px;
+
+    text-align: center;
+
 }
 
 .date span {
-    color: #ffb72e;
-    font-size: 11px;
+
+    font-size: 14px;
+
 }
 
 .announcement h3 {
-    margin-bottom: 5px;
-}
 
-.announcement .tamil {
-    font-family: "Noto Sans Tamil", sans-serif;
-    color: #e49b00;
-    font-weight: 700;
+    color: #d4af37;
+
+    margin-bottom: 8px;
+
 }
 
 .announcement p {
-    color: #66798c;
-    line-height: 1.6;
+
+    color: #ddd;
+
+    margin-top: 10px;
+
 }
+
+.announcement .tamil {
+
+    color: #f2d675;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
 
 /* ================= CONTACT ================= */
 
 .contact {
-    background: #061d35;
-    color: white;
+
     text-align: center;
+
+    background: #050c16;
+
 }
 
-.contact .section-title h2 {
-    color: white;
+.contact p {
+
+    color: #ddd;
+
+    margin: 10px 0;
+
+    font-size: 18px;
+
 }
 
-.contact-info {
-    max-width: 800px;
-    margin: auto;
-}
-
-.contact-info p {
-    margin: 12px 0;
-    font-size: 17px;
-}
-
-.contact-info .tamil {
-    font-family: "Noto Sans Tamil", sans-serif;
-}
 
 /* ================= FOOTER ================= */
 
 footer {
-    background: #041527;
-    color: #b7c5d3;
+
     text-align: center;
-    padding: 22px;
-    font-size: 14px;
+
+    padding: 25px;
+
+    background: #030810;
+
+    border-top: 1px solid #243b55;
+
+    color: #aaa;
+
 }
+
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 2000;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.94);
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.lightbox img {
+
+    max-width: 90%;
+
+    max-height: 85%;
+
+    border-radius: 12px;
+
+    border: 2px solid #d4af37;
+
+}
+
+.close,
+.prev,
+.next {
+
+    position: absolute;
+
+    color: white;
+
+    font-size: 45px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    z-index: 2001;
+
+}
+
+.close {
+
+    top: 15px;
+
+    right: 30px;
+
+}
+
+.prev {
+
+    left: 25px;
+
+}
+
+.next {
+
+    right: 25px;
+
+}
+
+.close:hover,
+.prev:hover,
+.next:hover {
+
+    color: #d4af37;
+
+}
+
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
-    .nav-links {
-        gap: 12px;
-    }
+    nav {
 
-    .nav-links a {
-        font-size: 12px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero-tamil {
-        font-size: 23px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .value-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 650px) {
-
-    .navbar {
-        height: auto;
-        padding: 12px 5%;
         flex-direction: column;
+
         gap: 12px;
+
     }
 
     .nav-links {
+
         flex-wrap: wrap;
+
         justify-content: center;
+
+        gap: 12px;
+
     }
 
     .hero {
-        min-height: 650px;
+
+        min-height: 80vh;
+
     }
 
-    .hero h1 {
-        font-size: 30px;
-    }
+    section {
 
-    .hero-tamil {
-        font-size: 20px;
-    }
+        padding: 60px 5%;
 
-    .slogan {
-        font-size: 18px;
-    }
-
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .vm {
-        grid-template-columns: 1fr;
-    }
-
-    .value-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-item {
-        height: 260px;
     }
 
     .announcement {
-        align-items: flex-start;
+
+        flex-direction: column;
+
     }
 
-    .lightbox img {
-        max-width: 92%;
+    .date {
+
+        min-width: 75px;
+
+        height: 75px;
+
     }
 
-    .prev {
-        left: 2px;
+    .festival-title {
+
+        font-size: 32px;
+
     }
 
-    .next {
-        right: 2px;
-    }
 }
 
+
+/* ================= END ================= */
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
 
-<nav class="navbar">
+<!-- =====================================================
+                         NAVBAR
+===================================================== -->
+
+<nav>
 
     <div class="logo-area">
 
-        <img src="LOGO.png" alt="JMD'S Royal Logo">
+        <img src="LOGO.png" alt="Association Logo">
 
         <div class="logo-text">
-            <div class="english">
-                JMD'S <span class="royal">ROYAL</span>
-            </div>
 
-            <div class="tamil">
-                மக்கள் நலச்சங்கம்
-            </div>
+            JMD'S ROYAL<br>
+            MAKKAL NALASANGAM
+
         </div>
 
     </div>
 
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#announcements">Announcements</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+
+    <div class="nav-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#activities">Activities</a>
+
+        <a href="#gallery">Gallery</a>
+
+        <a href="#festival-gallery">Festival Gallery</a>
+
+        <a href="#announcements">Announcements</a>
+
+        <a href="#contact">Contact</a>
+
+    </div>
 
 </nav>
 
 
-<!-- ================= HOME ================= -->
+
+<!-- =====================================================
+                          HOME
+===================================================== -->
 
 <section class="hero" id="home">
 
-    <div class="hero-content">
+    <div>
 
-        <img src="LOGO.png" class="hero-logo" alt="Association Logo">
+        <img
+            src="LOGO.png"
+            alt="JMD Royal Makkal Nalasangam Logo"
+        >
 
         <h1>
-            JMD'S <span class="royal">ROYAL</span><br>
-            MAKKAL NALASANGAM
+            JMD'S ROYAL
         </h1>
 
-        <div class="hero-tamil">
-            ஜேம்ஸ்'வில் ராயல்<br>
-            மக்கள் நலச்சங்கம்
-        </div>
-
-        <div class="slogan">
-            "ஒற்றுமையே பலம்!<br>
-            மக்கள் நலமே எங்கள் இலட்சியம்!"
-        </div>
-
-        <div class="sub-slogan">
-            Unity is our strength • People's welfare is our mission
-        </div>
-
-        <div class="buttons">
-            <a href="#about" class="btn btn-primary">
-                மேலும் அறிய
-            </a>
-
-            <a href="#contact" class="btn btn-outline">
-                தொடர்பு கொள்ள
-            </a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-
-<section class="about" id="about">
-
-    <div class="section-title">
-
-        <h2>About Our Association</h2>
+        <h2>
+            MAKKAL NALASANGAM
+        </h2>
 
         <div class="tamil">
-            எங்கள் சங்கத்தைப் பற்றி
+
+            ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+
         </div>
 
-    </div>
+        <p class="slogan">
 
-    <div class="about-text">
+            Unity is our strength • People's welfare is our mission
 
-        <p>
-            JMD'S ROYAL MAKKAL NALASANGAM is committed to the welfare,
-            development and well-being of our community.
         </p>
 
         <p class="tamil">
-            ஜேம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம், மக்களின் நலன்,
-            வளர்ச்சி மற்றும் சமூக முன்னேற்றத்திற்காக அர்ப்பணிப்புடன்
-            செயல்படும் ஒரு மக்கள் நல அமைப்பாகும்.
+
+            ஒற்றுமையே பலம்! மக்கள் நலமே எங்கள் இலட்சியம்!
+
         </p>
 
     </div>
@@ -722,44 +756,90 @@ footer {
 </section>
 
 
-<!-- ================= VISION / MISSION ================= -->
+
+<!-- =====================================================
+                         ABOUT
+===================================================== -->
+
+<section id="about">
+
+    <div class="container">
+
+        <h2>
+            About Us
+        </h2>
+
+        <p class="about-text">
+
+            JMD'S ROYAL MAKKAL NALASANGAM is dedicated
+            to promoting unity, welfare, development
+            and community service.
+
+            Our goal is to work together for the
+            betterment of our members and the community.
+
+        </p>
+
+        <br>
+
+        <p class="about-text tamil">
+
+            ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+            ஒற்றுமை, நலன், வளர்ச்சி மற்றும் சமூக
+            சேவைக்காக செயல்படும் ஒரு மக்கள் நல அமைப்பாகும்.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+                    VISION & MISSION
+===================================================== -->
 
 <section>
 
-    <div class="vm">
+    <div class="container">
 
-        <div class="card">
+        <h2>
+            Vision & Mission
+        </h2>
 
-            <div class="icon">👁️</div>
+        <div class="card-grid">
 
-            <h3>Our Vision</h3>
+            <div class="card">
 
-            <div class="tamil">
-                எங்கள் பார்வை
+                <h3>
+                    Our Vision
+                </h3>
+
+                <p>
+
+                    To build a united,
+                    responsible and prosperous community.
+
+                </p>
+
             </div>
 
-            <p>
-                To build a united, caring and progressive community
-                where everyone can grow together.
-            </p>
 
-        </div>
+            <div class="card">
 
+                <h3>
+                    Our Mission
+                </h3>
 
-        <div class="card">
+                <p>
 
-            <div class="icon">❤️</div>
+                    To serve people through welfare,
+                    community development and unity.
 
-            <h3>Our Mission</h3>
+                </p>
 
-            <div class="tamil">
-                எங்கள் நோக்கம்
             </div>
-
-            <p>
-                To serve people with responsibility, compassion,
-                unity and dedication while supporting community welfare.
-            </p>
 
         </div>
 
@@ -768,56 +848,88 @@ footer {
 </section>
 
 
-<!-- ================= VALUES / ACTIVITIES ================= -->
 
-<section class="values" id="activities">
+<!-- =====================================================
+                         VALUES
+===================================================== -->
 
-    <div class="section-title">
+<section>
 
-        <h2>What We Stand For</h2>
+    <div class="container">
 
-        <div class="tamil">
-            எங்கள் கொள்கைகள்
-        </div>
+        <h2>
+            Our Values
+        </h2>
 
-    </div>
+        <div class="card-grid">
 
-    <div class="value-grid">
 
-        <div class="value-card">
-            <div class="icon">🤝</div>
-            <h3>Unity</h3>
-            <p>ஒற்றுமை</p>
-        </div>
+            <div class="card">
 
-        <div class="value-card">
-            <div class="icon">❤️</div>
-            <h3>Compassion</h3>
-            <p>மனிதநேயம்</p>
-        </div>
+                <h3>Unity</h3>
 
-        <div class="value-card">
-            <div class="icon">⚖️</div>
-            <h3>Responsibility</h3>
-            <p>பொறுப்பு</p>
-        </div>
+                <p>
+                    Standing together as one community.
+                </p>
 
-        <div class="value-card">
-            <div class="icon">🌱</div>
-            <h3>Development</h3>
-            <p>வளர்ச்சி</p>
-        </div>
+            </div>
 
-        <div class="value-card">
-            <div class="icon">🫶</div>
-            <h3>Service</h3>
-            <p>சேவை</p>
-        </div>
 
-        <div class="value-card">
-            <div class="icon">🏆</div>
-            <h3>Dedication</h3>
-            <p>அர்ப்பணிப்பு</p>
+            <div class="card">
+
+                <h3>Compassion</h3>
+
+                <p>
+                    Caring for people who need support.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Responsibility</h3>
+
+                <p>
+                    Working responsibly for our community.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Development</h3>
+
+                <p>
+                    Supporting positive community development.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Service</h3>
+
+                <p>
+                    Serving society with dedication.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Dedication</h3>
+
+                <p>
+                    Working together towards a better future.
+                </p>
+
+            </div>
+
+
         </div>
 
     </div>
@@ -825,159 +937,196 @@ footer {
 </section>
 
 
-<!-- ================= GALLERY ================= -->
+
+<!-- =====================================================
+                       ACTIVITIES
+===================================================== -->
+
+<section id="activities">
+
+    <div class="container">
+
+        <h2>
+            Our Activities
+        </h2>
+
+        <div class="card-grid">
+
+
+            <div class="card activity">
+
+                <h3>
+                    Community Service
+                </h3>
+
+                <p>
+
+                    Organising activities that support
+                    people and the local community.
+
+                </p>
+
+            </div>
+
+
+            <div class="card activity">
+
+                <h3>
+                    Welfare Activities
+                </h3>
+
+                <p>
+
+                    Helping members and families through
+                    welfare programmes and support.
+
+                </p>
+
+            </div>
+
+
+            <div class="card activity">
+
+                <h3>
+                    Community Development
+                </h3>
+
+                <p>
+
+                    Supporting activities that help
+                    improve the community.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+                         GALLERY
+===================================================== -->
 
 <section class="gallery" id="gallery">
 
-    <div class="section-title">
+    <div class="container">
 
-        <h2>Our Gallery</h2>
+        <h2>
+            Gallery
+        </h2>
 
-        <div class="tamil">
-            எங்கள் புகைப்படத் தொகுப்பு
-        </div>
-
-    </div>
+        <div class="gallery-grid">
 
 
-    <div class="gallery-grid">
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',0)"
+            >
 
-        <div class="gallery-item" onclick="openGallery(0)">
-            <img src="gallery1.jpg" alt="Association Activity 1">
-        </div>
+                <img
+                    src="gallery1.jpg"
+                    alt="Association Activity 1"
+                >
 
-        <div class="gallery-item" onclick="openGallery(1)">
-            <img src="gallery2.jpg" alt="Association Activity 2">
-        </div>
-
-        <div class="gallery-item" onclick="openGallery(2)">
-            <img src="gallery3.jpg" alt="Association Activity 3">
-        </div>
-
-        <div class="gallery-item" onclick="openGallery(3)">
-            <img src="gallery4.jpg" alt="Association Activity 4">
-        </div>
-
-        <div class="gallery-item" onclick="openGallery(4)">
-            <img src="gallery5.jpg" alt="Association Activity 5">
-        </div>
-
-        <div class="gallery-item" onclick="openGallery(5)">
-            <img src="gallery6.jpg" alt="Association Activity 6">
-        </div>
-
-        <div class="gallery-item" onclick="openGallery(6)">
-            <img src="gallery7.jpg" alt="Association Activity 7">
-        </div>
-
-        <div class="gallery-item" onclick="openGallery(7)">
-            <img src="gallery8.jpg" alt="Association Activity 8">
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= LIGHTBOX ================= -->
-
-<div class="lightbox" id="lightbox">
-
-    <span class="close" onclick="closeGallery()">×</span>
-
-    <span class="prev" onclick="changeImage(-1)">❮</span>
-
-    <img id="lightboxImage" src="" alt="Gallery Image">
-
-    <span class="next" onclick="changeImage(1)">❯</span>
-
-</div>
-
-
-<!-- ================= ANNOUNCEMENTS ================= -->
-
-<section class="announcements" id="announcements">
-
-    <div class="section-title">
-
-        <h2>Announcements</h2>
-
-        <div class="tamil">
-            அறிவிப்புகள்
-        </div>
-
-    </div>
-
-
-    <div class="announcement-list">
-
-        <div class="announcement">
-
-            <div class="date">
-                04
-                <span>OCT</span>
             </div>
 
-            <div>
-                <h3>Monthly Association Meeting</h3>
 
-                <div class="tamil">
-                    மாதாந்திர சங்கக் கூட்டம்
-                </div>
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',1)"
+            >
 
-                <p>
-                    அனைத்து உறுப்பினர்களும் மாதாந்திர சங்கக் கூட்டத்தில்
-                    கலந்து கொண்டு முக்கியமான விவாதங்களில் பங்கேற்குமாறு
-                    கேட்டுக்கொள்ளப்படுகிறார்கள்.
-                </p>
+                <img
+                    src="gallery2.jpg"
+                    alt="Association Activity 2"
+                >
+
             </div>
 
-        </div>
 
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',2)"
+            >
 
-        <div class="announcement">
+                <img
+                    src="gallery3.jpg"
+                    alt="Association Activity 3"
+                >
 
-            <div class="date">
-                15
-                <span>SEP</span>
             </div>
 
-            <div>
-                <h3>Community Welfare Programme</h3>
 
-                <div class="tamil">
-                    சமூக நலத்திட்ட நிகழ்ச்சி
-                </div>
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',3)"
+            >
 
-                <p>
-                    மக்களின் நலனுக்காகவும் சமூக முன்னேற்றத்திற்காகவும்
-                    சிறப்பு நலத்திட்ட நிகழ்ச்சி நடைபெற உள்ளது.
-                </p>
+                <img
+                    src="gallery4.jpg"
+                    alt="Association Activity 4"
+                >
+
             </div>
 
-        </div>
 
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',4)"
+            >
 
-        <div class="announcement">
+                <img
+                    src="gallery5.jpg"
+                    alt="Association Activity 5"
+                >
 
-            <div class="date">
-                30
-                <span>SEP</span>
             </div>
 
-            <div>
-                <h3>Important Member Notice</h3>
 
-                <div class="tamil">
-                    முக்கிய உறுப்பினர் அறிவிப்பு
-                </div>
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',5)"
+            >
 
-                <p>
-                    சங்கத்தின் அனைத்து உறுப்பினர்களும் தொடர்ந்து
-                    சங்கத்தின் நடவடிக்கைகள் மற்றும் அறிவிப்புகளுடன்
-                    இணைந்திருக்குமாறு கேட்டுக்கொள்ளப்படுகிறார்கள்.
-                </p>
+                <img
+                    src="gallery6.jpg"
+                    alt="Association Activity 6"
+                >
+
             </div>
+
+
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',6)"
+            >
+
+                <img
+                    src="gallery7.jpg"
+                    alt="Association Activity 7"
+                >
+
+            </div>
+
+
+            <div
+                class="gallery-item"
+                onclick="openGallery('normal',7)"
+            >
+
+                <img
+                    src="gallery8.jpg"
+                    alt="Association Activity 8"
+                >
+
+            </div>
+
 
         </div>
 
@@ -986,28 +1135,404 @@ footer {
 </section>
 
 
-<!-- ================= CONTACT ================= -->
 
-<section class="contact" id="contact">
+<!-- =====================================================
+                   FESTIVAL GALLERY
+===================================================== -->
 
-    <div class="section-title">
+<section
+    class="festival-gallery"
+    id="festival-gallery"
+>
 
-        <h2>Contact Us</h2>
+    <div class="container">
 
-        <div class="tamil">
-            தொடர்பு கொள்ள
+
+        <div class="festival-title">
+
+            🐘 Ganesh Chaturthi Gallery
+
+        </div>
+
+
+        <p class="festival-subtitle">
+
+            Ganesh Chaturthi Festival Memories
+
+        </p>
+
+
+        <p class="festival-subtitle tamil">
+
+            விநாயகர் சதுர்த்தி விழா நினைவுகள்
+
+        </p>
+
+
+        <div class="festival-grid">
+
+
+            <!-- FESTIVAL PHOTO 1 -->
+
+            <div
+                class="festival-item"
+                onclick="openGallery('festival',0)"
+            >
+
+                <img
+                    src="ganesh1.jpg"
+                    alt="Ganesh Chaturthi Festival 1"
+                >
+
+                <div class="festival-label">
+
+                    Ganesh Chaturthi
+
+                </div>
+
+            </div>
+
+
+            <!-- FESTIVAL PHOTO 2 -->
+
+            <div
+                class="festival-item"
+                onclick="openGallery('festival',1)"
+            >
+
+                <img
+                    src="ganesh2.jpg"
+                    alt="Ganesh Chaturthi Festival 2"
+                >
+
+                <div class="festival-label">
+
+                    Festival Celebration
+
+                </div>
+
+            </div>
+
+
+            <!-- FESTIVAL PHOTO 3 -->
+
+            <div
+                class="festival-item"
+                onclick="openGallery('festival',2)"
+            >
+
+                <img
+                    src="ganesh3.jpg"
+                    alt="Ganesh Chaturthi Festival 3"
+                >
+
+                <div class="festival-label">
+
+                    விநாயகர் சதுர்த்தி
+
+                </div>
+
+            </div>
+
+
+            <!-- FESTIVAL PHOTO 4 -->
+
+            <div
+                class="festival-item"
+                onclick="openGallery('festival',3)"
+            >
+
+                <img
+                    src="ganesh4.jpg"
+                    alt="Ganesh Chaturthi Festival 4"
+                >
+
+                <div class="festival-label">
+
+                    Festival Memories
+
+                </div>
+
+            </div>
+
+
+            <!-- FESTIVAL PHOTO 5 -->
+
+            <div
+                class="festival-item"
+                onclick="openGallery('festival',4)"
+            >
+
+                <img
+                    src="ganesh5.jpg"
+                    alt="Ganesh Chaturthi Festival 5"
+                >
+
+                <div class="festival-label">
+
+                    Ganesh Festival
+
+                </div>
+
+            </div>
+
+
+            <!-- FESTIVAL PHOTO 6 -->
+
+            <div
+                class="festival-item"
+                onclick="openGallery('festival',5)"
+            >
+
+                <img
+                    src="ganesh6.jpg"
+                    alt="Ganesh Chaturthi Festival 6"
+                >
+
+                <div class="festival-label">
+
+                    விழா நினைவுகள்
+
+                </div>
+
+            </div>
+
+
         </div>
 
     </div>
 
-    <div class="contact-info">
+</section>
 
-        <p>📞 Contact the Association</p>
 
-        <p>📧 Email: jmdsroyal@example.com</p>
+
+<!-- =====================================================
+                      ANNOUNCEMENTS
+===================================================== -->
+
+<section
+    class="announcements"
+    id="announcements"
+>
+
+    <div class="container">
+
+        <h2>
+            Announcements
+        </h2>
+
+
+        <div class="announcement-list">
+
+
+            <!-- GANESH CHATURTHI -->
+
+            <div class="announcement">
+
+                <div class="date">
+
+                    14
+                    <span>SEP</span>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+
+                        🐘 Ganesh Chaturthi
+                        Festival Wishes
+
+                    </h3>
+
+
+                    <div class="tamil">
+
+                        விநாயகர் சதுர்த்தி
+                        நல்வாழ்த்துக்கள் 🙏
+
+                    </div>
+
+
+                    <p class="tamil">
+
+                        JMD'S ROYAL MAKKAL NALASANGAM சார்பாக
+                        எங்கள் சங்கத்தின் அனைத்து உறுப்பினர்கள்
+                        மற்றும் அவர்களின் குடும்பத்தினருக்கும்
+                        இனிய விநாயகர் சதுர்த்தி நல்வாழ்த்துக்கள்!
+
+                        அனைவருக்கும் மகிழ்ச்சி, வளம், அமைதி மற்றும்
+                        வெற்றியை விநாயகப் பெருமான் அருளட்டும்.
+
+                    </p>
+
+
+                    <p>
+
+                        On behalf of JMD'S ROYAL MAKKAL NALASANGAM,
+                        we extend our warmest wishes to all our
+                        members and their families on the joyous
+                        occasion of Ganesh Chaturthi.
+
+                        May Lord Ganesha bless everyone with
+                        happiness, prosperity, peace and success.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MONTHLY MEETING -->
+
+            <div class="announcement">
+
+                <div class="date">
+
+                    04
+                    <span>OCT</span>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Monthly Association Meeting
+                    </h3>
+
+                    <div class="tamil">
+
+                        மாதாந்திர சங்க கூட்டம்
+
+                    </div>
+
+                    <p>
+
+                        All members are requested to attend
+                        the monthly association meeting.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- WELFARE PROGRAMME -->
+
+            <div class="announcement">
+
+                <div class="date">
+
+                    15
+                    <span>SEP</span>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Community Welfare Programme
+                    </h3>
+
+                    <div class="tamil">
+
+                        சமூக நலத்திட்ட நிகழ்ச்சி
+
+                    </div>
+
+                    <p>
+
+                        Details regarding the upcoming community
+                        welfare programme will be announced soon.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MEMBER NOTICE -->
+
+            <div class="announcement">
+
+                <div class="date">
+
+                    30
+                    <span>SEP</span>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Important Member Notice
+                    </h3>
+
+                    <div class="tamil">
+
+                        முக்கிய உறுப்பினர் அறிவிப்பு
+
+                    </div>
+
+                    <p>
+
+                        All members are requested to stay updated
+                        with association announcements.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+                         CONTACT
+===================================================== -->
+
+<section
+    class="contact"
+    id="contact"
+>
+
+    <div class="container">
+
+        <h2>
+            Contact Us
+        </h2>
+
+
+        <p>
+
+            For association related information,
+            please contact the association.
+
+        </p>
+
 
         <p class="tamil">
-            🤝 சமூக நலனுக்காக எங்களுடன் இணைந்திடுங்கள்
+
+            சங்கம் தொடர்பான தகவல்களுக்கு
+            சங்க நிர்வாகத்தை தொடர்பு கொள்ளவும்.
+
         </p>
 
     </div>
@@ -1015,7 +1540,10 @@ footer {
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =====================================================
+                         FOOTER
+===================================================== -->
 
 <footer>
 
@@ -1025,11 +1553,63 @@ footer {
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+
+<!-- =====================================================
+                        LIGHTBOX
+===================================================== -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+>
+
+
+    <span
+        class="close"
+        onclick="closeGallery()"
+    >
+        ×
+    </span>
+
+
+    <span
+        class="prev"
+        onclick="changeGallery(-1)"
+    >
+        ❮
+    </span>
+
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Gallery Image"
+    >
+
+
+    <span
+        class="next"
+        onclick="changeGallery(1)"
+    >
+        ❯
+    </span>
+
+
+</div>
+
+
+
+<!-- =====================================================
+                       JAVASCRIPT
+===================================================== -->
 
 <script>
 
-const galleryImages = [
+
+/* ================= NORMAL GALLERY ================= */
+
+const normalGallery = [
+
     "gallery1.jpg",
     "gallery2.jpg",
     "gallery3.jpg",
@@ -1038,76 +1618,150 @@ const galleryImages = [
     "gallery6.jpg",
     "gallery7.jpg",
     "gallery8.jpg"
+
 ];
+
+
+/* ================= FESTIVAL GALLERY ================= */
+
+const festivalGallery = [
+
+    "ganesh1.jpg",
+    "ganesh2.jpg",
+    "ganesh3.jpg",
+    "ganesh4.jpg",
+    "ganesh5.jpg",
+    "ganesh6.jpg"
+
+];
+
+
+let currentGallery = "normal";
 
 let currentImage = 0;
 
-function openGallery(index) {
+
+
+/* ================= OPEN ================= */
+
+function openGallery(type, index) {
+
+    currentGallery = type;
 
     currentImage = index;
 
-    document.getElementById("lightboxImage").src =
-        galleryImages[currentImage];
 
-    document.getElementById("lightbox").classList.add("active");
+    let images;
+
+
+    if (currentGallery === "festival") {
+
+        images = festivalGallery;
+
+    } else {
+
+        images = normalGallery;
+
+    }
+
+
+    document.getElementById("lightboxImage").src =
+        images[currentImage];
+
+
+    document.getElementById("lightbox").style.display =
+        "flex";
+
 }
+
+
+
+/* ================= CLOSE ================= */
 
 function closeGallery() {
 
-    document.getElementById("lightbox").classList.remove("active");
+    document.getElementById("lightbox").style.display =
+        "none";
+
 }
 
-function changeImage(direction) {
+
+
+/* ================= NEXT / PREVIOUS ================= */
+
+function changeGallery(direction) {
+
+
+    let images;
+
+
+    if (currentGallery === "festival") {
+
+        images = festivalGallery;
+
+    } else {
+
+        images = normalGallery;
+
+    }
+
 
     currentImage += direction;
 
+
     if (currentImage < 0) {
-        currentImage = galleryImages.length - 1;
+
+        currentImage = images.length - 1;
+
     }
 
-    if (currentImage >= galleryImages.length) {
+
+    if (currentImage >= images.length) {
+
         currentImage = 0;
+
     }
+
 
     document.getElementById("lightboxImage").src =
-        galleryImages[currentImage];
+        images[currentImage];
+
 }
 
 
-/* Close when clicking outside image */
 
-document.getElementById("lightbox").addEventListener("click", function(e) {
+/* ================= KEYBOARD ================= */
 
-    if (e.target === this) {
-        closeGallery();
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (event.key === "Escape") {
+
+            closeGallery();
+
+        }
+
+
+        if (event.key === "ArrowRight") {
+
+            changeGallery(1);
+
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+            changeGallery(-1);
+
+        }
+
     }
-
-});
-
-
-/* Keyboard controls */
-
-document.addEventListener("keydown", function(e) {
-
-    if (!document.getElementById("lightbox").classList.contains("active")) {
-        return;
-    }
-
-    if (e.key === "Escape") {
-        closeGallery();
-    }
-
-    if (e.key === "ArrowLeft") {
-        changeImage(-1);
-    }
-
-    if (e.key === "ArrowRight") {
-        changeImage(1);
-    }
-
-});
+);
 
 </script>
+
 
 </body>
 </html>
