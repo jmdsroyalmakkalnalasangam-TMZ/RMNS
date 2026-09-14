@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RMNS Admin Panel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #070b16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #10172a;
+            padding: 20px;
+            border-bottom: 1px solid #d4af37;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #d4af37;
+            font-size: 22px;
+        }
+
+        .logout {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .login-box,
+        .panel {
+            background: #10172a;
+            border: 1px solid #26314f;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .login-box {
+            max-width: 450px;
+            margin: 100px auto;
+        }
+
+        h2 {
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            border-radius: 8px;
+            border: 1px solid #394666;
+            background: #080d1c;
+            color: white;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background: #d4af37;
+            color: #080d1c;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .danger {
+            background: #c0392b;
+            color: white;
+        }
+
+        .success {
+            color: #2ecc71;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: #ff6b6b;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .item {
+            background: #080d1c;
+            border: 1px solid #26314f;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 12px;
+        }
+
+        .item strong {
+            color: #d4af37;
+        }
+
+        .item button {
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+
+        .status {
+            margin-top: 10px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .container {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header hidden" id="adminHeader">
+    <h1>👑 RMNS ADMIN PANEL</h1>
+    <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+
+<!-- LOGIN -->
+<div class="container" id="loginSection">
+
+    <div class="login-box">
+
+        <h2>🔐 Admin Login</h2>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Admin Email"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <p id="loginMessage"></p>
+
+    </div>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+<div class="container hidden" id="adminSection">
+
+    <!-- ANNOUNCEMENTS -->
+    <div class="panel">
+
+        <h2>📢 Announcements</h2>
+
+        <input
+            type="text"
+            id="announcementTitle"
+            placeholder="Announcement title"
+        >
+
+        <textarea
+            id="announcementText"
+            placeholder="Announcement message"
+        ></textarea>
+
+        <button onclick="addAnnouncement()">
+            Add Announcement
+        </button>
+
+        <div id="announcementList"></div>
+
+    </div>
+
+
+    <!-- FESTIVALS -->
+    <div class="panel">
+
+        <h2>🎉 Festivals</h2>
+
+        <input
+            type="date"
+            id="festivalDate"
+        >
+
+        <input
+            type="text"
+            id="festivalName"
+            placeholder="Festival name"
+        >
+
+        <input
+            type="text"
+            id="festivalTamil"
+            placeholder="Tamil name"
+        >
+
+        <button onclick="addFestival()">
+            Add Festival
+        </button>
+
+        <div id="festivalList"></div>
+
+    </div>
+
+
+    <!-- CONTACT -->
+    <div class="panel">
+
+        <h2>📞 Contact Information</h2>
+
+        <input
+            type="text"
+            id="contactPhone"
+            placeholder="Phone number"
+        >
+
+        <input
+            type="email"
+            id="contactEmail"
+            placeholder="Email"
+        >
+
+        <textarea
+            id="contactAddress"
+            placeholder="Address"
+        ></textarea>
+
+        <button onclick="saveContact()">
+            Save Contact Details
+        </button>
+
+        <p id="contactMessage"></p>
+
+    </div>
+
+
+    <!-- MEETING -->
+    <div class="panel">
+
+        <h2>📅 Monthly Meeting</h2>
+
+        <p>
+            The website automatically calculates the
+            next 1st Sunday of every month.
+        </p>
+
+        <p class="status">
+            Current setting: First Sunday of every month
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- FIREBASE -->
+<script type="module">
+
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+    import {
+        getAuth,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+    import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        remove,
+        onValue
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+
+    // IMPORTANT:
+    // Your firebase-config.js must contain:
+    //
+    // const firebaseConfig = {
+    //     ...
+    // };
+    //
+    // and must be loaded below.
+
+    import {
+        firebaseConfig
+    } from "./firebase-config.js";
+
+
+    // INITIALIZE FIREBASE
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const database = getDatabase(app);
+
+
+    // ELEMENTS
+
+    const loginSection =
+        document.getElementById("loginSection");
+
+    const adminSection =
+        document.getElementById("adminSection");
+
+    const adminHeader =
+        document.getElementById("adminHeader");
+
+    const loginMessage =
+        document.getElementById("loginMessage");
+
+
+    // LOGIN
+
+    window.login = async function () {
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        if (!email || !password) {
+
+            loginMessage.textContent =
+                "Please enter email and password.";
+
+            loginMessage.className = "error";
+
+            return;
+        }
+
+        try {
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            loginMessage.textContent =
+                "Login failed. Check your email and password.";
+
+            loginMessage.className = "error";
+        }
+    };
+
+
+    // LOGOUT
+
+    window.logout = async function () {
+
+        await signOut(auth);
+
+    };
+
+
+    // AUTH STATE
+
+    onAuthStateChanged(auth, user => {
+
+        if (user) {
+
+            loginSection.classList.add("hidden");
+
+            adminSection.classList.remove("hidden");
+
+            adminHeader.classList.remove("hidden");
+
+            loadAnnouncements();
+
+            loadFestivals();
+
+            loadContact();
+
+        } else {
+
+            loginSection.classList.remove("hidden");
+
+            adminSection.classList.add("hidden");
+
+            adminHeader.classList.add("hidden");
+        }
+
+    });
+
+
+    // ==========================
+    // ANNOUNCEMENTS
+    // ==========================
+
+    window.addAnnouncement = async function () {
+
+        const title =
+            document.getElementById(
+                "announcementTitle"
+            ).value.trim();
+
+        const text =
+            document.getElementById(
+                "announcementText"
+            ).value.trim();
+
+        if (!title || !text) {
+
+            alert("Please enter announcement title and message.");
+
+            return;
+        }
+
+        const announcementsRef =
+            ref(database, "announcements");
+
+        const newAnnouncement =
+            push(announcementsRef);
+
+        await set(newAnnouncement, {
+
+            title: title,
+            text: text,
+            createdAt: Date.now()
+
+        });
+
+        document.getElementById(
+            "announcementTitle"
+        ).value = "";
+
+        document.getElementById(
+            "announcementText"
+        ).value = "";
+    };
+
+
+    function loadAnnouncements() {
+
+        const announcementsRef =
+            ref(database, "announcements");
+
+        onValue(announcementsRef, snapshot => {
+
+            const list =
+                document.getElementById(
+                    "announcementList"
+                );
+
+            list.innerHTML = "";
+
+            if (!snapshot.exists()) {
+
+                list.innerHTML =
+                    "<p class='status'>No announcements yet.</p>";
+
+                return;
+            }
+
+            snapshot.forEach(child => {
+
+                const data = child.val();
+
+                const div =
+                    document.createElement("div");
+
+                div.className = "item";
+
+                div.innerHTML = `
+                    <strong>${escapeHTML(data.title)}</strong>
+                    <p>${escapeHTML(data.text)}</p>
+
+                    <button
+                        class="danger"
+                        onclick="deleteAnnouncement('${child.key}')"
+                    >
+                        Delete
+                    </button>
+                `;
+
+                list.appendChild(div);
+
+            });
+
+        });
+
+    }
+
+
+    window.deleteAnnouncement = async function (id) {
+
+        if (!confirm("Delete this announcement?")) {
+            return;
+        }
+
+        await remove(
+            ref(database, "announcements/" + id)
+        );
+
+    };
+
+
+    // ==========================
+    // FESTIVALS
+    // ==========================
+
+    window.addFestival = async function () {
+
+        const date =
+            document.getElementById(
+                "festivalDate"
+            ).value;
+
+        const name =
+            document.getElementById(
+                "festivalName"
+            ).value.trim();
+
+        const tamil =
+            document.getElementById(
+                "festivalTamil"
+            ).value.trim();
+
+        if (!date || !name) {
+
+            alert("Please enter festival date and name.");
+
+            return;
+        }
+
+        const festivalsRef =
+            ref(database, "festivals");
+
+        const newFestival =
+            push(festivalsRef);
+
+        await set(newFestival, {
+
+            date: date,
+            name: name,
+            tamil: tamil || "",
+            createdAt: Date.now()
+
+        });
+
+        document.getElementById(
+            "festivalDate"
+        ).value = "";
+
+        document.getElementById(
+            "festivalName"
+        ).value = "";
+
+        document.getElementById(
+            "festivalTamil"
+        ).value = "";
+    };
+
+
+    function loadFestivals() {
+
+        const festivalsRef =
+            ref(database, "festivals");
+
+        onValue(festivalsRef, snapshot => {
+
+            const list =
+                document.getElementById(
+                    "festivalList"
+                );
+
+            list.innerHTML = "";
+
+            if (!snapshot.exists()) {
+
+                list.innerHTML =
+                    "<p class='status'>No festivals added yet.</p>";
+
+                return;
+            }
+
+            snapshot.forEach(child => {
+
+                const data = child.val();
+
+                const div =
+                    document.createElement("div");
+
+                div.className = "item";
+
+                div.innerHTML = `
+                    <strong>
+                        ${escapeHTML(data.name)}
+                    </strong>
+
+                    <p>
+                        Date: ${escapeHTML(data.date)}
+                    </p>
+
+                    <p>
+                        Tamil: ${escapeHTML(data.tamil || "")}
+                    </p>
+
+                    <button
+                        class="danger"
+                        onclick="deleteFestival('${child.key}')"
+                    >
+                        Delete
+                    </button>
+                `;
+
+                list.appendChild(div);
+
+            });
+
+        });
+
+    }
+
+
+    window.deleteFestival = async function (id) {
+
+        if (!confirm("Delete this festival?")) {
+            return;
+        }
+
+        await remove(
+            ref(database, "festivals/" + id)
+        );
+
+    };
+
+
+    // ==========================
+    // CONTACT
+    // ==========================
+
+    function loadContact() {
+
+        const contactRef =
+            ref(database, "contact");
+
+        onValue(contactRef, snapshot => {
+
+            if (!snapshot.exists()) {
+                return;
+            }
+
+            const data = snapshot.val();
+
+            document.getElementById(
+                "contactPhone"
+            ).value = data.phone || "";
+
+            document.getElementById(
+                "contactEmail"
+            ).value = data.email || "";
+
+            document.getElementById(
+                "contactAddress"
+            ).value = data.address || "";
+
+        });
+
+    }
+
+
+    window.saveContact = async function () {
+
+        const phone =
+            document.getElementById(
+                "contactPhone"
+            ).value.trim();
+
+        const email =
+            document.getElementById(
+                "contactEmail"
+            ).value.trim();
+
+        const address =
+            document.getElementById(
+                "contactAddress"
+            ).value.trim();
+
+        await set(
+            ref(database, "contact"),
+            {
+                phone: phone,
+                email: email,
+                address: address
+            }
+        );
+
+        const message =
+            document.getElementById(
+                "contactMessage"
+            );
+
+        message.textContent =
+            "Contact details saved successfully.";
+
+        message.className = "success";
+
+    };
+
+
+    // ==========================
+    // SECURITY HELPER
+    // ==========================
+
+    function escapeHTML(value) {
+
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+</script>
+
+</body>
+</html>
