@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,14 @@
     <title>JMD'S ROYAL MAKKAL NALASANGAM</title>
 
     <meta name="description"
-          content="JMD'S ROYAL MAKKAL NALASANGAM - Serving people with unity, care and responsibility.">
+        content="JMD'S ROYAL MAKKAL NALASANGAM - Unity, Service, Care and Responsibility.">
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -17,11 +23,27 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --bg: #050b15;
+            --bg2: #081323;
+            --panel: rgba(12, 25, 43, 0.78);
+            --panel2: #0c1a2d;
+            --gold: #d4af37;
+            --gold-light: #f3d36a;
+            --text: #ffffff;
+            --muted: #aeb8c7;
+            --border: rgba(212, 175, 55, 0.30);
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #07111f;
-            color: #ffffff;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(212,175,55,0.06), transparent 28%),
+                radial-gradient(circle at 80% 30%, rgba(35,93,160,0.08), transparent 30%),
+                var(--bg);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -34,23 +56,75 @@
             display: block;
         }
 
-        /* =========================
+
+        /* =====================================================
+           ANIMATED BACKGROUND
+        ===================================================== */
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(80px);
+            opacity: 0.12;
+            animation: floatingGlow 12s ease-in-out infinite alternate;
+        }
+
+        body::before {
+            background: #d4af37;
+            top: 10%;
+            left: -180px;
+        }
+
+        body::after {
+            background: #245fa5;
+            right: -180px;
+            bottom: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatingGlow {
+
+            from {
+                transform: translateY(-30px) scale(0.9);
+            }
+
+            to {
+                transform: translateY(40px) scale(1.15);
+            }
+        }
+
+
+        /* =====================================================
            NAVBAR
-        ========================= */
+        ===================================================== */
 
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(5, 13, 25, 0.96);
-            border-bottom: 1px solid #c9a227;
-            backdrop-filter: blur(10px);
+
+            background: rgba(4, 10, 19, 0.90);
+
+            border-bottom: 1px solid rgba(212,175,55,0.35);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 8px 35px rgba(0,0,0,0.25);
         }
 
         .navbar {
             max-width: 1200px;
             margin: auto;
-            padding: 14px 20px;
+            padding: 13px 20px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -64,10 +138,20 @@
         }
 
         .brand img {
-            width: 55px;
-            height: 55px;
+            width: 52px;
+            height: 52px;
             object-fit: contain;
+
             border-radius: 50%;
+
+            filter:
+                drop-shadow(0 0 8px rgba(212,175,55,0.35));
+
+            transition: 0.4s;
+        }
+
+        .brand:hover img {
+            transform: rotate(5deg) scale(1.05);
         }
 
         .brand-text {
@@ -75,133 +159,293 @@
         }
 
         .brand-text h1 {
-            font-size: 18px;
-            color: #d4af37;
+            font-size: 17px;
+            color: var(--gold-light);
+            letter-spacing: 0.5px;
         }
 
         .brand-text p {
-            font-size: 12px;
-            color: #ddd;
+            font-size: 11px;
+            color: #c9cdd5;
+            margin-top: 3px;
         }
 
         nav {
             display: flex;
-            gap: 18px;
+            gap: 20px;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         nav a {
+            position: relative;
+
             font-size: 14px;
-            color: #ffffff;
+            color: #e8ebef;
+
+            padding: 7px 0;
+
+            transition: 0.3s;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--gold);
+
+            transform: translateX(-50%);
+
             transition: 0.3s;
         }
 
         nav a:hover {
-            color: #d4af37;
+            color: var(--gold-light);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         .menu-btn {
             display: none;
             font-size: 28px;
             cursor: pointer;
-            color: #d4af37;
+            color: var(--gold-light);
         }
 
-        /* =========================
+
+        /* =====================================================
            HERO
-        ========================= */
+        ===================================================== */
 
         .hero {
-            min-height: 90vh;
+            position: relative;
+
+            min-height: 88vh;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-align: center;
-            padding: 60px 20px;
+
+            padding: 80px 20px;
+
+            overflow: hidden;
+
             background:
-                radial-gradient(circle at top, rgba(212,175,55,0.12), transparent 40%),
-                linear-gradient(135deg, #07111f, #0c1b30);
+                radial-gradient(
+                    circle at center,
+                    rgba(212,175,55,0.10),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050b15,
+                    #09182b,
+                    #050b15
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                radial-gradient(
+                    circle,
+                    rgba(212,175,55,0.35) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+
+            opacity: 0.08;
+
+            animation: moveStars 20s linear infinite;
+        }
+
+        @keyframes moveStars {
+
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(45px);
+            }
         }
 
         .hero-content {
-            max-width: 950px;
+            position: relative;
+            z-index: 2;
+
+            max-width: 900px;
+
+            animation: heroAppear 1.2s ease;
+        }
+
+        @keyframes heroAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-logo {
-            width: 150px;
-            height: 150px;
+            width: 155px;
+            height: 155px;
+
             object-fit: contain;
+
             margin: 0 auto 25px;
+
             border-radius: 50%;
-            filter: drop-shadow(0 0 25px rgba(212,175,55,0.35));
+
+            filter:
+                drop-shadow(0 0 12px rgba(212,175,55,0.40))
+                drop-shadow(0 0 40px rgba(212,175,55,0.12));
+
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .hero h2 {
-            font-size: clamp(32px, 6vw, 65px);
-            color: #d4af37;
-            margin-bottom: 10px;
+            font-size: clamp(32px, 6vw, 62px);
+
+            color: var(--gold-light);
+
+            margin-bottom: 4px;
+
             text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            text-shadow:
+                0 0 20px rgba(212,175,55,0.15);
         }
 
         .hero h3 {
-            font-size: clamp(20px, 3vw, 32px);
-            margin-bottom: 20px;
+            font-size: clamp(20px, 3vw, 31px);
+
+            margin-bottom: 18px;
+
+            letter-spacing: 1px;
         }
 
         .hero p {
             font-size: 18px;
-            color: #ddd;
+            color: #d5d9df;
             margin: 8px 0;
         }
 
         .hero .tamil {
-            color: #d4af37;
+            color: var(--gold-light);
             font-size: 20px;
+            font-weight: 500;
         }
 
         .hero-buttons {
             margin-top: 30px;
+
             display: flex;
             justify-content: center;
+
             gap: 15px;
             flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 26px;
+
             border-radius: 30px;
-            border: 1px solid #d4af37;
-            transition: 0.3s;
+
+            border: 1px solid var(--gold);
+
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s,
+                background 0.3s;
+
             font-weight: bold;
         }
 
         .btn-gold {
-            background: #d4af37;
+            background: linear-gradient(
+                135deg,
+                #d4af37,
+                #f0cc5a
+            );
+
             color: #07111f;
+
+            box-shadow:
+                0 8px 25px rgba(212,175,55,0.18);
         }
 
         .btn-gold:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 35px rgba(212,175,55,0.30);
+
             background: transparent;
-            color: #d4af37;
+
+            color: var(--gold-light);
         }
 
         .btn-outline {
-            color: #d4af37;
+            color: var(--gold-light);
+            background: rgba(212,175,55,0.03);
         }
 
         .btn-outline:hover {
-            background: #d4af37;
+            transform: translateY(-3px);
+
+            background: var(--gold);
+
             color: #07111f;
+
+            box-shadow:
+                0 10px 30px rgba(212,175,55,0.22);
         }
 
-        /* =========================
-           GENERAL
-        ========================= */
+
+        /* =====================================================
+           GENERAL SECTIONS
+        ===================================================== */
 
         section {
-            padding: 80px 20px;
+            position: relative;
+            padding: 85px 20px;
         }
 
         .container {
@@ -215,149 +459,334 @@
         }
 
         .section-title h2 {
+            display: inline-block;
+
             font-size: 35px;
-            color: #d4af37;
+
+            color: var(--gold-light);
+
             margin-bottom: 8px;
+
+            position: relative;
+        }
+
+        .section-title h2::before,
+        .section-title h2::after {
+            content: "";
+
+            display: inline-block;
+
+            width: 45px;
+            height: 1px;
+
+            background: var(--gold);
+
+            vertical-align: middle;
+
+            margin: 0 15px;
         }
 
         .section-title p {
-            color: #aaa;
+            color: var(--muted);
         }
 
-        /* =========================
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
+        .card,
+        .activity-card,
+        .contact-card,
+        .announcement,
+        .meeting-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(16,32,53,0.85),
+                    rgba(7,17,30,0.85)
+                );
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.18);
+
+            backdrop-filter: blur(8px);
+
+            transition:
+                transform 0.35s,
+                border-color 0.35s,
+                box-shadow 0.35s;
+        }
+
+        .card:hover,
+        .activity-card:hover,
+        .contact-card:hover {
+
+            transform: translateY(-7px);
+
+            border-color: rgba(212,175,55,0.75);
+
+            box-shadow:
+                0 18px 45px rgba(0,0,0,0.30),
+                0 0 25px rgba(212,175,55,0.05);
+        }
+
+
+        /* =====================================================
            ABOUT
-        ========================= */
+        ===================================================== */
 
         .about-grid {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+
+            gap: 22px;
         }
 
         .card {
-            background: #0d1a2b;
-            border: 1px solid rgba(212,175,55,0.25);
-            border-radius: 16px;
-            padding: 28px;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #d4af37;
+            border-radius: 18px;
+            padding: 30px;
         }
 
         .card h3 {
-            color: #d4af37;
+            color: var(--gold-light);
             margin-bottom: 12px;
+            font-size: 21px;
         }
 
         .card p {
-            color: #ddd;
+            color: #d4dae2;
         }
 
-        /* =========================
+
+        /* =====================================================
            ACTIVITIES
-        ========================= */
+        ===================================================== */
+
+        #activities {
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(212,175,55,0.025),
+                    transparent
+                );
+        }
 
         .activities-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 22px;
         }
 
         .activity-card {
             text-align: center;
-            padding: 30px 20px;
-            background: #0d1a2b;
-            border-radius: 16px;
-            border: 1px solid rgba(212,175,55,0.25);
+
+            padding: 32px 22px;
+
+            border-radius: 18px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 120px;
+
+            border-radius: 50%;
+
+            background: rgba(212,175,55,0.07);
+
+            top: -60px;
+            right: -60px;
         }
 
         .activity-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(212,175,55,0.55);
+
+            border-radius: 50%;
+
+            font-size: 32px;
+
+            background: rgba(212,175,55,0.04);
+
+            box-shadow:
+                0 0 20px rgba(212,175,55,0.05);
         }
 
         .activity-card h3 {
-            color: #d4af37;
+            color: var(--gold-light);
             margin-bottom: 10px;
         }
 
         .activity-card p {
-            color: #ccc;
+            color: #c5ccd5;
         }
 
-        /* =========================
+
+        /* =====================================================
            ANNOUNCEMENTS
-        ========================= */
+        ===================================================== */
 
         #announcements {
-            background: #091626;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(212,175,55,0.025),
+                    transparent,
+                    rgba(212,175,55,0.025)
+                );
         }
 
         .announcement-list {
             display: grid;
-            gap: 18px;
+            gap: 16px;
         }
 
         .announcement {
-            background: #0d1a2b;
-            border-left: 4px solid #d4af37;
-            border-radius: 10px;
-            padding: 22px;
+            position: relative;
+
+            border-left: 4px solid var(--gold);
+
+            border-radius: 12px;
+
+            padding: 22px 25px;
+
+            overflow: hidden;
+        }
+
+        .announcement::after {
+            content: "✦";
+
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            color: var(--gold);
+
+            opacity: 0.35;
+
+            font-size: 20px;
         }
 
         .announcement h3 {
-            color: #d4af37;
+            color: var(--gold-light);
             margin-bottom: 8px;
         }
 
         .announcement p {
-            color: #ddd;
+            color: #d2d7df;
         }
 
         .announcement-date {
             font-size: 12px;
-            color: #999;
+            color: #8e9aaa;
             margin-top: 10px;
         }
 
         .empty-message {
             text-align: center;
-            color: #999;
-            padding: 25px;
+            color: #8e9aaa;
+            padding: 30px;
         }
 
-        /* =========================
+
+        /* =====================================================
            FESTIVAL
-        ========================= */
+        ===================================================== */
 
         .festival-today {
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .festival-card {
+            position: relative;
+
+            overflow: hidden;
+
             background:
+                radial-gradient(
+                    circle at 15% 50%,
+                    rgba(212,175,55,0.13),
+                    transparent 35%
+                ),
                 linear-gradient(
                     135deg,
-                    rgba(212,175,55,0.12),
-                    rgba(13,26,43,0.95)
+                    rgba(16,32,53,0.95),
+                    rgba(7,17,30,0.95)
                 );
-            border: 1px solid #d4af37;
-            border-radius: 18px;
-            padding: 30px;
+
+            border: 1px solid rgba(212,175,55,0.65);
+
+            border-radius: 20px;
+
+            padding: 35px;
+
             text-align: center;
+
+            box-shadow:
+                0 15px 45px rgba(0,0,0,0.25),
+                inset 0 0 40px rgba(212,175,55,0.025);
         }
 
-        .festival-card .festival-icon {
+        .festival-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(212,175,55,0.10);
+
+            top: -130px;
+            left: -100px;
+        }
+
+        .festival-icon {
             font-size: 48px;
             margin-bottom: 10px;
+
+            animation: festivalFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes festivalFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         .festival-card h3 {
-            font-size: 28px;
-            color: #d4af37;
+            font-size: 29px;
+            color: var(--gold-light);
         }
 
         .festival-card h4 {
@@ -367,24 +796,45 @@
 
         .festival-date {
             margin-top: 10px;
-            color: #aaa;
+            color: #aeb8c7;
         }
 
-        /* =========================
+
+        /* =====================================================
            MEETING
-        ========================= */
+        ===================================================== */
 
         .meeting-card {
-            margin-top: 30px;
-            background: #0d1a2b;
-            border: 1px solid rgba(212,175,55,0.35);
-            border-radius: 18px;
-            padding: 30px;
+            margin-top: 35px;
+
+            border-radius: 20px;
+
+            padding: 32px;
+
             text-align: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meeting-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 200px;
+            height: 200px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(212,175,55,0.10);
+
+            right: -100px;
+            top: -100px;
         }
 
         .meeting-card h3 {
-            color: #d4af37;
+            color: var(--gold-light);
             font-size: 26px;
         }
 
@@ -396,51 +846,100 @@
 
         .meeting-tamil {
             margin-top: 8px;
-            color: #d4af37;
+            color: var(--gold-light);
         }
 
-        /* =========================
+
+        /* =====================================================
            GALLERY
-        ========================= */
+        ===================================================== */
 
         .gallery-grid {
             display: grid;
+
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+
+            gap: 16px;
         }
 
         .gallery-item {
             height: 220px;
+
             overflow: hidden;
-            border-radius: 14px;
+
+            border-radius: 16px;
+
             cursor: pointer;
-            border: 1px solid rgba(212,175,55,0.25);
+
+            border: 1px solid rgba(212,175,55,0.28);
+
             background: #0d1a2b;
+
+            position: relative;
+        }
+
+        .gallery-item::after {
+            content: "⌕";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 35px;
+
+            color: white;
+
+            background: rgba(0,0,0,0.35);
+
+            opacity: 0;
+
+            transition: 0.35s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
-            transition: transform 0.4s;
+
+            transition:
+                transform 0.6s,
+                filter 0.6s;
         }
 
         .gallery-item:hover img {
             transform: scale(1.08);
+
+            filter: brightness(0.78);
         }
 
-        /* =========================
+
+        /* =====================================================
            LIGHTBOX
-        ========================= */
+        ===================================================== */
 
         .lightbox {
             display: none;
+
             position: fixed;
+
             z-index: 3000;
+
             inset: 0;
-            background: rgba(0,0,0,0.95);
+
+            background: rgba(0,0,0,0.96);
+
             align-items: center;
             justify-content: center;
+
             padding: 30px;
         }
 
@@ -451,18 +950,29 @@
         .lightbox img {
             max-width: 90%;
             max-height: 85vh;
+
             object-fit: contain;
-            border-radius: 10px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 0 50px rgba(212,175,55,0.12);
         }
 
         .lightbox-close,
         .lightbox-prev,
         .lightbox-next {
             position: absolute;
+
             color: white;
+
             font-size: 35px;
+
             cursor: pointer;
+
             user-select: none;
+
+            transition: 0.25s;
         }
 
         .lightbox-close {
@@ -478,94 +988,161 @@
             right: 25px;
         }
 
-        /* =========================
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            color: var(--gold-light);
+            transform: scale(1.15);
+        }
+
+
+        /* =====================================================
            CONTACT
-        ========================= */
+        ===================================================== */
 
         .contact-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 20px;
         }
 
         .contact-card {
-            background: #0d1a2b;
-            border: 1px solid rgba(212,175,55,0.25);
-            padding: 25px;
-            border-radius: 15px;
+            padding: 30px 20px;
+
+            border-radius: 18px;
+
             text-align: center;
         }
 
         .contact-card .icon {
-            font-size: 35px;
-            margin-bottom: 10px;
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(212,175,55,0.5);
+
+            border-radius: 50%;
+
+            font-size: 28px;
         }
 
         .contact-card h3 {
-            color: #d4af37;
+            color: var(--gold-light);
             margin-bottom: 8px;
         }
 
         .contact-card p,
         .contact-card a {
-            color: #ddd;
+            color: #d2d8e0;
             word-break: break-word;
         }
 
         .contact-card a:hover {
-            color: #d4af37;
+            color: var(--gold-light);
         }
 
-        /* =========================
+
+        /* =====================================================
            FOOTER
-        ========================= */
+        ===================================================== */
 
         footer {
-            background: #050c16;
-            border-top: 1px solid rgba(212,175,55,0.25);
+            position: relative;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #07111f,
+                    #030810
+                );
+
+            border-top: 1px solid rgba(212,175,55,0.3);
+
             text-align: center;
-            padding: 30px 20px;
+
+            padding: 35px 20px;
+        }
+
+        footer::before {
+            content: "✦";
+
+            display: block;
+
+            color: var(--gold);
+
+            margin-bottom: 12px;
         }
 
         footer h3 {
-            color: #d4af37;
+            color: var(--gold-light);
             margin-bottom: 5px;
         }
 
         footer p {
-            color: #aaa;
+            color: #8f9aaa;
             font-size: 14px;
         }
 
-        /* =========================
+
+        /* =====================================================
            SCROLL TOP
-        ========================= */
+        ===================================================== */
 
         #scrollTop {
             position: fixed;
+
             right: 20px;
             bottom: 20px;
-            width: 45px;
-            height: 45px;
+
+            width: 48px;
+            height: 48px;
+
             border-radius: 50%;
-            border: 1px solid #d4af37;
-            background: #0d1a2b;
-            color: #d4af37;
+
+            border: 1px solid var(--gold);
+
+            background:
+                rgba(8,18,32,0.92);
+
+            color: var(--gold-light);
+
             font-size: 20px;
+
             cursor: pointer;
+
             display: none;
+
             z-index: 1500;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.3);
+
+            transition: 0.3s;
+        }
+
+        #scrollTop:hover {
+            background: var(--gold);
+            color: #07111f;
+            transform: translateY(-4px);
         }
 
         #scrollTop.show {
             display: block;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
-        @media (max-width: 900px) {
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 950px) {
 
             .activities-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -576,9 +1153,14 @@
             }
 
             .contact-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                gap: 13px;
             }
         }
+
 
         @media (max-width: 700px) {
 
@@ -592,14 +1174,24 @@
 
             nav {
                 display: none;
+
                 position: absolute;
+
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: #07111f;
+
+                background:
+                    rgba(4,10,19,0.98);
+
                 padding: 20px;
+
                 flex-direction: column;
-                border-bottom: 1px solid #d4af37;
+
+                border-bottom: 1px solid var(--gold);
+
+                box-shadow:
+                    0 15px 30px rgba(0,0,0,0.35);
             }
 
             nav.active {
@@ -609,23 +1201,45 @@
             nav a {
                 width: 100%;
                 text-align: center;
-                padding: 8px;
+                padding: 10px;
             }
 
             .brand-text h1 {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .brand-text p {
-                font-size: 10px;
+                font-size: 9px;
             }
 
             .hero {
-                min-height: 80vh;
+                min-height: 78vh;
+                padding: 70px 15px;
+            }
+
+            .hero-logo {
+                width: 125px;
+                height: 125px;
+            }
+
+            .hero h2 {
+                letter-spacing: 1px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero .tamil {
+                font-size: 18px;
             }
 
             .about-grid,
             .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -634,13 +1248,20 @@
             }
 
             .gallery-item {
-                height: 170px;
+                height: 175px;
+            }
+
+            .section-title h2::before,
+            .section-title h2::after {
+                width: 20px;
+                margin: 0 8px;
             }
 
             section {
-                padding: 60px 15px;
+                padding: 65px 15px;
             }
         }
+
 
         @media (max-width: 400px) {
 
@@ -653,50 +1274,106 @@
             }
 
             .hero-logo {
-                width: 120px;
-                height: 120px;
+                width: 110px;
+                height: 110px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 210px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      NAVBAR
-========================= -->
+===================================================== -->
 
 <header>
+
     <div class="navbar">
 
         <a href="#home" class="brand">
-            <img src="LOGO.png" alt="JMD'S Royal Makkal Nalasangam Logo">
+
+            <img
+                src="LOGO.png"
+                alt="JMD'S Royal Makkal Nalasangam Logo"
+            >
 
             <div class="brand-text">
-                <h1>JMD'S ROYAL MAKKAL NALASANGAM</h1>
-                <p>ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்</p>
+
+                <h1>
+                    JMD'S ROYAL MAKKAL NALASANGAM
+                </h1>
+
+                <p>
+                    ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+                </p>
+
             </div>
+
         </a>
 
-        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+        <div
+            class="menu-btn"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </div>
+
 
         <nav id="navMenu">
-            <a href="#home" onclick="closeMenu()">Home</a>
-            <a href="#about" onclick="closeMenu()">About</a>
-            <a href="#activities" onclick="closeMenu()">Activities</a>
-            <a href="#gallery" onclick="closeMenu()">Gallery</a>
-            <a href="#festivals" onclick="closeMenu()">Festivals</a>
-            <a href="#announcements" onclick="closeMenu()">Announcements</a>
-            <a href="#contact" onclick="closeMenu()">Contact</a>
+
+            <a href="#home" onclick="closeMenu()">
+                Home
+            </a>
+
+            <a href="#about" onclick="closeMenu()">
+                About
+            </a>
+
+            <a href="#activities" onclick="closeMenu()">
+                Activities
+            </a>
+
+            <a href="#gallery" onclick="closeMenu()">
+                Gallery
+            </a>
+
+            <a href="#festivals" onclick="closeMenu()">
+                Festivals
+            </a>
+
+            <a href="#announcements" onclick="closeMenu()">
+                Announcements
+            </a>
+
+            <a href="#contact" onclick="closeMenu()">
+                Contact
+            </a>
+
         </nav>
 
     </div>
+
 </header>
 
 
-<!-- =========================
+
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero" id="home">
 
@@ -708,9 +1385,13 @@
             alt="Association Logo"
         >
 
-        <h2>JMD'S ROYAL</h2>
+        <h2>
+            JMD'S ROYAL
+        </h2>
 
-        <h3>MAKKAL NALASANGAM</h3>
+        <h3>
+            MAKKAL NALASANGAM
+        </h3>
 
         <p class="tamil">
             ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
@@ -724,14 +1405,23 @@
             ஒற்றுமை • சேவை • அக்கறை • பொறுப்பு
         </p>
 
+
         <div class="hero-buttons">
-            <a href="#about" class="btn btn-gold">
+
+            <a
+                href="#about"
+                class="btn btn-gold"
+            >
                 Know More
             </a>
 
-            <a href="#contact" class="btn btn-outline">
+            <a
+                href="#contact"
+                class="btn btn-outline"
+            >
                 Contact Us
             </a>
+
         </div>
 
     </div>
@@ -739,23 +1429,36 @@
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      ABOUT
-========================= -->
+===================================================== -->
 
 <section id="about">
 
     <div class="container">
 
         <div class="section-title">
-            <h2>About Us</h2>
-            <p>எங்களைப் பற்றி</p>
+
+            <h2>
+                About Us
+            </h2>
+
+            <p>
+                எங்களைப் பற்றி
+            </p>
+
         </div>
+
 
         <div class="about-grid">
 
+
             <div class="card">
-                <h3>Who We Are</h3>
+
+                <h3>
+                    Who We Are
+                </h3>
 
                 <p>
                     JMD'S ROYAL MAKKAL NALASANGAM is a community
@@ -771,10 +1474,15 @@
                     தேவையுள்ள மக்களுக்கு உதவி செய்வதை நோக்கமாக
                     கொண்ட சமூக அமைப்பாகும்.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <h3>Our Vision</h3>
+
+                <h3>
+                    Our Vision
+                </h3>
 
                 <p>
                     To build a united, caring and responsible
@@ -789,10 +1497,15 @@
                     அனைவரும் இணைந்து செயல்படும் சிறந்த
                     சமூகத்தை உருவாக்குதல்.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <h3>Our Mission</h3>
+
+                <h3>
+                    Our Mission
+                </h3>
 
                 <p>
                     To support people, encourage community
@@ -807,10 +1520,15 @@
                     ஊக்குவித்தல் மற்றும் மக்கள் நலனுக்கான
                     பயனுள்ள நிகழ்ச்சிகளை நடத்துதல்.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <h3>Our Values</h3>
+
+                <h3>
+                    Our Values
+                </h3>
 
                 <p>
                     Unity, honesty, kindness, equality,
@@ -823,7 +1541,9 @@
                     ஒற்றுமை, நேர்மை, அன்பு, சமத்துவம்,
                     பொறுப்பு மற்றும் சேவை.
                 </p>
+
             </div>
+
 
         </div>
 
@@ -832,86 +1552,138 @@
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      ACTIVITIES
-========================= -->
+===================================================== -->
 
 <section id="activities">
 
     <div class="container">
 
         <div class="section-title">
-            <h2>Our Activities</h2>
-            <p>எங்கள் செயல்பாடுகள்</p>
+
+            <h2>
+                Our Activities
+            </h2>
+
+            <p>
+                எங்கள் செயல்பாடுகள்
+            </p>
+
         </div>
+
 
         <div class="activities-grid">
 
-            <div class="activity-card">
-                <div class="activity-icon">🤝</div>
 
-                <h3>Community Support</h3>
+            <div class="activity-card">
+
+                <div class="activity-icon">
+                    🤝
+                </div>
+
+                <h3>
+                    Community Support
+                </h3>
 
                 <p>
                     Supporting people and families who need
                     assistance in our community.
                 </p>
+
             </div>
 
-            <div class="activity-card">
-                <div class="activity-icon">❤️</div>
 
-                <h3>Social Welfare</h3>
+            <div class="activity-card">
+
+                <div class="activity-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Social Welfare
+                </h3>
 
                 <p>
                     Encouraging activities that improve the
                     welfare and happiness of our community.
                 </p>
+
             </div>
 
-            <div class="activity-card">
-                <div class="activity-icon">🌱</div>
 
-                <h3>Community Development</h3>
+            <div class="activity-card">
+
+                <div class="activity-icon">
+                    🌱
+                </div>
+
+                <h3>
+                    Community Development
+                </h3>
 
                 <p>
                     Working together to create a cleaner,
                     safer and better community.
                 </p>
+
             </div>
 
-            <div class="activity-card">
-                <div class="activity-icon">🎓</div>
 
-                <h3>Education Support</h3>
+            <div class="activity-card">
+
+                <div class="activity-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    Education Support
+                </h3>
 
                 <p>
                     Encouraging students and supporting
                     educational development.
                 </p>
+
             </div>
 
-            <div class="activity-card">
-                <div class="activity-icon">🩸</div>
 
-                <h3>Health & Welfare</h3>
+            <div class="activity-card">
+
+                <div class="activity-icon">
+                    🩸
+                </div>
+
+                <h3>
+                    Health & Welfare
+                </h3>
 
                 <p>
                     Supporting health awareness and
                     welfare-oriented community activities.
                 </p>
+
             </div>
 
-            <div class="activity-card">
-                <div class="activity-icon">🌟</div>
 
-                <h3>Public Service</h3>
+            <div class="activity-card">
+
+                <div class="activity-icon">
+                    🌟
+                </div>
+
+                <h3>
+                    Public Service
+                </h3>
 
                 <p>
                     Serving society with unity, kindness
                     and responsibility.
                 </p>
+
             </div>
+
 
         </div>
 
@@ -920,67 +1692,115 @@
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      GALLERY
-========================= -->
+===================================================== -->
 
 <section id="gallery">
 
     <div class="container">
 
         <div class="section-title">
-            <h2>Gallery</h2>
-            <p>எங்கள் நிகழ்வுகளின் புகைப்படங்கள்</p>
+
+            <h2>
+                Gallery
+            </h2>
+
+            <p>
+                எங்கள் நிகழ்வுகளின் புகைப்படங்கள்
+            </p>
+
         </div>
+
 
         <div class="gallery-grid">
 
-            <div class="gallery-item"
-                 onclick="openLightbox(0)">
-                <img src="gallery1.jpg"
-                     alt="Association Gallery Image 1">
+            <div
+                class="gallery-item"
+                onclick="openLightbox(0)"
+            >
+                <img
+                    src="gallery1.jpg"
+                    alt="Association Gallery Image 1"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openLightbox(1)">
-                <img src="gallery2.jpg"
-                     alt="Association Gallery Image 2">
+
+            <div
+                class="gallery-item"
+                onclick="openLightbox(1)"
+            >
+                <img
+                    src="gallery2.jpg"
+                    alt="Association Gallery Image 2"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openLightbox(2)">
-                <img src="gallery3.jpg"
-                     alt="Association Gallery Image 3">
+
+            <div
+                class="gallery-item"
+                onclick="openLightbox(2)"
+            >
+                <img
+                    src="gallery3.jpg"
+                    alt="Association Gallery Image 3"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openLightbox(3)">
-                <img src="gallery4.jpg"
-                     alt="Association Gallery Image 4">
+
+            <div
+                class="gallery-item"
+                onclick="openLightbox(3)"
+            >
+                <img
+                    src="gallery4.jpg"
+                    alt="Association Gallery Image 4"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openLightbox(4)">
-                <img src="gallery5.jpg"
-                     alt="Association Gallery Image 5">
+
+            <div
+                class="gallery-item"
+                onclick="openLightbox(4)"
+            >
+                <img
+                    src="gallery5.jpg"
+                    alt="Association Gallery Image 5"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openLightbox(5)">
-                <img src="gallery6.jpg"
-                     alt="Association Gallery Image 6">
+
+            <div
+                class="gallery-item"
+                onclick="openLightbox(5)"
+            >
+                <img
+                    src="gallery6.jpg"
+                    alt="Association Gallery Image 6"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openLightbox(6)">
-                <img src="gallery7.jpg"
-                     alt="Association Gallery Image 7">
+
+            <div
+                class="gallery-item"
+                onclick="openLightbox(6)"
+            >
+                <img
+                    src="gallery7.jpg"
+                    alt="Association Gallery Image 7"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openLightbox(7)">
-                <img src="gallery8.jpg"
-                     alt="Association Gallery Image 8">
+
+            <div
+                class="gallery-item"
+                onclick="openLightbox(7)"
+            >
+                <img
+                    src="gallery8.jpg"
+                    alt="Association Gallery Image 8"
+                >
             </div>
 
         </div>
@@ -990,20 +1810,33 @@
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      FESTIVALS
-========================= -->
+===================================================== -->
 
 <section id="festivals">
 
     <div class="container">
 
+
         <div class="section-title">
-            <h2>Today's Festival</h2>
-            <p>இன்றைய திருநாள்</p>
+
+            <h2>
+                Today's Festival
+            </h2>
+
+            <p>
+                இன்றைய திருநாள்
+            </p>
+
         </div>
 
-        <div id="todayFestival" class="festival-today">
+
+        <div
+            id="todayFestival"
+            class="festival-today"
+        >
 
             <div class="empty-message">
                 Checking today's festival...
@@ -1012,66 +1845,120 @@
         </div>
 
 
-        <div class="section-title" style="margin-top:60px;">
-            <h2>Festival Gallery</h2>
-            <p>திருவிழா புகைப்படங்கள்</p>
+
+        <div
+            class="section-title"
+            style="margin-top:60px;"
+        >
+
+            <h2>
+                Festival Gallery
+            </h2>
+
+            <p>
+                திருவிழா புகைப்படங்கள்
+            </p>
+
         </div>
+
 
 
         <div class="gallery-grid">
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(0)">
-                <img src="festival1.jpg"
-                     alt="Festival Image 1">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(0)"
+            >
+                <img
+                    src="festival1.jpg"
+                    alt="Festival Image 1"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(1)">
-                <img src="festival2.jpg"
-                     alt="Festival Image 2">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(1)"
+            >
+                <img
+                    src="festival2.jpg"
+                    alt="Festival Image 2"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(2)">
-                <img src="festival3.jpg"
-                     alt="Festival Image 3">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(2)"
+            >
+                <img
+                    src="festival3.jpg"
+                    alt="Festival Image 3"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(3)">
-                <img src="festival4.jpg"
-                     alt="Festival Image 4">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(3)"
+            >
+                <img
+                    src="festival4.jpg"
+                    alt="Festival Image 4"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(4)">
-                <img src="festival5.jpg"
-                     alt="Festival Image 5">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(4)"
+            >
+                <img
+                    src="festival5.jpg"
+                    alt="Festival Image 5"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(5)">
-                <img src="festival6.jpg"
-                     alt="Festival Image 6">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(5)"
+            >
+                <img
+                    src="festival6.jpg"
+                    alt="Festival Image 6"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(6)">
-                <img src="festival7.jpg"
-                     alt="Festival Image 7">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(6)"
+            >
+                <img
+                    src="festival7.jpg"
+                    alt="Festival Image 7"
+                >
             </div>
 
-            <div class="gallery-item"
-                 onclick="openFestivalLightbox(7)">
-                <img src="festival8.jpg"
-                     alt="Festival Image 8">
+
+            <div
+                class="gallery-item"
+                onclick="openFestivalLightbox(7)"
+            >
+                <img
+                    src="festival8.jpg"
+                    alt="Festival Image 8"
+                >
             </div>
+
 
         </div>
 
 
-        <!-- AUTOMATIC MEETING -->
+
+        <!-- MEETING -->
 
         <div class="meeting-card">
 
@@ -1079,38 +1966,55 @@
                 📅 Monthly Association Meeting
             </h3>
 
-            <div id="meetingDate"
-                 class="meeting-date">
+            <div
+                id="meetingDate"
+                class="meeting-date"
+            >
                 Loading...
             </div>
 
-            <div id="meetingTamil"
-                 class="meeting-tamil">
+            <div
+                id="meetingTamil"
+                class="meeting-tamil"
+            >
                 மாதாந்திர சங்க கூட்டம்
             </div>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      ANNOUNCEMENTS
-========================= -->
+===================================================== -->
 
 <section id="announcements">
 
     <div class="container">
 
+
         <div class="section-title">
-            <h2>Announcements</h2>
-            <p>அறிவிப்புகள்</p>
+
+            <h2>
+                Announcements
+            </h2>
+
+            <p>
+                அறிவிப்புகள்
+            </p>
+
         </div>
 
-        <div id="announcementList"
-             class="announcement-list">
+
+        <div
+            id="announcementList"
+            class="announcement-list"
+        >
 
             <div class="empty-message">
                 Loading announcements...
@@ -1118,31 +2022,47 @@
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      CONTACT
-========================= -->
+===================================================== -->
 
 <section id="contact">
 
     <div class="container">
 
+
         <div class="section-title">
-            <h2>Contact Us</h2>
-            <p>தொடர்பு கொள்ள</p>
+
+            <h2>
+                Contact Us
+            </h2>
+
+            <p>
+                தொடர்பு கொள்ள
+            </p>
+
         </div>
+
 
         <div class="contact-grid">
 
+
             <div class="contact-card">
 
-                <div class="icon">📞</div>
+                <div class="icon">
+                    📞
+                </div>
 
-                <h3>Phone</h3>
+                <h3>
+                    Phone
+                </h3>
 
                 <p id="contactPhone">
                     Loading...
@@ -1153,9 +2073,13 @@
 
             <div class="contact-card">
 
-                <div class="icon">✉️</div>
+                <div class="icon">
+                    ✉️
+                </div>
 
-                <h3>Email</h3>
+                <h3>
+                    Email
+                </h3>
 
                 <p id="contactEmail">
                     Loading...
@@ -1166,15 +2090,20 @@
 
             <div class="contact-card">
 
-                <div class="icon">📍</div>
+                <div class="icon">
+                    📍
+                </div>
 
-                <h3>Address</h3>
+                <h3>
+                    Address
+                </h3>
 
                 <p id="contactAddress">
                     Loading...
                 </p>
 
             </div>
+
 
         </div>
 
@@ -1183,49 +2112,67 @@
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      LIGHTBOX
-========================= -->
+===================================================== -->
 
-<div id="lightbox"
-     class="lightbox"
-     onclick="closeLightbox(event)">
+<div
+    id="lightbox"
+    class="lightbox"
+    onclick="closeLightbox(event)"
+>
 
-    <span class="lightbox-close"
-          onclick="closeLightbox()">
+    <span
+        class="lightbox-close"
+        onclick="closeLightbox()"
+    >
         ×
     </span>
 
-    <span class="lightbox-prev"
-          onclick="previousImage(event)">
+
+    <span
+        class="lightbox-prev"
+        onclick="previousImage(event)"
+    >
         ❮
     </span>
 
-    <img id="lightboxImage"
-         src=""
-         alt="Gallery Preview">
 
-    <span class="lightbox-next"
-          onclick="nextImage(event)">
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Gallery Preview"
+    >
+
+
+    <span
+        class="lightbox-next"
+        onclick="nextImage(event)"
+    >
         ❯
     </span>
 
 </div>
 
 
-<!-- =========================
-     SCROLL TOP
-========================= -->
 
-<button id="scrollTop"
-        onclick="window.scrollTo({top:0, behavior:'smooth'})">
+<!-- =====================================================
+     SCROLL TOP
+===================================================== -->
+
+<button
+    id="scrollTop"
+    onclick="window.scrollTo({top:0, behavior:'smooth'})"
+>
     ↑
 </button>
 
 
-<!-- =========================
+
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
@@ -1238,7 +2185,8 @@
     </p>
 
     <p style="margin-top:10px;">
-        © <span id="currentYear"></span>
+        ©
+        <span id="currentYear"></span>
         JMD'S Royal Makkal Nalasangam.
         All Rights Reserved.
     </p>
@@ -1246,9 +2194,10 @@
 </footer>
 
 
-<!-- =========================
-     FIREBASE + JAVASCRIPT
-========================= -->
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script type="module">
 
@@ -1272,22 +2221,29 @@
     from "./firebase-config.js";
 
 
-    /* =========================
+    /* =====================================================
        FIREBASE INITIALIZATION
-    ========================= */
+    ===================================================== */
 
-    const app = initializeApp(firebaseConfig);
+    const app =
+        initializeApp(firebaseConfig);
 
-    const database = getDatabase(app);
+
+    const database =
+        getDatabase(app);
 
 
-    /* =========================
-       HELPER
-    ========================= */
+
+    /* =====================================================
+       ESCAPE HTML
+    ===================================================== */
 
     function escapeHTML(value) {
 
-        if (value === null || value === undefined) {
+        if (
+            value === null ||
+            value === undefined
+        ) {
             return "";
         }
 
@@ -1300,9 +2256,10 @@
     }
 
 
-    /* =========================
+
+    /* =====================================================
        ANNOUNCEMENTS
-    ========================= */
+    ===================================================== */
 
     const announcementsRef =
         ref(database, "announcements");
@@ -1313,19 +2270,26 @@
         (snapshot) => {
 
             const list =
-                document.getElementById("announcementList");
+                document.getElementById(
+                    "announcementList"
+                );
+
 
             list.innerHTML = "";
 
-            const data = snapshot.val();
+
+            const data =
+                snapshot.val();
 
 
             if (!data) {
 
                 list.innerHTML = `
+
                     <div class="empty-message">
                         No announcements available.
                     </div>
+
                 `;
 
                 return;
@@ -1348,10 +2312,13 @@
                 const div =
                     document.createElement("div");
 
-                div.className = "announcement";
+
+                div.className =
+                    "announcement";
 
 
                 let dateText = "";
+
 
                 if (item.createdAt) {
 
@@ -1360,7 +2327,12 @@
                             Number(item.createdAt)
                         );
 
-                    if (!isNaN(date.getTime())) {
+
+                    if (
+                        !isNaN(
+                            date.getTime()
+                        )
+                    ) {
 
                         dateText =
                             date.toLocaleDateString(
@@ -1388,9 +2360,11 @@
                     ${
                         dateText
                         ?
-                        `<div class="announcement-date">
+                        `
+                        <div class="announcement-date">
                             Posted: ${escapeHTML(dateText)}
-                        </div>`
+                        </div>
+                        `
                         :
                         ""
                     }
@@ -1404,12 +2378,14 @@
 
         },
 
+
         (error) => {
 
             console.error(
                 "Announcement error:",
                 error
             );
+
 
             document.getElementById(
                 "announcementList"
@@ -1424,9 +2400,10 @@
     );
 
 
-    /* =========================
+
+    /* =====================================================
        FESTIVALS
-    ========================= */
+    ===================================================== */
 
     const festivalsRef =
         ref(database, "festivals");
@@ -1435,7 +2412,9 @@
     function showTodayFestival(data) {
 
         const container =
-            document.getElementById("todayFestival");
+            document.getElementById(
+                "todayFestival"
+            );
 
 
         const now =
@@ -1447,76 +2426,83 @@
 
 
         const month =
-            String(now.getMonth() + 1)
-                .padStart(2, "0");
+            String(
+                now.getMonth() + 1
+            ).padStart(2, "0");
 
 
         const day =
-            String(now.getDate())
-                .padStart(2, "0");
+            String(
+                now.getDate()
+            ).padStart(2, "0");
 
 
         const today =
             `${year}-${month}-${day}`;
 
 
-        let festivalFound = false;
+        let festivalFound =
+            false;
 
 
         if (data) {
 
-            Object.values(data).forEach(item => {
+            Object.values(data).forEach(
+                item => {
 
-                if (item.date === today) {
+                    if (
+                        item.date === today
+                    ) {
 
-                    festivalFound = true;
-
-
-                    const dateObject =
-                        new Date(
-                            item.date + "T00:00:00"
-                        );
+                        festivalFound = true;
 
 
-                    const formattedDate =
-                        dateObject.toLocaleDateString(
-                            "en-IN",
-                            {
-                                weekday: "long",
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric"
-                            }
-                        );
+                        const dateObject =
+                            new Date(
+                                item.date +
+                                "T00:00:00"
+                            );
 
 
-                    container.innerHTML = `
+                        const formattedDate =
+                            dateObject.toLocaleDateString(
+                                "en-IN",
+                                {
+                                    weekday: "long",
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric"
+                                }
+                            );
 
-                        <div class="festival-card">
 
-                            <div class="festival-icon">
-                                🎉
+                        container.innerHTML = `
+
+                            <div class="festival-card">
+
+                                <div class="festival-icon">
+                                    🎉
+                                </div>
+
+                                <h3>
+                                    ${escapeHTML(item.name)}
+                                </h3>
+
+                                <h4>
+                                    ${escapeHTML(item.tamil)}
+                                </h4>
+
+                                <div class="festival-date">
+                                    ${escapeHTML(formattedDate)}
+                                </div>
+
                             </div>
 
-                            <h3>
-                                ${escapeHTML(item.name)}
-                            </h3>
+                        `;
+                    }
 
-                            <h4>
-                                ${escapeHTML(item.tamil)}
-                            </h4>
-
-                            <div class="festival-date">
-                                ${escapeHTML(formattedDate)}
-                            </div>
-
-                        </div>
-
-                    `;
                 }
-
-            });
-
+            );
         }
 
 
@@ -1552,7 +2538,7 @@
 
     onValue(
         festivalsRef,
-        (snapshot) => {
+        snapshot => {
 
             showTodayFestival(
                 snapshot.val()
@@ -1560,12 +2546,14 @@
 
         },
 
-        (error) => {
+
+        error => {
 
             console.error(
                 "Festival error:",
                 error
             );
+
 
             document.getElementById(
                 "todayFestival"
@@ -1588,27 +2576,31 @@
     );
 
 
-    /* =========================
-       AUTOMATIC FIRST SUNDAY
-    ========================= */
 
-    function getFirstSunday(year, month) {
+    /* =====================================================
+       FIRST SUNDAY MEETING
+    ===================================================== */
+
+    function getFirstSunday(
+        year,
+        month
+    ) {
 
         const date =
-            new Date(year, month, 1);
+            new Date(
+                year,
+                month,
+                1
+            );
 
 
         const day =
             date.getDay();
 
 
-        const firstSunday =
-            day === 0
+        return day === 0
             ? 1
             : 8 - day;
-
-
-        return firstSunday;
     }
 
 
@@ -1641,12 +2633,6 @@
             );
 
 
-        /*
-         * If this month's first Sunday
-         * has already passed, move to
-         * next month's first Sunday.
-         */
-
         const todayOnly =
             new Date(
                 year,
@@ -1655,7 +2641,10 @@
             );
 
 
-        if (todayOnly > meetingDate) {
+        if (
+            todayOnly >
+            meetingDate
+        ) {
 
             month++;
 
@@ -1663,6 +2652,7 @@
             if (month > 11) {
 
                 month = 0;
+
                 year++;
             }
 
@@ -1696,6 +2686,7 @@
 
 
         const tamilMonthNames = [
+
             "ஜனவரி",
             "பிப்ரவரி",
             "மார்ச்",
@@ -1708,12 +2699,15 @@
             "அக்டோபர்",
             "நவம்பர்",
             "டிசம்பர்"
+
         ];
 
 
         const tamilDate =
             `${meetingDate.getDate()} ` +
-            `${tamilMonthNames[meetingDate.getMonth()]} ` +
+            `${tamilMonthNames[
+                meetingDate.getMonth()
+            ]} ` +
             `${meetingDate.getFullYear()}`;
 
 
@@ -1733,21 +2727,16 @@
     updateMeeting();
 
 
-    /*
-     * Check every minute so that the
-     * meeting automatically changes
-     * after the first Sunday passes.
-     */
-
     setInterval(
         updateMeeting,
         60000
     );
 
 
-    /* =========================
+
+    /* =====================================================
        CONTACT
-    ========================= */
+    ===================================================== */
 
     const contactRef =
         ref(database, "contact");
@@ -1755,7 +2744,7 @@
 
     onValue(
         contactRef,
-        (snapshot) => {
+        snapshot => {
 
             const data =
                 snapshot.val();
@@ -1799,7 +2788,9 @@
             if (data.phone) {
 
                 const safePhone =
-                    escapeHTML(data.phone);
+                    escapeHTML(
+                        data.phone
+                    );
 
 
                 phone.innerHTML = `
@@ -1822,7 +2813,9 @@
             if (data.email) {
 
                 const safeEmail =
-                    escapeHTML(data.email);
+                    escapeHTML(
+                        data.email
+                    );
 
 
                 email.innerHTML = `
@@ -1855,22 +2848,26 @@
 
         },
 
-        (error) => {
+
+        error => {
 
             console.error(
                 "Contact error:",
                 error
             );
 
+
             document.getElementById(
                 "contactPhone"
             ).textContent =
                 "Unable to load";
 
+
             document.getElementById(
                 "contactEmail"
             ).textContent =
                 "Unable to load";
+
 
             document.getElementById(
                 "contactAddress"
@@ -1880,9 +2877,10 @@
     );
 
 
-    /* =========================
-       CURRENT YEAR
-    ========================= */
+
+    /* =====================================================
+       YEAR
+    ===================================================== */
 
     document.getElementById(
         "currentYear"
@@ -1892,22 +2890,23 @@
 </script>
 
 
-<!-- =========================
+
+<!-- =====================================================
      NORMAL JAVASCRIPT
-========================= -->
+===================================================== -->
 
 <script>
 
-    /* =========================
+
+    /* =====================================================
        MOBILE MENU
-    ========================= */
+    ===================================================== */
 
     function toggleMenu() {
 
         document
             .getElementById("navMenu")
             .classList.toggle("active");
-
     }
 
 
@@ -1916,13 +2915,13 @@
         document
             .getElementById("navMenu")
             .classList.remove("active");
-
     }
 
 
-    /* =========================
+
+    /* =====================================================
        GALLERY
-    ========================= */
+    ===================================================== */
 
     const galleryImages = [
 
@@ -1957,6 +2956,7 @@
     let currentIndex = 0;
 
 
+
     function openLightbox(index) {
 
         currentImages =
@@ -1980,6 +2980,7 @@
         document.body.style.overflow =
             "hidden";
     }
+
 
 
     function openFestivalLightbox(index) {
@@ -2007,12 +3008,15 @@
     }
 
 
+
     function closeLightbox(event) {
 
         if (
             event &&
             event.target !==
-            document.getElementById("lightbox")
+            document.getElementById(
+                "lightbox"
+            )
         ) {
 
             return;
@@ -2021,12 +3025,15 @@
 
         document.getElementById(
             "lightbox"
-        ).classList.remove("active");
+        ).classList.remove(
+            "active"
+        );
 
 
         document.body.style.overflow =
             "";
     }
+
 
 
     function previousImage(event) {
@@ -2051,6 +3058,7 @@
         ).src =
             currentImages[currentIndex];
     }
+
 
 
     function nextImage(event) {
@@ -2079,9 +3087,10 @@
     }
 
 
-    /* =========================
-       KEYBOARD CONTROLS
-    ========================= */
+
+    /* =====================================================
+       KEYBOARD
+    ===================================================== */
 
     document.addEventListener(
         "keydown",
@@ -2103,7 +3112,10 @@
             }
 
 
-            if (event.key === "Escape") {
+            if (
+                event.key ===
+                "Escape"
+            ) {
 
                 lightbox.classList.remove(
                     "active"
@@ -2111,17 +3123,22 @@
 
                 document.body.style.overflow =
                     "";
-
             }
 
 
-            if (event.key === "ArrowLeft") {
+            if (
+                event.key ===
+                "ArrowLeft"
+            ) {
 
                 previousImage();
             }
 
 
-            if (event.key === "ArrowRight") {
+            if (
+                event.key ===
+                "ArrowRight"
+            ) {
 
                 nextImage();
             }
@@ -2130,9 +3147,10 @@
     );
 
 
-    /* =========================
-       SCROLL TO TOP
-    ========================= */
+
+    /* =====================================================
+       SCROLL TOP
+    ===================================================== */
 
     window.addEventListener(
         "scroll",
@@ -2144,13 +3162,20 @@
                 );
 
 
-            if (window.scrollY > 400) {
+            if (
+                window.scrollY >
+                400
+            ) {
 
-                button.classList.add("show");
+                button.classList.add(
+                    "show"
+                );
 
             } else {
 
-                button.classList.remove("show");
+                button.classList.remove(
+                    "show"
+                );
             }
 
         }
@@ -2158,5 +3183,7 @@
 
 </script>
 
+
 </body>
+
 </html>
