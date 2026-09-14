@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,11 +8,16 @@
 
 <title>JMD'S ROYAL MAKKAL NALASANGAM</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
 
 <style>
 
-/* ================= GENERAL ================= */
+/* =====================================================
+                     GENERAL
+===================================================== */
 
 * {
     margin: 0;
@@ -20,11 +26,16 @@
     scroll-behavior: smooth;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: Arial, "Noto Sans Tamil", sans-serif;
     background: #07111f;
     color: white;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 section {
@@ -43,8 +54,14 @@ section h2 {
     margin-bottom: 40px;
 }
 
+.tamil {
+    font-family: "Noto Sans Tamil", Arial, sans-serif;
+}
 
-/* ================= NAVBAR ================= */
+
+/* =====================================================
+                     NAVBAR
+===================================================== */
 
 nav {
     position: sticky;
@@ -52,6 +69,7 @@ nav {
     z-index: 1000;
 
     background: #07111f;
+
     border-bottom: 1px solid #d4af37;
 
     padding: 12px 6%;
@@ -59,36 +77,56 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 20px;
 }
 
 .logo-area {
     display: flex;
     align-items: center;
     gap: 12px;
+
+    flex-shrink: 0;
 }
 
 .logo-area img {
     width: 55px;
     height: 55px;
+
     object-fit: contain;
+
     border-radius: 50%;
 }
 
 .logo-text {
     font-weight: bold;
+
     color: #d4af37;
+
     font-size: 16px;
+
+    line-height: 1.3;
 }
 
 .nav-links {
     display: flex;
-    gap: 22px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
 }
 
 .nav-links a {
     color: white;
+
     text-decoration: none;
+
     font-weight: bold;
+
     transition: 0.3s;
 }
 
@@ -97,13 +135,17 @@ nav {
 }
 
 
-/* ================= HERO ================= */
+/* =====================================================
+                       HERO
+===================================================== */
 
 .hero {
     min-height: 90vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -120,53 +162,69 @@ nav {
 
 .hero img {
     width: 150px;
+
     max-width: 45%;
+
     margin-bottom: 20px;
 }
 
 .hero h1 {
     font-size: clamp(32px, 6vw, 65px);
+
     color: #d4af37;
+
     line-height: 1.1;
 }
 
 .hero h2 {
     font-size: clamp(22px, 4vw, 40px);
-    margin-top: 10px;
-}
 
-.tamil {
-    font-family: "Noto Sans Tamil", Arial, sans-serif;
+    margin-top: 10px;
+
+    color: white;
 }
 
 .hero .tamil {
     margin-top: 15px;
+
     font-size: 22px;
+
     color: #f2d675;
 }
 
 .slogan {
     margin-top: 20px;
+
     font-size: 18px;
+
     color: #ddd;
 }
 
 
-/* ================= ABOUT ================= */
+/* =====================================================
+                       ABOUT
+===================================================== */
 
 .about-text {
     max-width: 900px;
+
     margin: auto;
+
     text-align: center;
+
     color: #ddd;
+
     font-size: 18px;
 }
 
 
-/* ================= CARDS ================= */
+/* =====================================================
+                       CARDS
+===================================================== */
 
 .card-grid {
     display: grid;
+
     grid-template-columns:
         repeat(auto-fit, minmax(230px, 1fr));
 
@@ -189,11 +247,13 @@ nav {
 
 .card:hover {
     transform: translateY(-5px);
+
     border-color: #d4af37;
 }
 
 .card h3 {
     color: #d4af37;
+
     margin-bottom: 12px;
 }
 
@@ -202,14 +262,18 @@ nav {
 }
 
 
-/* ================= ACTIVITIES ================= */
+/* =====================================================
+                     ACTIVITIES
+===================================================== */
 
 .activity {
     text-align: left;
 }
 
 
-/* ================= NORMAL GALLERY ================= */
+/* =====================================================
+                    NORMAL GALLERY
+===================================================== */
 
 .gallery {
     background: #050c16;
@@ -240,35 +304,41 @@ nav {
     cursor: pointer;
 
     transition: 0.3s;
+
+    background: #0d1b2d;
 }
 
 .gallery-item:hover {
     border-color: #d4af37;
+
     transform: scale(1.02);
 }
 
 .gallery-item img {
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
+    display: block;
 }
 
 
-/* ================= FESTIVAL GALLERY ================= */
+/* =====================================================
+                  FESTIVAL GALLERY
+===================================================== */
 
 .festival-gallery {
-
     background:
         radial-gradient(
             circle at top,
             #1c2740,
             #050c16 70%
         );
-
 }
 
 .festival-title {
-
     text-align: center;
 
     margin-bottom: 15px;
@@ -277,10 +347,10 @@ nav {
 
     color: #d4af37;
 
+    font-weight: bold;
 }
 
 .festival-subtitle {
-
     text-align: center;
 
     color: #ddd;
@@ -288,19 +358,15 @@ nav {
     margin-bottom: 40px;
 
     font-size: 18px;
-
 }
 
 .festival-subtitle.tamil {
-
     color: #f2d675;
 
     margin-top: -25px;
-
 }
 
 .festival-grid {
-
     max-width: 1200px;
 
     margin: auto;
@@ -311,11 +377,9 @@ nav {
         repeat(auto-fit, minmax(230px, 1fr));
 
     gap: 22px;
-
 }
 
 .festival-item {
-
     height: 250px;
 
     position: relative;
@@ -331,37 +395,33 @@ nav {
     transition: 0.4s;
 
     background: #0d1b2d;
-
 }
 
 .festival-item:hover {
-
     transform: translateY(-7px) scale(1.02);
 
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
-
+    box-shadow:
+        0 10px 30px
+        rgba(212, 175, 55, 0.25);
 }
 
 .festival-item img {
-
     width: 100%;
 
     height: 100%;
 
     object-fit: cover;
 
-    transition: 0.4s;
+    display: block;
 
+    transition: 0.4s;
 }
 
 .festival-item:hover img {
-
     transform: scale(1.08);
-
 }
 
 .festival-label {
-
     position: absolute;
 
     bottom: 0;
@@ -383,18 +443,18 @@ nav {
     font-weight: bold;
 
     text-align: center;
-
 }
 
 
-/* ================= ANNOUNCEMENTS ================= */
+/* =====================================================
+                    ANNOUNCEMENTS
+===================================================== */
 
 .announcements {
     background: #07111f;
 }
 
 .announcement-list {
-
     max-width: 950px;
 
     margin: auto;
@@ -404,11 +464,9 @@ nav {
     flex-direction: column;
 
     gap: 20px;
-
 }
 
 .announcement {
-
     display: flex;
 
     gap: 25px;
@@ -422,12 +480,12 @@ nav {
     border-radius: 12px;
 
     padding: 25px;
-
 }
 
 .date {
-
     min-width: 85px;
+
+    width: 85px;
 
     height: 85px;
 
@@ -451,66 +509,58 @@ nav {
 
     text-align: center;
 
+    flex-shrink: 0;
 }
 
 .date span {
-
     font-size: 14px;
-
 }
 
 .announcement h3 {
-
     color: #d4af37;
 
     margin-bottom: 8px;
-
 }
 
 .announcement p {
-
     color: #ddd;
 
     margin-top: 10px;
-
 }
 
 .announcement .tamil {
-
     color: #f2d675;
 
     font-size: 18px;
 
     font-weight: bold;
-
 }
 
 
-/* ================= CONTACT ================= */
+/* =====================================================
+                      CONTACT
+===================================================== */
 
 .contact {
-
     text-align: center;
 
     background: #050c16;
-
 }
 
 .contact p {
-
     color: #ddd;
 
     margin: 10px 0;
 
     font-size: 18px;
-
 }
 
 
-/* ================= FOOTER ================= */
+/* =====================================================
+                       FOOTER
+===================================================== */
 
 footer {
-
     text-align: center;
 
     padding: 25px;
@@ -520,14 +570,14 @@ footer {
     border-top: 1px solid #243b55;
 
     color: #aaa;
-
 }
 
 
-/* ================= LIGHTBOX ================= */
+/* =====================================================
+                       LIGHTBOX
+===================================================== */
 
 .lightbox {
-
     display: none;
 
     position: fixed;
@@ -536,35 +586,37 @@ footer {
 
     inset: 0;
 
+    width: 100%;
+
+    height: 100%;
+
     background: rgba(0,0,0,0.94);
 
     align-items: center;
 
     justify-content: center;
 
+    padding: 20px;
 }
 
 .lightbox img {
-
     max-width: 90%;
 
     max-height: 85%;
 
+    object-fit: contain;
+
     border-radius: 12px;
 
     border: 2px solid #d4af37;
-
 }
 
 .close,
 .prev,
 .next {
-
     position: absolute;
 
     color: white;
-
-    font-size: 45px;
 
     cursor: pointer;
 
@@ -572,95 +624,399 @@ footer {
 
     z-index: 2001;
 
+    transition: 0.2s;
 }
 
 .close {
-
     top: 15px;
 
     right: 30px;
 
+    font-size: 45px;
 }
 
 .prev {
-
     left: 25px;
 
+    font-size: 45px;
 }
 
 .next {
-
     right: 25px;
 
+    font-size: 45px;
 }
 
 .close:hover,
 .prev:hover,
 .next:hover {
-
     color: #d4af37;
-
 }
 
 
-/* ================= MOBILE ================= */
+/* =====================================================
+                     TABLET
+===================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
     nav {
-
         flex-direction: column;
 
-        gap: 12px;
-
+        padding: 12px 15px;
     }
 
     .nav-links {
+        width: 100%;
 
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        gap: 12px;
-
+        gap: 10px;
     }
 
-    .hero {
-
-        min-height: 80vh;
-
-    }
-
-    section {
-
-        padding: 60px 5%;
-
-    }
-
-    .announcement {
-
-        flex-direction: column;
-
-    }
-
-    .date {
-
-        min-width: 75px;
-
-        height: 75px;
-
-    }
-
-    .festival-title {
-
-        font-size: 32px;
-
+    .nav-links a {
+        font-size: 14px;
     }
 
 }
 
 
-/* ================= END ================= */
+/* =====================================================
+                     MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+
+    nav {
+        position: sticky;
+
+        top: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        padding: 10px;
+
+        gap: 10px;
+    }
+
+    .logo-area {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .logo-area img {
+        width: 48px;
+
+        height: 48px;
+    }
+
+    .logo-text {
+        font-size: 13px;
+
+        line-height: 1.2;
+    }
+
+    .nav-links {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 6px;
+    }
+
+    .nav-links a {
+        text-align: center;
+
+        font-size: 11px;
+
+        padding: 8px 2px;
+
+        background: #0d1b2d;
+
+        border-radius: 7px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 80vh;
+
+        padding: 50px 15px;
+    }
+
+    .hero img {
+        width: 120px;
+
+        max-width: 40%;
+
+        margin-bottom: 15px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .hero .tamil {
+        font-size: 17px;
+    }
+
+    .slogan {
+        font-size: 15px;
+
+        padding: 0 10px;
+    }
+
+
+    /* SECTIONS */
+
+    section {
+        padding: 55px 15px;
+    }
+
+    section h2 {
+        font-size: 30px;
+
+        margin-bottom: 28px;
+    }
+
+
+    /* CARDS */
+
+    .card-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .card {
+        padding: 22px 18px;
+    }
+
+
+    /* ABOUT */
+
+    .about-text {
+        font-size: 16px;
+
+        text-align: center;
+    }
+
+
+    /* NORMAL GALLERY */
+
+    .gallery-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .gallery-item {
+        height: 170px;
+
+        border-radius: 10px;
+    }
+
+
+    /* FESTIVAL GALLERY */
+
+    .festival-title {
+        font-size: 29px;
+
+        line-height: 1.3;
+
+        margin-bottom: 12px;
+    }
+
+    .festival-subtitle {
+        font-size: 15px;
+
+        margin-bottom: 25px;
+    }
+
+    .festival-subtitle.tamil {
+        margin-top: -15px;
+    }
+
+    .festival-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .festival-item {
+        height: 180px;
+
+        border-radius: 12px;
+    }
+
+    .festival-label {
+        font-size: 12px;
+
+        padding: 8px 4px;
+    }
+
+
+    /* ANNOUNCEMENTS */
+
+    .announcement-list {
+        gap: 15px;
+    }
+
+    .announcement {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 18px;
+
+        border-left: none;
+
+        border-top: 4px solid #d4af37;
+    }
+
+    .date {
+        width: 70px;
+
+        min-width: 70px;
+
+        height: 70px;
+
+        font-size: 23px;
+    }
+
+    .date span {
+        font-size: 12px;
+    }
+
+    .announcement h3 {
+        font-size: 20px;
+    }
+
+    .announcement p {
+        font-size: 15px;
+    }
+
+    .announcement .tamil {
+        font-size: 16px;
+    }
+
+
+    /* CONTACT */
+
+    .contact p {
+        font-size: 16px;
+
+        padding: 0 10px;
+    }
+
+
+    /* LIGHTBOX */
+
+    .lightbox {
+        padding: 15px;
+    }
+
+    .lightbox img {
+        max-width: 94%;
+
+        max-height: 75%;
+    }
+
+    .close {
+        top: 10px;
+
+        right: 12px;
+
+        font-size: 40px;
+
+        padding: 8px;
+    }
+
+    .prev,
+    .next {
+        font-size: 30px;
+
+        padding: 15px 10px;
+    }
+
+    .prev {
+        left: 3px;
+    }
+
+    .next {
+        right: 3px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 20px 12px;
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* =====================================================
+                  SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .nav-links {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+    .hero .tamil {
+        font-size: 15px;
+    }
+
+    .gallery-item {
+        height: 145px;
+    }
+
+    .festival-item {
+        height: 155px;
+    }
+
+    .festival-title {
+        font-size: 25px;
+    }
+
+    .announcement h3 {
+        font-size: 18px;
+    }
+
+}
+
+
+/* =====================================================
+                         END CSS
+===================================================== */
 
 </style>
 
@@ -678,7 +1034,10 @@ footer {
 
     <div class="logo-area">
 
-        <img src="LOGO.png" alt="Association Logo">
+        <img
+            src="LOGO.png"
+            alt="Association Logo"
+        >
 
         <div class="logo-text">
 
@@ -700,11 +1059,17 @@ footer {
 
         <a href="#gallery">Gallery</a>
 
-        <a href="#festival-gallery">Festival Gallery</a>
+        <a href="#festival-gallery">
+            Festival
+        </a>
 
-        <a href="#announcements">Announcements</a>
+        <a href="#announcements">
+            Announcements
+        </a>
 
-        <a href="#contact">Contact</a>
+        <a href="#contact">
+            Contact
+        </a>
 
     </div>
 
@@ -716,7 +1081,10 @@ footer {
                           HOME
 ===================================================== -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
 
     <div>
 
@@ -725,13 +1093,16 @@ footer {
             alt="JMD Royal Makkal Nalasangam Logo"
         >
 
+
         <h1>
             JMD'S ROYAL
         </h1>
 
+
         <h2>
             MAKKAL NALASANGAM
         </h2>
+
 
         <div class="tamil">
 
@@ -739,15 +1110,19 @@ footer {
 
         </div>
 
+
         <p class="slogan">
 
-            Unity is our strength • People's welfare is our mission
+            Unity is our strength •
+            People's welfare is our mission
 
         </p>
 
+
         <p class="tamil">
 
-            ஒற்றுமையே பலம்! மக்கள் நலமே எங்கள் இலட்சியம்!
+            ஒற்றுமையே பலம்!
+            மக்கள் நலமே எங்கள் இலட்சியம்!
 
         </p>
 
@@ -769,6 +1144,7 @@ footer {
             About Us
         </h2>
 
+
         <p class="about-text">
 
             JMD'S ROYAL MAKKAL NALASANGAM is dedicated
@@ -780,7 +1156,9 @@ footer {
 
         </p>
 
+
         <br>
+
 
         <p class="about-text tamil">
 
@@ -797,7 +1175,7 @@ footer {
 
 
 <!-- =====================================================
-                    VISION & MISSION
+                  VISION & MISSION
 ===================================================== -->
 
 <section>
@@ -808,7 +1186,9 @@ footer {
             Vision & Mission
         </h2>
 
+
         <div class="card-grid">
+
 
             <div class="card">
 
@@ -841,6 +1221,7 @@ footer {
 
             </div>
 
+
         </div>
 
     </div>
@@ -860,6 +1241,7 @@ footer {
         <h2>
             Our Values
         </h2>
+
 
         <div class="card-grid">
 
@@ -950,6 +1332,7 @@ footer {
             Our Activities
         </h2>
 
+
         <div class="card-grid">
 
 
@@ -1010,16 +1393,20 @@ footer {
 
 
 <!-- =====================================================
-                         GALLERY
+                     NORMAL GALLERY
 ===================================================== -->
 
-<section class="gallery" id="gallery">
+<section
+    class="gallery"
+    id="gallery"
+>
 
     <div class="container">
 
         <h2>
             Gallery
         </h2>
+
 
         <div class="gallery-grid">
 
@@ -1137,13 +1524,14 @@ footer {
 
 
 <!-- =====================================================
-                   FESTIVAL GALLERY
+                  FESTIVAL GALLERY
 ===================================================== -->
 
 <section
     class="festival-gallery"
     id="festival-gallery"
 >
+
 
     <div class="container">
 
@@ -1307,7 +1695,7 @@ footer {
 
 
 <!-- =====================================================
-                      ANNOUNCEMENTS
+                     ANNOUNCEMENTS
 ===================================================== -->
 
 <section
@@ -1325,14 +1713,20 @@ footer {
         <div class="announcement-list">
 
 
-            <!-- GANESH CHATURTHI -->
+            <!-- =================================================
+                    GANESH CHATURTHI ANNOUNCEMENT
+            ================================================= -->
 
             <div class="announcement">
+
 
                 <div class="date">
 
                     14
-                    <span>SEP</span>
+
+                    <span>
+                        SEP
+                    </span>
 
                 </div>
 
@@ -1386,14 +1780,20 @@ footer {
 
 
 
-            <!-- MONTHLY MEETING -->
+            <!-- =================================================
+                         MONTHLY MEETING
+            ================================================= -->
 
             <div class="announcement">
+
 
                 <div class="date">
 
                     04
-                    <span>OCT</span>
+
+                    <span>
+                        OCT
+                    </span>
 
                 </div>
 
@@ -1401,14 +1801,18 @@ footer {
                 <div>
 
                     <h3>
+
                         Monthly Association Meeting
+
                     </h3>
+
 
                     <div class="tamil">
 
                         மாதாந்திர சங்க கூட்டம்
 
                     </div>
+
 
                     <p>
 
@@ -1423,14 +1827,20 @@ footer {
 
 
 
-            <!-- WELFARE PROGRAMME -->
+            <!-- =================================================
+                     COMMUNITY WELFARE PROGRAMME
+            ================================================= -->
 
             <div class="announcement">
+
 
                 <div class="date">
 
                     15
-                    <span>SEP</span>
+
+                    <span>
+                        SEP
+                    </span>
 
                 </div>
 
@@ -1438,8 +1848,11 @@ footer {
                 <div>
 
                     <h3>
+
                         Community Welfare Programme
+
                     </h3>
+
 
                     <div class="tamil">
 
@@ -1447,10 +1860,12 @@ footer {
 
                     </div>
 
+
                     <p>
 
-                        Details regarding the upcoming community
-                        welfare programme will be announced soon.
+                        Details regarding the upcoming
+                        community welfare programme
+                        will be announced soon.
 
                     </p>
 
@@ -1460,14 +1875,20 @@ footer {
 
 
 
-            <!-- MEMBER NOTICE -->
+            <!-- =================================================
+                         MEMBER NOTICE
+            ================================================= -->
 
             <div class="announcement">
+
 
                 <div class="date">
 
                     30
-                    <span>SEP</span>
+
+                    <span>
+                        SEP
+                    </span>
 
                 </div>
 
@@ -1475,8 +1896,11 @@ footer {
                 <div>
 
                     <h3>
+
                         Important Member Notice
+
                     </h3>
+
 
                     <div class="tamil">
 
@@ -1484,10 +1908,11 @@ footer {
 
                     </div>
 
+
                     <p>
 
-                        All members are requested to stay updated
-                        with association announcements.
+                        All members are requested to stay
+                        updated with association announcements.
 
                     </p>
 
@@ -1555,7 +1980,7 @@ footer {
 
 
 <!-- =====================================================
-                        LIGHTBOX
+                         LIGHTBOX
 ===================================================== -->
 
 <div
@@ -1606,7 +2031,9 @@ footer {
 <script>
 
 
-/* ================= NORMAL GALLERY ================= */
+/* =====================================================
+                    NORMAL GALLERY
+===================================================== */
 
 const normalGallery = [
 
@@ -1622,7 +2049,9 @@ const normalGallery = [
 ];
 
 
-/* ================= FESTIVAL GALLERY ================= */
+/* =====================================================
+                   FESTIVAL GALLERY
+===================================================== */
 
 const festivalGallery = [
 
@@ -1641,8 +2070,9 @@ let currentGallery = "normal";
 let currentImage = 0;
 
 
-
-/* ================= OPEN ================= */
+/* =====================================================
+                         OPEN
+===================================================== */
 
 function openGallery(type, index) {
 
@@ -1658,36 +2088,43 @@ function openGallery(type, index) {
 
         images = festivalGallery;
 
-    } else {
+    }
+
+    else {
 
         images = normalGallery;
 
     }
 
 
-    document.getElementById("lightboxImage").src =
-        images[currentImage];
+    document.getElementById(
+        "lightboxImage"
+    ).src = images[currentImage];
 
 
-    document.getElementById("lightbox").style.display =
-        "flex";
+    document.getElementById(
+        "lightbox"
+    ).style.display = "flex";
 
 }
 
 
-
-/* ================= CLOSE ================= */
+/* =====================================================
+                         CLOSE
+===================================================== */
 
 function closeGallery() {
 
-    document.getElementById("lightbox").style.display =
-        "none";
+    document.getElementById(
+        "lightbox"
+    ).style.display = "none";
 
 }
 
 
-
-/* ================= NEXT / PREVIOUS ================= */
+/* =====================================================
+                    NEXT / PREVIOUS
+===================================================== */
 
 function changeGallery(direction) {
 
@@ -1699,7 +2136,9 @@ function changeGallery(direction) {
 
         images = festivalGallery;
 
-    } else {
+    }
+
+    else {
 
         images = normalGallery;
 
@@ -1723,14 +2162,16 @@ function changeGallery(direction) {
     }
 
 
-    document.getElementById("lightboxImage").src =
-        images[currentImage];
+    document.getElementById(
+        "lightboxImage"
+    ).src = images[currentImage];
 
 }
 
 
-
-/* ================= KEYBOARD ================= */
+/* =====================================================
+                       KEYBOARD
+===================================================== */
 
 document.addEventListener(
     "keydown",
@@ -1760,8 +2201,29 @@ document.addEventListener(
     }
 );
 
+
+/* =====================================================
+                   CLICK OUTSIDE IMAGE
+===================================================== */
+
+document.getElementById(
+    "lightbox"
+).addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+
+            closeGallery();
+
+        }
+
+    }
+);
+
 </script>
 
 
 </body>
+
 </html>
