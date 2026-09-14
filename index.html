@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>JMD'S ROYAL MAKKAL NALASANGAM</title>
@@ -10,12 +13,20 @@
 content="JMD'S ROYAL MAKKAL NALASANGAM - Unity, welfare and service for our community.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
 
+
 <style>
+
+/* ========================================
+   GLOBAL
+======================================== */
 
 *{
     margin:0;
@@ -25,636 +36,1083 @@ rel="stylesheet">
 }
 
 body{
+
     font-family:"Noto Sans Tamil",Arial,sans-serif;
+
     background:#07111f;
+
     color:#f5f7fa;
+
     line-height:1.7;
+
     overflow-x:hidden;
 }
 
 a{
+
     color:inherit;
+
     text-decoration:none;
 }
 
 .container{
+
     width:90%;
+
     max-width:1200px;
+
     margin:auto;
 }
 
 section{
+
     padding:90px 0;
 }
 
 .section-title{
+
     text-align:center;
+
     margin-bottom:50px;
 }
 
 .section-title h2{
+
     font-size:38px;
+
     margin-bottom:10px;
+
     color:#f4c95d;
 }
 
 .section-title p{
+
     color:#aeb8c7;
+
+    font-size:16px;
 }
 
+
+/* ========================================
+   NAVBAR
+======================================== */
+
 .navbar{
+
     position:fixed;
+
     top:0;
+
     left:0;
+
     width:100%;
+
     z-index:1000;
+
     background:rgba(4,12,23,.94);
+
     backdrop-filter:blur(15px);
+
     border-bottom:1px solid rgba(244,201,93,.15);
 }
 
 .nav-container{
+
     min-height:75px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 }
 
 .logo-area{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
 }
 
 .logo-area img{
+
     width:48px;
+
     height:48px;
+
     object-fit:contain;
+
     border-radius:50%;
 }
 
 .logo-text{
+
     font-weight:800;
+
     font-size:15px;
+
     line-height:1.2;
 }
 
 .logo-text span{
+
     color:#f4c95d;
+
     display:block;
 }
 
 .nav-links{
+
     display:flex;
+
     list-style:none;
+
     gap:22px;
 }
 
 .nav-links a{
+
     font-size:14px;
+
     color:#dce3ec;
+
     transition:.3s;
 }
 
 .nav-links a:hover{
+
     color:#f4c95d;
 }
 
 .menu-btn{
+
     display:none;
+
     background:none;
+
     border:none;
+
     color:white;
+
     font-size:28px;
+
     cursor:pointer;
 }
 
+
+/* ========================================
+   HERO
+======================================== */
+
 .hero{
+
     min-height:100vh;
+
     display:flex;
+
     align-items:center;
+
     text-align:center;
+
     background:
-        radial-gradient(circle at 50% 30%,rgba(244,201,93,.12),transparent 35%),
-        linear-gradient(135deg,#07111f,#0b1d32,#07111f);
+
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(244,201,93,.12),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0b1d32,
+            #07111f
+        );
+
     padding-top:100px;
 }
 
 .hero-content{
+
     width:100%;
+
     animation:fadeUp 1s ease;
 }
 
 .hero-logo{
+
     width:120px;
+
     height:120px;
+
     object-fit:contain;
+
     margin-bottom:25px;
-    filter:drop-shadow(0 0 25px rgba(244,201,93,.25));
+
+    filter:drop-shadow(
+        0 0 25px rgba(244,201,93,.25)
+    );
 }
 
 .hero h1{
+
     font-size:clamp(38px,7vw,76px);
+
     line-height:1.05;
+
     font-weight:800;
+
     letter-spacing:2px;
 }
 
 .hero h1 span{
+
     color:#f4c95d;
 }
 
 .hero-tamil{
+
     margin-top:18px;
+
     font-size:clamp(19px,3vw,28px);
+
     font-weight:600;
 }
 
 .hero-slogan{
+
     margin:20px auto;
+
     max-width:750px;
+
     color:#c5ceda;
+
     font-size:18px;
 }
 
 .hero-buttons{
+
     margin-top:35px;
+
     display:flex;
+
     justify-content:center;
+
     gap:15px;
+
     flex-wrap:wrap;
 }
 
 .btn{
+
     padding:13px 25px;
+
     border-radius:30px;
+
     font-weight:700;
+
     transition:.3s;
+
     display:inline-block;
 }
 
 .btn-primary{
+
     background:#f4c95d;
+
     color:#07111f;
 }
 
 .btn-primary:hover{
+
     transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(244,201,93,.25);
+
+    box-shadow:
+        0 10px 30px
+        rgba(244,201,93,.25);
 }
 
 .btn-outline{
+
     border:1px solid #f4c95d;
+
     color:#f4c95d;
 }
 
 .btn-outline:hover{
+
     background:#f4c95d;
+
     color:#07111f;
 }
 
+
+/* ========================================
+   ABOUT
+======================================== */
+
 .about-grid{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:30px;
 }
 
 .card{
-    background:linear-gradient(145deg,#0c1b2e,#0a1728);
-    border:1px solid rgba(244,201,93,.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c1b2e,
+            #0a1728
+        );
+
+    border:
+        1px solid
+        rgba(244,201,93,.12);
+
     border-radius:20px;
+
     padding:30px;
+
     transition:.3s;
 }
 
 .card:hover{
+
     transform:translateY(-5px);
-    border-color:rgba(244,201,93,.35);
+
+    border-color:
+        rgba(244,201,93,.35);
 }
 
 .card h3{
+
     color:#f4c95d;
+
     margin-bottom:15px;
+
     font-size:23px;
 }
 
 .card p{
+
     color:#bdc7d4;
 }
 
 .tamil{
+
     margin-top:15px;
 }
 
+
+/* ========================================
+   VALUES
+======================================== */
+
 .values-grid{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:20px;
 }
 
 .value-card{
+
     text-align:center;
+
     padding:30px 20px;
+
     border-radius:18px;
+
     background:#0b192b;
-    border:1px solid rgba(244,201,93,.1);
+
+    border:
+        1px solid
+        rgba(244,201,93,.1);
+
     transition:.3s;
 }
 
 .value-card:hover{
+
     transform:translateY(-7px);
+
     border-color:#f4c95d;
 }
 
 .value-icon{
+
     font-size:38px;
+
     margin-bottom:15px;
 }
 
 .value-card h3{
+
     color:#f4c95d;
+
     margin-bottom:8px;
 }
 
+
+/* ========================================
+   ACTIVITIES
+======================================== */
+
 .activities-grid{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:22px;
 }
 
 .activity{
+
     padding:28px;
+
     background:#0b192b;
+
     border-radius:18px;
-    border-left:3px solid #f4c95d;
+
+    border-left:
+        3px solid #f4c95d;
 }
 
 .activity h3{
+
     margin-bottom:10px;
+
     color:#f4c95d;
 }
 
+
+/* ========================================
+   GALLERY
+======================================== */
+
 .gallery{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:15px;
 }
 
 .gallery-item{
+
     height:230px;
+
     overflow:hidden;
+
     border-radius:15px;
+
     cursor:pointer;
+
     background:#0c1b2e;
-    border:1px solid rgba(244,201,93,.1);
+
+    border:
+        1px solid
+        rgba(244,201,93,.1);
 }
 
 .gallery-item img{
+
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
     transition:.5s;
 }
 
 .gallery-item:hover img{
+
     transform:scale(1.08);
 }
 
+
+/* ========================================
+   FESTIVAL GALLERY
+======================================== */
+
 .festival-section{
+
     background:
-        radial-gradient(circle at center,rgba(244,201,93,.08),transparent 55%);
+
+        radial-gradient(
+            circle at center,
+            rgba(244,201,93,.08),
+            transparent 55%
+        );
 }
 
 .festival-heading{
+
     text-align:center;
+
     margin-bottom:35px;
 }
 
 .festival-heading h3{
+
     font-size:30px;
+
     color:#f4c95d;
 }
 
 .festival-heading p{
+
     color:#aeb8c7;
 }
 
+
+/* ========================================
+   ANNOUNCEMENTS
+======================================== */
+
 .announcement-grid{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:22px;
 }
 
 .announcement{
+
     position:relative;
+
     padding:28px;
-    background:linear-gradient(145deg,#0d1d31,#0a1727);
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d1d31,
+            #0a1727
+        );
+
     border-radius:20px;
-    border:1px solid rgba(244,201,93,.13);
+
+    border:
+        1px solid
+        rgba(244,201,93,.13);
+
     overflow:hidden;
 }
 
 .announcement::before{
+
     content:"";
+
     position:absolute;
+
     top:0;
+
     left:0;
+
     width:100%;
+
     height:3px;
+
     background:#f4c95d;
 }
 
 .date{
+
     display:inline-block;
+
     background:#f4c95d;
+
     color:#07111f;
+
     padding:6px 13px;
+
     border-radius:20px;
+
     font-size:12px;
+
     font-weight:800;
+
     margin-bottom:18px;
 }
 
 .announcement h3{
+
     margin-bottom:12px;
 }
 
 .announcement p{
+
     color:#b8c3d1;
+
     font-size:14px;
 }
 
+
+/* ========================================
+   CONTACT
+======================================== */
+
 .contact-box{
+
     max-width:850px;
+
     margin:auto;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
 .contact-card{
+
     text-align:center;
+
     padding:30px 15px;
+
     background:#0b192b;
+
     border-radius:18px;
 }
 
 .contact-card .icon{
+
     font-size:35px;
+
     margin-bottom:10px;
 }
 
 .contact-card h3{
+
     color:#f4c95d;
+
     margin-bottom:8px;
 }
 
 .contact-card p{
+
     color:#bdc7d4;
+
     font-size:14px;
 }
 
+
+/* ========================================
+   FOOTER
+======================================== */
+
 footer{
+
     padding:35px 20px;
+
     text-align:center;
+
     background:#040b14;
-    border-top:1px solid rgba(244,201,93,.12);
+
+    border-top:
+        1px solid
+        rgba(244,201,93,.12);
 }
 
 footer h3{
+
     color:#f4c95d;
 }
 
 footer p{
+
     color:#8793a3;
+
     font-size:13px;
+
     margin-top:7px;
 }
 
+
+/* ========================================
+   LIGHTBOX
+======================================== */
+
 .lightbox{
+
     position:fixed;
+
     inset:0;
+
     background:rgba(0,0,0,.94);
+
     z-index:2000;
+
     display:none;
+
     align-items:center;
+
     justify-content:center;
+
     padding:20px;
 }
 
 .lightbox.active{
+
     display:flex;
 }
 
 .lightbox img{
+
     max-width:90%;
+
     max-height:85vh;
+
     border-radius:12px;
 }
 
 .close-btn,
 .prev-btn,
 .next-btn{
+
     position:absolute;
+
     border:none;
-    background:rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.1);
+
     color:white;
+
     cursor:pointer;
+
     border-radius:50%;
 }
 
 .close-btn{
+
     top:25px;
+
     right:30px;
+
     width:45px;
+
     height:45px;
+
     font-size:25px;
 }
 
 .prev-btn,
 .next-btn{
+
     top:50%;
+
     transform:translateY(-50%);
+
     width:50px;
+
     height:50px;
+
     font-size:28px;
 }
 
 .prev-btn{
+
     left:25px;
 }
 
 .next-btn{
+
     right:25px;
 }
 
+
+/* ========================================
+   TOP BUTTON
+======================================== */
+
 .top-btn{
+
     position:fixed;
+
     right:20px;
+
     bottom:20px;
+
     width:45px;
+
     height:45px;
+
     border:none;
+
     border-radius:50%;
+
     background:#f4c95d;
+
     color:#07111f;
+
     font-size:20px;
+
     font-weight:bold;
+
     cursor:pointer;
+
     z-index:900;
+
     display:none;
 }
 
 .top-btn.show{
+
     display:block;
 }
 
+
+/* ========================================
+   ANIMATION
+======================================== */
+
 @keyframes fadeUp{
+
     from{
+
         opacity:0;
+
         transform:translateY(20px);
+
     }
+
     to{
+
         opacity:1;
+
         transform:translateY(0);
+
     }
+
 }
+
+
+/* ========================================
+   TABLET
+======================================== */
 
 @media(max-width:900px){
 
     .nav-links{
+
         position:absolute;
+
         top:75px;
+
         left:0;
+
         width:100%;
+
         background:#07111f;
+
         display:none;
+
         flex-direction:column;
+
         text-align:center;
+
         padding:20px;
+
         gap:16px;
     }
 
     .nav-links.active{
+
         display:flex;
     }
 
     .menu-btn{
+
         display:block;
     }
 
     .values-grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .activities-grid{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .gallery{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .announcement-grid{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
     }
+
 }
+
+
+/* ========================================
+   MOBILE
+======================================== */
 
 @media(max-width:650px){
 
     section{
+
         padding:65px 0;
     }
 
     .about-grid{
+
         grid-template-columns:1fr;
     }
 
     .activities-grid{
+
         grid-template-columns:1fr;
     }
 
     .announcement-grid{
+
         grid-template-columns:1fr;
     }
 
     .contact-box{
+
         grid-template-columns:1fr;
     }
 
     .hero-logo{
+
         width:95px;
+
         height:95px;
     }
 
     .hero-slogan{
+
         font-size:15px;
     }
 
     .section-title h2{
+
         font-size:30px;
     }
+
 }
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
 
 @media(max-width:430px){
 
     .container{
+
         width:92%;
     }
 
     .values-grid{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
         gap:10px;
     }
 
     .value-card{
+
         padding:20px 10px;
     }
 
     .gallery{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
         gap:9px;
     }
 
     .gallery-item{
+
         height:160px;
     }
 
     .logo-text{
+
         font-size:12px;
     }
 
     .logo-area img{
+
         width:40px;
+
         height:40px;
     }
 
     .hero h1{
+
         font-size:36px;
     }
 
     .hero-tamil{
+
         font-size:17px;
     }
 
     .btn{
+
         width:100%;
+
         max-width:260px;
     }
 
     .prev-btn{
+
         left:10px;
     }
 
     .next-btn{
+
         right:10px;
     }
+
 }
 
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- ========================================
+     NAVBAR
+======================================== -->
 
 <nav class="navbar">
 
@@ -665,23 +1123,58 @@ footer p{
 <img src="LOGO.png" alt="RMNS Logo">
 
 <div class="logo-text">
+
 JMD'S ROYAL
-<span>MAKKAL NALASANGAM</span>
+
+<span>
+MAKKAL NALASANGAM
+</span>
+
 </div>
 
 </a>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<button
+class="menu-btn"
+onclick="toggleMenu()">
+
+☰
+
+</button>
+
 
 <ul class="nav-links" id="navLinks">
 
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#activities">Activities</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#festival-gallery">Festivals</a></li>
-<li><a href="#announcements">Announcements</a></li>
-<li><a href="#contact">Contact</a></li>
+<li>
+<a href="#home">Home</a>
+</li>
+
+<li>
+<a href="#about">About</a>
+</li>
+
+<li>
+<a href="#activities">Activities</a>
+</li>
+
+<li>
+<a href="#gallery">Gallery</a>
+</li>
+
+<li>
+<a href="#festival-gallery">Festivals</a>
+</li>
+
+<li>
+<a href="#announcements">
+Announcements
+</a>
+</li>
+
+<li>
+<a href="#contact">Contact</a>
+</li>
 
 </ul>
 
@@ -690,38 +1183,75 @@ JMD'S ROYAL
 </nav>
 
 
+
+<!-- ========================================
+     HERO
+======================================== -->
+
 <section class="hero" id="home">
 
 <div class="container hero-content">
 
-<img src="LOGO.png" class="hero-logo" alt="Association Logo">
+<img
+src="LOGO.png"
+class="hero-logo"
+alt="Association Logo"
+>
+
 
 <h1>
-JMD'S <span>ROYAL</span>
+
+JMD'S
+
+<span>ROYAL</span>
+
 <br>
+
 MAKKAL NALASANGAM
+
 </h1>
 
+
 <p class="hero-tamil">
+
 ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+
 </p>
 
-<p class="hero-slogan">
-Unity is our strength • People's welfare is our mission
-</p>
 
 <p class="hero-slogan">
-ஒற்றுமையே பலம்! மக்கள் நலமே எங்கள் இலட்சியம்!
+
+Unity is our strength •
+People's welfare is our mission
+
 </p>
+
+
+<p class="hero-slogan">
+
+ஒற்றுமையே பலம்!
+மக்கள் நலமே எங்கள் இலட்சியம்!
+
+</p>
+
 
 <div class="hero-buttons">
 
-<a href="#about" class="btn btn-primary">
+<a
+href="#about"
+class="btn btn-primary">
+
 Explore Our Mission
+
 </a>
 
-<a href="#contact" class="btn btn-outline">
+
+<a
+href="#contact"
+class="btn btn-outline">
+
 Contact Us
+
 </a>
 
 </div>
@@ -730,51 +1260,87 @@ Contact Us
 
 </section>
 
+
+
+<!-- ========================================
+     ABOUT
+======================================== -->
 
 <section id="about">
 
 <div class="container">
 
 <div class="section-title">
+
 <h2>About Us</h2>
-<p>Serving people with unity, responsibility and care</p>
+
+<p>
+Serving people with unity,
+responsibility and care
+</p>
+
 </div>
+
 
 <div class="about-grid">
 
+
 <div class="card">
 
-<h3>Who We Are</h3>
+<h3>
+Who We Are
+</h3>
 
 <p>
-JMD'S ROYAL MAKKAL NALASANGAM is a community-focused association
-working towards the welfare, unity and development of people.
+
+JMD'S ROYAL MAKKAL NALASANGAM
+is a community-focused association
+working towards the welfare, unity
+and development of people.
+
 </p>
 
+
 <p class="tamil">
-ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம் மக்களின் நலன்,
-ஒற்றுமை மற்றும் முன்னேற்றத்திற்காக செயல்படும்
+
+ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+மக்களின் நலன், ஒற்றுமை மற்றும்
+முன்னேற்றத்திற்காக செயல்படும்
 சமூக நல அமைப்பாகும்.
+
 </p>
 
 </div>
+
+
 
 <div class="card">
 
-<h3>Our Purpose</h3>
+<h3>
+Our Purpose
+</h3>
 
 <p>
-Our aim is to bring people together and support useful
-community activities while encouraging cooperation,
-responsibility and social welfare.
+
+Our aim is to bring people together
+and support useful community
+activities while encouraging
+cooperation and responsibility.
+
 </p>
 
+
 <p class="tamil">
-மக்களை ஒன்றிணைத்து, சமூக நலப் பணிகளை முன்னெடுத்து,
-ஒற்றுமை மற்றும் பொறுப்புணர்வை வளர்ப்பதே எங்கள் நோக்கம்.
+
+மக்களை ஒன்றிணைத்து,
+சமூக நலப் பணிகளை முன்னெடுத்து,
+ஒற்றுமை மற்றும் பொறுப்புணர்வை
+வளர்ப்பதே எங்கள் நோக்கம்.
+
 </p>
 
 </div>
+
 
 </div>
 
@@ -783,50 +1349,85 @@ responsibility and social welfare.
 </section>
 
 
+
+<!-- ========================================
+     VISION & MISSION
+======================================== -->
+
 <section>
 
 <div class="container">
 
 <div class="section-title">
-<h2>Vision & Mission</h2>
-<p>Our direction for a stronger community</p>
+
+<h2>
+Vision & Mission
+</h2>
+
+<p>
+Our direction for a stronger community
+</p>
+
 </div>
+
 
 <div class="about-grid">
 
+
 <div class="card">
 
-<h3>🌟 Our Vision</h3>
+<h3>
+🌟 Our Vision
+</h3>
 
 <p>
-To build a united, caring and responsible community where
-people support one another and work together for a better future.
+
+To build a united, caring and
+responsible community where
+people support one another
+and work together for a better future.
+
 </p>
 
+
 <p class="tamil">
-ஒற்றுமையுடனும் அக்கறையுடனும் பொறுப்புடனும்
-மக்கள் ஒருவருக்கொருவர் உதவி செய்து சிறந்த
-எதிர்காலத்தை உருவாக்கும் சமூகத்தை உருவாக்குதல்.
+
+ஒற்றுமையுடனும் அக்கறையுடனும்
+பொறுப்புடனும் மக்கள் ஒருவருக்கொருவர்
+உதவி செய்து சிறந்த எதிர்காலத்தை
+உருவாக்கும் சமூகத்தை உருவாக்குதல்.
+
 </p>
 
 </div>
 
+
+
 <div class="card">
 
-<h3>🎯 Our Mission</h3>
+<h3>
+🎯 Our Mission
+</h3>
 
 <p>
-To organize meaningful welfare activities, encourage unity
-and contribute positively to the community.
+
+To organize meaningful welfare
+activities, encourage unity and
+contribute positively to the community.
+
 </p>
 
+
 <p class="tamil">
+
 அர்த்தமுள்ள நலப்பணிகளை ஏற்பாடு செய்து,
 ஒற்றுமையை வளர்த்து, சமூகத்திற்கு
 நேர்மறையான பங்களிப்பை வழங்குதல்.
+
 </p>
 
 </div>
+
 
 </div>
 
@@ -834,41 +1435,102 @@ and contribute positively to the community.
 
 </section>
 
+
+
+<!-- ========================================
+     VALUES
+======================================== -->
 
 <section>
 
 <div class="container">
 
 <div class="section-title">
-<h2>Our Values</h2>
-<p>The principles that guide our association</p>
+
+<h2>
+Our Values
+</h2>
+
+<p>
+The principles that guide our association
+</p>
+
 </div>
+
 
 <div class="values-grid">
 
-<div class="value-card">
-<div class="value-icon">🤝</div>
-<h3>Unity</h3>
-<p>Standing together as one community.</p>
-</div>
 
 <div class="value-card">
-<div class="value-icon">❤️</div>
-<h3>Care</h3>
-<p>Supporting people when they need us.</p>
+
+<div class="value-icon">
+🤝
 </div>
 
-<div class="value-card">
-<div class="value-icon">⚖️</div>
-<h3>Responsibility</h3>
-<p>Working with honesty and responsibility.</p>
+<h3>
+Unity
+</h3>
+
+<p>
+Standing together as one community.
+</p>
+
 </div>
 
+
+
 <div class="value-card">
-<div class="value-icon">🌱</div>
-<h3>Growth</h3>
-<p>Working towards a better community.</p>
+
+<div class="value-icon">
+❤️
 </div>
+
+<h3>
+Care
+</h3>
+
+<p>
+Supporting people when they need us.
+</p>
+
+</div>
+
+
+
+<div class="value-card">
+
+<div class="value-icon">
+⚖️
+</div>
+
+<h3>
+Responsibility
+</h3>
+
+<p>
+Working with honesty and responsibility.
+</p>
+
+</div>
+
+
+
+<div class="value-card">
+
+<div class="value-icon">
+🌱
+</div>
+
+<h3>
+Growth
+</h3>
+
+<p>
+Working towards a better community.
+</p>
+
+</div>
+
 
 </div>
 
@@ -876,47 +1538,132 @@ and contribute positively to the community.
 
 </section>
 
+
+
+<!-- ========================================
+     ACTIVITIES
+======================================== -->
 
 <section id="activities">
 
 <div class="container">
 
 <div class="section-title">
-<h2>Our Activities</h2>
-<p>Working together for the welfare of our community</p>
+
+<h2>
+Our Activities
+</h2>
+
+<p>
+Working together for our community
+</p>
+
 </div>
+
 
 <div class="activities-grid">
 
-<div class="activity">
-<h3>❤️ Welfare Activities</h3>
-<p>Supporting people and families through useful community initiatives.</p>
-</div>
 
 <div class="activity">
-<h3>🎉 Community Events</h3>
-<p>Organizing celebrations, meetings and activities that bring members together.</p>
+
+<h3>
+❤️ Welfare Activities
+</h3>
+
+<p>
+
+Supporting people and families through
+useful community welfare initiatives.
+
+</p>
+
 </div>
 
-<div class="activity">
-<h3>🌱 Social Development</h3>
-<p>Encouraging positive participation and development within our community.</p>
-</div>
+
 
 <div class="activity">
-<h3>🤝 Member Support</h3>
-<p>Building a strong network where members can cooperate and support one another.</p>
+
+<h3>
+🎉 Community Events
+</h3>
+
+<p>
+
+Organizing celebrations, meetings and
+activities that bring members together.
+
+</p>
+
 </div>
 
-<div class="activity">
-<h3>📢 Awareness</h3>
-<p>Sharing useful information and encouraging responsible community participation.</p>
-</div>
+
 
 <div class="activity">
-<h3>🏆 Future Initiatives</h3>
-<p>Continuously developing new programmes for the benefit of our community.</p>
+
+<h3>
+🌱 Social Development
+</h3>
+
+<p>
+
+Encouraging positive participation and
+development within our community.
+
+</p>
+
 </div>
+
+
+
+<div class="activity">
+
+<h3>
+🤝 Member Support
+</h3>
+
+<p>
+
+Building a strong network where members
+can cooperate and support one another.
+
+</p>
+
+</div>
+
+
+
+<div class="activity">
+
+<h3>
+📢 Awareness
+</h3>
+
+<p>
+
+Sharing useful information and encouraging
+responsible community participation.
+
+</p>
+
+</div>
+
+
+
+<div class="activity">
+
+<h3>
+🏆 Future Initiatives
+</h3>
+
+<p>
+
+Continuously developing new programmes
+for the benefit of our community.
+
+</p>
+
+</div>
+
 
 </div>
 
@@ -924,49 +1671,119 @@ and contribute positively to the community.
 
 </section>
 
+
+
+<!-- ========================================
+     NORMAL GALLERY
+======================================== -->
 
 <section id="gallery">
 
 <div class="container">
 
 <div class="section-title">
-<h2>Our Gallery</h2>
-<p>Memories and moments from our association</p>
+
+<h2>
+Our Gallery
+</h2>
+
+<p>
+Memories and moments from our association
+</p>
+
 </div>
+
 
 <div class="gallery">
 
-<div class="gallery-item">
-<img src="gallery1.jpg" alt="Association activity" onclick="openLightbox(0)">
-</div>
 
 <div class="gallery-item">
-<img src="gallery2.jpg" alt="Association activity" onclick="openLightbox(1)">
+
+<img
+src="gallery1.jpg"
+alt="Association activity"
+onclick="openLightbox(0)"
+>
+
 </div>
 
-<div class="gallery-item">
-<img src="gallery3.jpg" alt="Association activity" onclick="openLightbox(2)">
-</div>
 
 <div class="gallery-item">
-<img src="gallery4.jpg" alt="Association activity" onclick="openLightbox(3)">
+
+<img
+src="gallery2.jpg"
+alt="Association activity"
+onclick="openLightbox(1)"
+>
+
 </div>
 
-<div class="gallery-item">
-<img src="gallery5.jpg" alt="Association activity" onclick="openLightbox(4)">
-</div>
 
 <div class="gallery-item">
-<img src="gallery6.jpg" alt="Association activity" onclick="openLightbox(5)">
+
+<img
+src="gallery3.jpg"
+alt="Association activity"
+onclick="openLightbox(2)"
+>
+
 </div>
 
-<div class="gallery-item">
-<img src="gallery7.jpg" alt="Association activity" onclick="openLightbox(6)">
-</div>
 
 <div class="gallery-item">
-<img src="gallery8.jpg" alt="Association activity" onclick="openLightbox(7)">
+
+<img
+src="gallery4.jpg"
+alt="Association activity"
+onclick="openLightbox(3)"
+>
+
 </div>
+
+
+<div class="gallery-item">
+
+<img
+src="gallery5.jpg"
+alt="Association activity"
+onclick="openLightbox(4)"
+>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="gallery6.jpg"
+alt="Association activity"
+onclick="openLightbox(5)"
+>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="gallery7.jpg"
+alt="Association activity"
+onclick="openLightbox(6)"
+>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="gallery8.jpg"
+alt="Association activity"
+onclick="openLightbox(7)"
+>
+
+</div>
+
 
 </div>
 
@@ -975,62 +1792,146 @@ and contribute positively to the community.
 </section>
 
 
-<section class="festival-section" id="festival-gallery">
+
+<!-- ========================================
+     FESTIVAL GALLERY
+======================================== -->
+
+<section
+class="festival-section"
+id="festival-gallery"
+>
 
 <div class="container">
 
+
 <div class="section-title">
-<h2>🎉 Festival Gallery</h2>
-<p>Celebrations and memories from our community</p>
+
+<h2>
+🎉 Festival Gallery
+</h2>
+
+<p>
+Celebrations and memories from our community
+</p>
+
 </div>
+
 
 <div class="festival-heading">
 
-<h3>Festival Memories</h3>
+<h3>
+Festival Memories
+</h3>
 
 <p>
-Indian • Tamil Nadu • Muslim • Christian • National Celebrations
+
+Indian • Tamil Nadu • Muslim •
+Christian • National Celebrations
+
 </p>
 
+
 <p class="tamil">
-இந்திய • தமிழ்நாடு • முஸ்லிம் • கிறிஸ்தவ • தேசிய விழாக்கள்
+
+இந்திய • தமிழ்நாடு • முஸ்லிம் •
+கிறிஸ்தவ • தேசிய விழாக்கள்
+
 </p>
 
 </div>
+
 
 <div class="gallery">
 
-<div class="gallery-item">
-<img src="festival1.jpg" alt="Festival" onclick="openLightbox(8)">
-</div>
 
 <div class="gallery-item">
-<img src="festival2.jpg" alt="Festival" onclick="openLightbox(9)">
+
+<img
+src="festival1.jpg"
+alt="Festival"
+onclick="openLightbox(8)"
+>
+
 </div>
 
-<div class="gallery-item">
-<img src="festival3.jpg" alt="Festival" onclick="openLightbox(10)">
-</div>
 
 <div class="gallery-item">
-<img src="festival4.jpg" alt="Festival" onclick="openLightbox(11)">
+
+<img
+src="festival2.jpg"
+alt="Festival"
+onclick="openLightbox(9)"
+>
+
 </div>
 
-<div class="gallery-item">
-<img src="festival5.jpg" alt="Festival" onclick="openLightbox(12)">
-</div>
 
 <div class="gallery-item">
-<img src="festival6.jpg" alt="Festival" onclick="openLightbox(13)">
+
+<img
+src="festival3.jpg"
+alt="Festival"
+onclick="openLightbox(10)"
+>
+
 </div>
 
-<div class="gallery-item">
-<img src="festival7.jpg" alt="Festival" onclick="openLightbox(14)">
-</div>
 
 <div class="gallery-item">
-<img src="festival8.jpg" alt="Festival" onclick="openLightbox(15)">
+
+<img
+src="festival4.jpg"
+alt="Festival"
+onclick="openLightbox(11)"
+>
+
 </div>
+
+
+<div class="gallery-item">
+
+<img
+src="festival5.jpg"
+alt="Festival"
+onclick="openLightbox(12)"
+>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="festival6.jpg"
+alt="Festival"
+onclick="openLightbox(13)"
+>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="festival7.jpg"
+alt="Festival"
+onclick="openLightbox(14)"
+>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="festival8.jpg"
+alt="Festival"
+onclick="openLightbox(15)"
+>
+
+</div>
+
 
 </div>
 
@@ -1038,61 +1939,121 @@ Indian • Tamil Nadu • Muslim • Christian • National Celebrations
 
 </section>
 
+
+
+<!-- ========================================
+     ANNOUNCEMENTS
+======================================== -->
 
 <section id="announcements">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>Announcements</h2>
+<h2>
+Announcements
+</h2>
 
-<p>Upcoming festivals, national occasions and association updates</p>
+<p>
+Today's festivals and association updates
+</p>
+
+</div>
+
+
+<div
+class="announcement-grid"
+id="announcementGrid"
+>
 
 </div>
 
-<div class="announcement-grid" id="announcementGrid">
-
-<!-- ANNOUNCEMENTS ARE GENERATED AUTOMATICALLY -->
-
-</div>
 
 </div>
 
 </section>
 
+
+
+<!-- ========================================
+     CONTACT
+======================================== -->
 
 <section id="contact">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<h2>Contact Us</h2>
+<h2>
+Contact Us
+</h2>
 
-<p>We are happy to connect with our members</p>
+<p>
+We are happy to connect with our members
+</p>
 
 </div>
+
 
 <div class="contact-box">
 
-<div class="contact-card">
-<div class="icon">📞</div>
-<h3>Phone</h3>
-<p>Add your association phone number here</p>
-</div>
 
 <div class="contact-card">
-<div class="icon">📧</div>
-<h3>Email</h3>
-<p>Add your association email here</p>
+
+<div class="icon">
+📞
 </div>
 
-<div class="contact-card">
-<div class="icon">📍</div>
-<h3>Location</h3>
-<p>Add your association location here</p>
+<h3>
+Phone
+</h3>
+
+<p>
+Add your association phone number here
+</p>
+
 </div>
+
+
+
+<div class="contact-card">
+
+<div class="icon">
+📧
+</div>
+
+<h3>
+Email
+</h3>
+
+<p>
+Add your association email here
+</p>
+
+</div>
+
+
+
+<div class="contact-card">
+
+<div class="icon">
+📍
+</div>
+
+<h3>
+Location
+</h3>
+
+<p>
+Add your association location here
+</p>
+
+</div>
+
 
 </div>
 
@@ -1101,398 +2062,591 @@ Indian • Tamil Nadu • Muslim • Christian • National Celebrations
 </section>
 
 
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
 <footer>
 
-<h3>JMD'S ROYAL MAKKAL NALASANGAM</h3>
-
-<p>ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்</p>
+<h3>
+JMD'S ROYAL MAKKAL NALASANGAM
+</h3>
 
 <p>
-© 2026 JMD'S ROYAL MAKKAL NALASANGAM • All Rights Reserved
+ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+</p>
+
+<p>
+© 2026 JMD'S ROYAL MAKKAL NALASANGAM
+• All Rights Reserved
 </p>
 
 </footer>
 
 
-<div class="lightbox" id="lightbox" onclick="closeOutside(event)">
 
-<button class="close-btn" onclick="closeLightbox()">×</button>
+<!-- ========================================
+     LIGHTBOX
+======================================== -->
 
-<button class="prev-btn" onclick="previousImage(event)">‹</button>
+<div
+class="lightbox"
+id="lightbox"
+onclick="closeOutside(event)"
+>
 
-<img id="lightboxImage" src="" alt="Gallery image">
+<button
+class="close-btn"
+onclick="closeLightbox()"
+>
+×
+</button>
 
-<button class="next-btn" onclick="nextImage(event)">›</button>
+
+<button
+class="prev-btn"
+onclick="previousImage(event)"
+>
+‹
+</button>
+
+
+<img
+id="lightboxImage"
+src=""
+alt="Gallery image"
+>
+
+
+<button
+class="next-btn"
+onclick="nextImage(event)"
+>
+›
+</button>
 
 </div>
 
 
-<button class="top-btn" id="topBtn"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+<!-- ========================================
+     TOP BUTTON
+======================================== -->
+
+<button
+class="top-btn"
+id="topBtn"
+onclick="window.scrollTo({top:0,behavior:'smooth'})"
+>
 ↑
 </button>
 
 
+
 <script>
 
-/* =========================
+
+/* ========================================
    MOBILE MENU
-========================= */
+======================================== */
 
 function toggleMenu(){
 
-    document.getElementById("navLinks").classList.toggle("active");
+    document
+    .getElementById("navLinks")
+    .classList.toggle("active");
 
 }
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
 
     link.addEventListener("click", () => {
 
-        document.getElementById("navLinks").classList.remove("active");
+        document
+        .getElementById("navLinks")
+        .classList.remove("active");
 
     });
 
 });
 
 
-/* =========================
-   AUTOMATIC FESTIVAL
-   ANNOUNCEMENT SYSTEM
-========================= */
+
+/* ========================================
+   FESTIVAL ANNOUNCEMENTS
+======================================== */
 
 const announcements = [
 
-    /* JANUARY */
+    /* ================= JANUARY ================= */
 
     {
         date:"2026-01-14",
+
         title:"🌾 Pongal",
+
         english:
         "Warm wishes to all our members and their families on the occasion of Pongal. May this harvest festival bring happiness, prosperity and peace.",
+
         tamil:
         "பொங்கல் திருநாளை முன்னிட்டு எங்கள் சங்கத்தின் அனைத்து உறுப்பினர்களுக்கும் அவர்களது குடும்பத்தினருக்கும் இனிய பொங்கல் நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-01-15",
+
         title:"🐄 Mattu Pongal",
+
         english:
         "Warm wishes to everyone on the occasion of Mattu Pongal. May this special day bring happiness and prosperity to all.",
+
         tamil:
         "மாட்டுப் பொங்கல் திருநாளை முன்னிட்டு அனைவருக்கும் இனிய நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-01-26",
+
         title:"🇮🇳 Republic Day",
+
         english:
         "Happy Republic Day to all our members and their families. Let us celebrate the values of unity, responsibility and democracy.",
+
         tamil:
         "குடியரசு தின நல்வாழ்த்துக்கள். ஒற்றுமை, பொறுப்பு மற்றும் ஜனநாயகத்தின் மதிப்புகளை போற்றுவோம்."
     },
 
 
-    /* FEBRUARY */
+    /* ================= FEBRUARY ================= */
 
     {
         date:"2026-02-01",
+
         title:"🛕 Thai Pusam",
+
         english:
         "Warm wishes to everyone on the occasion of Thai Pusam.",
+
         tamil:
         "தைப்பூசத் திருநாள் நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-02-15",
+
         title:"🕉️ Maha Shivaratri",
+
         english:
         "Warm wishes to everyone on the occasion of Maha Shivaratri. May the day bring peace and happiness.",
+
         tamil:
         "மகா சிவராத்திரி நல்வாழ்த்துக்கள்."
     },
 
 
-    /* MARCH */
+    /* ================= MARCH ================= */
 
     {
         date:"2026-03-21",
+
         title:"☪️ Eid al-Fitr",
+
         english:
         "Eid Mubarak to all our Muslim members and their families. May this special occasion bring peace, happiness and harmony.",
+
         tamil:
         "அனைத்து முஸ்லிம் உறுப்பினர்கள் மற்றும் அவர்களது குடும்பத்தினருக்கும் ஈத் முபாரக் நல்வாழ்த்துக்கள்."
     },
 
 
-    /* APRIL */
+    /* ================= APRIL ================= */
 
     {
         date:"2026-04-03",
+
         title:"✝️ Good Friday",
+
         english:
         "Warm wishes to all our Christian members and their families on Good Friday.",
+
         tamil:
         "அனைத்து கிறிஸ்தவ உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் புனித வெள்ளி நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-04-05",
+
         title:"✝️ Easter",
+
         english:
         "Happy Easter to all our Christian members and their families. May this occasion bring hope, peace and happiness.",
+
         tamil:
         "அனைத்து கிறிஸ்தவ உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் ஈஸ்டர் நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-04-14",
+
         title:"🌸 Tamil New Year / Puthandu",
+
         english:
-        "Happy Tamil New Year! May this new year bring happiness, good health, prosperity and success to everyone.",
+        "Happy Tamil New Year! May this new year bring happiness, prosperity and success to everyone.",
+
         tamil:
         "இனிய தமிழ் புத்தாண்டு நல்வாழ்த்துக்கள்! அனைவருக்கும் மகிழ்ச்சி, ஆரோக்கியம், வளம் மற்றும் வெற்றி கிடைக்கட்டும்."
     },
 
 
-    /* MAY */
+    /* ================= MAY ================= */
 
     {
         date:"2026-05-28",
+
         title:"☪️ Eid al-Adha / Bakrid",
+
         english:
         "Eid Mubarak to all our Muslim members and their families. May this blessed occasion bring peace and prosperity.",
+
         tamil:
         "அனைத்து முஸ்லிம் உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் பக்ரீத் நல்வாழ்த்துக்கள்."
     },
 
 
-    /* JUNE */
+    /* ================= JUNE ================= */
 
     {
         date:"2026-06-26",
+
         title:"☪️ Muharram",
+
         english:
         "Warm wishes and peaceful thoughts to all our Muslim members on the occasion of Muharram.",
+
         tamil:
         "அனைத்து முஸ்லிம் உறுப்பினர்களுக்கும் முஹர்ரம் நல்வாழ்த்துக்கள்."
     },
 
 
-    /* AUGUST */
+    /* ================= AUGUST ================= */
 
     {
         date:"2026-08-15",
+
         title:"🇮🇳 Independence Day",
+
         english:
         "Happy Independence Day to all our members and their families. Let us celebrate our freedom and always stand together in unity.",
+
         tamil:
         "இனிய சுதந்திர தின நல்வாழ்த்துக்கள்! நமது சுதந்திரத்தை போற்றி, ஒற்றுமையுடன் ஒன்றிணைந்து செயல்படுவோம்."
     },
 
+
     {
         date:"2026-08-26",
+
         title:"☪️ Milad-un-Nabi",
+
         english:
         "Warm wishes to all our Muslim members and their families on the occasion of Milad-un-Nabi.",
+
         tamil:
         "அனைத்து முஸ்லிம் உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் மிலாது நபி நல்வாழ்த்துக்கள்."
     },
 
 
-    /* SEPTEMBER */
+    /* ================= SEPTEMBER ================= */
 
     {
         date:"2026-09-14",
+
         title:"🐘 Vinayagar Chaturthi",
+
         english:
         "Warm wishes to all our members and their families on the occasion of Vinayagar Chaturthi. May the occasion bring happiness, peace and prosperity.",
+
         tamil:
         "விநாயகர் சதுர்த்தியை முன்னிட்டு எங்கள் சங்கத்தின் அனைத்து உறுப்பினர்களுக்கும் அவர்களது குடும்பத்தினருக்கும் இனிய நல்வாழ்த்துக்கள்."
     },
 
 
-    /* OCTOBER */
+    /* ================= OCTOBER ================= */
 
     {
         date:"2026-10-02",
+
         title:"🇮🇳 Gandhi Jayanti",
+
         english:
         "Warm wishes on Gandhi Jayanti. Let us remember the values of peace, truth and unity.",
+
         tamil:
         "காந்தி ஜெயந்தி நல்வாழ்த்துக்கள். அமைதி, உண்மை மற்றும் ஒற்றுமையின் மதிப்புகளை நினைவுகூர்வோம்."
     },
 
+
     {
         date:"2026-10-11",
+
         title:"🌺 Navaratri",
+
         english:
-        "Warm wishes to everyone on the beginning of Navaratri. May these days bring peace, happiness and prosperity.",
+        "Warm wishes to everyone on the occasion of Navaratri. May these days bring peace, happiness and prosperity.",
+
         tamil:
         "நவராத்திரி திருநாள் நல்வாழ்த்துக்கள். அனைவருக்கும் அமைதி, மகிழ்ச்சி மற்றும் வளம் கிடைக்கட்டும்."
     },
 
+
     {
         date:"2026-10-20",
+
         title:"📚 Saraswathi Pooja",
+
         english:
-        "Warm wishes on Saraswathi Pooja. May knowledge, wisdom and learning bring success to everyone.",
+        "Warm wishes on Saraswathi Pooja. May knowledge and wisdom bring success to everyone.",
+
         tamil:
         "சரஸ்வதி பூஜை நல்வாழ்த்துக்கள். அனைவருக்கும் அறிவும் ஞானமும் வெற்றியும் கிடைக்கட்டும்."
     },
 
+
     {
         date:"2026-10-20",
+
         title:"🛠️ Ayudha Pooja",
+
         english:
         "Warm wishes on Ayudha Pooja. May everyone's work and efforts be blessed with success.",
+
         tamil:
         "ஆயுத பூஜை நல்வாழ்த்துக்கள். அனைவரின் பணிகளும் முயற்சிகளும் வெற்றி பெறட்டும்."
     },
 
+
     {
         date:"2026-10-20",
+
         title:"🏹 Vijayadashami",
+
         english:
         "Warm wishes on Vijayadashami. May this day bring success, courage and happiness to everyone.",
+
         tamil:
         "விஜயதசமி நல்வாழ்த்துக்கள். அனைவருக்கும் வெற்றி, தைரியம் மற்றும் மகிழ்ச்சி கிடைக்கட்டும்."
     },
 
 
-    /* NOVEMBER */
+    /* ================= NOVEMBER ================= */
 
     {
         date:"2026-11-08",
+
         title:"🪔 Deepavali",
+
         english:
         "Happy Deepavali to all our members and their families. May the festival of lights bring happiness, peace and prosperity.",
+
         tamil:
-        "அனைத்து உறுப்பினர்கள் மற்றும் அவர்களது குடும்பத்தினருக்கும் இனிய தீபாவளி நல்வாழ்த்துக்கள். ஒளியின் திருநாள் அனைவருக்கும் மகிழ்ச்சியும் வளமும் தரட்டும்."
+        "அனைத்து உறுப்பினர்கள் மற்றும் அவர்களது குடும்பத்தினருக்கும் இனிய தீபாவளி நல்வாழ்த்துக்கள்."
     },
+
 
     {
         date:"2026-11-15",
+
         title:"🛕 Soora Samharam",
+
         english:
         "Warm wishes to everyone on the occasion of Soora Samharam.",
+
         tamil:
         "சூரசம்ஹாரம் திருநாள் நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-11-24",
+
         title:"🪔 Karthigai Deepam",
+
         english:
-        "Warm wishes on Karthigai Deepam. May the festival of lights bring peace, happiness and prosperity to everyone.",
+        "Warm wishes on Karthigai Deepam. May the festival of lights bring peace, happiness and prosperity.",
+
         tamil:
         "கார்த்திகை தீபத் திருநாள் நல்வாழ்த்துக்கள். அனைவரின் வாழ்விலும் ஒளியும் மகிழ்ச்சியும் நிறையட்டும்."
     },
 
 
-    /* DECEMBER */
+    /* ================= DECEMBER ================= */
 
     {
         date:"2026-12-20",
+
         title:"🛕 Vaikuntha Ekadashi",
+
         english:
         "Warm wishes to everyone on the occasion of Vaikuntha Ekadashi.",
+
         tamil:
         "வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-12-24",
+
         title:"🕉️ Arudra Darisanam",
+
         english:
         "Warm wishes to everyone on the occasion of Arudra Darisanam.",
+
         tamil:
         "ஆருத்ரா தரிசன நல்வாழ்த்துக்கள்."
     },
 
+
     {
         date:"2026-12-25",
+
         title:"🎄 Christmas",
+
         english:
-        "Merry Christmas to all our Christian members and their families. May this Christmas bring peace, joy, love and happiness.",
+        "Merry Christmas to all our Christian members and their families. May this Christmas bring peace, joy and happiness.",
+
         tamil:
-        "அனைத்து கிறிஸ்தவ உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் இனிய கிறிஸ்துமஸ் நல்வாழ்த்துக்கள். அனைவரின் வாழ்விலும் அமைதியும் மகிழ்ச்சியும் நிறையட்டும்."
+        "அனைத்து கிறிஸ்தவ உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் இனிய கிறிஸ்துமஸ் நல்வாழ்த்துக்கள்."
     }
 
 ];
 
 
-/* =========================
-   DISPLAY ONLY CURRENT
-   AND UPCOMING FESTIVALS
-========================= */
+
+/* ========================================
+   GET TODAY
+======================================== */
+
+function getTodayString(){
+
+    const today = new Date();
+
+    const year =
+        today.getFullYear();
+
+    const month =
+        String(
+            today.getMonth()+1
+        ).padStart(2,"0");
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(2,"0");
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+
+/* ========================================
+   FORMAT DATE
+======================================== */
+
+function formatDate(dateString){
+
+    const date =
+        new Date(
+            dateString + "T00:00:00"
+        );
+
+    return date
+        .toLocaleDateString(
+            "en-IN",
+            {
+                day:"2-digit",
+                month:"short"
+            }
+        )
+        .toUpperCase();
+
+}
+
+
+
+/* ========================================
+   DISPLAY ANNOUNCEMENTS
+======================================== */
 
 function displayAnnouncements(){
 
     const grid =
-        document.getElementById("announcementGrid");
-
-    const today = new Date();
-
-    today.setHours(0,0,0,0);
+        document.getElementById(
+            "announcementGrid"
+        );
 
     grid.innerHTML = "";
 
-    const upcoming = announcements.filter(item => {
+    const today =
+        getTodayString();
 
-        const festivalDate =
-            new Date(item.date + "T00:00:00");
-
-        /*
-           Festival remains visible
-           during its whole day.
-           It disappears from the
-           following day.
-        */
-
-        return festivalDate >= today;
-
-    });
 
     /*
-       Show the nearest announcements first.
+       ONLY TODAY'S FESTIVALS
     */
 
-    upcoming.sort((a,b) =>
-        new Date(a.date) - new Date(b.date)
-    );
+    const todaysFestivals =
+        announcements.filter(
+            item => item.date === today
+        );
 
-    upcoming.forEach(item => {
 
-        const date =
-            new Date(item.date + "T00:00:00");
+    /*
+       DISPLAY TODAY'S FESTIVALS
+    */
 
-        const formattedDate =
-            date.toLocaleDateString("en-IN",{
-                day:"2-digit",
-                month:"short"
-            }).toUpperCase();
+    todaysFestivals.forEach(item => {
 
         const card =
             document.createElement("div");
 
-        card.className = "announcement";
+        card.className =
+            "announcement";
 
         card.innerHTML = `
 
             <span class="date">
-                ${formattedDate}
+
+                ${formatDate(item.date)}
+
             </span>
 
-            <h3>${item.title}</h3>
+            <h3>
+
+                ${item.title}
+
+            </h3>
 
             <p>
+
                 ${item.english}
+
             </p>
 
             <p class="tamil">
+
                 ${item.tamil}
+
             </p>
 
         `;
@@ -1502,132 +2656,86 @@ function displayAnnouncements(){
     });
 
 
+
     /*
-       If there are no more festival
-       announcements, show a simple message.
+       MONTHLY MEETING
+       ALWAYS SHOW
     */
 
-    if(upcoming.length === 0){
+    const meeting =
+        document.createElement("div");
 
-        grid.innerHTML = `
+    meeting.className =
+        "announcement";
 
-        <div class="announcement">
+    meeting.innerHTML = `
 
-            <h3>📢 No Upcoming Festival Announcements</h3>
+        <span class="date">
 
-            <p>
-                Please check again for the next festival announcement.
-            </p>
+            EVERY MONTH
 
-            <p class="tamil">
-                அடுத்த விழா அறிவிப்பிற்காக மீண்டும் பார்க்கவும்.
-            </p>
+        </span>
 
-        </div>
+        <h3>
 
-        `;
+            📅 Monthly Association Meeting
 
-    }
+        </h3>
+
+        <p>
+
+            The monthly association meeting
+            will be held on the
+            <strong>
+            1st Sunday of every month
+            </strong>.
+
+            All members are requested to attend
+            and actively participate.
+
+        </p>
+
+        <p class="tamil">
+
+            ஒவ்வொரு மாதமும் முதல் ஞாயிற்றுக்கிழமை
+            மாதாந்திர சங்கக் கூட்டம் நடைபெறும்.
+            அனைத்து உறுப்பினர்களும் கலந்து கொண்டு
+            சிறப்பாக பங்கேற்குமாறு கேட்டுக்கொள்கிறோம்.
+
+        </p>
+
+    `;
+
+    grid.appendChild(meeting);
 
 }
 
 
+
 /*
-   Run when page opens.
+   Start announcement system
 */
 
 displayAnnouncements();
 
 
+
 /*
-   Check every minute so the announcement
-   can disappear automatically after midnight.
+   Check every minute.
+   Festival disappears automatically
+   after the date changes.
 */
 
-setInterval(displayAnnouncements,60000);
+setInterval(
+    displayAnnouncements,
+    60000
+);
 
 
-/* =========================
-   MONTHLY MEETING
-   1ST SUNDAY
-========================= */
 
-function getFirstSunday(year, month){
-
-    const date = new Date(year,month,1);
-
-    const day = date.getDay();
-
-    const difference =
-        day === 0 ? 0 : 7 - day;
-
-    return 1 + difference;
-
-}
-
-function showMeetingAnnouncement(){
-
-    const grid =
-        document.getElementById("announcementGrid");
-
-    const today = new Date();
-
-    const year = today.getFullYear();
-    const month = today.getMonth();
-
-    const firstSunday =
-        getFirstSunday(year,month);
-
-    /*
-       Only add meeting when the
-       first Sunday has not passed.
-    */
-
-    if(today.getDate() <= firstSunday){
-
-        const card =
-            document.createElement("div");
-
-        card.className = "announcement";
-
-        card.innerHTML = `
-
-            <span class="date">
-                EVERY MONTH
-            </span>
-
-            <h3>
-                📅 Monthly Association Meeting
-            </h3>
-
-            <p>
-                The monthly association meeting will be held
-                on the <strong>1st Sunday of every month</strong>.
-                All members are requested to attend and
-                actively participate.
-            </p>
-
-            <p class="tamil">
-                ஒவ்வொரு மாதமும் முதல் ஞாயிற்றுக்கிழமை
-                மாதாந்திர சங்கக் கூட்டம் நடைபெறும்.
-                அனைத்து உறுப்பினர்களும் கலந்து கொண்டு
-                சிறப்பாக பங்கேற்குமாறு கேட்டுக்கொள்கிறோம்.
-            </p>
-
-        `;
-
-        grid.prepend(card);
-
-    }
-
-}
-
-showMeetingAnnouncement();
-
-
-/* =========================
+/* ========================================
    GALLERY LIGHTBOX
-========================= */
+======================================== */
 
 const galleryImages = [
 
@@ -1651,38 +2759,57 @@ const galleryImages = [
 
 ];
 
+
 let currentImage = 0;
+
+
 
 function openLightbox(index){
 
     currentImage = index;
 
-    document.getElementById("lightboxImage").src =
+    document
+    .getElementById("lightboxImage")
+    .src =
         galleryImages[currentImage];
 
-    document.getElementById("lightbox").classList.add("active");
+    document
+    .getElementById("lightbox")
+    .classList.add("active");
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
 }
+
+
 
 function closeLightbox(){
 
-    document.getElementById("lightbox").classList.remove("active");
+    document
+    .getElementById("lightbox")
+    .classList.remove("active");
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+        "";
 
 }
 
+
+
 function closeOutside(event){
 
-    if(event.target.id === "lightbox"){
+    if(
+        event.target.id === "lightbox"
+    ){
 
         closeLightbox();
 
     }
 
 }
+
+
 
 function previousImage(event){
 
@@ -1692,14 +2819,19 @@ function previousImage(event){
 
     if(currentImage < 0){
 
-        currentImage = galleryImages.length - 1;
+        currentImage =
+            galleryImages.length - 1;
 
     }
 
-    document.getElementById("lightboxImage").src =
+    document
+    .getElementById("lightboxImage")
+    .src =
         galleryImages[currentImage];
 
 }
+
+
 
 function nextImage(event){
 
@@ -1707,57 +2839,109 @@ function nextImage(event){
 
     currentImage++;
 
-    if(currentImage >= galleryImages.length){
+    if(
+        currentImage >=
+        galleryImages.length
+    ){
 
         currentImage = 0;
 
     }
 
-    document.getElementById("lightboxImage").src =
+    document
+    .getElementById("lightboxImage")
+    .src =
         galleryImages[currentImage];
 
 }
 
-document.addEventListener("keydown",function(event){
 
-    const lightbox =
-        document.getElementById("lightbox");
 
-    if(!lightbox.classList.contains("active")) return;
+/* ========================================
+   KEYBOARD CONTROLS
+======================================== */
 
-    if(event.key === "Escape"){
-        closeLightbox();
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        const lightbox =
+            document.getElementById(
+                "lightbox"
+            );
+
+        if(
+            !lightbox.classList.contains(
+                "active"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        if(event.key === "Escape"){
+
+            closeLightbox();
+
+        }
+
+
+        if(event.key === "ArrowLeft"){
+
+            previousImage(event);
+
+        }
+
+
+        if(event.key === "ArrowRight"){
+
+            nextImage(event);
+
+        }
+
     }
+);
 
-    if(event.key === "ArrowLeft"){
-        previousImage(event);
+
+
+/* ========================================
+   SCROLL TO TOP
+======================================== */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const button =
+            document.getElementById(
+                "topBtn"
+            );
+
+
+        if(window.scrollY > 400){
+
+            button.classList.add(
+                "show"
+            );
+
+        }
+
+        else{
+
+            button.classList.remove(
+                "show"
+            );
+
+        }
+
     }
-
-    if(event.key === "ArrowRight"){
-        nextImage(event);
-    }
-
-});
-
-
-/* =========================
-   SCROLL TOP
-========================= */
-
-window.addEventListener("scroll",function(){
-
-    const button =
-        document.getElementById("topBtn");
-
-    if(window.scrollY > 400){
-        button.classList.add("show");
-    }else{
-        button.classList.remove("show");
-    }
-
-});
+);
 
 </script>
 
+
 </body>
+
 </html>
