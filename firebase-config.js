@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyA_KA6i-_xnXpCzNZOHHOS5ovabgPgCL6w",
   authDomain: "rmns-website.firebaseapp.com",
   databaseURL: "https://rmns-website-default-rtdb.asia-southeast1.firebasedatabase.app",
