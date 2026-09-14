@@ -17,10 +17,6 @@ rel="stylesheet">
 
 <style>
 
-/* =========================
-   GLOBAL
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -64,16 +60,7 @@ section{
 
 .section-title p{
     color:#aeb8c7;
-    font-size:16px;
 }
-
-.highlight{
-    color:#f4c95d;
-}
-
-/* =========================
-   NAVBAR
-========================= */
 
 .navbar{
     position:fixed;
@@ -81,7 +68,7 @@ section{
     left:0;
     width:100%;
     z-index:1000;
-    background:rgba(4,12,23,.92);
+    background:rgba(4,12,23,.94);
     backdrop-filter:blur(15px);
     border-bottom:1px solid rgba(244,201,93,.15);
 }
@@ -120,7 +107,7 @@ section{
 .nav-links{
     display:flex;
     list-style:none;
-    gap:24px;
+    gap:22px;
 }
 
 .nav-links a{
@@ -142,16 +129,11 @@ section{
     cursor:pointer;
 }
 
-/* =========================
-   HERO
-========================= */
-
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
     text-align:center;
-    position:relative;
     background:
         radial-gradient(circle at 50% 30%,rgba(244,201,93,.12),transparent 35%),
         linear-gradient(135deg,#07111f,#0b1d32,#07111f);
@@ -160,6 +142,7 @@ section{
 
 .hero-content{
     width:100%;
+    animation:fadeUp 1s ease;
 }
 
 .hero-logo{
@@ -230,10 +213,6 @@ section{
     color:#07111f;
 }
 
-/* =========================
-   ABOUT
-========================= */
-
 .about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -265,12 +244,7 @@ section{
 
 .tamil{
     margin-top:15px;
-    color:#d6dce5 !important;
 }
-
-/* =========================
-   VALUES
-========================= */
 
 .values-grid{
     display:grid;
@@ -302,10 +276,6 @@ section{
     margin-bottom:8px;
 }
 
-/* =========================
-   ACTIVITIES
-========================= */
-
 .activities-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -323,10 +293,6 @@ section{
     margin-bottom:10px;
     color:#f4c95d;
 }
-
-/* =========================
-   GALLERY
-========================= */
 
 .gallery{
     display:grid;
@@ -354,10 +320,6 @@ section{
     transform:scale(1.08);
 }
 
-/* =========================
-   FESTIVAL
-========================= */
-
 .festival-section{
     background:
         radial-gradient(circle at center,rgba(244,201,93,.08),transparent 55%);
@@ -376,10 +338,6 @@ section{
 .festival-heading p{
     color:#aeb8c7;
 }
-
-/* =========================
-   ANNOUNCEMENTS
-========================= */
 
 .announcement-grid{
     display:grid;
@@ -418,7 +376,6 @@ section{
 }
 
 .announcement h3{
-    color:#fff;
     margin-bottom:12px;
 }
 
@@ -426,10 +383,6 @@ section{
     color:#b8c3d1;
     font-size:14px;
 }
-
-/* =========================
-   CONTACT
-========================= */
 
 .contact-box{
     max-width:850px;
@@ -461,10 +414,6 @@ section{
     font-size:14px;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer{
     padding:35px 20px;
     text-align:center;
@@ -481,10 +430,6 @@ footer p{
     font-size:13px;
     margin-top:7px;
 }
-
-/* =========================
-   LIGHTBOX
-========================= */
 
 .lightbox{
     position:fixed;
@@ -543,10 +488,6 @@ footer p{
     right:25px;
 }
 
-/* =========================
-   SCROLL TOP
-========================= */
-
 .top-btn{
     position:fixed;
     right:20px;
@@ -568,9 +509,16 @@ footer p{
     display:block;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
 @media(max-width:900px){
 
@@ -585,7 +533,6 @@ footer p{
         text-align:center;
         padding:20px;
         gap:16px;
-        border-bottom:1px solid rgba(244,201,93,.15);
     }
 
     .nav-links.active{
@@ -609,9 +556,8 @@ footer p{
     }
 
     .announcement-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
     }
-
 }
 
 @media(max-width:650px){
@@ -628,12 +574,12 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .contact-box{
+    .announcement-grid{
         grid-template-columns:1fr;
     }
 
-    .hero{
-        min-height:90vh;
+    .contact-box{
+        grid-template-columns:1fr;
     }
 
     .hero-logo{
@@ -648,7 +594,6 @@ footer p{
     .section-title h2{
         font-size:30px;
     }
-
 }
 
 @media(max-width:430px){
@@ -704,36 +649,12 @@ footer p{
     .next-btn{
         right:10px;
     }
-
-}
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.hero-content{
-    animation:fadeUp 1s ease;
 }
 
 </style>
 </head>
 
 <body>
-
-<!-- =========================
-     NAVBAR
-========================= -->
 
 <nav class="navbar">
 
@@ -758,7 +679,7 @@ JMD'S ROYAL
 <li><a href="#about">About</a></li>
 <li><a href="#activities">Activities</a></li>
 <li><a href="#gallery">Gallery</a></li>
-<li><a href="#festival-gallery">Festival</a></li>
+<li><a href="#festival-gallery">Festivals</a></li>
 <li><a href="#announcements">Announcements</a></li>
 <li><a href="#contact">Contact</a></li>
 
@@ -768,10 +689,6 @@ JMD'S ROYAL
 
 </nav>
 
-
-<!-- =========================
-     HERO
-========================= -->
 
 <section class="hero" id="home">
 
@@ -793,7 +710,7 @@ MAKKAL NALASANGAM
 Unity is our strength • People's welfare is our mission
 </p>
 
-<p class="hero-slogan tamil">
+<p class="hero-slogan">
 ஒற்றுமையே பலம்! மக்கள் நலமே எங்கள் இலட்சியம்!
 </p>
 
@@ -814,20 +731,13 @@ Contact Us
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
-
 <section id="about">
 
 <div class="container">
 
 <div class="section-title">
-
 <h2>About Us</h2>
-
 <p>Serving people with unity, responsibility and care</p>
-
 </div>
 
 <div class="about-grid">
@@ -861,8 +771,7 @@ responsibility and social welfare.
 
 <p class="tamil">
 மக்களை ஒன்றிணைத்து, சமூக நலப் பணிகளை முன்னெடுத்து,
-ஒற்றுமை மற்றும் பொறுப்புணர்வை வளர்ப்பதே
-எங்கள் நோக்கம்.
+ஒற்றுமை மற்றும் பொறுப்புணர்வை வளர்ப்பதே எங்கள் நோக்கம்.
 </p>
 
 </div>
@@ -874,20 +783,13 @@ responsibility and social welfare.
 </section>
 
 
-<!-- =========================
-     VISION / MISSION
-========================= -->
-
 <section>
 
 <div class="container">
 
 <div class="section-title">
-
 <h2>Vision & Mission</h2>
-
 <p>Our direction for a stronger community</p>
-
 </div>
 
 <div class="about-grid">
@@ -933,20 +835,13 @@ and contribute positively to the community.
 </section>
 
 
-<!-- =========================
-     VALUES
-========================= -->
-
 <section>
 
 <div class="container">
 
 <div class="section-title">
-
 <h2>Our Values</h2>
-
 <p>The principles that guide our association</p>
-
 </div>
 
 <div class="values-grid">
@@ -982,82 +877,45 @@ and contribute positively to the community.
 </section>
 
 
-<!-- =========================
-     ACTIVITIES
-========================= -->
-
 <section id="activities">
 
 <div class="container">
 
 <div class="section-title">
-
 <h2>Our Activities</h2>
-
 <p>Working together for the welfare of our community</p>
-
 </div>
 
 <div class="activities-grid">
 
 <div class="activity">
-
 <h3>❤️ Welfare Activities</h3>
-
-<p>
-Supporting people and families through useful community welfare initiatives.
-</p>
-
+<p>Supporting people and families through useful community initiatives.</p>
 </div>
 
 <div class="activity">
-
 <h3>🎉 Community Events</h3>
-
-<p>
-Organizing celebrations, meetings and activities that bring members together.
-</p>
-
+<p>Organizing celebrations, meetings and activities that bring members together.</p>
 </div>
 
 <div class="activity">
-
 <h3>🌱 Social Development</h3>
-
-<p>
-Encouraging positive participation and development within our community.
-</p>
-
+<p>Encouraging positive participation and development within our community.</p>
 </div>
 
 <div class="activity">
-
 <h3>🤝 Member Support</h3>
-
-<p>
-Building a strong network where members can cooperate and support one another.
-</p>
-
+<p>Building a strong network where members can cooperate and support one another.</p>
 </div>
 
 <div class="activity">
-
 <h3>📢 Awareness</h3>
-
-<p>
-Sharing useful information and encouraging responsible community participation.
-</p>
-
+<p>Sharing useful information and encouraging responsible community participation.</p>
 </div>
 
 <div class="activity">
-
 <h3>🏆 Future Initiatives</h3>
-
-<p>
-Continuously developing new programmes for the benefit of our community.
-</p>
-
+<p>Continuously developing new programmes for the benefit of our community.</p>
 </div>
 
 </div>
@@ -1067,20 +925,13 @@ Continuously developing new programmes for the benefit of our community.
 </section>
 
 
-<!-- =========================
-     GALLERY
-========================= -->
-
 <section id="gallery">
 
 <div class="container">
 
 <div class="section-title">
-
 <h2>Our Gallery</h2>
-
 <p>Memories and moments from our association</p>
-
 </div>
 
 <div class="gallery">
@@ -1124,32 +975,25 @@ Continuously developing new programmes for the benefit of our community.
 </section>
 
 
-<!-- =========================
-     GANESH FESTIVAL
-========================= -->
-
 <section class="festival-section" id="festival-gallery">
 
 <div class="container">
 
 <div class="section-title">
-
-<h2>🐘 Ganesh Chaturthi</h2>
-
-<p>Festival celebrations and memories</p>
-
+<h2>🎉 Festival Gallery</h2>
+<p>Celebrations and memories from our community</p>
 </div>
 
 <div class="festival-heading">
 
-<h3>Ganesh Chaturthi Gallery</h3>
+<h3>Festival Memories</h3>
 
 <p>
-Ganesh Chaturthi Festival Memories
+Indian • Tamil Nadu • Muslim • Christian • National Celebrations
 </p>
 
 <p class="tamil">
-விநாயகர் சதுர்த்தி விழா நினைவுகள்
+இந்திய • தமிழ்நாடு • முஸ்லிம் • கிறிஸ்தவ • தேசிய விழாக்கள்
 </p>
 
 </div>
@@ -1157,27 +1001,35 @@ Ganesh Chaturthi Festival Memories
 <div class="gallery">
 
 <div class="gallery-item">
-<img src="ganesh1.jpg" alt="Ganesh Chaturthi" onclick="openLightbox(8)">
+<img src="festival1.jpg" alt="Festival" onclick="openLightbox(8)">
 </div>
 
 <div class="gallery-item">
-<img src="ganesh2.jpg" alt="Ganesh Chaturthi" onclick="openLightbox(9)">
+<img src="festival2.jpg" alt="Festival" onclick="openLightbox(9)">
 </div>
 
 <div class="gallery-item">
-<img src="ganesh3.jpg" alt="Ganesh Chaturthi" onclick="openLightbox(10)">
+<img src="festival3.jpg" alt="Festival" onclick="openLightbox(10)">
 </div>
 
 <div class="gallery-item">
-<img src="ganesh4.jpg" alt="Ganesh Chaturthi" onclick="openLightbox(11)">
+<img src="festival4.jpg" alt="Festival" onclick="openLightbox(11)">
 </div>
 
 <div class="gallery-item">
-<img src="ganesh5.jpg" alt="Ganesh Chaturthi" onclick="openLightbox(12)">
+<img src="festival5.jpg" alt="Festival" onclick="openLightbox(12)">
 </div>
 
 <div class="gallery-item">
-<img src="ganesh6.jpg" alt="Ganesh Chaturthi" onclick="openLightbox(13)">
+<img src="festival6.jpg" alt="Festival" onclick="openLightbox(13)">
+</div>
+
+<div class="gallery-item">
+<img src="festival7.jpg" alt="Festival" onclick="openLightbox(14)">
+</div>
+
+<div class="gallery-item">
+<img src="festival8.jpg" alt="Festival" onclick="openLightbox(15)">
 </div>
 
 </div>
@@ -1186,10 +1038,6 @@ Ganesh Chaturthi Festival Memories
 
 </section>
 
-
-<!-- =========================
-     ANNOUNCEMENTS
-========================= -->
 
 <section id="announcements">
 
@@ -1199,74 +1047,13 @@ Ganesh Chaturthi Festival Memories
 
 <h2>Announcements</h2>
 
-<p>Latest association updates</p>
+<p>Upcoming festivals, national occasions and association updates</p>
 
 </div>
 
-<div class="announcement-grid">
+<div class="announcement-grid" id="announcementGrid">
 
-<div class="announcement">
-
-<span class="date">14 SEP</span>
-
-<h3>🐘 Ganesh Chaturthi</h3>
-
-<p>
-Warm wishes to all our respected members and their families
-on the occasion of Ganesh Chaturthi.
-May Lord Ganesha bless everyone with happiness,
-peace and prosperity.
-</p>
-
-<p class="tamil">
-விநாயகர் சதுர்த்தியை முன்னிட்டு எங்கள் சங்கத்தின்
-அனைத்து உறுப்பினர்களுக்கும் அவர்களது குடும்பத்தினருக்கும்
-இனிய நல்வாழ்த்துக்கள்.
-விநாயகர் அனைவருக்கும் மகிழ்ச்சி, அமைதி மற்றும்
-வளத்தை அருளட்டும்.
-</p>
-
-</div>
-
-
-<div class="announcement">
-
-<span class="date">04 OCT</span>
-
-<h3>📅 Monthly Association Meeting</h3>
-
-<p>
-All members are requested to attend the monthly association
-meeting and actively participate in the discussions.
-</p>
-
-<p class="tamil">
-அனைத்து உறுப்பினர்களும் மாதாந்திர சங்கக் கூட்டத்தில்
-கலந்து கொண்டு கலந்துரையாடலில் பங்கேற்குமாறு
-அன்புடன் கேட்டுக்கொள்கிறோம்.
-</p>
-
-</div>
-
-
-<div class="announcement">
-
-<span class="date">15 SEP</span>
-
-<h3>❤️ Community Welfare Programme</h3>
-
-<p>
-A community welfare programme will be organized.
-Members are encouraged to participate and support the initiative.
-</p>
-
-<p class="tamil">
-சமூக நலத்திட்ட நிகழ்ச்சி ஏற்பாடு செய்யப்படுகிறது.
-உறுப்பினர்கள் அனைவரும் கலந்து கொண்டு
-ஆதரவு வழங்குமாறு கேட்டுக்கொள்கிறோம்.
-</p>
-
-</div>
+<!-- ANNOUNCEMENTS ARE GENERATED AUTOMATICALLY -->
 
 </div>
 
@@ -1274,10 +1061,6 @@ Members are encouraged to participate and support the initiative.
 
 </section>
 
-
-<!-- =========================
-     CONTACT
-========================= -->
 
 <section id="contact">
 
@@ -1294,41 +1077,21 @@ Members are encouraged to participate and support the initiative.
 <div class="contact-box">
 
 <div class="contact-card">
-
 <div class="icon">📞</div>
-
 <h3>Phone</h3>
-
-<p>
-Add your association phone number here
-</p>
-
+<p>Add your association phone number here</p>
 </div>
 
-
 <div class="contact-card">
-
 <div class="icon">📧</div>
-
 <h3>Email</h3>
-
-<p>
-Add your association email here
-</p>
-
+<p>Add your association email here</p>
 </div>
 
-
 <div class="contact-card">
-
 <div class="icon">📍</div>
-
 <h3>Location</h3>
-
-<p>
-Add your association location here
-</p>
-
+<p>Add your association location here</p>
 </div>
 
 </div>
@@ -1338,17 +1101,11 @@ Add your association location here
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
 <h3>JMD'S ROYAL MAKKAL NALASANGAM</h3>
 
-<p>
-ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
-</p>
+<p>ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்</p>
 
 <p>
 © 2026 JMD'S ROYAL MAKKAL NALASANGAM • All Rights Reserved
@@ -1356,10 +1113,6 @@ Add your association location here
 
 </footer>
 
-
-<!-- =========================
-     LIGHTBOX
-========================= -->
 
 <div class="lightbox" id="lightbox" onclick="closeOutside(event)">
 
@@ -1374,11 +1127,8 @@ Add your association location here
 </div>
 
 
-<!-- =========================
-     SCROLL TOP
-========================= -->
-
-<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button class="top-btn" id="topBtn"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
 ↑
 </button>
 
@@ -1391,9 +1141,7 @@ Add your association location here
 
 function toggleMenu(){
 
-    const nav = document.getElementById("navLinks");
-
-    nav.classList.toggle("active");
+    document.getElementById("navLinks").classList.toggle("active");
 
 }
 
@@ -1409,7 +1157,476 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 
 
 /* =========================
-   GALLERY
+   AUTOMATIC FESTIVAL
+   ANNOUNCEMENT SYSTEM
+========================= */
+
+const announcements = [
+
+    /* JANUARY */
+
+    {
+        date:"2026-01-14",
+        title:"🌾 Pongal",
+        english:
+        "Warm wishes to all our members and their families on the occasion of Pongal. May this harvest festival bring happiness, prosperity and peace.",
+        tamil:
+        "பொங்கல் திருநாளை முன்னிட்டு எங்கள் சங்கத்தின் அனைத்து உறுப்பினர்களுக்கும் அவர்களது குடும்பத்தினருக்கும் இனிய பொங்கல் நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-01-15",
+        title:"🐄 Mattu Pongal",
+        english:
+        "Warm wishes to everyone on the occasion of Mattu Pongal. May this special day bring happiness and prosperity to all.",
+        tamil:
+        "மாட்டுப் பொங்கல் திருநாளை முன்னிட்டு அனைவருக்கும் இனிய நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-01-26",
+        title:"🇮🇳 Republic Day",
+        english:
+        "Happy Republic Day to all our members and their families. Let us celebrate the values of unity, responsibility and democracy.",
+        tamil:
+        "குடியரசு தின நல்வாழ்த்துக்கள். ஒற்றுமை, பொறுப்பு மற்றும் ஜனநாயகத்தின் மதிப்புகளை போற்றுவோம்."
+    },
+
+
+    /* FEBRUARY */
+
+    {
+        date:"2026-02-01",
+        title:"🛕 Thai Pusam",
+        english:
+        "Warm wishes to everyone on the occasion of Thai Pusam.",
+        tamil:
+        "தைப்பூசத் திருநாள் நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-02-15",
+        title:"🕉️ Maha Shivaratri",
+        english:
+        "Warm wishes to everyone on the occasion of Maha Shivaratri. May the day bring peace and happiness.",
+        tamil:
+        "மகா சிவராத்திரி நல்வாழ்த்துக்கள்."
+    },
+
+
+    /* MARCH */
+
+    {
+        date:"2026-03-21",
+        title:"☪️ Eid al-Fitr",
+        english:
+        "Eid Mubarak to all our Muslim members and their families. May this special occasion bring peace, happiness and harmony.",
+        tamil:
+        "அனைத்து முஸ்லிம் உறுப்பினர்கள் மற்றும் அவர்களது குடும்பத்தினருக்கும் ஈத் முபாரக் நல்வாழ்த்துக்கள்."
+    },
+
+
+    /* APRIL */
+
+    {
+        date:"2026-04-03",
+        title:"✝️ Good Friday",
+        english:
+        "Warm wishes to all our Christian members and their families on Good Friday.",
+        tamil:
+        "அனைத்து கிறிஸ்தவ உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் புனித வெள்ளி நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-04-05",
+        title:"✝️ Easter",
+        english:
+        "Happy Easter to all our Christian members and their families. May this occasion bring hope, peace and happiness.",
+        tamil:
+        "அனைத்து கிறிஸ்தவ உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் ஈஸ்டர் நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-04-14",
+        title:"🌸 Tamil New Year / Puthandu",
+        english:
+        "Happy Tamil New Year! May this new year bring happiness, good health, prosperity and success to everyone.",
+        tamil:
+        "இனிய தமிழ் புத்தாண்டு நல்வாழ்த்துக்கள்! அனைவருக்கும் மகிழ்ச்சி, ஆரோக்கியம், வளம் மற்றும் வெற்றி கிடைக்கட்டும்."
+    },
+
+
+    /* MAY */
+
+    {
+        date:"2026-05-28",
+        title:"☪️ Eid al-Adha / Bakrid",
+        english:
+        "Eid Mubarak to all our Muslim members and their families. May this blessed occasion bring peace and prosperity.",
+        tamil:
+        "அனைத்து முஸ்லிம் உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் பக்ரீத் நல்வாழ்த்துக்கள்."
+    },
+
+
+    /* JUNE */
+
+    {
+        date:"2026-06-26",
+        title:"☪️ Muharram",
+        english:
+        "Warm wishes and peaceful thoughts to all our Muslim members on the occasion of Muharram.",
+        tamil:
+        "அனைத்து முஸ்லிம் உறுப்பினர்களுக்கும் முஹர்ரம் நல்வாழ்த்துக்கள்."
+    },
+
+
+    /* AUGUST */
+
+    {
+        date:"2026-08-15",
+        title:"🇮🇳 Independence Day",
+        english:
+        "Happy Independence Day to all our members and their families. Let us celebrate our freedom and always stand together in unity.",
+        tamil:
+        "இனிய சுதந்திர தின நல்வாழ்த்துக்கள்! நமது சுதந்திரத்தை போற்றி, ஒற்றுமையுடன் ஒன்றிணைந்து செயல்படுவோம்."
+    },
+
+    {
+        date:"2026-08-26",
+        title:"☪️ Milad-un-Nabi",
+        english:
+        "Warm wishes to all our Muslim members and their families on the occasion of Milad-un-Nabi.",
+        tamil:
+        "அனைத்து முஸ்லிம் உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் மிலாது நபி நல்வாழ்த்துக்கள்."
+    },
+
+
+    /* SEPTEMBER */
+
+    {
+        date:"2026-09-14",
+        title:"🐘 Vinayagar Chaturthi",
+        english:
+        "Warm wishes to all our members and their families on the occasion of Vinayagar Chaturthi. May the occasion bring happiness, peace and prosperity.",
+        tamil:
+        "விநாயகர் சதுர்த்தியை முன்னிட்டு எங்கள் சங்கத்தின் அனைத்து உறுப்பினர்களுக்கும் அவர்களது குடும்பத்தினருக்கும் இனிய நல்வாழ்த்துக்கள்."
+    },
+
+
+    /* OCTOBER */
+
+    {
+        date:"2026-10-02",
+        title:"🇮🇳 Gandhi Jayanti",
+        english:
+        "Warm wishes on Gandhi Jayanti. Let us remember the values of peace, truth and unity.",
+        tamil:
+        "காந்தி ஜெயந்தி நல்வாழ்த்துக்கள். அமைதி, உண்மை மற்றும் ஒற்றுமையின் மதிப்புகளை நினைவுகூர்வோம்."
+    },
+
+    {
+        date:"2026-10-11",
+        title:"🌺 Navaratri",
+        english:
+        "Warm wishes to everyone on the beginning of Navaratri. May these days bring peace, happiness and prosperity.",
+        tamil:
+        "நவராத்திரி திருநாள் நல்வாழ்த்துக்கள். அனைவருக்கும் அமைதி, மகிழ்ச்சி மற்றும் வளம் கிடைக்கட்டும்."
+    },
+
+    {
+        date:"2026-10-20",
+        title:"📚 Saraswathi Pooja",
+        english:
+        "Warm wishes on Saraswathi Pooja. May knowledge, wisdom and learning bring success to everyone.",
+        tamil:
+        "சரஸ்வதி பூஜை நல்வாழ்த்துக்கள். அனைவருக்கும் அறிவும் ஞானமும் வெற்றியும் கிடைக்கட்டும்."
+    },
+
+    {
+        date:"2026-10-20",
+        title:"🛠️ Ayudha Pooja",
+        english:
+        "Warm wishes on Ayudha Pooja. May everyone's work and efforts be blessed with success.",
+        tamil:
+        "ஆயுத பூஜை நல்வாழ்த்துக்கள். அனைவரின் பணிகளும் முயற்சிகளும் வெற்றி பெறட்டும்."
+    },
+
+    {
+        date:"2026-10-20",
+        title:"🏹 Vijayadashami",
+        english:
+        "Warm wishes on Vijayadashami. May this day bring success, courage and happiness to everyone.",
+        tamil:
+        "விஜயதசமி நல்வாழ்த்துக்கள். அனைவருக்கும் வெற்றி, தைரியம் மற்றும் மகிழ்ச்சி கிடைக்கட்டும்."
+    },
+
+
+    /* NOVEMBER */
+
+    {
+        date:"2026-11-08",
+        title:"🪔 Deepavali",
+        english:
+        "Happy Deepavali to all our members and their families. May the festival of lights bring happiness, peace and prosperity.",
+        tamil:
+        "அனைத்து உறுப்பினர்கள் மற்றும் அவர்களது குடும்பத்தினருக்கும் இனிய தீபாவளி நல்வாழ்த்துக்கள். ஒளியின் திருநாள் அனைவருக்கும் மகிழ்ச்சியும் வளமும் தரட்டும்."
+    },
+
+    {
+        date:"2026-11-15",
+        title:"🛕 Soora Samharam",
+        english:
+        "Warm wishes to everyone on the occasion of Soora Samharam.",
+        tamil:
+        "சூரசம்ஹாரம் திருநாள் நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-11-24",
+        title:"🪔 Karthigai Deepam",
+        english:
+        "Warm wishes on Karthigai Deepam. May the festival of lights bring peace, happiness and prosperity to everyone.",
+        tamil:
+        "கார்த்திகை தீபத் திருநாள் நல்வாழ்த்துக்கள். அனைவரின் வாழ்விலும் ஒளியும் மகிழ்ச்சியும் நிறையட்டும்."
+    },
+
+
+    /* DECEMBER */
+
+    {
+        date:"2026-12-20",
+        title:"🛕 Vaikuntha Ekadashi",
+        english:
+        "Warm wishes to everyone on the occasion of Vaikuntha Ekadashi.",
+        tamil:
+        "வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-12-24",
+        title:"🕉️ Arudra Darisanam",
+        english:
+        "Warm wishes to everyone on the occasion of Arudra Darisanam.",
+        tamil:
+        "ஆருத்ரா தரிசன நல்வாழ்த்துக்கள்."
+    },
+
+    {
+        date:"2026-12-25",
+        title:"🎄 Christmas",
+        english:
+        "Merry Christmas to all our Christian members and their families. May this Christmas bring peace, joy, love and happiness.",
+        tamil:
+        "அனைத்து கிறிஸ்தவ உறுப்பினர்கள் மற்றும் குடும்பத்தினருக்கும் இனிய கிறிஸ்துமஸ் நல்வாழ்த்துக்கள். அனைவரின் வாழ்விலும் அமைதியும் மகிழ்ச்சியும் நிறையட்டும்."
+    }
+
+];
+
+
+/* =========================
+   DISPLAY ONLY CURRENT
+   AND UPCOMING FESTIVALS
+========================= */
+
+function displayAnnouncements(){
+
+    const grid =
+        document.getElementById("announcementGrid");
+
+    const today = new Date();
+
+    today.setHours(0,0,0,0);
+
+    grid.innerHTML = "";
+
+    const upcoming = announcements.filter(item => {
+
+        const festivalDate =
+            new Date(item.date + "T00:00:00");
+
+        /*
+           Festival remains visible
+           during its whole day.
+           It disappears from the
+           following day.
+        */
+
+        return festivalDate >= today;
+
+    });
+
+    /*
+       Show the nearest announcements first.
+    */
+
+    upcoming.sort((a,b) =>
+        new Date(a.date) - new Date(b.date)
+    );
+
+    upcoming.forEach(item => {
+
+        const date =
+            new Date(item.date + "T00:00:00");
+
+        const formattedDate =
+            date.toLocaleDateString("en-IN",{
+                day:"2-digit",
+                month:"short"
+            }).toUpperCase();
+
+        const card =
+            document.createElement("div");
+
+        card.className = "announcement";
+
+        card.innerHTML = `
+
+            <span class="date">
+                ${formattedDate}
+            </span>
+
+            <h3>${item.title}</h3>
+
+            <p>
+                ${item.english}
+            </p>
+
+            <p class="tamil">
+                ${item.tamil}
+            </p>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+
+    /*
+       If there are no more festival
+       announcements, show a simple message.
+    */
+
+    if(upcoming.length === 0){
+
+        grid.innerHTML = `
+
+        <div class="announcement">
+
+            <h3>📢 No Upcoming Festival Announcements</h3>
+
+            <p>
+                Please check again for the next festival announcement.
+            </p>
+
+            <p class="tamil">
+                அடுத்த விழா அறிவிப்பிற்காக மீண்டும் பார்க்கவும்.
+            </p>
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+
+/*
+   Run when page opens.
+*/
+
+displayAnnouncements();
+
+
+/*
+   Check every minute so the announcement
+   can disappear automatically after midnight.
+*/
+
+setInterval(displayAnnouncements,60000);
+
+
+/* =========================
+   MONTHLY MEETING
+   1ST SUNDAY
+========================= */
+
+function getFirstSunday(year, month){
+
+    const date = new Date(year,month,1);
+
+    const day = date.getDay();
+
+    const difference =
+        day === 0 ? 0 : 7 - day;
+
+    return 1 + difference;
+
+}
+
+function showMeetingAnnouncement(){
+
+    const grid =
+        document.getElementById("announcementGrid");
+
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = today.getMonth();
+
+    const firstSunday =
+        getFirstSunday(year,month);
+
+    /*
+       Only add meeting when the
+       first Sunday has not passed.
+    */
+
+    if(today.getDate() <= firstSunday){
+
+        const card =
+            document.createElement("div");
+
+        card.className = "announcement";
+
+        card.innerHTML = `
+
+            <span class="date">
+                EVERY MONTH
+            </span>
+
+            <h3>
+                📅 Monthly Association Meeting
+            </h3>
+
+            <p>
+                The monthly association meeting will be held
+                on the <strong>1st Sunday of every month</strong>.
+                All members are requested to attend and
+                actively participate.
+            </p>
+
+            <p class="tamil">
+                ஒவ்வொரு மாதமும் முதல் ஞாயிற்றுக்கிழமை
+                மாதாந்திர சங்கக் கூட்டம் நடைபெறும்.
+                அனைத்து உறுப்பினர்களும் கலந்து கொண்டு
+                சிறப்பாக பங்கேற்குமாறு கேட்டுக்கொள்கிறோம்.
+            </p>
+
+        `;
+
+        grid.prepend(card);
+
+    }
+
+}
+
+showMeetingAnnouncement();
+
+
+/* =========================
+   GALLERY LIGHTBOX
 ========================= */
 
 const galleryImages = [
@@ -1423,12 +1640,14 @@ const galleryImages = [
     "gallery7.jpg",
     "gallery8.jpg",
 
-    "ganesh1.jpg",
-    "ganesh2.jpg",
-    "ganesh3.jpg",
-    "ganesh4.jpg",
-    "ganesh5.jpg",
-    "ganesh6.jpg"
+    "festival1.jpg",
+    "festival2.jpg",
+    "festival3.jpg",
+    "festival4.jpg",
+    "festival5.jpg",
+    "festival6.jpg",
+    "festival7.jpg",
+    "festival8.jpg"
 
 ];
 
@@ -1499,12 +1718,7 @@ function nextImage(event){
 
 }
 
-
-/* =========================
-   KEYBOARD CONTROLS
-========================= */
-
-document.addEventListener("keydown", function(event){
+document.addEventListener("keydown",function(event){
 
     const lightbox =
         document.getElementById("lightbox");
@@ -1512,42 +1726,33 @@ document.addEventListener("keydown", function(event){
     if(!lightbox.classList.contains("active")) return;
 
     if(event.key === "Escape"){
-
         closeLightbox();
-
     }
 
     if(event.key === "ArrowLeft"){
-
         previousImage(event);
-
     }
 
     if(event.key === "ArrowRight"){
-
         nextImage(event);
-
     }
 
 });
 
 
 /* =========================
-   SCROLL TOP BUTTON
+   SCROLL TOP
 ========================= */
 
-window.addEventListener("scroll", function(){
+window.addEventListener("scroll",function(){
 
-    const button = document.getElementById("topBtn");
+    const button =
+        document.getElementById("topBtn");
 
     if(window.scrollY > 400){
-
         button.classList.add("show");
-
     }else{
-
         button.classList.remove("show");
-
     }
 
 });
