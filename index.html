@@ -1288,11 +1288,290 @@
             }
         }
 
+    
+        /* =====================================================
+           JMD'S ROYAL MAKKAL NALASANGAM - LOGO OPENING
+        ===================================================== */
+
+        body.intro-active {
+            overflow: hidden;
+        }
+
+        #introScreen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at center,
+                    rgba(212,175,55,.18) 0%,
+                    rgba(5,11,21,.97) 38%,
+                    #02050a 100%);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .9s ease, visibility .9s ease;
+        }
+
+        #introScreen::before {
+            content: "";
+            position: absolute;
+            width: min(80vw, 760px);
+            height: min(80vw, 760px);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle,
+                    rgba(212,175,55,.22),
+                    rgba(212,175,55,.06) 35%,
+                    transparent 68%);
+            filter: blur(20px);
+            animation: introGlow 2.8s ease-in-out infinite;
+        }
+
+        .intro-orbit {
+            position: absolute;
+            width: min(76vw, 620px);
+            height: min(76vw, 620px);
+            border: 1px solid rgba(243,211,106,.25);
+            border-radius: 50%;
+            box-shadow:
+                0 0 35px rgba(212,175,55,.08),
+                inset 0 0 35px rgba(212,175,55,.05);
+            animation: introOrbit 8s linear infinite;
+        }
+
+        .intro-orbit::before,
+        .intro-orbit::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f3d36a;
+            box-shadow: 0 0 16px 5px rgba(243,211,106,.55);
+        }
+
+        .intro-orbit::before {
+            top: -4px;
+            left: 50%;
+        }
+
+        .intro-orbit::after {
+            bottom: -4px;
+            right: 50%;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: introContentIn .9s cubic-bezier(.2,.8,.2,1) both;
+        }
+
+        .intro-logo-wrap {
+            position: relative;
+            width: clamp(150px, 30vw, 250px);
+            height: clamp(150px, 30vw, 250px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .intro-logo-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -18px;
+            border-radius: 50%;
+            border: 2px solid rgba(212,175,55,.4);
+            box-shadow:
+                0 0 22px rgba(212,175,55,.25),
+                0 0 65px rgba(212,175,55,.12),
+                inset 0 0 25px rgba(212,175,55,.08);
+            animation: introRing 2.5s ease-in-out infinite;
+        }
+
+        .intro-logo-wrap::after {
+            content: "";
+            position: absolute;
+            inset: -34px;
+            border-radius: 50%;
+            border: 1px dashed rgba(243,211,106,.2);
+            animation: introSpinRing 10s linear infinite reverse;
+        }
+
+        .intro-logo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            filter:
+                drop-shadow(0 0 8px rgba(243,211,106,.65))
+                drop-shadow(0 0 24px rgba(212,175,55,.35));
+            animation:
+                introLogoSpin 2.8s cubic-bezier(.25,.8,.25,1) both,
+                introLogoPulse 2s ease-in-out 900ms infinite;
+            transform-style: preserve-3d;
+            backface-visibility: visible;
+        }
+
+        .intro-light {
+            position: absolute;
+            z-index: 4;
+            width: 9px;
+            height: 150%;
+            top: -25%;
+            left: -45%;
+            transform: rotate(22deg);
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,.9),
+                rgba(243,211,106,.6),
+                transparent
+            );
+            filter: blur(2px);
+            opacity: 0;
+            animation: introLightSweep 2.5s ease 1.15s both;
+            pointer-events: none;
+        }
+
+        .intro-name {
+            color: #f3d36a;
+            font-size: clamp(22px,5vw,42px);
+            font-weight: 900;
+            letter-spacing: clamp(2px,1vw,8px);
+            text-shadow:
+                0 0 8px rgba(243,211,106,.45),
+                0 0 28px rgba(212,175,55,.25);
+            animation: introTextIn .9s ease 1.25s both;
+        }
+
+        .intro-subtitle {
+            margin-top: 8px;
+            color: rgba(255,255,255,.88);
+            font-size: clamp(12px,2.5vw,16px);
+            letter-spacing: clamp(2px,.7vw,5px);
+            text-transform: uppercase;
+            animation: introTextIn .9s ease 1.5s both;
+        }
+
+        .intro-line {
+            width: min(280px,55vw);
+            height: 1px;
+            margin-top: 18px;
+            background: linear-gradient(90deg,transparent,#d4af37,transparent);
+            box-shadow: 0 0 12px rgba(212,175,55,.35);
+            animation: introLineIn .9s ease 1.7s both;
+        }
+
+        #introScreen.intro-hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        @keyframes introContentIn {
+            from { opacity:0; transform:scale(.86) translateY(15px); }
+            to { opacity:1; transform:scale(1) translateY(0); }
+        }
+
+        @keyframes introLogoSpin {
+            0% { transform:perspective(900px) rotateY(-90deg) scale(.72); opacity:0; }
+            45% { transform:perspective(900px) rotateY(25deg) scale(1.06); opacity:1; }
+            100% { transform:perspective(900px) rotateY(0deg) scale(1); opacity:1; }
+        }
+
+        @keyframes introLogoPulse {
+            0%,100% {
+                filter:
+                    drop-shadow(0 0 8px rgba(243,211,106,.65))
+                    drop-shadow(0 0 24px rgba(212,175,55,.35));
+            }
+            50% {
+                filter:
+                    drop-shadow(0 0 14px rgba(243,211,106,.95))
+                    drop-shadow(0 0 42px rgba(212,175,55,.55));
+            }
+        }
+
+        @keyframes introGlow {
+            0%,100% { transform:scale(.92); opacity:.65; }
+            50% { transform:scale(1.08); opacity:1; }
+        }
+
+        @keyframes introRing {
+            0%,100% { transform:scale(.96); opacity:.65; }
+            50% { transform:scale(1.04); opacity:1; }
+        }
+
+        @keyframes introOrbit {
+            from { transform:rotate(0deg) scale(.98); }
+            to { transform:rotate(360deg) scale(.98); }
+        }
+
+        @keyframes introSpinRing {
+            from { transform:rotate(0deg); }
+            to { transform:rotate(360deg); }
+        }
+
+        @keyframes introLightSweep {
+            0% { left:-45%; opacity:0; }
+            15% { opacity:.9; }
+            70% { opacity:.65; }
+            100% { left:145%; opacity:0; }
+        }
+
+        @keyframes introTextIn {
+            from { opacity:0; transform:translateY(14px); letter-spacing:0; }
+            to { opacity:1; transform:translateY(0); }
+        }
+
+        @keyframes introLineIn {
+            from { opacity:0; transform:scaleX(0); }
+            to { opacity:1; transform:scaleX(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #introScreen *,
+            #introScreen::before {
+                animation:none !important;
+            }
+        }
+
     </style>
 </head>
 
 
 <body>
+
+    <!-- JMD'S ROYAL MAKKAL NALASANGAM LOGO OPENING -->
+    <div id="introScreen" aria-label="JMD'S Royal Makkal Nalasangam">
+        <div class="intro-orbit"></div>
+
+        <div class="intro-content">
+            <div class="intro-logo-wrap">
+                <img
+                    src="LOGO.png"
+                    alt="JMD'S Royal Makkal Nalasangam Logo"
+                    class="intro-logo"
+                >
+                <div class="intro-light"></div>
+            </div>
+
+            <div class="intro-name">JMD'S ROYAL</div>
+            <div class="intro-subtitle">MAKKAL NALASANGAM</div>
+            <div class="intro-line"></div>
+        </div>
+    </div>
+
 
 
 <!-- =====================================================
@@ -1820,10 +2099,7 @@
     <div class="container">
 
 
-        <div
-            class="section-title"
-            id="todayFestivalTitle"
-        >
+        <div class="section-title" id="todayFestivalTitle">
 
             <h2>
                 Today's Festival
@@ -2415,177 +2691,101 @@
     function showTodayFestival(data) {
 
         const container =
-            document.getElementById(
-                "todayFestival"
-            );
+            document.getElementById("todayFestival");
 
         const title =
-            document.getElementById(
-                "todayFestivalTitle"
-            );
+            document.getElementById("todayFestivalTitle");
 
+        const now = new Date();
 
-        const now =
-            new Date();
-
-        const year =
-            now.getFullYear();
+        const year = now.getFullYear();
 
         const month =
-            String(
-                now.getMonth() + 1
-            ).padStart(2, "0");
+            String(now.getMonth() + 1)
+                .padStart(2, "0");
 
         const day =
-            String(
-                now.getDate()
-            ).padStart(2, "0");
+            String(now.getDate())
+                .padStart(2, "0");
 
         const today =
             `${year}-${month}-${day}`;
 
+        let festivalFound = false;
 
-        let festivalFound =
-            false;
-
-
-        /*
-         * Start hidden.
-         * This means that when there is no festival today,
-         * NOTHING is shown in this section.
-         */
-
-        container.style.display =
-            "none";
+        /* Hide the complete Today's Festival area first. */
+        container.style.display = "none";
 
         if (title) {
-            title.style.display =
-                "none";
+            title.style.display = "none";
         }
-
 
         if (data) {
 
-            Object.values(data).forEach(
-                item => {
+            Object.values(data).forEach(item => {
 
-                    /*
-                     * Only display a festival whose
-                     * date exactly matches today's date.
-                     */
+                /* Show ONLY a festival dated today. */
+                if (item && item.date === today) {
 
-                    if (
-                        item &&
-                        item.date === today
-                    ) {
+                    festivalFound = true;
 
-                        festivalFound =
-                            true;
+                    const dateObject =
+                        new Date(
+                            item.date + "T00:00:00"
+                        );
 
+                    const formattedDate =
+                        dateObject.toLocaleDateString(
+                            "en-IN",
+                            {
+                                weekday: "long",
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric"
+                            }
+                        );
 
-                        const dateObject =
-                            new Date(
-                                item.date +
-                                "T00:00:00"
-                            );
+                    container.innerHTML = `
+                        <div class="festival-card">
 
-
-                        const formattedDate =
-                            dateObject.toLocaleDateString(
-                                "en-IN",
-                                {
-                                    weekday:
-                                        "long",
-
-                                    day:
-                                        "numeric",
-
-                                    month:
-                                        "long",
-
-                                    year:
-                                        "numeric"
-                                }
-                            );
-
-
-                        container.innerHTML = `
-
-                            <div class="festival-card">
-
-                                <div class="festival-icon">
-                                    🎉
-                                </div>
-
-                                <h3>
-                                    ${escapeHTML(
-                                        item.name || ""
-                                    )}
-                                </h3>
-
-                                <h4>
-                                    ${escapeHTML(
-                                        item.tamil || ""
-                                    )}
-                                </h4>
-
-                                <div class="festival-date">
-                                    ${escapeHTML(
-                                        formattedDate
-                                    )}
-                                </div>
-
+                            <div class="festival-icon">
+                                🎉
                             </div>
 
-                        `;
+                            <h3>
+                                ${escapeHTML(item.name || "")}
+                            </h3>
 
+                            <h4>
+                                ${escapeHTML(item.tamil || "")}
+                            </h4>
 
-                        /*
-                         * Festival exists today,
-                         * so show the heading and card.
-                         */
+                            <div class="festival-date">
+                                ${escapeHTML(formattedDate)}
+                            </div>
 
-                        container.style.display =
-                            "block";
+                        </div>
+                    `;
 
-                        if (title) {
-                            title.style.display =
-                                "block";
-                        }
+                    container.style.display = "block";
 
+                    if (title) {
+                        title.style.display = "block";
                     }
-
                 }
-            );
-
+            });
         }
 
-
-        /*
-         * IMPORTANT:
-         *
-         * If festivalFound is false,
-         * we deliberately do NOT create a
-         * "No Festival Today" card.
-         *
-         * The heading and container remain hidden.
-         */
-
+        /* No festival today = show absolutely nothing here. */
         if (!festivalFound) {
 
-            container.innerHTML =
-                "";
-
-            container.style.display =
-                "none";
+            container.innerHTML = "";
+            container.style.display = "none";
 
             if (title) {
-                title.style.display =
-                    "none";
+                title.style.display = "none";
             }
-
         }
-
     }
 
     onValue(
@@ -3235,6 +3435,31 @@
 
 </script>
 
+
+
+    <script>
+        /* Logo intro controller */
+        document.body.classList.add("intro-active");
+
+        window.addEventListener("load", function () {
+
+            const intro =
+                document.getElementById("introScreen");
+
+            if (!intro) return;
+
+            /* Let the complete logo animation play. */
+            setTimeout(function () {
+                intro.classList.add("intro-hide");
+            }, 3500);
+
+            /* Remove overlay after fade-out. */
+            setTimeout(function () {
+                intro.remove();
+                document.body.classList.remove("intro-active");
+            }, 4500);
+        });
+    </script>
 
 </body>
 
