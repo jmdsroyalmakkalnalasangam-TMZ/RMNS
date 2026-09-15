@@ -46,6 +46,10 @@
             overflow-x: hidden;
         }
 
+        body.intro-active {
+            overflow: hidden;
+        }
+
         a {
             color: inherit;
             text-decoration: none;
@@ -108,23 +112,17 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-
             background: rgba(4, 10, 19, 0.90);
-
             border-bottom: 1px solid rgba(212,175,55,0.35);
-
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-
-            box-shadow:
-                0 8px 35px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 35px rgba(0,0,0,0.25);
         }
 
         .navbar {
             max-width: 1200px;
             margin: auto;
             padding: 13px 20px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -141,12 +139,8 @@
             width: 52px;
             height: 52px;
             object-fit: contain;
-
             border-radius: 50%;
-
-            filter:
-                drop-shadow(0 0 8px rgba(212,175,55,0.35));
-
+            filter: drop-shadow(0 0 8px rgba(212,175,55,0.35));
             transition: 0.4s;
         }
 
@@ -178,29 +172,21 @@
 
         nav a {
             position: relative;
-
             font-size: 14px;
             color: #e8ebef;
-
             padding: 7px 0;
-
             transition: 0.3s;
         }
 
         nav a::after {
             content: "";
-
             position: absolute;
             left: 50%;
             bottom: 0;
-
             width: 0;
             height: 2px;
-
             background: var(--gold);
-
             transform: translateX(-50%);
-
             transition: 0.3s;
         }
 
@@ -226,19 +212,13 @@
 
         .hero {
             position: relative;
-
             min-height: 88vh;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             text-align: center;
-
             padding: 80px 20px;
-
             overflow: hidden;
-
             background:
                 radial-gradient(
                     circle at center,
@@ -255,21 +235,16 @@
 
         .hero::before {
             content: "";
-
             position: absolute;
             inset: 0;
-
             background-image:
                 radial-gradient(
                     circle,
                     rgba(212,175,55,0.35) 1px,
                     transparent 1px
                 );
-
             background-size: 45px 45px;
-
             opacity: 0.08;
-
             animation: moveStars 20s linear infinite;
         }
 
@@ -287,9 +262,7 @@
         .hero-content {
             position: relative;
             z-index: 2;
-
             max-width: 900px;
-
             animation: heroAppear 1.2s ease;
         }
 
@@ -309,17 +282,12 @@
         .hero-logo {
             width: 155px;
             height: 155px;
-
             object-fit: contain;
-
             margin: 0 auto 25px;
-
             border-radius: 50%;
-
             filter:
                 drop-shadow(0 0 12px rgba(212,175,55,0.40))
                 drop-shadow(0 0 40px rgba(212,175,55,0.12));
-
             animation: logoFloat 4s ease-in-out infinite;
         }
 
@@ -336,24 +304,16 @@
 
         .hero h2 {
             font-size: clamp(32px, 6vw, 62px);
-
             color: var(--gold-light);
-
             margin-bottom: 4px;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
-
-            text-shadow:
-                0 0 20px rgba(212,175,55,0.15);
+            text-shadow: 0 0 20px rgba(212,175,55,0.15);
         }
 
         .hero h3 {
             font-size: clamp(20px, 3vw, 31px);
-
             margin-bottom: 18px;
-
             letter-spacing: 1px;
         }
 
@@ -371,10 +331,8 @@
 
         .hero-buttons {
             margin-top: 30px;
-
             display: flex;
             justify-content: center;
-
             gap: 15px;
             flex-wrap: wrap;
         }
@@ -383,18 +341,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-
             padding: 12px 26px;
-
             border-radius: 30px;
-
             border: 1px solid var(--gold);
-
             transition:
                 transform 0.3s,
                 box-shadow 0.3s,
                 background 0.3s;
-
             font-weight: bold;
         }
 
@@ -404,21 +357,14 @@
                 #d4af37,
                 #f0cc5a
             );
-
             color: #07111f;
-
-            box-shadow:
-                0 8px 25px rgba(212,175,55,0.18);
+            box-shadow: 0 8px 25px rgba(212,175,55,0.18);
         }
 
         .btn-gold:hover {
             transform: translateY(-3px);
-
-            box-shadow:
-                0 12px 35px rgba(212,175,55,0.30);
-
+            box-shadow: 0 12px 35px rgba(212,175,55,0.30);
             background: transparent;
-
             color: var(--gold-light);
         }
 
@@ -429,13 +375,9 @@
 
         .btn-outline:hover {
             transform: translateY(-3px);
-
             background: var(--gold);
-
             color: #07111f;
-
-            box-shadow:
-                0 10px 30px rgba(212,175,55,0.22);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.22);
         }
 
 
@@ -460,29 +402,20 @@
 
         .section-title h2 {
             display: inline-block;
-
             font-size: 35px;
-
             color: var(--gold-light);
-
             margin-bottom: 8px;
-
             position: relative;
         }
 
         .section-title h2::before,
         .section-title h2::after {
             content: "";
-
             display: inline-block;
-
             width: 45px;
             height: 1px;
-
             background: var(--gold);
-
             vertical-align: middle;
-
             margin: 0 15px;
         }
 
@@ -541,9 +474,7 @@
 
         .about-grid {
             display: grid;
-
             grid-template-columns: repeat(2, 1fr);
-
             gap: 22px;
         }
 
@@ -579,35 +510,25 @@
 
         .activities-grid {
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
             gap: 22px;
         }
 
         .activity-card {
             text-align: center;
-
             padding: 32px 22px;
-
             border-radius: 18px;
-
             position: relative;
             overflow: hidden;
         }
 
         .activity-card::before {
             content: "";
-
             position: absolute;
-
             width: 120px;
             height: 120px;
-
             border-radius: 50%;
-
             background: rgba(212,175,55,0.07);
-
             top: -60px;
             right: -60px;
         }
@@ -615,23 +536,15 @@
         .activity-icon {
             width: 70px;
             height: 70px;
-
             margin: 0 auto 18px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             border: 1px solid rgba(212,175,55,0.55);
-
             border-radius: 50%;
-
             font-size: 32px;
-
             background: rgba(212,175,55,0.04);
-
-            box-shadow:
-                0 0 20px rgba(212,175,55,0.05);
+            box-shadow: 0 0 20px rgba(212,175,55,0.05);
         }
 
         .activity-card h3 {
@@ -665,28 +578,19 @@
 
         .announcement {
             position: relative;
-
             border-left: 4px solid var(--gold);
-
             border-radius: 12px;
-
             padding: 22px 25px;
-
             overflow: hidden;
         }
 
         .announcement::after {
             content: "✦";
-
             position: absolute;
-
             right: 20px;
             top: 15px;
-
             color: var(--gold);
-
             opacity: 0.35;
-
             font-size: 20px;
         }
 
@@ -722,7 +626,6 @@
 
         .festival-card {
             position: relative;
-
             overflow: hidden;
 
             background:
@@ -740,9 +643,7 @@
             border: 1px solid rgba(212,175,55,0.65);
 
             border-radius: 20px;
-
             padding: 35px;
-
             text-align: center;
 
             box-shadow:
@@ -752,16 +653,11 @@
 
         .festival-card::before {
             content: "";
-
             position: absolute;
-
             width: 250px;
             height: 250px;
-
             border-radius: 50%;
-
             border: 1px solid rgba(212,175,55,0.10);
-
             top: -130px;
             left: -100px;
         }
@@ -769,7 +665,6 @@
         .festival-icon {
             font-size: 48px;
             margin-bottom: 10px;
-
             animation: festivalFloat 3s ease-in-out infinite;
         }
 
@@ -806,29 +701,20 @@
 
         .meeting-card {
             margin-top: 35px;
-
             border-radius: 20px;
-
             padding: 32px;
-
             text-align: center;
-
             position: relative;
             overflow: hidden;
         }
 
         .meeting-card::before {
             content: "";
-
             position: absolute;
-
             width: 200px;
             height: 200px;
-
             border-radius: 50%;
-
             border: 1px solid rgba(212,175,55,0.10);
-
             right: -100px;
             top: -100px;
         }
@@ -856,48 +742,33 @@
 
         .gallery-grid {
             display: grid;
-
             grid-template-columns: repeat(4, 1fr);
-
             gap: 16px;
         }
 
         .gallery-item {
             height: 220px;
-
             overflow: hidden;
-
             border-radius: 16px;
-
             cursor: pointer;
-
             border: 1px solid rgba(212,175,55,0.28);
-
             background: #0d1a2b;
-
             position: relative;
         }
 
         .gallery-item::after {
             content: "⌕";
-
             position: absolute;
-
             inset: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-size: 35px;
-
             color: white;
-
             background: rgba(0,0,0,0.35);
-
             opacity: 0;
-
             transition: 0.35s;
+            pointer-events: none;
         }
 
         .gallery-item:hover::after {
@@ -907,9 +778,7 @@
         .gallery-item img {
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             transition:
                 transform 0.6s,
                 filter 0.6s;
@@ -917,8 +786,25 @@
 
         .gallery-item:hover img {
             transform: scale(1.08);
-
             filter: brightness(0.78);
+        }
+
+        /* Uploaded gallery image caption */
+
+        .firebase-gallery-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 9px 11px;
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,0.9)
+                );
+            font-size: 13px;
+            color: white;
+            z-index: 2;
         }
 
 
@@ -928,18 +814,12 @@
 
         .lightbox {
             display: none;
-
             position: fixed;
-
             z-index: 3000;
-
             inset: 0;
-
             background: rgba(0,0,0,0.96);
-
             align-items: center;
             justify-content: center;
-
             padding: 30px;
         }
 
@@ -950,29 +830,21 @@
         .lightbox img {
             max-width: 90%;
             max-height: 85vh;
-
             object-fit: contain;
-
             border-radius: 12px;
-
-            box-shadow:
-                0 0 50px rgba(212,175,55,0.12);
+            box-shadow: 0 0 50px rgba(212,175,55,0.12);
         }
 
         .lightbox-close,
         .lightbox-prev,
         .lightbox-next {
             position: absolute;
-
             color: white;
-
             font-size: 35px;
-
             cursor: pointer;
-
             user-select: none;
-
             transition: 0.25s;
+            z-index: 10;
         }
 
         .lightbox-close {
@@ -1002,34 +874,25 @@
 
         .contact-grid {
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
             gap: 20px;
         }
 
         .contact-card {
             padding: 30px 20px;
-
             border-radius: 18px;
-
             text-align: center;
         }
 
         .contact-card .icon {
             width: 65px;
             height: 65px;
-
             margin: 0 auto 15px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             border: 1px solid rgba(212,175,55,0.5);
-
             border-radius: 50%;
-
             font-size: 28px;
         }
 
@@ -1055,28 +918,21 @@
 
         footer {
             position: relative;
-
             background:
                 linear-gradient(
                     180deg,
                     #07111f,
                     #030810
                 );
-
             border-top: 1px solid rgba(212,175,55,0.3);
-
             text-align: center;
-
             padding: 35px 20px;
         }
 
         footer::before {
             content: "✦";
-
             display: block;
-
             color: var(--gold);
-
             margin-bottom: 12px;
         }
 
@@ -1097,33 +953,19 @@
 
         #scrollTop {
             position: fixed;
-
             right: 20px;
             bottom: 20px;
-
             width: 48px;
             height: 48px;
-
             border-radius: 50%;
-
             border: 1px solid var(--gold);
-
-            background:
-                rgba(8,18,32,0.92);
-
+            background: rgba(8,18,32,0.92);
             color: var(--gold-light);
-
             font-size: 20px;
-
             cursor: pointer;
-
             display: none;
-
             z-index: 1500;
-
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.3);
-
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             transition: 0.3s;
         }
 
@@ -1174,24 +1016,15 @@
 
             nav {
                 display: none;
-
                 position: absolute;
-
                 top: 100%;
                 left: 0;
                 right: 0;
-
-                background:
-                    rgba(4,10,19,0.98);
-
+                background: rgba(4,10,19,0.98);
                 padding: 20px;
-
                 flex-direction: column;
-
                 border-bottom: 1px solid var(--gold);
-
-                box-shadow:
-                    0 15px 30px rgba(0,0,0,0.35);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.35);
             }
 
             nav.active {
@@ -1288,14 +1121,10 @@
             }
         }
 
-    
-        /* =====================================================
-           JMD'S ROYAL MAKKAL NALASANGAM - LOGO OPENING
-        ===================================================== */
 
-        body.intro-active {
-            overflow: hidden;
-        }
+        /* =====================================================
+           LOGO OPENING
+        ===================================================== */
 
         #introScreen {
             position: fixed;
@@ -1306,10 +1135,12 @@
             justify-content: center;
             overflow: hidden;
             background:
-                radial-gradient(circle at center,
+                radial-gradient(
+                    circle at center,
                     rgba(212,175,55,.18) 0%,
                     rgba(5,11,21,.97) 38%,
-                    #02050a 100%);
+                    #02050a 100%
+                );
             opacity: 1;
             visibility: visible;
             transition: opacity .9s ease, visibility .9s ease;
@@ -1322,10 +1153,12 @@
             height: min(80vw, 760px);
             border-radius: 50%;
             background:
-                radial-gradient(circle,
+                radial-gradient(
+                    circle,
                     rgba(212,175,55,.22),
                     rgba(212,175,55,.06) 35%,
-                    transparent 68%);
+                    transparent 68%
+                );
             filter: blur(20px);
             animation: introGlow 2.8s ease-in-out infinite;
         }
@@ -1467,7 +1300,12 @@
             width: min(280px,55vw);
             height: 1px;
             margin-top: 18px;
-            background: linear-gradient(90deg,transparent,#d4af37,transparent);
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #d4af37,
+                transparent
+            );
             box-shadow: 0 0 12px rgba(212,175,55,.35);
             animation: introLineIn .9s ease 1.7s both;
         }
@@ -1479,22 +1317,51 @@
         }
 
         @keyframes introContentIn {
-            from { opacity:0; transform:scale(.86) translateY(15px); }
-            to { opacity:1; transform:scale(1) translateY(0); }
+            from {
+                opacity:0;
+                transform:scale(.86) translateY(15px);
+            }
+
+            to {
+                opacity:1;
+                transform:scale(1) translateY(0);
+            }
         }
 
         @keyframes introLogoSpin {
-            0% { transform:perspective(900px) rotateY(-90deg) scale(.72); opacity:0; }
-            45% { transform:perspective(900px) rotateY(25deg) scale(1.06); opacity:1; }
-            100% { transform:perspective(900px) rotateY(0deg) scale(1); opacity:1; }
+            0% {
+                transform:
+                    perspective(900px)
+                    rotateY(-90deg)
+                    scale(.72);
+                opacity:0;
+            }
+
+            45% {
+                transform:
+                    perspective(900px)
+                    rotateY(25deg)
+                    scale(1.06);
+                opacity:1;
+            }
+
+            100% {
+                transform:
+                    perspective(900px)
+                    rotateY(0deg)
+                    scale(1);
+                opacity:1;
+            }
         }
 
         @keyframes introLogoPulse {
+
             0%,100% {
                 filter:
                     drop-shadow(0 0 8px rgba(243,211,106,.65))
                     drop-shadow(0 0 24px rgba(212,175,55,.35));
             }
+
             50% {
                 filter:
                     drop-shadow(0 0 14px rgba(243,211,106,.95))
@@ -1503,47 +1370,108 @@
         }
 
         @keyframes introGlow {
-            0%,100% { transform:scale(.92); opacity:.65; }
-            50% { transform:scale(1.08); opacity:1; }
+
+            0%,100% {
+                transform:scale(.92);
+                opacity:.65;
+            }
+
+            50% {
+                transform:scale(1.08);
+                opacity:1;
+            }
         }
 
         @keyframes introRing {
-            0%,100% { transform:scale(.96); opacity:.65; }
-            50% { transform:scale(1.04); opacity:1; }
+
+            0%,100% {
+                transform:scale(.96);
+                opacity:.65;
+            }
+
+            50% {
+                transform:scale(1.04);
+                opacity:1;
+            }
         }
 
         @keyframes introOrbit {
-            from { transform:rotate(0deg) scale(.98); }
-            to { transform:rotate(360deg) scale(.98); }
+
+            from {
+                transform:rotate(0deg) scale(.98);
+            }
+
+            to {
+                transform:rotate(360deg) scale(.98);
+            }
         }
 
         @keyframes introSpinRing {
-            from { transform:rotate(0deg); }
-            to { transform:rotate(360deg); }
+
+            from {
+                transform:rotate(0deg);
+            }
+
+            to {
+                transform:rotate(360deg);
+            }
         }
 
         @keyframes introLightSweep {
-            0% { left:-45%; opacity:0; }
-            15% { opacity:.9; }
-            70% { opacity:.65; }
-            100% { left:145%; opacity:0; }
+
+            0% {
+                left:-45%;
+                opacity:0;
+            }
+
+            15% {
+                opacity:.9;
+            }
+
+            70% {
+                opacity:.65;
+            }
+
+            100% {
+                left:145%;
+                opacity:0;
+            }
         }
 
         @keyframes introTextIn {
-            from { opacity:0; transform:translateY(14px); letter-spacing:0; }
-            to { opacity:1; transform:translateY(0); }
+
+            from {
+                opacity:0;
+                transform:translateY(14px);
+                letter-spacing:0;
+            }
+
+            to {
+                opacity:1;
+                transform:translateY(0);
+            }
         }
 
         @keyframes introLineIn {
-            from { opacity:0; transform:scaleX(0); }
-            to { opacity:1; transform:scaleX(1); }
+
+            from {
+                opacity:0;
+                transform:scaleX(0);
+            }
+
+            to {
+                opacity:1;
+                transform:scaleX(1);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             #introScreen *,
             #introScreen::before {
                 animation:none !important;
             }
+
         }
 
     </style>
@@ -1552,1925 +1480,2768 @@
 
 <body>
 
-    <!-- JMD'S ROYAL MAKKAL NALASANGAM LOGO OPENING -->
-    <div id="introScreen" aria-label="JMD'S Royal Makkal Nalasangam">
+    <!-- =====================================================
+         LOGO OPENING
+    ===================================================== -->
+
+    <div
+        id="introScreen"
+        aria-label="JMD'S Royal Makkal Nalasangam"
+    >
+
         <div class="intro-orbit"></div>
 
         <div class="intro-content">
+
             <div class="intro-logo-wrap">
+
                 <img
                     src="LOGO.png"
                     alt="JMD'S Royal Makkal Nalasangam Logo"
                     class="intro-logo"
                 >
+
                 <div class="intro-light"></div>
+
             </div>
 
-            <div class="intro-name">JMD'S ROYAL</div>
-            <div class="intro-subtitle">MAKKAL NALASANGAM</div>
+            <div class="intro-name">
+                JMD'S ROYAL
+            </div>
+
+            <div class="intro-subtitle">
+                MAKKAL NALASANGAM
+            </div>
+
             <div class="intro-line"></div>
+
         </div>
+
     </div>
 
 
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+    <header>
 
-<header>
+        <div class="navbar">
 
-    <div class="navbar">
+            <a href="#home" class="brand">
 
-        <a href="#home" class="brand">
+                <img
+                    src="LOGO.png"
+                    alt="JMD'S Royal Makkal Nalasangam Logo"
+                >
+
+                <div class="brand-text">
+
+                    <h1>
+                        JMD'S ROYAL MAKKAL NALASANGAM
+                    </h1>
+
+                    <p>
+                        ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <div
+                class="menu-btn"
+                onclick="toggleMenu()"
+            >
+                ☰
+            </div>
+
+
+            <nav id="navMenu">
+
+                <a href="#home" onclick="closeMenu()">
+                    Home
+                </a>
+
+                <a href="#about" onclick="closeMenu()">
+                    About
+                </a>
+
+                <a href="#activities" onclick="closeMenu()">
+                    Activities
+                </a>
+
+                <a href="#gallery" onclick="closeMenu()">
+                    Gallery
+                </a>
+
+                <a href="#festivals" onclick="closeMenu()">
+                    Festivals
+                </a>
+
+                <a href="#announcements" onclick="closeMenu()">
+                    Announcements
+                </a>
+
+                <a href="#contact" onclick="closeMenu()">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
 
             <img
                 src="LOGO.png"
-                alt="JMD'S Royal Makkal Nalasangam Logo"
+                class="hero-logo"
+                alt="Association Logo"
             >
-
-            <div class="brand-text">
-
-                <h1>
-                    JMD'S ROYAL MAKKAL NALASANGAM
-                </h1>
-
-                <p>
-                    ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <div
-            class="menu-btn"
-            onclick="toggleMenu()"
-        >
-            ☰
-        </div>
-
-
-        <nav id="navMenu">
-
-            <a href="#home" onclick="closeMenu()">
-                Home
-            </a>
-
-            <a href="#about" onclick="closeMenu()">
-                About
-            </a>
-
-            <a href="#activities" onclick="closeMenu()">
-                Activities
-            </a>
-
-            <a href="#gallery" onclick="closeMenu()">
-                Gallery
-            </a>
-
-            <a href="#festivals" onclick="closeMenu()">
-                Festivals
-            </a>
-
-            <a href="#announcements" onclick="closeMenu()">
-                Announcements
-            </a>
-
-            <a href="#contact" onclick="closeMenu()">
-                Contact
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <img
-            src="LOGO.png"
-            class="hero-logo"
-            alt="Association Logo"
-        >
-
-        <h2>
-            JMD'S ROYAL
-        </h2>
-
-        <h3>
-            MAKKAL NALASANGAM
-        </h3>
-
-        <p class="tamil">
-            ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
-        </p>
-
-        <p>
-            Unity • Service • Care • Responsibility
-        </p>
-
-        <p>
-            ஒற்றுமை • சேவை • அக்கறை • பொறுப்பு
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a
-                href="#about"
-                class="btn btn-gold"
-            >
-                Know More
-            </a>
-
-            <a
-                href="#contact"
-                class="btn btn-outline"
-            >
-                Contact Us
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section id="about">
-
-    <div class="container">
-
-        <div class="section-title">
 
             <h2>
-                About Us
+                JMD'S ROYAL
             </h2>
-
-            <p>
-                எங்களைப் பற்றி
-            </p>
-
-        </div>
-
-
-        <div class="about-grid">
-
-
-            <div class="card">
-
-                <h3>
-                    Who We Are
-                </h3>
-
-                <p>
-                    JMD'S ROYAL MAKKAL NALASANGAM is a community
-                    organization focused on unity, public welfare,
-                    social responsibility and helping people in need.
-                </p>
-
-                <br>
-
-                <p>
-                    ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம் என்பது
-                    ஒற்றுமை, மக்கள் நலம், சமூக பொறுப்பு மற்றும்
-                    தேவையுள்ள மக்களுக்கு உதவி செய்வதை நோக்கமாக
-                    கொண்ட சமூக அமைப்பாகும்.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Our Vision
-                </h3>
-
-                <p>
-                    To build a united, caring and responsible
-                    community where everyone works together
-                    for a better future.
-                </p>
-
-                <br>
-
-                <p>
-                    ஒற்றுமையுடனும் அக்கறையுடனும் பொறுப்புடனும்
-                    அனைவரும் இணைந்து செயல்படும் சிறந்த
-                    சமூகத்தை உருவாக்குதல்.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Our Mission
-                </h3>
-
-                <p>
-                    To support people, encourage community
-                    participation and organize useful social
-                    activities for public welfare.
-                </p>
-
-                <br>
-
-                <p>
-                    மக்களுக்கு உதவுதல், சமூக பங்கேற்பை
-                    ஊக்குவித்தல் மற்றும் மக்கள் நலனுக்கான
-                    பயனுள்ள நிகழ்ச்சிகளை நடத்துதல்.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Our Values
-                </h3>
-
-                <p>
-                    Unity, honesty, kindness, equality,
-                    responsibility and service.
-                </p>
-
-                <br>
-
-                <p>
-                    ஒற்றுமை, நேர்மை, அன்பு, சமத்துவம்,
-                    பொறுப்பு மற்றும் சேவை.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ACTIVITIES
-===================================================== -->
-
-<section id="activities">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Our Activities
-            </h2>
-
-            <p>
-                எங்கள் செயல்பாடுகள்
-            </p>
-
-        </div>
-
-
-        <div class="activities-grid">
-
-
-            <div class="activity-card">
-
-                <div class="activity-icon">
-                    🤝
-                </div>
-
-                <h3>
-                    Community Support
-                </h3>
-
-                <p>
-                    Supporting people and families who need
-                    assistance in our community.
-                </p>
-
-            </div>
-
-
-            <div class="activity-card">
-
-                <div class="activity-icon">
-                    ❤️
-                </div>
-
-                <h3>
-                    Social Welfare
-                </h3>
-
-                <p>
-                    Encouraging activities that improve the
-                    welfare and happiness of our community.
-                </p>
-
-            </div>
-
-
-            <div class="activity-card">
-
-                <div class="activity-icon">
-                    🌱
-                </div>
-
-                <h3>
-                    Community Development
-                </h3>
-
-                <p>
-                    Working together to create a cleaner,
-                    safer and better community.
-                </p>
-
-            </div>
-
-
-            <div class="activity-card">
-
-                <div class="activity-icon">
-                    🎓
-                </div>
-
-                <h3>
-                    Education Support
-                </h3>
-
-                <p>
-                    Encouraging students and supporting
-                    educational development.
-                </p>
-
-            </div>
-
-
-            <div class="activity-card">
-
-                <div class="activity-icon">
-                    🩸
-                </div>
-
-                <h3>
-                    Health & Welfare
-                </h3>
-
-                <p>
-                    Supporting health awareness and
-                    welfare-oriented community activities.
-                </p>
-
-            </div>
-
-
-            <div class="activity-card">
-
-                <div class="activity-icon">
-                    🌟
-                </div>
-
-                <h3>
-                    Public Service
-                </h3>
-
-                <p>
-                    Serving society with unity, kindness
-                    and responsibility.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     GALLERY
-===================================================== -->
-
-<section id="gallery">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Gallery
-            </h2>
-
-            <p>
-                எங்கள் நிகழ்வுகளின் புகைப்படங்கள்
-            </p>
-
-        </div>
-
-
-        <div class="gallery-grid" id="galleryGrid">
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(0)"
-            >
-                <img
-                    src="gallery1.jpg"
-                    alt="Association Gallery Image 1"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(1)"
-            >
-                <img
-                    src="gallery2.jpg"
-                    alt="Association Gallery Image 2"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(2)"
-            >
-                <img
-                    src="gallery3.jpg"
-                    alt="Association Gallery Image 3"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(3)"
-            >
-                <img
-                    src="gallery4.jpg"
-                    alt="Association Gallery Image 4"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(4)"
-            >
-                <img
-                    src="gallery5.jpg"
-                    alt="Association Gallery Image 5"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(5)"
-            >
-                <img
-                    src="gallery6.jpg"
-                    alt="Association Gallery Image 6"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(6)"
-            >
-                <img
-                    src="gallery7.jpg"
-                    alt="Association Gallery Image 7"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openLightbox(7)"
-            >
-                <img
-                    src="gallery8.jpg"
-                    alt="Association Gallery Image 8"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FESTIVALS
-===================================================== -->
-
-<section id="festivals">
-
-    <div class="container">
-
-
-        <div class="section-title" id="todayFestivalTitle">
-
-            <h2>
-                Today's Festival
-            </h2>
-
-            <p>
-                இன்றைய திருநாள்
-            </p>
-
-        </div>
-
-
-        <div
-            id="todayFestival"
-            class="festival-today"
-        >
-
-            <div class="empty-message">
-                Checking today's festival...
-            </div>
-
-        </div>
-
-
-
-        <div
-            class="section-title"
-            style="margin-top:60px;"
-        >
-
-            <h2>
-                Festival Gallery
-            </h2>
-
-            <p>
-                திருவிழா புகைப்படங்கள்
-            </p>
-
-        </div>
-
-
-
-        <div class="gallery-grid" id="festivalGalleryGrid">
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(0)"
-            >
-                <img
-                    src="festival1.jpg"
-                    alt="Festival Image 1"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(1)"
-            >
-                <img
-                    src="festival2.jpg"
-                    alt="Festival Image 2"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(2)"
-            >
-                <img
-                    src="festival3.jpg"
-                    alt="Festival Image 3"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(3)"
-            >
-                <img
-                    src="festival4.jpg"
-                    alt="Festival Image 4"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(4)"
-            >
-                <img
-                    src="festival5.jpg"
-                    alt="Festival Image 5"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(5)"
-            >
-                <img
-                    src="festival6.jpg"
-                    alt="Festival Image 6"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(6)"
-            >
-                <img
-                    src="festival7.jpg"
-                    alt="Festival Image 7"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-            <div
-                class="gallery-item static-gallery-item"
-                onclick="openFestivalLightbox(7)"
-            >
-                <img
-                    src="festival8.jpg"
-                    alt="Festival Image 8"
-                    onerror="this.closest('.gallery-item').remove()"
-                >
-            </div>
-
-
-        </div>
-
-
-
-        <!-- MEETING -->
-
-        <div class="meeting-card">
 
             <h3>
-                📅 Monthly Association Meeting
+                MAKKAL NALASANGAM
             </h3>
 
-            <div
-                id="meetingDate"
-                class="meeting-date"
-            >
-                Loading...
-            </div>
-
-            <div
-                id="meetingTamil"
-                class="meeting-tamil"
-            >
-                மாதாந்திர சங்க கூட்டம்
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ANNOUNCEMENTS
-===================================================== -->
-
-<section id="announcements">
-
-    <div class="container">
-
-
-        <div class="section-title">
-
-            <h2>
-                Announcements
-            </h2>
-
-            <p>
-                அறிவிப்புகள்
+            <p class="tamil">
+                ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
             </p>
 
-        </div>
-
-
-        <div
-            id="announcementList"
-            class="announcement-list"
-        >
-
-            <div class="empty-message">
-                Loading announcements...
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section id="contact">
-
-    <div class="container">
-
-
-        <div class="section-title">
-
-            <h2>
-                Contact Us
-            </h2>
-
             <p>
-                தொடர்பு கொள்ள
+                Unity • Service • Care • Responsibility
             </p>
 
-        </div>
+            <p>
+                ஒற்றுமை • சேவை • அக்கறை • பொறுப்பு
+            </p>
 
 
-        <div class="contact-grid">
+            <div class="hero-buttons">
 
+                <a
+                    href="#about"
+                    class="btn btn-gold"
+                >
+                    Know More
+                </a>
 
-            <div class="contact-card">
-
-                <div class="icon">
-                    📞
-                </div>
-
-                <h3>
-                    Phone
-                </h3>
-
-                <p id="contactPhone">
-                    Loading...
-                </p>
-
-            </div>
-
-
-            <div class="contact-card">
-
-                <div class="icon">
-                    ✉️
-                </div>
-
-                <h3>
-                    Email
-                </h3>
-
-                <p id="contactEmail">
-                    Loading...
-                </p>
+                <a
+                    href="#contact"
+                    class="btn btn-outline"
+                >
+                    Contact Us
+                </a>
 
             </div>
-
-
-            <div class="contact-card">
-
-                <div class="icon">
-                    📍
-                </div>
-
-                <h3>
-                    Address
-                </h3>
-
-                <p id="contactAddress">
-                    Loading...
-                </p>
-
-            </div>
-
 
         </div>
 
-    </div>
+    </section>
 
-</section>
 
+    <!-- =====================================================
+         ABOUT
+    ===================================================== -->
 
+    <section id="about">
 
-<!-- =====================================================
-     LIGHTBOX
-===================================================== -->
+        <div class="container">
 
-<div
-    id="lightbox"
-    class="lightbox"
-    onclick="closeLightbox(event)"
->
+            <div class="section-title">
 
-    <span
-        class="lightbox-close"
-        onclick="closeLightbox()"
-    >
-        ×
-    </span>
+                <h2>
+                    About Us
+                </h2>
 
+                <p>
+                    எங்களைப் பற்றி
+                </p>
 
-    <span
-        class="lightbox-prev"
-        onclick="previousImage(event)"
-    >
-        ❮
-    </span>
+            </div>
 
 
-    <img
-        id="lightboxImage"
-        src=""
-        alt="Gallery Preview"
-    >
+            <div class="about-grid">
 
-
-    <span
-        class="lightbox-next"
-        onclick="nextImage(event)"
-    >
-        ❯
-    </span>
-
-</div>
-
-
-
-<!-- =====================================================
-     SCROLL TOP
-===================================================== -->
-
-<button
-    id="scrollTop"
-    onclick="window.scrollTo({top:0, behavior:'smooth'})"
->
-    ↑
-</button>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <h3>
-        JMD'S ROYAL MAKKAL NALASANGAM
-    </h3>
-
-    <p>
-        ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
-    </p>
-
-    <p style="margin-top:10px;">
-        ©
-        <span id="currentYear"></span>
-        JMD'S Royal Makkal Nalasangam.
-        All Rights Reserved.
-    </p>
-
-</footer>
-
-
-
-<!-- =====================================================
-     FIREBASE
-===================================================== -->
-
-<script type="module">
-
-    import {
-        initializeApp
-    }
-    from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-
-    import {
-        getDatabase,
-        ref,
-        onValue
-    }
-    from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
-
-
-    import {
-        firebaseConfig
-    }
-    from "./firebase-config.js";
-
-
-    /* =====================================================
-       FIREBASE INITIALIZATION
-    ===================================================== */
-
-    const app =
-        initializeApp(firebaseConfig);
-
-
-    const database =
-        getDatabase(app);
-
-    // Make the Firebase database available to the normal gallery script.
-    window.rmnsDatabase = database;
-    window.firebaseDatabaseApi = { ref, onValue };
-    window.dispatchEvent(new Event("rmnsFirebaseReady"));
-
-
-
-    /* =====================================================
-       ESCAPE HTML
-    ===================================================== */
-
-    function escapeHTML(value) {
-
-        if (
-            value === null ||
-            value === undefined
-        ) {
-            return "";
-        }
-
-        return String(value)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
-
-
-
-    /* =====================================================
-       ANNOUNCEMENTS
-    ===================================================== */
-
-    const announcementsRef =
-        ref(database, "announcements");
-
-
-    onValue(
-        announcementsRef,
-        (snapshot) => {
-
-            const list =
-                document.getElementById(
-                    "announcementList"
-                );
-
-
-            list.innerHTML = "";
-
-
-            const data =
-                snapshot.val();
-
-
-            if (!data) {
-
-                list.innerHTML = `
-
-                    <div class="empty-message">
-                        No announcements available.
-                    </div>
-
-                `;
-
-                return;
-            }
-
-
-            const announcements =
-                Object.values(data);
-
-
-            announcements.sort(
-                (a, b) =>
-                    Number(b.createdAt || 0) -
-                    Number(a.createdAt || 0)
-            );
-
-
-            announcements.forEach(item => {
-
-                const div =
-                    document.createElement("div");
-
-
-                div.className =
-                    "announcement";
-
-
-                let dateText = "";
-
-
-                if (item.createdAt) {
-
-                    const date =
-                        new Date(
-                            Number(item.createdAt)
-                        );
-
-
-                    if (
-                        !isNaN(
-                            date.getTime()
-                        )
-                    ) {
-
-                        dateText =
-                            date.toLocaleDateString(
-                                "en-IN",
-                                {
-                                    day: "2-digit",
-                                    month: "long",
-                                    year: "numeric"
-                                }
-                            );
-                    }
-                }
-
-
-                div.innerHTML = `
+                <div class="card">
 
                     <h3>
-                        ${escapeHTML(item.title)}
+                        Who We Are
                     </h3>
 
                     <p>
-                        ${escapeHTML(item.text)}
+                        JMD'S ROYAL MAKKAL NALASANGAM is a community
+                        organization focused on unity, public welfare,
+                        social responsibility and helping people in need.
                     </p>
 
-                    ${
-                        dateText
-                        ?
-                        `
-                        <div class="announcement-date">
-                            Posted: ${escapeHTML(dateText)}
-                        </div>
-                        `
-                        :
-                        ""
-                    }
+                    <br>
 
-                `;
+                    <p>
+                        ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம் என்பது
+                        ஒற்றுமை, மக்கள் நலம், சமூக பொறுப்பு மற்றும்
+                        தேவையுள்ள மக்களுக்கு உதவி செய்வதை நோக்கமாக
+                        கொண்ட சமூக அமைப்பாகும்.
+                    </p>
 
-
-                list.appendChild(div);
-
-            });
-
-        },
-
-
-        (error) => {
-
-            console.error(
-                "Announcement error:",
-                error
-            );
-
-
-            document.getElementById(
-                "announcementList"
-            ).innerHTML = `
-
-                <div class="empty-message">
-                    Unable to load announcements.
                 </div>
 
-            `;
-        }
-    );
+
+                <div class="card">
+
+                    <h3>
+                        Our Vision
+                    </h3>
+
+                    <p>
+                        To build a united, caring and responsible
+                        community where everyone works together
+                        for a better future.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        ஒற்றுமையுடனும் அக்கறையுடனும் பொறுப்புடனும்
+                        அனைவரும் இணைந்து செயல்படும் சிறந்த
+                        சமூகத்தை உருவாக்குதல்.
+                    </p>
+
+                </div>
 
 
+                <div class="card">
 
-    /* =====================================================
-       FESTIVALS
-    ===================================================== */
+                    <h3>
+                        Our Mission
+                    </h3>
 
-    const festivalsRef =
-        ref(database, "festivals");
+                    <p>
+                        To support people, encourage community
+                        participation and organize useful social
+                        activities for public welfare.
+                    </p>
 
+                    <br>
 
-    function showTodayFestival(data) {
+                    <p>
+                        மக்களுக்கு உதவுதல், சமூக பங்கேற்பை
+                        ஊக்குவித்தல் மற்றும் மக்கள் நலனுக்கான
+                        பயனுள்ள நிகழ்ச்சிகளை நடத்துதல்.
+                    </p>
 
-        const container =
-            document.getElementById("todayFestival");
-
-        const title =
-            document.getElementById("todayFestivalTitle");
-
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, "0");
-        const day = String(now.getDate()).padStart(2, "0");
-        const today = `${year}-${month}-${day}`;
-
-        let festivalFound = false;
-
-        container.style.display = "none";
-        if (title) title.style.display = "none";
-
-        if (data) {
-            Object.values(data).forEach(item => {
-                if (item && item.date === today) {
-                    festivalFound = true;
-
-                    const dateObject = new Date(item.date + "T00:00:00");
-                    const formattedDate = dateObject.toLocaleDateString(
-                        "en-IN",
-                        { weekday:"long", day:"numeric", month:"long", year:"numeric" }
-                    );
-
-                    container.innerHTML = `
-                        <div class="festival-card">
-                            <div class="festival-icon">🎉</div>
-                            <h3>${escapeHTML(item.name || "")}</h3>
-                            <h4>${escapeHTML(item.tamil || "")}</h4>
-                            <div class="festival-date">${escapeHTML(formattedDate)}</div>
-                        </div>
-                    `;
-                    container.style.display = "block";
-                    if (title) title.style.display = "block";
-                }
-            });
-        }
-
-        if (!festivalFound) {
-            container.innerHTML = "";
-            container.style.display = "none";
-            if (title) title.style.display = "none";
-        }
-    }
-
-    onValue(
-        festivalsRef,
-        snapshot => {
-
-            showTodayFestival(
-                snapshot.val()
-            );
-
-        },
+                </div>
 
 
-        error => {
+                <div class="card">
 
-            console.error(
-                "Festival error:",
-                error
-            );
+                    <h3>
+                        Our Values
+                    </h3>
+
+                    <p>
+                        Unity, honesty, kindness, equality,
+                        responsibility and service.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        ஒற்றுமை, நேர்மை, அன்பு, சமத்துவம்,
+                        பொறுப்பு மற்றும் சேவை.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-            document.getElementById(
-                "todayFestival"
-            ).innerHTML = `
+    <!-- =====================================================
+         ACTIVITIES
+    ===================================================== -->
 
-                <div class="festival-card">
+    <section id="activities">
 
-                    <div class="festival-icon">
-                        ⚠️
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Our Activities
+                </h2>
+
+                <p>
+                    எங்கள் செயல்பாடுகள்
+                </p>
+
+            </div>
+
+
+            <div class="activities-grid">
+
+                <div class="activity-card">
+
+                    <div class="activity-icon">
+                        🤝
                     </div>
 
                     <h3>
-                        Unable to load festival
+                        Community Support
                     </h3>
+
+                    <p>
+                        Supporting people and families who need
+                        assistance in our community.
+                    </p>
 
                 </div>
 
-            `;
+
+                <div class="activity-card">
+
+                    <div class="activity-icon">
+                        ❤️
+                    </div>
+
+                    <h3>
+                        Social Welfare
+                    </h3>
+
+                    <p>
+                        Encouraging activities that improve the
+                        welfare and happiness of our community.
+                    </p>
+
+                </div>
+
+
+                <div class="activity-card">
+
+                    <div class="activity-icon">
+                        🌱
+                    </div>
+
+                    <h3>
+                        Community Development
+                    </h3>
+
+                    <p>
+                        Working together to create a cleaner,
+                        safer and better community.
+                    </p>
+
+                </div>
+
+
+                <div class="activity-card">
+
+                    <div class="activity-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Education Support
+                    </h3>
+
+                    <p>
+                        Encouraging students and supporting
+                        educational development.
+                    </p>
+
+                </div>
+
+
+                <div class="activity-card">
+
+                    <div class="activity-icon">
+                        🩸
+                    </div>
+
+                    <h3>
+                        Health & Welfare
+                    </h3>
+
+                    <p>
+                        Supporting health awareness and
+                        welfare-oriented community activities.
+                    </p>
+
+                </div>
+
+
+                <div class="activity-card">
+
+                    <div class="activity-icon">
+                        🌟
+                    </div>
+
+                    <h3>
+                        Public Service
+                    </h3>
+
+                    <p>
+                        Serving society with unity, kindness
+                        and responsibility.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALLERY
+    ===================================================== -->
+
+    <section id="gallery">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Gallery
+                </h2>
+
+                <p>
+                    எங்கள் நிகழ்வுகளின் புகைப்படங்கள்
+                </p>
+
+            </div>
+
+
+            <div
+                class="gallery-grid"
+                id="galleryGrid"
+            >
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(0)"
+                >
+                    <img
+                        src="gallery1.jpg"
+                        alt="Association Gallery Image 1"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(1)"
+                >
+                    <img
+                        src="gallery2.jpg"
+                        alt="Association Gallery Image 2"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(2)"
+                >
+                    <img
+                        src="gallery3.jpg"
+                        alt="Association Gallery Image 3"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(3)"
+                >
+                    <img
+                        src="gallery4.jpg"
+                        alt="Association Gallery Image 4"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(4)"
+                >
+                    <img
+                        src="gallery5.jpg"
+                        alt="Association Gallery Image 5"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(5)"
+                >
+                    <img
+                        src="gallery6.jpg"
+                        alt="Association Gallery Image 6"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(6)"
+                >
+                    <img
+                        src="gallery7.jpg"
+                        alt="Association Gallery Image 7"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openLightbox(7)"
+                >
+                    <img
+                        src="gallery8.jpg"
+                        alt="Association Gallery Image 8"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FESTIVALS
+    ===================================================== -->
+
+    <section id="festivals">
+
+        <div class="container">
+
+            <div
+                class="section-title"
+                id="todayFestivalTitle"
+            >
+
+                <h2>
+                    Today's Festival
+                </h2>
+
+                <p>
+                    இன்றைய திருநாள்
+                </p>
+
+            </div>
+
+
+            <div
+                id="todayFestival"
+                class="festival-today"
+            >
+
+                <div class="empty-message">
+                    Checking today's festival...
+                </div>
+
+            </div>
+
+
+            <div
+                class="section-title"
+                style="margin-top:60px;"
+            >
+
+                <h2>
+                    Festival Gallery
+                </h2>
+
+                <p>
+                    திருவிழா புகைப்படங்கள்
+                </p>
+
+            </div>
+
+
+            <div
+                class="gallery-grid"
+                id="festivalGalleryGrid"
+            >
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(0)"
+                >
+                    <img
+                        src="festival1.jpg"
+                        alt="Festival Image 1"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(1)"
+                >
+                    <img
+                        src="festival2.jpg"
+                        alt="Festival Image 2"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(2)"
+                >
+                    <img
+                        src="festival3.jpg"
+                        alt="Festival Image 3"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(3)"
+                >
+                    <img
+                        src="festival4.jpg"
+                        alt="Festival Image 4"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(4)"
+                >
+                    <img
+                        src="festival5.jpg"
+                        alt="Festival Image 5"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(5)"
+                >
+                    <img
+                        src="festival6.jpg"
+                        alt="Festival Image 6"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(6)"
+                >
+                    <img
+                        src="festival7.jpg"
+                        alt="Festival Image 7"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+
+                <div
+                    class="gallery-item static-gallery-item"
+                    onclick="openFestivalLightbox(7)"
+                >
+                    <img
+                        src="festival8.jpg"
+                        alt="Festival Image 8"
+                        onerror="this.closest('.gallery-item').remove(); syncGalleryImageArrays();"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MEETING
+            ================================================= -->
+
+            <div class="meeting-card">
+
+                <h3>
+                    📅 Monthly Association Meeting
+                </h3>
+
+                <div
+                    id="meetingDate"
+                    class="meeting-date"
+                >
+                    Loading...
+                </div>
+
+                <div
+                    id="meetingTamil"
+                    class="meeting-tamil"
+                >
+                    மாதாந்திர சங்க கூட்டம்
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ANNOUNCEMENTS
+    ===================================================== -->
+
+    <section id="announcements">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Announcements
+                </h2>
+
+                <p>
+                    அறிவிப்புகள்
+                </p>
+
+            </div>
+
+
+            <div
+                id="announcementList"
+                class="announcement-list"
+            >
+
+                <div class="empty-message">
+                    Loading announcements...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ===================================================== -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Contact Us
+                </h2>
+
+                <p>
+                    தொடர்பு கொள்ள
+                </p>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+                <div class="contact-card">
+
+                    <div class="icon">
+                        📞
+                    </div>
+
+                    <h3>
+                        Phone
+                    </h3>
+
+                    <p id="contactPhone">
+                        Loading...
+                    </p>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <div class="icon">
+                        ✉️
+                    </div>
+
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p id="contactEmail">
+                        Loading...
+                    </p>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <div class="icon">
+                        📍
+                    </div>
+
+                    <h3>
+                        Address
+                    </h3>
+
+                    <p id="contactAddress">
+                        Loading...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LIGHTBOX
+    ===================================================== -->
+
+    <div
+        id="lightbox"
+        class="lightbox"
+        onclick="closeLightbox(event)"
+    >
+
+        <span
+            class="lightbox-close"
+            onclick="closeLightbox()"
+        >
+            ×
+        </span>
+
+
+        <span
+            class="lightbox-prev"
+            onclick="previousImage(event)"
+        >
+            ❮
+        </span>
+
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="Gallery Preview"
+        >
+
+
+        <span
+            class="lightbox-next"
+            onclick="nextImage(event)"
+        >
+            ❯
+        </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         SCROLL TOP
+    ===================================================== -->
+
+    <button
+        id="scrollTop"
+        onclick="window.scrollTo({top:0, behavior:'smooth'})"
+    >
+        ↑
+    </button>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <h3>
+            JMD'S ROYAL MAKKAL NALASANGAM
+        </h3>
+
+        <p>
+            ஜேஎம்டி'ஸ் ராயல் மக்கள் நலச்சங்கம்
+        </p>
+
+        <p style="margin-top:10px;">
+
+            ©
+            <span id="currentYear"></span>
+
+            JMD'S Royal Makkal Nalasangam.
+
+            All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         FIREBASE
+    ===================================================== -->
+
+    <script type="module">
+
+        import {
+            initializeApp
         }
-    );
+        from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 
-
-    /* =====================================================
-       FIRST SUNDAY MEETING
-    ===================================================== */
-
-    function getFirstSunday(
-        year,
-        month
-    ) {
-
-        const date =
-            new Date(
-                year,
-                month,
-                1
-            );
+        import {
+            getDatabase,
+            ref,
+            onValue
+        }
+        from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
 
-        const day =
-            date.getDay();
+        import {
+            firebaseConfig
+        }
+        from "./firebase-config.js";
 
 
-        return day === 0
-            ? 1
-            : 8 - day;
-    }
+        /* =================================================
+           FIREBASE INITIALIZATION
+        ================================================= */
+
+        const app =
+            initializeApp(firebaseConfig);
 
 
-    function updateMeeting() {
-
-        const now =
-            new Date();
+        const database =
+            getDatabase(app);
 
 
-        let year =
-            now.getFullYear();
+        /*
+         * Make Firebase available to the
+         * normal JavaScript below.
+         */
+
+        window.rmnsDatabase =
+            database;
+
+        window.firebaseDatabaseApi = {
+            ref,
+            onValue
+        };
 
 
-        let month =
-            now.getMonth();
+        window.dispatchEvent(
+            new Event("rmnsFirebaseReady")
+        );
 
 
-        let firstSunday =
-            getFirstSunday(
-                year,
-                month
-            );
+        /* =================================================
+           ESCAPE HTML
+        ================================================= */
 
+        function escapeHTML(value) {
 
-        let meetingDate =
-            new Date(
-                year,
-                month,
-                firstSunday
-            );
+            if (
+                value === null ||
+                value === undefined
+            ) {
 
+                return "";
 
-        const todayOnly =
-            new Date(
-                year,
-                month,
-                now.getDate()
-            );
-
-
-        if (
-            todayOnly >
-            meetingDate
-        ) {
-
-            month++;
-
-
-            if (month > 11) {
-
-                month = 0;
-
-                year++;
             }
 
 
-            firstSunday =
+            return String(value)
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        /*
+         * Make this function available to
+         * the normal JavaScript.
+         */
+
+        window.rmnsEscapeHTML =
+            escapeHTML;
+
+
+        /* =================================================
+           ANNOUNCEMENTS
+        ================================================= */
+
+        const announcementsRef =
+            ref(
+                database,
+                "announcements"
+            );
+
+
+        onValue(
+
+            announcementsRef,
+
+            snapshot => {
+
+                const list =
+                    document.getElementById(
+                        "announcementList"
+                    );
+
+
+                list.innerHTML = "";
+
+
+                const data =
+                    snapshot.val();
+
+
+                if (!data) {
+
+                    list.innerHTML = `
+
+                        <div class="empty-message">
+                            No announcements available.
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                const announcements =
+                    Object.values(data);
+
+
+                announcements.sort(
+                    (a, b) =>
+                        Number(
+                            b.createdAt || 0
+                        ) -
+                        Number(
+                            a.createdAt || 0
+                        )
+                );
+
+
+                announcements.forEach(
+                    item => {
+
+                        const div =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        div.className =
+                            "announcement";
+
+
+                        let dateText = "";
+
+
+                        if (
+                            item.createdAt
+                        ) {
+
+                            const date =
+                                new Date(
+                                    Number(
+                                        item.createdAt
+                                    )
+                                );
+
+
+                            if (
+                                !isNaN(
+                                    date.getTime()
+                                )
+                            ) {
+
+                                dateText =
+                                    date.toLocaleDateString(
+                                        "en-IN",
+                                        {
+                                            day:
+                                                "2-digit",
+
+                                            month:
+                                                "long",
+
+                                            year:
+                                                "numeric"
+                                        }
+                                    );
+
+                            }
+
+                        }
+
+
+                        div.innerHTML = `
+
+                            <h3>
+                                ${escapeHTML(
+                                    item.title
+                                )}
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(
+                                    item.text
+                                )}
+                            </p>
+
+                            ${
+                                dateText
+                                ?
+                                `
+                                <div
+                                    class="announcement-date"
+                                >
+                                    Posted:
+                                    ${escapeHTML(
+                                        dateText
+                                    )}
+                                </div>
+                                `
+                                :
+                                ""
+                            }
+
+                        `;
+
+
+                        list.appendChild(
+                            div
+                        );
+
+                    }
+                );
+
+            },
+
+
+            error => {
+
+                console.error(
+                    "Announcement error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "announcementList"
+                ).innerHTML = `
+
+                    <div class="empty-message">
+                        Unable to load announcements.
+                    </div>
+
+                `;
+
+            }
+
+        );
+
+
+        /* =================================================
+           FESTIVALS
+        ================================================= */
+
+        const festivalsRef =
+            ref(
+                database,
+                "festivals"
+            );
+
+
+        function showTodayFestival(
+            data
+        ) {
+
+            const container =
+                document.getElementById(
+                    "todayFestival"
+                );
+
+
+            const title =
+                document.getElementById(
+                    "todayFestivalTitle"
+                );
+
+
+            const now =
+                new Date();
+
+
+            const year =
+                now.getFullYear();
+
+
+            const month =
+                String(
+                    now.getMonth() + 1
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            const day =
+                String(
+                    now.getDate()
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            const today =
+                `${year}-${month}-${day}`;
+
+
+            let festivalFound =
+                false;
+
+
+            container.style.display =
+                "none";
+
+
+            if (title) {
+                title.style.display =
+                    "none";
+            }
+
+
+            if (data) {
+
+                Object.values(data)
+                    .forEach(
+                        item => {
+
+                            if (
+                                item &&
+                                item.date ===
+                                    today
+                            ) {
+
+                                festivalFound =
+                                    true;
+
+
+                                const dateObject =
+                                    new Date(
+                                        item.date +
+                                        "T00:00:00"
+                                    );
+
+
+                                const formattedDate =
+                                    dateObject
+                                        .toLocaleDateString(
+                                            "en-IN",
+                                            {
+                                                weekday:
+                                                    "long",
+
+                                                day:
+                                                    "numeric",
+
+                                                month:
+                                                    "long",
+
+                                                year:
+                                                    "numeric"
+                                            }
+                                        );
+
+
+                                container.innerHTML = `
+
+                                    <div
+                                        class="festival-card"
+                                    >
+
+                                        <div
+                                            class="festival-icon"
+                                        >
+                                            🎉
+                                        </div>
+
+                                        <h3>
+                                            ${escapeHTML(
+                                                item.name ||
+                                                ""
+                                            )}
+                                        </h3>
+
+                                        <h4>
+                                            ${escapeHTML(
+                                                item.tamil ||
+                                                ""
+                                            )}
+                                        </h4>
+
+                                        <div
+                                            class="festival-date"
+                                        >
+                                            ${escapeHTML(
+                                                formattedDate
+                                            )}
+                                        </div>
+
+                                    </div>
+
+                                `;
+
+
+                                container.style.display =
+                                    "block";
+
+
+                                if (title) {
+
+                                    title.style.display =
+                                        "block";
+
+                                }
+
+                            }
+
+                        }
+                    );
+
+            }
+
+
+            if (!festivalFound) {
+
+                container.innerHTML =
+                    "";
+
+
+                container.style.display =
+                    "none";
+
+
+                if (title) {
+
+                    title.style.display =
+                        "none";
+
+                }
+
+            }
+
+        }
+
+
+        onValue(
+
+            festivalsRef,
+
+            snapshot => {
+
+                showTodayFestival(
+                    snapshot.val()
+                );
+
+            },
+
+
+            error => {
+
+                console.error(
+                    "Festival error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "todayFestival"
+                ).innerHTML = `
+
+                    <div class="festival-card">
+
+                        <div class="festival-icon">
+                            ⚠️
+                        </div>
+
+                        <h3>
+                            Unable to load festival
+                        </h3>
+
+                    </div>
+
+                `;
+
+            }
+
+        );
+
+
+        /* =================================================
+           FIRST SUNDAY MEETING
+        ================================================= */
+
+        function getFirstSunday(
+            year,
+            month
+        ) {
+
+            const date =
+                new Date(
+                    year,
+                    month,
+                    1
+                );
+
+
+            const day =
+                date.getDay();
+
+
+            return day === 0
+                ? 1
+                : 8 - day;
+
+        }
+
+
+        function updateMeeting() {
+
+            const now =
+                new Date();
+
+
+            let year =
+                now.getFullYear();
+
+
+            let month =
+                now.getMonth();
+
+
+            let firstSunday =
                 getFirstSunday(
                     year,
                     month
                 );
 
 
-            meetingDate =
+            let meetingDate =
                 new Date(
                     year,
                     month,
                     firstSunday
                 );
-        }
 
 
-        const englishDate =
-            meetingDate.toLocaleDateString(
-                "en-IN",
-                {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric"
+            const todayOnly =
+                new Date(
+                    year,
+                    month,
+                    now.getDate()
+                );
+
+
+            if (
+                todayOnly >
+                meetingDate
+            ) {
+
+                month++;
+
+
+                if (
+                    month >
+                    11
+                ) {
+
+                    month = 0;
+
+                    year++;
+
                 }
-            );
 
 
-        const tamilMonthNames = [
-
-            "ஜனவரி",
-            "பிப்ரவரி",
-            "மார்ச்",
-            "ஏப்ரல்",
-            "மே",
-            "ஜூன்",
-            "ஜூலை",
-            "ஆகஸ்ட்",
-            "செப்டம்பர்",
-            "அக்டோபர்",
-            "நவம்பர்",
-            "டிசம்பர்"
-
-        ];
-
-
-        const tamilDate =
-            `${meetingDate.getDate()} ` +
-            `${tamilMonthNames[
-                meetingDate.getMonth()
-            ]} ` +
-            `${meetingDate.getFullYear()}`;
-
-
-        document.getElementById(
-            "meetingDate"
-        ).textContent =
-            englishDate;
-
-
-        document.getElementById(
-            "meetingTamil"
-        ).textContent =
-            `மாதாந்திர சங்க கூட்டம் – ${tamilDate} அன்று`;
-    }
-
-
-    updateMeeting();
-
-
-    setInterval(
-        updateMeeting,
-        60000
-    );
-
-
-
-    /* =====================================================
-       CONTACT
-    ===================================================== */
-
-    const contactRef =
-        ref(database, "contact");
-
-
-    onValue(
-        contactRef,
-        snapshot => {
-
-            const data =
-                snapshot.val();
-
-
-            const phone =
-                document.getElementById(
-                    "contactPhone"
-                );
-
-
-            const email =
-                document.getElementById(
-                    "contactEmail"
-                );
-
-
-            const address =
-                document.getElementById(
-                    "contactAddress"
-                );
-
-
-            if (!data) {
-
-                phone.textContent =
-                    "Contact details not available";
-
-                email.textContent =
-                    "Contact details not available";
-
-                address.textContent =
-                    "Address not available";
-
-                return;
-            }
-
-
-            /* PHONE */
-
-            if (data.phone) {
-
-                const safePhone =
-                    escapeHTML(
-                        data.phone
+                firstSunday =
+                    getFirstSunday(
+                        year,
+                        month
                     );
 
 
-                phone.innerHTML = `
+                meetingDate =
+                    new Date(
+                        year,
+                        month,
+                        firstSunday
+                    );
 
-                    <a href="tel:${safePhone}">
-                        ${safePhone}
-                    </a>
-
-                `;
-
-            } else {
-
-                phone.textContent =
-                    "Not available";
             }
 
 
-            /* EMAIL */
+            const englishDate =
+                meetingDate
+                    .toLocaleDateString(
+                        "en-IN",
+                        {
+                            weekday:
+                                "long",
 
-            if (data.email) {
+                            day:
+                                "numeric",
 
-                const safeEmail =
-                    escapeHTML(
-                        data.email
+                            month:
+                                "long",
+
+                            year:
+                                "numeric"
+                        }
                     );
 
 
-                email.innerHTML = `
+            const tamilMonthNames = [
 
-                    <a href="mailto:${safeEmail}">
-                        ${safeEmail}
-                    </a>
+                "ஜனவரி",
+                "பிப்ரவரி",
+                "மார்ச்",
+                "ஏப்ரல்",
+                "மே",
+                "ஜூன்",
+                "ஜூலை",
+                "ஆகஸ்ட்",
+                "செப்டம்பர்",
+                "அக்டோபர்",
+                "நவம்பர்",
+                "டிசம்பர்"
 
-                `;
-
-            } else {
-
-                email.textContent =
-                    "Not available";
-            }
-
-
-            /* ADDRESS */
-
-            if (data.address) {
-
-                address.textContent =
-                    data.address;
-
-            } else {
-
-                address.textContent =
-                    "Not available";
-            }
-
-        },
+            ];
 
 
-        error => {
-
-            console.error(
-                "Contact error:",
-                error
-            );
+            const tamilDate =
+                `${meetingDate.getDate()} ` +
+                `${tamilMonthNames[
+                    meetingDate.getMonth()
+                ]} ` +
+                `${meetingDate.getFullYear()}`;
 
 
             document.getElementById(
-                "contactPhone"
+                "meetingDate"
             ).textContent =
-                "Unable to load";
+                englishDate;
 
 
             document.getElementById(
-                "contactEmail"
+                "meetingTamil"
             ).textContent =
-                "Unable to load";
+                `மாதாந்திர சங்க கூட்டம் – ${tamilDate} அன்று`;
 
-
-            document.getElementById(
-                "contactAddress"
-            ).textContent =
-                "Unable to load";
-        }
-    );
-
-
-
-    /* =====================================================
-       YEAR
-    ===================================================== */
-
-    document.getElementById(
-        "currentYear"
-    ).textContent =
-        new Date().getFullYear();
-
-</script>
-
-
-
-<!-- =====================================================
-     NORMAL JAVASCRIPT
-===================================================== -->
-
-<script>
-
-
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
-
-    function toggleMenu() {
-
-        document
-            .getElementById("navMenu")
-            .classList.toggle("active");
-    }
-
-
-    function closeMenu() {
-
-        document
-            .getElementById("navMenu")
-            .classList.remove("active");
-    }
-
-
-
-    /* =====================================================
-       GALLERY
-    ===================================================== */
-
-    // The gallery is built from the images actually visible on the page.
-    // This keeps missing GitHub files (for example gallery7.jpg) out of the lightbox.
-    let galleryImages = [];
-    let festivalImages = [];
-
-    function syncGalleryImageArrays() {
-        galleryImages = Array.from(
-            document.querySelectorAll("#galleryGrid .gallery-item img")
-        ).map(img => img.src).filter(Boolean);
-
-        festivalImages = Array.from(
-            document.querySelectorAll("#festivalGalleryGrid .gallery-item img")
-        ).map(img => img.src).filter(Boolean);
-    }
-
-    function renderFirebaseGallery(snapshot, type) {
-        const isFestival = type === "festival";
-        const grid = document.getElementById(isFestival ? "festivalGalleryGrid" : "galleryGrid");
-        if (!grid) return;
-
-        grid.querySelectorAll(".firebase-gallery-item").forEach(el => el.remove());
-
-        const items = [];
-        if (snapshot && snapshot.exists()) {
-            snapshot.forEach(child => {
-                const data = child.val() || {};
-                if (data.imageUrl) items.push({ id: child.key, ...data });
-            });
-        }
-
-        items.sort((a,b) => Number(a.createdAt || 0) - Number(b.createdAt || 0));
-        items.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "gallery-item firebase-gallery-item";
-            div.innerHTML = `
-                <img src="${escapeHTML(item.imageUrl)}" alt="${escapeHTML(item.caption || (isFestival ? "Festival Gallery Image" : "Association Gallery Image"))}">
-                ${item.caption ? `<div style="position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:13px;">${escapeHTML(item.caption)}</div>` : ""}
-            `;
-            div.querySelector("img").addEventListener("error", () => div.remove());
-            div.addEventListener("click", () => {
-                syncGalleryImageArrays();
-                const images = isFestival ? festivalImages : galleryImages;
-                const index = images.indexOf(item.imageUrl);
-                if (index >= 0) {
-                    isFestival ? openFestivalLightbox(index) : openLightbox(index);
-                }
-            });
-            grid.appendChild(div);
-        });
-
-        syncGalleryImageArrays();
-    }
-
-    function initDynamicGalleries() {
-        if (!window.rmnsDatabase || window.rmnsDynamicGalleriesReady) return;
-        window.rmnsDynamicGalleriesReady = true;
-
-        const { ref, onValue } = window.firebaseDatabaseApi || {};
-        if (!ref || !onValue) return;
-        onValue(ref(window.rmnsDatabase, "gallery"), snap => renderFirebaseGallery(snap, "main"));
-        onValue(ref(window.rmnsDatabase, "festivalGallery"), snap => renderFirebaseGallery(snap, "festival"));
-    }
-
-    window.addEventListener("rmnsFirebaseReady", initDynamicGalleries);
-    initDynamicGalleries();
-
-    let currentImages = [];
-
-    let currentIndex = 0;
-
-
-
-    function openLightbox(index) {
-
-        syncGalleryImageArrays();
-        currentImages =
-            galleryImages;
-
-        currentIndex =
-            index;
-
-
-        document.getElementById(
-            "lightboxImage"
-        ).src =
-            currentImages[currentIndex];
-
-
-        document.getElementById(
-            "lightbox"
-        ).classList.add("active");
-
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
-
-    function openFestivalLightbox(index) {
-
-        syncGalleryImageArrays();
-        currentImages =
-            festivalImages;
-
-        currentIndex =
-            index;
-
-
-        document.getElementById(
-            "lightboxImage"
-        ).src =
-            currentImages[currentIndex];
-
-
-        document.getElementById(
-            "lightbox"
-        ).classList.add("active");
-
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
-
-    function closeLightbox(event) {
-
-        if (
-            event &&
-            event.target !==
-            document.getElementById(
-                "lightbox"
-            )
-        ) {
-
-            return;
         }
 
 
-        document.getElementById(
-            "lightbox"
-        ).classList.remove(
-            "active"
+        updateMeeting();
+
+
+        setInterval(
+            updateMeeting,
+            60000
         );
 
 
-        document.body.style.overflow =
-            "";
-    }
+        /* =================================================
+           CONTACT
+        ================================================= */
+
+        const contactRef =
+            ref(
+                database,
+                "contact"
+            );
 
 
+        onValue(
 
-    function previousImage(event) {
+            contactRef,
 
-        if (event) {
-            event.stopPropagation();
-        }
+            snapshot => {
 
-
-        currentIndex--;
-
-
-        if (currentIndex < 0) {
-
-            currentIndex =
-                currentImages.length - 1;
-        }
+                const data =
+                    snapshot.val();
 
 
-        document.getElementById(
-            "lightboxImage"
-        ).src =
-            currentImages[currentIndex];
-    }
+                const phone =
+                    document.getElementById(
+                        "contactPhone"
+                    );
 
 
-
-    function nextImage(event) {
-
-        if (event) {
-            event.stopPropagation();
-        }
+                const email =
+                    document.getElementById(
+                        "contactEmail"
+                    );
 
 
-        currentIndex++;
+                const address =
+                    document.getElementById(
+                        "contactAddress"
+                    );
 
 
-        if (
-            currentIndex >=
-            currentImages.length
-        ) {
+                if (!data) {
 
-            currentIndex = 0;
-        }
+                    phone.textContent =
+                        "Contact details not available";
 
 
-        document.getElementById(
-            "lightboxImage"
-        ).src =
-            currentImages[currentIndex];
-    }
+                    email.textContent =
+                        "Contact details not available";
 
 
+                    address.textContent =
+                        "Address not available";
 
-    /* =====================================================
-       KEYBOARD
-    ===================================================== */
 
-    document.addEventListener(
-        "keydown",
-        function(event) {
+                    return;
 
-            const lightbox =
-                document.getElementById(
-                    "lightbox"
+                }
+
+
+                /* PHONE */
+
+                if (data.phone) {
+
+                    const safePhone =
+                        escapeHTML(
+                            data.phone
+                        );
+
+
+                    phone.innerHTML = `
+
+                        <a
+                            href="tel:${safePhone}"
+                        >
+                            ${safePhone}
+                        </a>
+
+                    `;
+
+                } else {
+
+                    phone.textContent =
+                        "Not available";
+
+                }
+
+
+                /* EMAIL */
+
+                if (data.email) {
+
+                    const safeEmail =
+                        escapeHTML(
+                            data.email
+                        );
+
+
+                    email.innerHTML = `
+
+                        <a
+                            href="mailto:${safeEmail}"
+                        >
+                            ${safeEmail}
+                        </a>
+
+                    `;
+
+                } else {
+
+                    email.textContent =
+                        "Not available";
+
+                }
+
+
+                /* ADDRESS */
+
+                if (data.address) {
+
+                    address.textContent =
+                        data.address;
+
+                } else {
+
+                    address.textContent =
+                        "Not available";
+
+                }
+
+            },
+
+
+            error => {
+
+                console.error(
+                    "Contact error:",
+                    error
                 );
 
 
-            if (
-                !lightbox.classList.contains(
-                    "active"
+                document.getElementById(
+                    "contactPhone"
+                ).textContent =
+                    "Unable to load";
+
+
+                document.getElementById(
+                    "contactEmail"
+                ).textContent =
+                    "Unable to load";
+
+
+                document.getElementById(
+                    "contactAddress"
+                ).textContent =
+                    "Unable to load";
+
+            }
+
+        );
+
+
+        /* =================================================
+           YEAR
+        ================================================= */
+
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+    </script>
+
+
+    <!-- =====================================================
+         NORMAL JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        function toggleMenu() {
+
+            document
+                .getElementById(
+                    "navMenu"
                 )
+                .classList.toggle(
+                    "active"
+                );
+
+        }
+
+
+        function closeMenu() {
+
+            document
+                .getElementById(
+                    "navMenu"
+                )
+                .classList.remove(
+                    "active"
+                );
+
+        }
+
+
+        /* =================================================
+           GALLERY VARIABLES
+        ================================================= */
+
+        let galleryImages = [];
+
+        let festivalImages = [];
+
+        let currentImages = [];
+
+        let currentIndex = 0;
+
+
+        /* =================================================
+           SYNC GALLERY ARRAYS
+        ================================================= */
+
+        function syncGalleryImageArrays() {
+
+            galleryImages =
+                Array.from(
+                    document.querySelectorAll(
+                        "#galleryGrid .gallery-item img"
+                    )
+                )
+                .map(
+                    img => img.src
+                )
+                .filter(Boolean);
+
+
+            festivalImages =
+                Array.from(
+                    document.querySelectorAll(
+                        "#festivalGalleryGrid .gallery-item img"
+                    )
+                )
+                .map(
+                    img => img.src
+                )
+                .filter(Boolean);
+
+        }
+
+
+        /* =================================================
+           DYNAMIC FIREBASE GALLERY
+        ================================================= */
+
+        function renderFirebaseGallery(
+            snapshot,
+            type
+        ) {
+
+            const isFestival =
+                type === "festival";
+
+
+            const grid =
+                document.getElementById(
+                    isFestival
+                        ? "festivalGalleryGrid"
+                        : "galleryGrid"
+                );
+
+
+            if (!grid) return;
+
+
+            /*
+             * Remove old Firebase images.
+             */
+
+            grid
+                .querySelectorAll(
+                    ".firebase-gallery-item"
+                )
+                .forEach(
+                    element =>
+                        element.remove()
+                );
+
+
+            const items = [];
+
+
+            /*
+             * Read Firebase records.
+             */
+
+            if (
+                snapshot &&
+                snapshot.exists()
+            ) {
+
+                snapshot.forEach(
+                    child => {
+
+                        const data =
+                            child.val() || {};
+
+
+                        let imageUrl =
+                            data.imageUrl ||
+                            "";
+
+
+                        /*
+                         * IMPORTANT:
+                         *
+                         * If Worker already supplied
+                         * imageUrl, use it.
+                         *
+                         * If imageUrl is missing,
+                         * create the raw GitHub URL
+                         * from githubPath.
+                         */
+
+                        if (
+                            !imageUrl &&
+                            data.githubPath
+                        ) {
+
+                            imageUrl =
+                                "https://raw.githubusercontent.com/" +
+                                "jmdsroyalmakkalnalasangam-TMZ/" +
+                                "RMNS/main/" +
+                                data.githubPath;
+
+                        }
+
+
+                        if (
+                            imageUrl
+                        ) {
+
+                            items.push({
+
+                                id:
+                                    child.key,
+
+                                ...data,
+
+                                imageUrl:
+                                    imageUrl
+
+                            });
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /*
+             * Sort by upload time.
+             */
+
+            items.sort(
+                (a, b) =>
+                    Number(
+                        a.createdAt || 0
+                    ) -
+                    Number(
+                        b.createdAt || 0
+                    )
+            );
+
+
+            /*
+             * Display uploaded images.
+             */
+
+            items.forEach(
+                item => {
+
+                    const div =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    div.className =
+                        "gallery-item firebase-gallery-item";
+
+
+                    const caption =
+                        item.caption ||
+                        (
+                            isFestival
+                                ? "Festival Gallery Image"
+                                : "Association Gallery Image"
+                        );
+
+
+                    div.innerHTML = `
+
+                        <img
+                            src="${escapeHTML(
+                                item.imageUrl
+                            )}"
+                            alt="${escapeHTML(
+                                caption
+                            )}"
+                            loading="lazy"
+                        >
+
+                        ${
+                            item.caption
+                            ?
+                            `
+                            <div
+                                class="firebase-gallery-caption"
+                            >
+                                ${escapeHTML(
+                                    item.caption
+                                )}
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+                    `;
+
+
+                    const img =
+                        div.querySelector(
+                            "img"
+                        );
+
+
+                    /*
+                     * IMAGE ERROR FALLBACK
+                     */
+
+                    img.addEventListener(
+                        "error",
+                        function () {
+
+                            /*
+                             * First attempt:
+                             * GitHub raw URL.
+                             */
+
+                            if (
+                                item.githubPath &&
+                                !img.dataset.fallbackUsed
+                            ) {
+
+                                img.dataset.fallbackUsed =
+                                    "true";
+
+
+                                const fallbackUrl =
+                                    "https://raw.githubusercontent.com/" +
+                                    "jmdsroyalmakkalnalasangam-TMZ/" +
+                                    "RMNS/main/" +
+                                    item.githubPath;
+
+
+                                img.src =
+                                    fallbackUrl;
+
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * If the fallback also fails,
+                             * remove the broken image.
+                             */
+
+                            div.remove();
+
+
+                            syncGalleryImageArrays();
+
+                        }
+                    );
+
+
+                    /*
+                     * OPEN LIGHTBOX
+                     */
+
+                    div.addEventListener(
+                        "click",
+                        function () {
+
+                            syncGalleryImageArrays();
+
+
+                            const images =
+                                isFestival
+                                    ? festivalImages
+                                    : galleryImages;
+
+
+                            /*
+                             * Compare absolute URLs.
+                             */
+
+                            const index =
+                                images.indexOf(
+                                    img.src
+                                );
+
+
+                            if (
+                                index >= 0
+                            ) {
+
+                                if (
+                                    isFestival
+                                ) {
+
+                                    openFestivalLightbox(
+                                        index
+                                    );
+
+                                } else {
+
+                                    openLightbox(
+                                        index
+                                    );
+
+                                }
+
+                            }
+
+                        }
+                    );
+
+
+                    grid.appendChild(
+                        div
+                    );
+
+                }
+            );
+
+
+            syncGalleryImageArrays();
+
+        }
+
+
+        /* =================================================
+           INITIALIZE DYNAMIC GALLERIES
+        ================================================= */
+
+        function initDynamicGalleries() {
+
+            if (
+                !window.rmnsDatabase ||
+                window.rmnsDynamicGalleriesReady
             ) {
 
                 return;
+
             }
 
 
+            window.rmnsDynamicGalleriesReady =
+                true;
+
+
+            const api =
+                window.firebaseDatabaseApi ||
+                {};
+
+
+            const ref =
+                api.ref;
+
+
+            const onValue =
+                api.onValue;
+
+
             if (
-                event.key ===
-                "Escape"
+                !ref ||
+                !onValue
             ) {
 
-                lightbox.classList.remove(
-                    "active"
+                console.error(
+                    "Firebase gallery API not ready."
                 );
 
-                document.body.style.overflow =
-                    "";
+                return;
+
             }
 
 
-            if (
-                event.key ===
-                "ArrowLeft"
-            ) {
+            /*
+             * Normal Gallery
+             */
 
-                previousImage();
-            }
+            onValue(
+
+                ref(
+                    window.rmnsDatabase,
+                    "gallery"
+                ),
+
+                snapshot => {
+
+                    renderFirebaseGallery(
+                        snapshot,
+                        "main"
+                    );
+
+                },
+
+                error => {
+
+                    console.error(
+                        "Gallery Firebase error:",
+                        error
+                    );
+
+                }
+
+            );
 
 
-            if (
-                event.key ===
-                "ArrowRight"
-            ) {
+            /*
+             * Festival Gallery
+             */
 
-                nextImage();
-            }
+            onValue(
+
+                ref(
+                    window.rmnsDatabase,
+                    "festivalGallery"
+                ),
+
+                snapshot => {
+
+                    renderFirebaseGallery(
+                        snapshot,
+                        "festival"
+                    );
+
+                },
+
+                error => {
+
+                    console.error(
+                        "Festival Gallery Firebase error:",
+                        error
+                    );
+
+                }
+
+            );
 
         }
-    );
 
 
+        /*
+         * Firebase module dispatches this event.
+         */
 
-    /* =====================================================
-       SCROLL TOP
-    ===================================================== */
+        window.addEventListener(
+            "rmnsFirebaseReady",
+            initDynamicGalleries
+        );
 
-    window.addEventListener(
-        "scroll",
-        function() {
 
-            const button =
-                document.getElementById(
-                    "scrollTop"
-                );
+        /*
+         * Also try immediately.
+         */
+
+        initDynamicGalleries();
+
+
+        /* =================================================
+           OPEN NORMAL LIGHTBOX
+        ================================================= */
+
+        function openLightbox(
+            index
+        ) {
+
+            syncGalleryImageArrays();
+
+
+            currentImages =
+                galleryImages;
 
 
             if (
-                window.scrollY >
-                400
+                !currentImages.length
             ) {
 
-                button.classList.add(
-                    "show"
-                );
+                return;
 
-            } else {
-
-                button.classList.remove(
-                    "show"
-                );
             }
 
+
+            if (
+                index < 0 ||
+                index >= currentImages.length
+            ) {
+
+                index = 0;
+
+            }
+
+
+            currentIndex =
+                index;
+
+
+            document.getElementById(
+                "lightboxImage"
+            ).src =
+                currentImages[
+                    currentIndex
+                ];
+
+
+            document.getElementById(
+                "lightbox"
+            ).classList.add(
+                "active"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
         }
-    );
-
-</script>
 
 
+        /* =================================================
+           OPEN FESTIVAL LIGHTBOX
+        ================================================= */
+
+        function openFestivalLightbox(
+            index
+        ) {
+
+            syncGalleryImageArrays();
+
+
+            currentImages =
+                festivalImages;
+
+
+            if (
+                !currentImages.length
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                index < 0 ||
+                index >= currentImages.length
+            ) {
+
+                index = 0;
+
+            }
+
+
+            currentIndex =
+                index;
+
+
+            document.getElementById(
+                "lightboxImage"
+            ).src =
+                currentImages[
+                    currentIndex
+                ];
+
+
+            document.getElementById(
+                "lightbox"
+            ).classList.add(
+                "active"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+        /* =================================================
+           CLOSE LIGHTBOX
+        ================================================= */
+
+        function closeLightbox(
+            event
+        ) {
+
+            if (
+                event &&
+                event.target !==
+                    document.getElementById(
+                        "lightbox"
+                    )
+            ) {
+
+                return;
+
+            }
+
+
+            document.getElementById(
+                "lightbox"
+            ).classList.remove(
+                "active"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        /* =================================================
+           PREVIOUS IMAGE
+        ================================================= */
+
+        function previousImage(
+            event
+        ) {
+
+            if (event) {
+
+                event.stopPropagation();
+
+            }
+
+
+            if (
+                !currentImages.length
+            ) {
+
+                return;
+
+            }
+
+
+            currentIndex--;
+
+
+            if (
+                currentIndex < 0
+            ) {
+
+                currentIndex =
+                    currentImages.length - 1;
+
+            }
+
+
+            document.getElementById(
+                "lightboxImage"
+            ).src =
+                currentImages[
+                    currentIndex
+                ];
+
+        }
+
+
+        /* =================================================
+           NEXT IMAGE
+        ================================================= */
+
+        function nextImage(
+            event
+        ) {
+
+            if (event) {
+
+                event.stopPropagation();
+
+            }
+
+
+            if (
+                !currentImages.length
+            ) {
+
+                return;
+
+            }
+
+
+            currentIndex++;
+
+
+            if (
+                currentIndex >=
+                currentImages.length
+            ) {
+
+                currentIndex = 0;
+
+            }
+
+
+            document.getElementById(
+                "lightboxImage"
+            ).src =
+                currentImages[
+                    currentIndex
+                ];
+
+        }
+
+
+        /* =================================================
+           KEYBOARD
+        ================================================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                const lightbox =
+                    document.getElementById(
+                        "lightbox"
+                    );
+
+
+                if (
+                    !lightbox.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key ===
+                    "Escape"
+                ) {
+
+                    lightbox.classList.remove(
+                        "active"
+                    );
+
+
+                    document.body.style.overflow =
+                        "";
+
+                }
+
+
+                if (
+                    event.key ===
+                    "ArrowLeft"
+                ) {
+
+                    previousImage();
+
+                }
+
+
+                if (
+                    event.key ===
+                    "ArrowRight"
+                ) {
+
+                    nextImage();
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           SCROLL TOP
+        ================================================= */
+
+        window.addEventListener(
+            "scroll",
+            function() {
+
+                const button =
+                    document.getElementById(
+                        "scrollTop"
+                    );
+
+
+                if (
+                    window.scrollY >
+                    400
+                ) {
+
+                    button.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    button.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           INITIAL GALLERY SYNC
+        ================================================= */
+
+        window.addEventListener(
+            "load",
+            function() {
+
+                syncGalleryImageArrays();
+
+            }
+        );
+
+    </script>
+
+
+    <!-- =====================================================
+         LOGO INTRO CONTROLLER
+    ===================================================== -->
 
     <script>
-        /* Logo intro controller */
-        document.body.classList.add("intro-active");
 
-        window.addEventListener("load", function () {
+        document.body.classList.add(
+            "intro-active"
+        );
 
-            const intro =
-                document.getElementById("introScreen");
 
-            if (!intro) return;
+        window.addEventListener(
+            "load",
+            function() {
 
-            /* Let the complete logo animation play. */
-            setTimeout(function () {
-                intro.classList.add("intro-hide");
-            }, 3500);
+                const intro =
+                    document.getElementById(
+                        "introScreen"
+                    );
 
-            /* Remove overlay after fade-out. */
-            setTimeout(function () {
-                intro.remove();
-                document.body.classList.remove("intro-active");
-            }, 4500);
-        });
+
+                if (!intro) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * Let the complete logo animation play.
+                 */
+
+                setTimeout(
+                    function() {
+
+                        intro.classList.add(
+                            "intro-hide"
+                        );
+
+                    },
+                    3500
+                );
+
+
+                /*
+                 * Remove overlay after fade-out.
+                 */
+
+                setTimeout(
+                    function() {
+
+                        intro.remove();
+
+                        document.body.classList.remove(
+                            "intro-active"
+                        );
+
+                    },
+                    4500
+                );
+
+            }
+        );
+
     </script>
 
 </body>
