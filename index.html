@@ -3305,6 +3305,19 @@
 
     <script>
 
+        /*
+         * escapeHTML was defined inside the Firebase
+         * <script type="module"> block above, which has
+         * its own scope. It exposed itself as
+         * window.rmnsEscapeHTML so this script can use it.
+         * Alias it here so the rest of this file can keep
+         * calling escapeHTML(...) as before.
+         */
+
+        const escapeHTML =
+            window.rmnsEscapeHTML;
+
+
         /* =================================================
            MOBILE MENU
         ================================================= */
