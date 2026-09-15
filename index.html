@@ -1306,7 +1306,7 @@
             justify-content: center;
             overflow: hidden;
             background:
-                radial-gradient(circle at center, rgba(212,175,55,.16) 0%, rgba(5,11,21,.96) 34%, #02050a 100%);
+                radial-gradient(circle at center, rgba(212,175,55,.18) 0%, rgba(5,11,21,.96) 35%, #02050a 100%);
             opacity: 1;
             visibility: visible;
             transition: opacity 900ms ease, visibility 900ms ease;
@@ -1318,7 +1318,7 @@
             width: min(80vw, 760px);
             height: min(80vw, 760px);
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(212,175,55,.20), rgba(212,175,55,.06) 35%, transparent 68%);
+            background: radial-gradient(circle, rgba(212,175,55,.22), rgba(212,175,55,.06) 35%, transparent 68%);
             filter: blur(20px);
             animation: introGlow 2.8s ease-in-out infinite;
         }
@@ -1327,11 +1327,9 @@
             position: absolute;
             width: min(76vw, 620px);
             height: min(76vw, 620px);
-            border: 1px solid rgba(243,211,106,.24);
+            border: 1px solid rgba(243,211,106,.25);
             border-radius: 50%;
-            box-shadow:
-                0 0 35px rgba(212,175,55,.08),
-                inset 0 0 35px rgba(212,175,55,.05);
+            box-shadow: 0 0 35px rgba(212,175,55,.08), inset 0 0 35px rgba(212,175,55,.05);
             animation: introOrbit 8s linear infinite;
         }
 
@@ -1346,15 +1344,8 @@
             box-shadow: 0 0 16px 5px rgba(243,211,106,.55);
         }
 
-        .intro-orbit::before {
-            top: -4px;
-            left: 50%;
-        }
-
-        .intro-orbit::after {
-            bottom: -4px;
-            right: 50%;
-        }
+        .intro-orbit::before { top: -4px; left: 50%; }
+        .intro-orbit::after { bottom: -4px; right: 50%; }
 
         .intro-content {
             position: relative;
@@ -1382,11 +1373,8 @@
             position: absolute;
             inset: -18px;
             border-radius: 50%;
-            border: 2px solid rgba(212,175,55,.38);
-            box-shadow:
-                0 0 22px rgba(212,175,55,.25),
-                0 0 65px rgba(212,175,55,.12),
-                inset 0 0 25px rgba(212,175,55,.08);
+            border: 2px solid rgba(212,175,55,.40);
+            box-shadow: 0 0 22px rgba(212,175,55,.25), 0 0 65px rgba(212,175,55,.12), inset 0 0 25px rgba(212,175,55,.08);
             animation: introRing 2.5s ease-in-out infinite;
         }
 
@@ -1405,12 +1393,8 @@
             height: 100%;
             object-fit: contain;
             border-radius: 50%;
-            filter:
-                drop-shadow(0 0 8px rgba(243,211,106,.65))
-                drop-shadow(0 0 24px rgba(212,175,55,.35));
-            animation:
-                introLogoSpin 2.8s cubic-bezier(.25,.8,.25,1) both,
-                introLogoPulse 2s ease-in-out 900ms infinite;
+            filter: drop-shadow(0 0 8px rgba(243,211,106,.65)) drop-shadow(0 0 24px rgba(212,175,55,.35));
+            animation: introLogoSpin 2.8s cubic-bezier(.25,.8,.25,1) both, introLogoPulse 2s ease-in-out 900ms infinite;
             transform-style: preserve-3d;
             backface-visibility: visible;
         }
@@ -1423,13 +1407,7 @@
             top: -25%;
             left: -45%;
             transform: rotate(22deg);
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,.85),
-                rgba(243,211,106,.55),
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.90), rgba(243,211,106,.60), transparent);
             filter: blur(2px);
             opacity: 0;
             animation: introLightSweep 2.5s ease 1.15s both;
@@ -1441,9 +1419,7 @@
             font-size: clamp(22px, 5vw, 42px);
             font-weight: 900;
             letter-spacing: clamp(2px, 1vw, 8px);
-            text-shadow:
-                0 0 8px rgba(243,211,106,.45),
-                0 0 28px rgba(212,175,55,.25);
+            text-shadow: 0 0 8px rgba(243,211,106,.45), 0 0 28px rgba(212,175,55,.25);
             animation: introTextIn 900ms ease 1.25s both;
         }
 
@@ -1473,26 +1449,18 @@
 
         @keyframes introContentIn {
             from { opacity: 0; transform: scale(.86) translateY(15px); }
-            to   { opacity: 1; transform: scale(1) translateY(0); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         @keyframes introLogoSpin {
-            0%   { transform: perspective(900px) rotateY(-90deg) scale(.72); opacity: 0; }
-            45%  { transform: perspective(900px) rotateY(25deg) scale(1.06); opacity: 1; }
+            0% { transform: perspective(900px) rotateY(-90deg) scale(.72); opacity: 0; }
+            45% { transform: perspective(900px) rotateY(25deg) scale(1.06); opacity: 1; }
             100% { transform: perspective(900px) rotateY(0deg) scale(1); opacity: 1; }
         }
 
         @keyframes introLogoPulse {
-            0%, 100% {
-                filter:
-                    drop-shadow(0 0 8px rgba(243,211,106,.65))
-                    drop-shadow(0 0 24px rgba(212,175,55,.35));
-            }
-            50% {
-                filter:
-                    drop-shadow(0 0 14px rgba(243,211,106,.95))
-                    drop-shadow(0 0 42px rgba(212,175,55,.55));
-            }
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(243,211,106,.65)) drop-shadow(0 0 24px rgba(212,175,55,.35)); }
+            50% { filter: drop-shadow(0 0 14px rgba(243,211,106,.95)) drop-shadow(0 0 42px rgba(212,175,55,.55)); }
         }
 
         @keyframes introGlow {
@@ -1507,29 +1475,29 @@
 
         @keyframes introOrbit {
             from { transform: rotate(0deg) scale(.98); }
-            to   { transform: rotate(360deg) scale(.98); }
+            to { transform: rotate(360deg) scale(.98); }
         }
 
         @keyframes introSpinRing {
             from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
+            to { transform: rotate(360deg); }
         }
 
         @keyframes introLightSweep {
-            0%   { left: -45%; opacity: 0; }
-            15%  { opacity: .9; }
-            70%  { opacity: .65; }
+            0% { left: -45%; opacity: 0; }
+            15% { opacity: .9; }
+            70% { opacity: .65; }
             100% { left: 145%; opacity: 0; }
         }
 
         @keyframes introTextIn {
             from { opacity: 0; transform: translateY(14px); letter-spacing: 0; }
-            to   { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes introLineIn {
             from { opacity: 0; transform: scaleX(0); }
-            to   { opacity: 1; transform: scaleX(1); }
+            to { opacity: 1; transform: scaleX(1); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1546,26 +1514,35 @@
 <body>
 
     <!-- =====================================================
-         JMD'S ROYAL MAKKAL NALASANGAM
-         LOGO OPENING SCREEN
+         JMD'S ROYAL MAKKAL NALASANGAM - LOGO INTRO
     ====================================================== -->
-    <div id="introScreen" aria-label="JMD'S ROYAL MAKKAL NALASANGAM">
+    <div id="introScreen" aria-label="JMD'S Royal Makkal Nalasangam">
+
         <div class="intro-orbit"></div>
 
         <div class="intro-content">
+
             <div class="intro-logo-wrap">
+
+                <!-- IMPORTANT: keep your real logo file named LOGO.png -->
                 <img
                     src="LOGO.png"
                     alt="JMD'S Royal Makkal Nalasangam Logo"
                     class="intro-logo"
                 >
+
                 <div class="intro-light"></div>
+
             </div>
 
             <div class="intro-name">JMD'S ROYAL</div>
+
             <div class="intro-subtitle">MAKKAL NALASANGAM</div>
+
             <div class="intro-line"></div>
+
         </div>
+
     </div>
 
 
@@ -3461,23 +3438,29 @@
 
 
     <script>
-        // Logo intro: plays once whenever the page is loaded.
+        /* =====================================================
+           LOGO INTRO CONTROLLER
+        ===================================================== */
+
         document.body.classList.add("intro-active");
 
-        window.addEventListener("load", () => {
+        window.addEventListener("load", function () {
+
             const intro = document.getElementById("introScreen");
+
             if (!intro) return;
 
-            // Keep the opening long enough to show the complete logo animation.
-            setTimeout(() => {
+            // Start fading to the website after 3.5 seconds.
+            setTimeout(function () {
                 intro.classList.add("intro-hide");
             }, 3500);
 
-            // Remove the overlay completely after the fade-out.
-            setTimeout(() => {
+            // Remove the intro completely after the fade finishes.
+            setTimeout(function () {
                 intro.remove();
                 document.body.classList.remove("intro-active");
             }, 4500);
+
         });
     </script>
 
