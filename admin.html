@@ -148,6 +148,57 @@ button:hover{
     font-size:14px;
 }
 
+.gallery-preview{
+    display:block;
+    width:180px;
+    max-width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:10px;
+    border:1px solid #394666;
+    margin-top:10px;
+}
+
+.gallery-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.gallery-form input{
+    margin:8px 0 5px;
+}
+
+.gallery-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.gallery-actions button{
+    margin:0;
+}
+
+.admin-static-gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-top:10px;
+}
+
+.admin-static-gallery img{
+    width:100%;
+    height:110px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #394666;
+}
+
+@media(max-width:700px){
+    .gallery-form{grid-template-columns:1fr;}
+    .admin-static-gallery{grid-template-columns:repeat(2,1fr);}
+}
+
 .seed-box{
     background:#080d1c;
     border:1px solid #394666;
@@ -351,7 +402,7 @@ button:hover{
         <input type="file" id="galleryImageFile" accept="image/*">
         <input type="text" id="galleryCaption"
                placeholder="Caption">
-        <p class="status">Choose an image directly from your computer. JPG, PNG, WEBP and other common image files are supported.</p>
+        <p class="status">Choose an image directly from your computer. JPG, PNG, WEBP and other common image files are supported. Upload progress is shown while Firebase Storage receives the file.</p>
     </div>
 
     <div class="gallery-actions" style="margin-top:10px;">
@@ -360,6 +411,22 @@ button:hover{
     </div>
 
     <p id="galleryMessage"></p>
+
+    <div class="seed-box" style="margin-top:18px;">
+        <p><strong>Existing GitHub Gallery</strong></p>
+        <p class="status">These are your original gallery files. They stay on GitHub and are shown on the public website. New images added here use Firebase Storage.</p>
+        <div class="admin-static-gallery">
+            <img src="gallery1.jpg" alt="gallery1" onerror="this.parentElement.remove()">
+            <img src="gallery2.jpg" alt="gallery2" onerror="this.parentElement.remove()">
+            <img src="gallery3.jpg" alt="gallery3" onerror="this.parentElement.remove()">
+            <img src="gallery4.jpg" alt="gallery4" onerror="this.parentElement.remove()">
+            <img src="gallery5.jpg" alt="gallery5" onerror="this.parentElement.remove()">
+            <img src="gallery6.jpg" alt="gallery6" onerror="this.parentElement.remove()">
+            <img src="gallery7.jpg" alt="gallery7" onerror="this.parentElement.remove()">
+            <img src="gallery8.jpg" alt="gallery8" onerror="this.parentElement.remove()">
+        </div>
+    </div>
+
     <div id="galleryList"></div>
 </div>
 
@@ -381,6 +448,22 @@ button:hover{
     </div>
 
     <p id="festivalGalleryMessage"></p>
+
+    <div class="seed-box" style="margin-top:18px;">
+        <p><strong>Existing GitHub Festival Gallery</strong></p>
+        <p class="status">These are your original festival gallery files. They remain on GitHub.</p>
+        <div class="admin-static-gallery">
+            <img src="festival1.jpg" alt="festival1" onerror="this.parentElement.remove()">
+            <img src="festival2.jpg" alt="festival2" onerror="this.parentElement.remove()">
+            <img src="festival3.jpg" alt="festival3" onerror="this.parentElement.remove()">
+            <img src="festival4.jpg" alt="festival4" onerror="this.parentElement.remove()">
+            <img src="festival5.jpg" alt="festival5" onerror="this.parentElement.remove()">
+            <img src="festival6.jpg" alt="festival6" onerror="this.parentElement.remove()">
+            <img src="festival7.jpg" alt="festival7" onerror="this.parentElement.remove()">
+            <img src="festival8.jpg" alt="festival8" onerror="this.parentElement.remove()">
+        </div>
+    </div>
+
     <div id="festivalGalleryList"></div>
 </div>
 
@@ -446,7 +529,7 @@ import {
 import {
     getStorage,
     ref as storageRef,
-    uploadBytes,
+    uploadBytesResumable,
     getDownloadURL,
     deleteObject
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
@@ -1050,7 +1133,13 @@ window.saveGalleryImage = async function(){
             const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
             storagePath = "gallery/" + Date.now() + "_" + safeName;
             const fileRef = storageRef(storage, storagePath);
-            await uploadBytes(fileRef, file, { contentType: file.type });
+            await new Promise((resolve, reject) => {
+                const task = uploadBytesResumable(fileRef, file, { contentType: file.type });
+                task.on("state_changed", snapshot => {
+                    const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                    message.textContent = `${editingGalleryId || editingFestivalGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
+                }, reject, resolve);
+            });
             imageUrl = await getDownloadURL(fileRef);
         }
 
@@ -1091,7 +1180,7 @@ window.saveGalleryImage = async function(){
 
     }catch(error){
         console.error(error);
-        message.textContent = error.message || "Could not save gallery image.";
+        message.textContent = error.code === "storage/unauthorized" ? "Firebase Storage permission denied. Check Storage Rules." : (error.message || "Could not save gallery image.");
         message.className = "error";
     }
 };
@@ -1173,7 +1262,7 @@ window.editGalleryImage = async function(id){
             "status";
 
         window.scrollTo({
-            top: document.getElementById("galleryImageUrl").offsetTop - 100,
+            top: document.getElementById("galleryImageFile").offsetTop - 100,
             behavior:"smooth"
         });
 
@@ -1268,7 +1357,13 @@ window.saveFestivalGalleryImage = async function(){
             const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
             storagePath = "festivalGallery/" + Date.now() + "_" + safeName;
             const fileRef = storageRef(storage, storagePath);
-            await uploadBytes(fileRef, file, { contentType: file.type });
+            await new Promise((resolve, reject) => {
+                const task = uploadBytesResumable(fileRef, file, { contentType: file.type });
+                task.on("state_changed", snapshot => {
+                    const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                    message.textContent = `${editingGalleryId || editingFestivalGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
+                }, reject, resolve);
+            });
             imageUrl = await getDownloadURL(fileRef);
         }
 
@@ -1309,7 +1404,7 @@ window.saveFestivalGalleryImage = async function(){
 
     }catch(error){
         console.error(error);
-        message.textContent = error.message || "Could not save festival gallery image.";
+        message.textContent = error.code === "storage/unauthorized" ? "Firebase Storage permission denied. Check Storage Rules." : (error.message || "Could not save festival gallery image.");
         message.className = "error";
     }
 };
