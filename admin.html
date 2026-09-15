@@ -348,10 +348,10 @@ button:hover{
     <h2>🖼️ Main Gallery</h2>
 
     <div class="gallery-form">
-        <input type="text" id="galleryImageUrl"
-               placeholder="Image URL (example: gallery1.jpg)">
+        <input type="file" id="galleryImageFile" accept="image/*">
         <input type="text" id="galleryCaption"
                placeholder="Caption">
+        <p class="status">Choose an image directly from your computer. JPG, PNG, WEBP and other common image files are supported.</p>
     </div>
 
     <div class="gallery-actions" style="margin-top:10px;">
@@ -369,10 +369,10 @@ button:hover{
     <h2>🎉🖼️ Festival Gallery</h2>
 
     <div class="gallery-form">
-        <input type="text" id="festivalGalleryImageUrl"
-               placeholder="Image URL (example: festival1.jpg)">
+        <input type="file" id="festivalGalleryImageFile" accept="image/*">
         <input type="text" id="festivalGalleryCaption"
                placeholder="Festival caption">
+        <p class="status">Choose a festival image directly from your computer.</p>
     </div>
 
     <div class="gallery-actions" style="margin-top:10px;">
@@ -444,6 +444,14 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
+    getStorage,
+    ref as storageRef,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+
+import {
     getAuth,
     signInWithEmailAndPassword,
     onAuthStateChanged,
@@ -470,6 +478,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const database = getDatabase(app);
+const storage = getStorage(app);
 
 
 const loginSection =
@@ -1011,36 +1020,67 @@ let editingGalleryId = null;
 
 window.saveGalleryImage = async function(){
 
-    const imageUrl = document.getElementById("galleryImageUrl").value.trim();
+    const fileInput = document.getElementById("galleryImageFile");
+    const file = fileInput.files[0];
     const caption = document.getElementById("galleryCaption").value.trim();
     const message = document.getElementById("galleryMessage");
 
-    if(!imageUrl){
-        message.textContent = "Please enter an image URL.";
+    if(!editingGalleryId && !file){
+        message.textContent = "Please choose an image from your computer.";
         message.className = "error";
         return;
     }
 
     try{
+        message.textContent = editingGalleryId ? "Updating image..." : "Uploading image...";
+        message.className = "status";
+
+        let imageUrl = null;
+        let storagePath = null;
+
+        if(file){
+            if(!file.type.startsWith("image/")){
+                throw new Error("Please select an image file.");
+            }
+
+            if(file.size > 10 * 1024 * 1024){
+                throw new Error("Image is too large. Maximum size is 10 MB.");
+            }
+
+            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+            storagePath = "gallery/" + Date.now() + "_" + safeName;
+            const fileRef = storageRef(storage, storagePath);
+            await uploadBytes(fileRef, file, { contentType: file.type });
+            imageUrl = await getDownloadURL(fileRef);
+        }
+
         if(editingGalleryId){
-            await set(
-                ref(database,"gallery/" + editingGalleryId),
-                {
-                    imageUrl:imageUrl,
-                    caption:caption,
-                    updatedAt:Date.now()
+            const oldSnapshot = await get(ref(database,"gallery/" + editingGalleryId));
+            const oldData = oldSnapshot.exists() ? oldSnapshot.val() : {};
+
+            await set(ref(database,"gallery/" + editingGalleryId),{
+                imageUrl: imageUrl || oldData.imageUrl || "",
+                storagePath: storagePath || oldData.storagePath || "",
+                caption: caption,
+                updatedAt: Date.now()
+            });
+
+            if(file && oldData.storagePath){
+                try{
+                    await deleteObject(storageRef(storage, oldData.storagePath));
+                }catch(storageError){
+                    console.warn("Old gallery image could not be deleted:", storageError);
                 }
-            );
+            }
 
             message.textContent = "Gallery image updated successfully.";
         }else{
-            const galleryRef = ref(database,"gallery");
-            const newImage = push(galleryRef);
-
+            const newImage = push(ref(database,"gallery"));
             await set(newImage,{
-                imageUrl:imageUrl,
-                caption:caption,
-                createdAt:Date.now()
+                imageUrl: imageUrl,
+                storagePath: storagePath,
+                caption: caption,
+                createdAt: Date.now()
             });
 
             message.textContent = "Gallery image added successfully.";
@@ -1051,7 +1091,7 @@ window.saveGalleryImage = async function(){
 
     }catch(error){
         console.error(error);
-        message.textContent = "Could not save gallery image.";
+        message.textContent = error.message || "Could not save gallery image.";
         message.className = "error";
     }
 };
@@ -1113,8 +1153,7 @@ window.editGalleryImage = async function(id){
 
         const data = snapshot.val();
 
-        document.getElementById("galleryImageUrl").value =
-            data.imageUrl || "";
+        document.getElementById("galleryImageFile").value = "";
 
         document.getElementById("galleryCaption").value =
             data.caption || "";
@@ -1151,7 +1190,18 @@ window.deleteGalleryImage = async function(id){
     }
 
     try{
+        const snapshot = await get(ref(database,"gallery/" + id));
+        const data = snapshot.exists() ? snapshot.val() : {};
+
         await remove(ref(database,"gallery/" + id));
+
+        if(data.storagePath){
+            try{
+                await deleteObject(storageRef(storage, data.storagePath));
+            }catch(storageError){
+                console.warn("Gallery file could not be deleted from Storage:", storageError);
+            }
+        }
     }catch(error){
         console.error(error);
         alert("Could not delete gallery image.");
@@ -1167,7 +1217,7 @@ window.cancelGalleryEdit = function(){
 
 function clearGalleryForm(){
 
-    document.getElementById("galleryImageUrl").value = "";
+    document.getElementById("galleryImageFile").value = "";
     document.getElementById("galleryCaption").value = "";
 
     editingGalleryId = null;
@@ -1188,71 +1238,78 @@ let editingFestivalGalleryId = null;
 
 window.saveFestivalGalleryImage = async function(){
 
-    const imageUrl =
-        document.getElementById("festivalGalleryImageUrl")
-        .value.trim();
+    const fileInput = document.getElementById("festivalGalleryImageFile");
+    const file = fileInput.files[0];
+    const caption = document.getElementById("festivalGalleryCaption").value.trim();
+    const message = document.getElementById("festivalGalleryMessage");
 
-    const caption =
-        document.getElementById("festivalGalleryCaption")
-        .value.trim();
-
-    const message =
-        document.getElementById("festivalGalleryMessage");
-
-    if(!imageUrl){
-        message.textContent = "Please enter an image URL.";
+    if(!editingFestivalGalleryId && !file){
+        message.textContent = "Please choose a festival image from your computer.";
         message.className = "error";
         return;
     }
 
     try{
+        message.textContent = editingFestivalGalleryId ? "Updating image..." : "Uploading image...";
+        message.className = "status";
+
+        let imageUrl = null;
+        let storagePath = null;
+
+        if(file){
+            if(!file.type.startsWith("image/")){
+                throw new Error("Please select an image file.");
+            }
+
+            if(file.size > 10 * 1024 * 1024){
+                throw new Error("Image is too large. Maximum size is 10 MB.");
+            }
+
+            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+            storagePath = "festivalGallery/" + Date.now() + "_" + safeName;
+            const fileRef = storageRef(storage, storagePath);
+            await uploadBytes(fileRef, file, { contentType: file.type });
+            imageUrl = await getDownloadURL(fileRef);
+        }
 
         if(editingFestivalGalleryId){
+            const oldSnapshot = await get(ref(database,"festivalGallery/" + editingFestivalGalleryId));
+            const oldData = oldSnapshot.exists() ? oldSnapshot.val() : {};
 
-            await set(
-                ref(
-                    database,
-                    "festivalGallery/" +
-                    editingFestivalGalleryId
-                ),
-                {
-                    imageUrl:imageUrl,
-                    caption:caption,
-                    updatedAt:Date.now()
-                }
-            );
-
-            message.textContent =
-                "Festival gallery image updated successfully.";
-
-        }else{
-
-            const galleryRef =
-                ref(database,"festivalGallery");
-
-            const newImage =
-                push(galleryRef);
-
-            await set(newImage,{
-                imageUrl:imageUrl,
-                caption:caption,
-                createdAt:Date.now()
+            await set(ref(database,"festivalGallery/" + editingFestivalGalleryId),{
+                imageUrl: imageUrl || oldData.imageUrl || "",
+                storagePath: storagePath || oldData.storagePath || "",
+                caption: caption,
+                updatedAt: Date.now()
             });
 
-            message.textContent =
-                "Festival gallery image added successfully.";
+            if(file && oldData.storagePath){
+                try{
+                    await deleteObject(storageRef(storage, oldData.storagePath));
+                }catch(storageError){
+                    console.warn("Old festival image could not be deleted:", storageError);
+                }
+            }
+
+            message.textContent = "Festival gallery image updated successfully.";
+        }else{
+            const newImage = push(ref(database,"festivalGallery"));
+            await set(newImage,{
+                imageUrl: imageUrl,
+                storagePath: storagePath,
+                caption: caption,
+                createdAt: Date.now()
+            });
+
+            message.textContent = "Festival gallery image added successfully.";
         }
 
         message.className = "success";
         clearFestivalGalleryForm();
 
     }catch(error){
-
         console.error(error);
-
-        message.textContent =
-            "Could not save festival gallery image.";
-
+        message.textContent = error.message || "Could not save festival gallery image.";
         message.className = "error";
     }
 };
@@ -1347,8 +1404,8 @@ window.editFestivalGalleryImage = async function(id){
         const data = snapshot.val();
 
         document.getElementById(
-            "festivalGalleryImageUrl"
-        ).value = data.imageUrl || "";
+            "festivalGalleryImageFile"
+        ).value = "";
 
         document.getElementById(
             "festivalGalleryCaption"
@@ -1390,12 +1447,18 @@ async function(id){
 
     try{
 
-        await remove(
-            ref(
-                database,
-                "festivalGallery/" + id
-            )
-        );
+        const snapshot = await get(ref(database,"festivalGallery/" + id));
+        const data = snapshot.exists() ? snapshot.val() : {};
+
+        await remove(ref(database,"festivalGallery/" + id));
+
+        if(data.storagePath){
+            try{
+                await deleteObject(storageRef(storage, data.storagePath));
+            }catch(storageError){
+                console.warn("Festival file could not be deleted from Storage:", storageError);
+            }
+        }
 
     }catch(error){
 
@@ -1422,7 +1485,7 @@ function(){
 function clearFestivalGalleryForm(){
 
     document.getElementById(
-        "festivalGalleryImageUrl"
+        "festivalGalleryImageFile"
     ).value = "";
 
     document.getElementById(
