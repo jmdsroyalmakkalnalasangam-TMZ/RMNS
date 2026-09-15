@@ -161,6 +161,44 @@ button:hover{
     margin-bottom:12px;
 }
 
+
+.gallery-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+.gallery-form .full{
+    grid-column:1 / -1;
+}
+.gallery-preview{
+    width:140px;
+    height:95px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #394666;
+    display:block;
+    margin:10px 0;
+}
+.gallery-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+.gallery-actions button{
+    margin:0;
+}
+.editing{
+    border-color:#d4af37;
+}
+@media(max-width:600px){
+    .gallery-form{
+        grid-template-columns:1fr;
+    }
+    .gallery-form .full{
+        grid-column:auto;
+    }
+}
+
 @media(max-width:600px){
 
     .header{
@@ -301,6 +339,49 @@ button:hover{
 
     <div id="festivalList"></div>
 
+</div>
+
+
+
+<!-- MAIN GALLERY -->
+<div class="panel">
+    <h2>🖼️ Main Gallery</h2>
+
+    <div class="gallery-form">
+        <input type="text" id="galleryImageUrl"
+               placeholder="Image URL (example: gallery1.jpg)">
+        <input type="text" id="galleryCaption"
+               placeholder="Caption">
+    </div>
+
+    <div class="gallery-actions" style="margin-top:10px;">
+        <button id="gallerySaveButton" onclick="saveGalleryImage()">Add Gallery Image</button>
+        <button id="galleryCancelButton" class="secondary hidden" onclick="cancelGalleryEdit()">Cancel Edit</button>
+    </div>
+
+    <p id="galleryMessage"></p>
+    <div id="galleryList"></div>
+</div>
+
+
+<!-- FESTIVAL GALLERY -->
+<div class="panel">
+    <h2>🎉🖼️ Festival Gallery</h2>
+
+    <div class="gallery-form">
+        <input type="text" id="festivalGalleryImageUrl"
+               placeholder="Image URL (example: festival1.jpg)">
+        <input type="text" id="festivalGalleryCaption"
+               placeholder="Festival caption">
+    </div>
+
+    <div class="gallery-actions" style="margin-top:10px;">
+        <button id="festivalGallerySaveButton" onclick="saveFestivalGalleryImage()">Add Festival Image</button>
+        <button id="festivalGalleryCancelButton" class="secondary hidden" onclick="cancelFestivalGalleryEdit()">Cancel Edit</button>
+    </div>
+
+    <p id="festivalGalleryMessage"></p>
+    <div id="festivalGalleryList"></div>
 </div>
 
 
@@ -481,6 +562,8 @@ onAuthStateChanged(auth,user=>{
         loadFestivals();
 
         loadContact();
+        loadGallery();
+        loadFestivalGallery();
 
     }else{
 
@@ -917,6 +1000,445 @@ async function(id){
 
 };
 
+
+
+
+/* =========================
+   MAIN GALLERY
+========================= */
+
+let editingGalleryId = null;
+
+window.saveGalleryImage = async function(){
+
+    const imageUrl = document.getElementById("galleryImageUrl").value.trim();
+    const caption = document.getElementById("galleryCaption").value.trim();
+    const message = document.getElementById("galleryMessage");
+
+    if(!imageUrl){
+        message.textContent = "Please enter an image URL.";
+        message.className = "error";
+        return;
+    }
+
+    try{
+        if(editingGalleryId){
+            await set(
+                ref(database,"gallery/" + editingGalleryId),
+                {
+                    imageUrl:imageUrl,
+                    caption:caption,
+                    updatedAt:Date.now()
+                }
+            );
+
+            message.textContent = "Gallery image updated successfully.";
+        }else{
+            const galleryRef = ref(database,"gallery");
+            const newImage = push(galleryRef);
+
+            await set(newImage,{
+                imageUrl:imageUrl,
+                caption:caption,
+                createdAt:Date.now()
+            });
+
+            message.textContent = "Gallery image added successfully.";
+        }
+
+        message.className = "success";
+        clearGalleryForm();
+
+    }catch(error){
+        console.error(error);
+        message.textContent = "Could not save gallery image.";
+        message.className = "error";
+    }
+};
+
+
+function loadGallery(){
+
+    const galleryRef = ref(database,"gallery");
+
+    onValue(galleryRef,snapshot=>{
+
+        const list = document.getElementById("galleryList");
+        list.innerHTML = "";
+
+        if(!snapshot.exists()){
+            list.innerHTML =
+                "<p class='status'>No gallery images added yet.</p>";
+            return;
+        }
+
+        snapshot.forEach(child=>{
+
+            const data = child.val();
+            const div = document.createElement("div");
+            div.className = "item";
+
+            div.innerHTML = `
+                <strong>${escapeHTML(data.caption || "Gallery Image")}</strong>
+                <img
+                    class="gallery-preview"
+                    src="${escapeHTML(data.imageUrl || "")}"
+                    alt="Gallery Preview"
+                    onerror="this.style.display='none'"
+                >
+                <p class="status">${escapeHTML(data.imageUrl || "")}</p>
+
+                <div class="gallery-actions">
+                    <button onclick="editGalleryImage('${child.key}')">
+                        Edit
+                    </button>
+                    <button class="danger" onclick="deleteGalleryImage('${child.key}')">
+                        Delete
+                    </button>
+                </div>
+            `;
+
+            list.appendChild(div);
+        });
+    });
+}
+
+
+window.editGalleryImage = async function(id){
+
+    try{
+        const snapshot = await get(ref(database,"gallery/" + id));
+
+        if(!snapshot.exists()) return;
+
+        const data = snapshot.val();
+
+        document.getElementById("galleryImageUrl").value =
+            data.imageUrl || "";
+
+        document.getElementById("galleryCaption").value =
+            data.caption || "";
+
+        editingGalleryId = id;
+
+        document.getElementById("gallerySaveButton").textContent =
+            "Update Gallery Image";
+
+        document.getElementById("galleryCancelButton")
+            .classList.remove("hidden");
+
+        document.getElementById("galleryMessage").textContent =
+            "Editing gallery image.";
+
+        document.getElementById("galleryMessage").className =
+            "status";
+
+        window.scrollTo({
+            top: document.getElementById("galleryImageUrl").offsetTop - 100,
+            behavior:"smooth"
+        });
+
+    }catch(error){
+        console.error(error);
+    }
+};
+
+
+window.deleteGalleryImage = async function(id){
+
+    if(!confirm("Delete this gallery image?")){
+        return;
+    }
+
+    try{
+        await remove(ref(database,"gallery/" + id));
+    }catch(error){
+        console.error(error);
+        alert("Could not delete gallery image.");
+    }
+};
+
+
+window.cancelGalleryEdit = function(){
+    clearGalleryForm();
+    document.getElementById("galleryMessage").textContent = "";
+};
+
+
+function clearGalleryForm(){
+
+    document.getElementById("galleryImageUrl").value = "";
+    document.getElementById("galleryCaption").value = "";
+
+    editingGalleryId = null;
+
+    document.getElementById("gallerySaveButton").textContent =
+        "Add Gallery Image";
+
+    document.getElementById("galleryCancelButton")
+        .classList.add("hidden");
+}
+
+
+/* =========================
+   FESTIVAL GALLERY
+========================= */
+
+let editingFestivalGalleryId = null;
+
+window.saveFestivalGalleryImage = async function(){
+
+    const imageUrl =
+        document.getElementById("festivalGalleryImageUrl")
+        .value.trim();
+
+    const caption =
+        document.getElementById("festivalGalleryCaption")
+        .value.trim();
+
+    const message =
+        document.getElementById("festivalGalleryMessage");
+
+    if(!imageUrl){
+        message.textContent = "Please enter an image URL.";
+        message.className = "error";
+        return;
+    }
+
+    try{
+
+        if(editingFestivalGalleryId){
+
+            await set(
+                ref(
+                    database,
+                    "festivalGallery/" +
+                    editingFestivalGalleryId
+                ),
+                {
+                    imageUrl:imageUrl,
+                    caption:caption,
+                    updatedAt:Date.now()
+                }
+            );
+
+            message.textContent =
+                "Festival gallery image updated successfully.";
+
+        }else{
+
+            const galleryRef =
+                ref(database,"festivalGallery");
+
+            const newImage =
+                push(galleryRef);
+
+            await set(newImage,{
+                imageUrl:imageUrl,
+                caption:caption,
+                createdAt:Date.now()
+            });
+
+            message.textContent =
+                "Festival gallery image added successfully.";
+        }
+
+        message.className = "success";
+        clearFestivalGalleryForm();
+
+    }catch(error){
+
+        console.error(error);
+
+        message.textContent =
+            "Could not save festival gallery image.";
+
+        message.className = "error";
+    }
+};
+
+
+function loadFestivalGallery(){
+
+    const galleryRef =
+        ref(database,"festivalGallery");
+
+    onValue(galleryRef,snapshot=>{
+
+        const list =
+            document.getElementById("festivalGalleryList");
+
+        list.innerHTML = "";
+
+        if(!snapshot.exists()){
+
+            list.innerHTML =
+                "<p class='status'>No festival gallery images added yet.</p>";
+
+            return;
+        }
+
+        snapshot.forEach(child=>{
+
+            const data = child.val();
+
+            const div =
+                document.createElement("div");
+
+            div.className = "item";
+
+            div.innerHTML = `
+                <strong>
+                    ${escapeHTML(
+                        data.caption ||
+                        "Festival Gallery Image"
+                    )}
+                </strong>
+
+                <img
+                    class="gallery-preview"
+                    src="${escapeHTML(data.imageUrl || "")}"
+                    alt="Festival Gallery Preview"
+                    onerror="this.style.display='none'"
+                >
+
+                <p class="status">
+                    ${escapeHTML(data.imageUrl || "")}
+                </p>
+
+                <div class="gallery-actions">
+
+                    <button
+                        onclick="editFestivalGalleryImage('${child.key}')"
+                    >
+                        Edit
+                    </button>
+
+                    <button
+                        class="danger"
+                        onclick="deleteFestivalGalleryImage('${child.key}')"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+            `;
+
+            list.appendChild(div);
+        });
+    });
+}
+
+
+window.editFestivalGalleryImage = async function(id){
+
+    try{
+
+        const snapshot =
+            await get(
+                ref(
+                    database,
+                    "festivalGallery/" + id
+                )
+            );
+
+        if(!snapshot.exists()) return;
+
+        const data = snapshot.val();
+
+        document.getElementById(
+            "festivalGalleryImageUrl"
+        ).value = data.imageUrl || "";
+
+        document.getElementById(
+            "festivalGalleryCaption"
+        ).value = data.caption || "";
+
+        editingFestivalGalleryId = id;
+
+        document.getElementById(
+            "festivalGallerySaveButton"
+        ).textContent = "Update Festival Image";
+
+        document.getElementById(
+            "festivalGalleryCancelButton"
+        ).classList.remove("hidden");
+
+        document.getElementById(
+            "festivalGalleryMessage"
+        ).textContent = "Editing festival gallery image.";
+
+        document.getElementById(
+            "festivalGalleryMessage"
+        ).className = "status";
+
+    }catch(error){
+
+        console.error(error);
+    }
+};
+
+
+window.deleteFestivalGalleryImage =
+async function(id){
+
+    if(!confirm(
+        "Delete this festival gallery image?"
+    )){
+        return;
+    }
+
+    try{
+
+        await remove(
+            ref(
+                database,
+                "festivalGallery/" + id
+            )
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Could not delete festival gallery image."
+        );
+    }
+};
+
+
+window.cancelFestivalGalleryEdit =
+function(){
+
+    clearFestivalGalleryForm();
+
+    document.getElementById(
+        "festivalGalleryMessage"
+    ).textContent = "";
+};
+
+
+function clearFestivalGalleryForm(){
+
+    document.getElementById(
+        "festivalGalleryImageUrl"
+    ).value = "";
+
+    document.getElementById(
+        "festivalGalleryCaption"
+    ).value = "";
+
+    editingFestivalGalleryId = null;
+
+    document.getElementById(
+        "festivalGallerySaveButton"
+    ).textContent = "Add Festival Image";
+
+    document.getElementById(
+        "festivalGalleryCancelButton"
+    ).classList.add("hidden");
+}
 
 
 /* =========================
