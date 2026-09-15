@@ -3314,8 +3314,13 @@
          * calling escapeHTML(...) as before.
          */
 
-        const escapeHTML =
-            window.rmnsEscapeHTML;
+        function escapeHTML(value) {
+
+            return window.rmnsEscapeHTML(
+                value
+            );
+
+        }
 
 
         /* =================================================
