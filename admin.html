@@ -402,7 +402,7 @@ button:hover{
         <input type="file" id="galleryImageFile" accept="image/*">
         <input type="text" id="galleryCaption"
                placeholder="Caption">
-        <p class="status">Choose an image directly from your computer. JPG, PNG, WEBP and other common image files are supported. Upload progress is shown while Firebase Storage receives the file.</p>
+        <p class="status">Choose an image directly from your computer. JPG, PNG, WEBP and other common image files are supported. The image is uploaded to your GitHub repository through the free gallery API.</p>
     </div>
 
     <div class="gallery-actions" style="margin-top:10px;">
@@ -414,7 +414,7 @@ button:hover{
 
     <div class="seed-box" style="margin-top:18px;">
         <p><strong>Existing GitHub Gallery (Original Images)</strong></p>
-        <p class="status">These original files are read-only here because they are stored in your GitHub repository. New images added below use Firebase Storage and can be edited/deleted from this panel.</p>
+        <p class="status">These original files are read-only here because they are stored in your GitHub repository. New images added below are stored in your GitHub repository and can be edited/deleted from this panel.</p>
         <div class="admin-static-gallery">
             <img src="gallery1.jpg" alt="gallery1" onerror="this.style.display='none'">
             <img src="gallery2.jpg" alt="gallery2" onerror="this.style.display='none'">
@@ -451,7 +451,7 @@ button:hover{
 
     <div class="seed-box" style="margin-top:18px;">
         <p><strong>Existing GitHub Festival Gallery (Original Images)</strong></p>
-        <p class="status">These original files are read-only here because they are stored in your GitHub repository. New festival images added below use Firebase Storage and can be edited/deleted from this panel.</p>
+        <p class="status">These original files are read-only here because they are stored in your GitHub repository. New festival images added below are stored in your GitHub repository and can be edited/deleted from this panel.</p>
         <div class="admin-static-gallery">
             <img src="festival1.jpg" alt="festival1" onerror="this.style.display='none'">
             <img src="festival2.jpg" alt="festival2" onerror="this.style.display='none'">
@@ -527,14 +527,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
-    getStorage,
-    ref as storageRef,
-    uploadBytesResumable,
-    getDownloadURL,
-    deleteObject
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
-
-import {
     getAuth,
     signInWithEmailAndPassword,
     onAuthStateChanged,
@@ -561,7 +553,27 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const database = getDatabase(app);
-const storage = getStorage(app);
+
+/* FREE GITHUB GALLERY API */
+const GALLERY_WORKER_URL = "https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev";
+
+async function galleryApi(path, options = {}) {
+    const user = auth.currentUser;
+    if (!user) throw new Error("Please log in again.");
+    if (GALLERY_WORKER_URL.includes("YOUR-WORKER-NAME")) {
+        throw new Error("Gallery API is not configured. Set GALLERY_WORKER_URL in admin.html.");
+    }
+    const token = await user.getIdToken();
+    const response = await fetch(GALLERY_WORKER_URL + path, {
+        ...options,
+        headers: { ...(options.headers || {}), Authorization: "Bearer " + token }
+    });
+    const text = await response.text();
+    let data = {};
+    try { data = text ? JSON.parse(text) : {}; } catch {}
+    if (!response.ok) throw new Error(data.error || "Gallery API error (" + response.status + ").");
+    return data;
+}
 
 
 const loginSection =
@@ -1096,508 +1108,83 @@ async function(id){
 
 
 /* =========================
-   MAIN GALLERY
+   MAIN GALLERY - GITHUB FREE
 ========================= */
-
 let editingGalleryId = null;
 
 window.saveGalleryImage = async function(){
-
-    const fileInput = document.getElementById("galleryImageFile");
-    const file = fileInput.files[0];
+    const file = document.getElementById("galleryImageFile").files[0];
     const caption = document.getElementById("galleryCaption").value.trim();
     const message = document.getElementById("galleryMessage");
-
-    if(!editingGalleryId && !file){
-        message.textContent = "Please choose an image from your computer.";
-        message.className = "error";
-        return;
-    }
-
+    if(!editingGalleryId && !file){ message.textContent="Please choose an image from your computer."; message.className="error"; return; }
     try{
-        message.textContent = editingGalleryId ? "Updating image..." : "Uploading image...";
-        message.className = "status";
-
-        let imageUrl = null;
-        let storagePath = null;
-
+        let githubPath=null, imageUrl=null;
         if(file){
-            if(!file.type.startsWith("image/")){
-                throw new Error("Please select an image file.");
-            }
-
-            if(file.size > 10 * 1024 * 1024){
-                throw new Error("Image is too large. Maximum size is 10 MB.");
-            }
-
-            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-            storagePath = "gallery/" + Date.now() + "_" + safeName;
-            const fileRef = storageRef(storage, storagePath);
-            await new Promise((resolve, reject) => {
-                const task = uploadBytesResumable(fileRef, file, { contentType: file.type });
-                task.on("state_changed", snapshot => {
-                    const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                    message.textContent = `${editingGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
-                }, reject, resolve);
-            });
-            imageUrl = await getDownloadURL(fileRef);
+            if(!file.type.startsWith("image/")) throw new Error("Please select an image file.");
+            if(file.size > 6*1024*1024) throw new Error("Image is too large. Please keep it under 6 MB.");
+            message.textContent="Uploading to GitHub..."; message.className="status";
+            const form=new FormData(); form.append("file",file); form.append("type","gallery");
+            const result=await galleryApi("/upload",{method:"POST",body:form});
+            githubPath=result.path; imageUrl=result.url;
         }
-
         if(editingGalleryId){
-            const oldSnapshot = await get(ref(database,"gallery/" + editingGalleryId));
-            const oldData = oldSnapshot.exists() ? oldSnapshot.val() : {};
-
-            await set(ref(database,"gallery/" + editingGalleryId),{
-                imageUrl: imageUrl || oldData.imageUrl || "",
-                storagePath: storagePath || oldData.storagePath || "",
-                caption: caption,
-                updatedAt: Date.now()
-            });
-
-            if(file && oldData.storagePath){
-                try{
-                    await deleteObject(storageRef(storage, oldData.storagePath));
-                }catch(storageError){
-                    console.warn("Old gallery image could not be deleted:", storageError);
-                }
-            }
-
-            message.textContent = "Gallery image updated successfully.";
+            const oldSnap=await get(ref(database,"gallery/"+editingGalleryId));
+            const oldData=oldSnap.exists()?oldSnap.val():{};
+            await set(ref(database,"gallery/"+editingGalleryId),{imageUrl:imageUrl||oldData.imageUrl||"",githubPath:githubPath||oldData.githubPath||"",caption,updatedAt:Date.now()});
+            if(file && oldData.githubPath){ try{await galleryApi("/delete",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({path:oldData.githubPath})});}catch(e){console.warn(e);} }
+            message.textContent="Gallery image updated successfully ✓";
         }else{
-            const newImage = push(ref(database,"gallery"));
-            await set(newImage,{
-                imageUrl: imageUrl,
-                storagePath: storagePath,
-                caption: caption,
-                createdAt: Date.now()
-            });
-
-            message.textContent = "Gallery image added successfully.";
+            const n=push(ref(database,"gallery"));
+            await set(n,{imageUrl,githubPath,caption,createdAt:Date.now()});
+            message.textContent="Gallery image added successfully ✓";
         }
-
-        message.className = "success";
-        clearGalleryForm();
-
-    }catch(error){
-        console.error(error);
-        message.textContent = error.code === "storage/unauthorized" ? "Firebase Storage permission denied. Check Storage Rules." : (error.message || "Could not save gallery image.");
-        message.className = "error";
-    }
+        message.className="success"; clearGalleryForm();
+    }catch(error){ console.error(error); message.textContent=error.message||"Could not save gallery image."; message.className="error"; }
 };
-
 
 function loadGallery(){
-
-    const galleryRef = ref(database,"gallery");
-
-    onValue(galleryRef,snapshot=>{
-
-        const list = document.getElementById("galleryList");
-        list.innerHTML = "";
-
-        if(!snapshot.exists()){
-            list.innerHTML =
-                "<p class='status'>No gallery images added yet.</p>";
-            return;
-        }
-
+    onValue(ref(database,"gallery"),snapshot=>{
+        const list=document.getElementById("galleryList"); list.innerHTML="";
+        if(!snapshot.exists()){list.innerHTML="<p class='status'>No new GitHub gallery images added yet.</p>";return;}
         snapshot.forEach(child=>{
-
-            const data = child.val();
-            const div = document.createElement("div");
-            div.className = "item";
-
-            div.innerHTML = `
-                <strong>${escapeHTML(data.caption || "Gallery Image")}</strong>
-                <img
-                    class="gallery-preview"
-                    src="${escapeHTML(data.imageUrl || "")}"
-                    alt="Gallery Preview"
-                    onerror="this.style.display='none'"
-                >
-                <p class="status">${escapeHTML(data.imageUrl || "")}</p>
-
-                <div class="gallery-actions">
-                    <button onclick="editGalleryImage('${child.key}')">
-                        Edit
-                    </button>
-                    <button class="danger" onclick="deleteGalleryImage('${child.key}')">
-                        Delete
-                    </button>
-                </div>
-            `;
-
+            const d=child.val()||{}, div=document.createElement("div"); div.className="item";
+            div.innerHTML=`<strong>${escapeHTML(d.caption||"Gallery Image")}</strong><img class="gallery-preview" src="${escapeHTML(d.imageUrl||"")}" alt="Gallery Preview" onerror="this.style.display='none'"><p class="status">${escapeHTML(d.githubPath||"")}</p><div class="gallery-actions"><button onclick="editGalleryImage('${child.key}')">Edit</button><button class="danger" onclick="deleteGalleryImage('${child.key}')">Delete</button></div>`;
             list.appendChild(div);
         });
     });
 }
 
-
-window.editGalleryImage = async function(id){
-
-    try{
-        const snapshot = await get(ref(database,"gallery/" + id));
-
-        if(!snapshot.exists()) return;
-
-        const data = snapshot.val();
-
-        document.getElementById("galleryImageFile").value = "";
-
-        document.getElementById("galleryCaption").value =
-            data.caption || "";
-
-        editingGalleryId = id;
-
-        document.getElementById("gallerySaveButton").textContent =
-            "Update Gallery Image";
-
-        document.getElementById("galleryCancelButton")
-            .classList.remove("hidden");
-
-        document.getElementById("galleryMessage").textContent =
-            "Editing gallery image.";
-
-        document.getElementById("galleryMessage").className =
-            "status";
-
-        window.scrollTo({
-            top: document.getElementById("galleryImageFile").offsetTop - 100,
-            behavior:"smooth"
-        });
-
-    }catch(error){
-        console.error(error);
-    }
+window.editGalleryImage=async function(id){
+    try{const snap=await get(ref(database,"gallery/"+id)); if(!snap.exists())return; const d=snap.val()||{}; document.getElementById("galleryImageFile").value=""; document.getElementById("galleryCaption").value=d.caption||""; editingGalleryId=id; document.getElementById("gallerySaveButton").textContent="Update Gallery Image"; document.getElementById("galleryCancelButton").classList.remove("hidden"); document.getElementById("galleryMessage").textContent="Editing gallery image. Choose a new file only to replace the image."; document.getElementById("galleryMessage").className="status"; document.getElementById("galleryImageFile").scrollIntoView({behavior:"smooth",block:"center"});}catch(e){console.error(e);}
 };
 
-
-window.deleteGalleryImage = async function(id){
-
-    if(!confirm("Delete this gallery image?")){
-        return;
-    }
-
-    try{
-        const snapshot = await get(ref(database,"gallery/" + id));
-        const data = snapshot.exists() ? snapshot.val() : {};
-
-        await remove(ref(database,"gallery/" + id));
-
-        if(data.storagePath){
-            try{
-                await deleteObject(storageRef(storage, data.storagePath));
-            }catch(storageError){
-                console.warn("Gallery file could not be deleted from Storage:", storageError);
-            }
-        }
-    }catch(error){
-        console.error(error);
-        alert("Could not delete gallery image.");
-    }
+window.deleteGalleryImage=async function(id){
+    if(!confirm("Delete this gallery image from the website and GitHub?"))return;
+    try{const snap=await get(ref(database,"gallery/"+id)); const d=snap.exists()?snap.val():{}; if(d.githubPath) await galleryApi("/delete",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({path:d.githubPath})}); await remove(ref(database,"gallery/"+id));}catch(e){console.error(e);alert(e.message||"Could not delete gallery image.");}
 };
-
-
-window.cancelGalleryEdit = function(){
-    clearGalleryForm();
-    document.getElementById("galleryMessage").textContent = "";
-};
-
-
-function clearGalleryForm(){
-
-    document.getElementById("galleryImageFile").value = "";
-    document.getElementById("galleryCaption").value = "";
-
-    editingGalleryId = null;
-
-    document.getElementById("gallerySaveButton").textContent =
-        "Add Gallery Image";
-
-    document.getElementById("galleryCancelButton")
-        .classList.add("hidden");
-}
-
+window.cancelGalleryEdit=function(){clearGalleryForm();document.getElementById("galleryMessage").textContent="";};
+function clearGalleryForm(){document.getElementById("galleryImageFile").value="";document.getElementById("galleryCaption").value="";editingGalleryId=null;document.getElementById("gallerySaveButton").textContent="Add Gallery Image";document.getElementById("galleryCancelButton").classList.add("hidden");}
 
 /* =========================
-   FESTIVAL GALLERY
+   FESTIVAL GALLERY - GITHUB FREE
 ========================= */
-
-let editingFestivalGalleryId = null;
-
-window.saveFestivalGalleryImage = async function(){
-
-    const fileInput = document.getElementById("festivalGalleryImageFile");
-    const file = fileInput.files[0];
-    const caption = document.getElementById("festivalGalleryCaption").value.trim();
-    const message = document.getElementById("festivalGalleryMessage");
-
-    if(!editingFestivalGalleryId && !file){
-        message.textContent = "Please choose a festival image from your computer.";
-        message.className = "error";
-        return;
-    }
-
+let editingFestivalGalleryId=null;
+window.saveFestivalGalleryImage=async function(){
+    const file=document.getElementById("festivalGalleryImageFile").files[0], caption=document.getElementById("festivalGalleryCaption").value.trim(), message=document.getElementById("festivalGalleryMessage");
+    if(!editingFestivalGalleryId&&!file){message.textContent="Please choose a festival image from your computer.";message.className="error";return;}
     try{
-        message.textContent = editingFestivalGalleryId ? "Updating image..." : "Uploading image...";
-        message.className = "status";
-
-        let imageUrl = null;
-        let storagePath = null;
-
-        if(file){
-            if(!file.type.startsWith("image/")){
-                throw new Error("Please select an image file.");
-            }
-
-            if(file.size > 10 * 1024 * 1024){
-                throw new Error("Image is too large. Maximum size is 10 MB.");
-            }
-
-            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-            storagePath = "festivalGallery/" + Date.now() + "_" + safeName;
-            const fileRef = storageRef(storage, storagePath);
-            await new Promise((resolve, reject) => {
-                const task = uploadBytesResumable(fileRef, file, { contentType: file.type });
-                task.on("state_changed", snapshot => {
-                    const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                    message.textContent = `${editingGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
-                }, reject, resolve);
-            });
-            imageUrl = await getDownloadURL(fileRef);
-        }
-
-        if(editingFestivalGalleryId){
-            const oldSnapshot = await get(ref(database,"festivalGallery/" + editingFestivalGalleryId));
-            const oldData = oldSnapshot.exists() ? oldSnapshot.val() : {};
-
-            await set(ref(database,"festivalGallery/" + editingFestivalGalleryId),{
-                imageUrl: imageUrl || oldData.imageUrl || "",
-                storagePath: storagePath || oldData.storagePath || "",
-                caption: caption,
-                updatedAt: Date.now()
-            });
-
-            if(file && oldData.storagePath){
-                try{
-                    await deleteObject(storageRef(storage, oldData.storagePath));
-                }catch(storageError){
-                    console.warn("Old festival image could not be deleted:", storageError);
-                }
-            }
-
-            message.textContent = "Festival gallery image updated successfully.";
-        }else{
-            const newImage = push(ref(database,"festivalGallery"));
-            await set(newImage,{
-                imageUrl: imageUrl,
-                storagePath: storagePath,
-                caption: caption,
-                createdAt: Date.now()
-            });
-
-            message.textContent = "Festival gallery image added successfully.";
-        }
-
-        message.className = "success";
-        clearFestivalGalleryForm();
-
-    }catch(error){
-        console.error(error);
-        message.textContent = error.code === "storage/unauthorized" ? "Firebase Storage permission denied. Check Storage Rules." : (error.message || "Could not save festival gallery image.");
-        message.className = "error";
-    }
+        let githubPath=null,imageUrl=null;
+        if(file){if(!file.type.startsWith("image/"))throw new Error("Please select an image file.");if(file.size>6*1024*1024)throw new Error("Image is too large. Please keep it under 6 MB.");message.textContent="Uploading festival image to GitHub...";message.className="status";const form=new FormData();form.append("file",file);form.append("type","festivalGallery");const result=await galleryApi("/upload",{method:"POST",body:form});githubPath=result.path;imageUrl=result.url;}
+        if(editingFestivalGalleryId){const oldSnap=await get(ref(database,"festivalGallery/"+editingFestivalGalleryId));const oldData=oldSnap.exists()?oldSnap.val():{};await set(ref(database,"festivalGallery/"+editingFestivalGalleryId),{imageUrl:imageUrl||oldData.imageUrl||"",githubPath:githubPath||oldData.githubPath||"",caption,updatedAt:Date.now()});if(file&&oldData.githubPath){try{await galleryApi("/delete",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({path:oldData.githubPath})});}catch(e){console.warn(e);}}message.textContent="Festival gallery image updated successfully ✓";}
+        else{const n=push(ref(database,"festivalGallery"));await set(n,{imageUrl,githubPath,caption,createdAt:Date.now()});message.textContent="Festival gallery image added successfully ✓";}
+        message.className="success";clearFestivalGalleryForm();
+    }catch(error){console.error(error);message.textContent=error.message||"Could not save festival gallery image.";message.className="error";}
 };
-
-
-function loadFestivalGallery(){
-
-    const galleryRef =
-        ref(database,"festivalGallery");
-
-    onValue(galleryRef,snapshot=>{
-
-        const list =
-            document.getElementById("festivalGalleryList");
-
-        list.innerHTML = "";
-
-        if(!snapshot.exists()){
-
-            list.innerHTML =
-                "<p class='status'>No festival gallery images added yet.</p>";
-
-            return;
-        }
-
-        snapshot.forEach(child=>{
-
-            const data = child.val();
-
-            const div =
-                document.createElement("div");
-
-            div.className = "item";
-
-            div.innerHTML = `
-                <strong>
-                    ${escapeHTML(
-                        data.caption ||
-                        "Festival Gallery Image"
-                    )}
-                </strong>
-
-                <img
-                    class="gallery-preview"
-                    src="${escapeHTML(data.imageUrl || "")}"
-                    alt="Festival Gallery Preview"
-                    onerror="this.style.display='none'"
-                >
-
-                <p class="status">
-                    ${escapeHTML(data.imageUrl || "")}
-                </p>
-
-                <div class="gallery-actions">
-
-                    <button
-                        onclick="editFestivalGalleryImage('${child.key}')"
-                    >
-                        Edit
-                    </button>
-
-                    <button
-                        class="danger"
-                        onclick="deleteFestivalGalleryImage('${child.key}')"
-                    >
-                        Delete
-                    </button>
-
-                </div>
-            `;
-
-            list.appendChild(div);
-        });
-    });
-}
-
-
-window.editFestivalGalleryImage = async function(id){
-
-    try{
-
-        const snapshot =
-            await get(
-                ref(
-                    database,
-                    "festivalGallery/" + id
-                )
-            );
-
-        if(!snapshot.exists()) return;
-
-        const data = snapshot.val();
-
-        document.getElementById(
-            "festivalGalleryImageFile"
-        ).value = "";
-
-        document.getElementById(
-            "festivalGalleryCaption"
-        ).value = data.caption || "";
-
-        editingFestivalGalleryId = id;
-
-        document.getElementById(
-            "festivalGallerySaveButton"
-        ).textContent = "Update Festival Image";
-
-        document.getElementById(
-            "festivalGalleryCancelButton"
-        ).classList.remove("hidden");
-
-        document.getElementById(
-            "festivalGalleryMessage"
-        ).textContent = "Editing festival gallery image.";
-
-        document.getElementById(
-            "festivalGalleryMessage"
-        ).className = "status";
-
-    }catch(error){
-
-        console.error(error);
-    }
-};
-
-
-window.deleteFestivalGalleryImage =
-async function(id){
-
-    if(!confirm(
-        "Delete this festival gallery image?"
-    )){
-        return;
-    }
-
-    try{
-
-        const snapshot = await get(ref(database,"festivalGallery/" + id));
-        const data = snapshot.exists() ? snapshot.val() : {};
-
-        await remove(ref(database,"festivalGallery/" + id));
-
-        if(data.storagePath){
-            try{
-                await deleteObject(storageRef(storage, data.storagePath));
-            }catch(storageError){
-                console.warn("Festival file could not be deleted from Storage:", storageError);
-            }
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-        alert(
-            "Could not delete festival gallery image."
-        );
-    }
-};
-
-
-window.cancelFestivalGalleryEdit =
-function(){
-
-    clearFestivalGalleryForm();
-
-    document.getElementById(
-        "festivalGalleryMessage"
-    ).textContent = "";
-};
-
-
-function clearFestivalGalleryForm(){
-
-    document.getElementById(
-        "festivalGalleryImageFile"
-    ).value = "";
-
-    document.getElementById(
-        "festivalGalleryCaption"
-    ).value = "";
-
-    editingFestivalGalleryId = null;
-
-    document.getElementById(
-        "festivalGallerySaveButton"
-    ).textContent = "Add Festival Image";
-
-    document.getElementById(
-        "festivalGalleryCancelButton"
-    ).classList.add("hidden");
-}
-
+function loadFestivalGallery(){onValue(ref(database,"festivalGallery"),snapshot=>{const list=document.getElementById("festivalGalleryList");list.innerHTML="";if(!snapshot.exists()){list.innerHTML="<p class='status'>No new GitHub festival gallery images added yet.</p>";return;}snapshot.forEach(child=>{const d=child.val()||{},div=document.createElement("div");div.className="item";div.innerHTML=`<strong>${escapeHTML(d.caption||"Festival Gallery Image")}</strong><img class="gallery-preview" src="${escapeHTML(d.imageUrl||"")}" alt="Festival Gallery Preview" onerror="this.style.display='none'"><p class="status">${escapeHTML(d.githubPath||"")}</p><div class="gallery-actions"><button onclick="editFestivalGalleryImage('${child.key}')">Edit</button><button class="danger" onclick="deleteFestivalGalleryImage('${child.key}')">Delete</button></div>`;list.appendChild(div);});});}
+window.editFestivalGalleryImage=async function(id){try{const snap=await get(ref(database,"festivalGallery/"+id));if(!snap.exists())return;const d=snap.val()||{};document.getElementById("festivalGalleryImageFile").value="";document.getElementById("festivalGalleryCaption").value=d.caption||"";editingFestivalGalleryId=id;document.getElementById("festivalGallerySaveButton").textContent="Update Festival Image";document.getElementById("festivalGalleryCancelButton").classList.remove("hidden");document.getElementById("festivalGalleryMessage").textContent="Editing festival gallery image.";document.getElementById("festivalGalleryMessage").className="status";document.getElementById("festivalGalleryImageFile").scrollIntoView({behavior:"smooth",block:"center"});}catch(e){console.error(e);}};
+window.deleteFestivalGalleryImage=async function(id){if(!confirm("Delete this festival gallery image from the website and GitHub?"))return;try{const snap=await get(ref(database,"festivalGallery/"+id));const d=snap.exists()?snap.val():{};if(d.githubPath)await galleryApi("/delete",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({path:d.githubPath})});await remove(ref(database,"festivalGallery/"+id));}catch(e){console.error(e);alert(e.message||"Could not delete festival gallery image.");}};
+window.cancelFestivalGalleryEdit=function(){clearFestivalGalleryForm();document.getElementById("festivalGalleryMessage").textContent="";};
+function clearFestivalGalleryForm(){document.getElementById("festivalGalleryImageFile").value="";document.getElementById("festivalGalleryCaption").value="";editingFestivalGalleryId=null;document.getElementById("festivalGallerySaveButton").textContent="Add Festival Image";document.getElementById("festivalGalleryCancelButton").classList.add("hidden");}
 
 /* =========================
    CONTACT
