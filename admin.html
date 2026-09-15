@@ -394,6 +394,14 @@ button:hover{
 
 
 
+<!-- GITHUB GALLERY API SETUP -->
+<div class="panel">
+    <h2>⚙️ Gallery Upload Setup</h2>
+    <p class="status">Your GitHub token stays safely inside Cloudflare. Do not paste the GitHub token into this page.</p>
+    <p class="status"><strong>Worker URL:</strong> Open the Cloudflare Worker Overview and copy its <code>workers.dev</code> URL. Put it in the <code>GALLERY_WORKER_URL</code> line in this file.</p>
+    <p class="status">Current status: <strong id="workerStatus">Not configured</strong></p>
+</div>
+
 <!-- MAIN GALLERY -->
 <div class="panel">
     <h2>🖼️ Main Gallery</h2>
@@ -555,7 +563,17 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 /* FREE GITHUB GALLERY API */
-const GALLERY_WORKER_URL = "https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev";
+const GALLERY_WORKER_URL =https://rmns-gallery.jmdsroyalmakkalnalasangam.workers.dev/
+const workerStatus = document.getElementById("workerStatus");
+if (workerStatus) {
+    if (GALLERY_WORKER_URL.startsWith("https://")) {
+        workerStatus.textContent = "Configured";
+        workerStatus.className = "success";
+    } else {
+        workerStatus.textContent = "Not configured — paste your workers.dev URL into GALLERY_WORKER_URL";
+        workerStatus.className = "error";
+    }
+}
 
 async function galleryApi(path, options = {}) {
     const user = auth.currentUser;
