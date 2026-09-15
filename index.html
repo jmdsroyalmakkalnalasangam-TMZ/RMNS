@@ -1993,92 +1993,100 @@
         </div>
 
 
-        <div class="gallery-grid">
+        <div class="gallery-grid" id="galleryGrid">
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(0)"
             >
                 <img
                     src="gallery1.jpg"
                     alt="Association Gallery Image 1"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(1)"
             >
                 <img
                     src="gallery2.jpg"
                     alt="Association Gallery Image 2"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(2)"
             >
                 <img
                     src="gallery3.jpg"
                     alt="Association Gallery Image 3"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(3)"
             >
                 <img
                     src="gallery4.jpg"
                     alt="Association Gallery Image 4"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(4)"
             >
                 <img
                     src="gallery5.jpg"
                     alt="Association Gallery Image 5"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(5)"
             >
                 <img
                     src="gallery6.jpg"
                     alt="Association Gallery Image 6"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(6)"
             >
                 <img
                     src="gallery7.jpg"
                     alt="Association Gallery Image 7"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openLightbox(7)"
             >
                 <img
                     src="gallery8.jpg"
                     alt="Association Gallery Image 8"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
@@ -2142,93 +2150,101 @@
 
 
 
-        <div class="gallery-grid">
+        <div class="gallery-grid" id="festivalGalleryGrid">
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(0)"
             >
                 <img
                     src="festival1.jpg"
                     alt="Festival Image 1"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(1)"
             >
                 <img
                     src="festival2.jpg"
                     alt="Festival Image 2"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(2)"
             >
                 <img
                     src="festival3.jpg"
                     alt="Festival Image 3"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(3)"
             >
                 <img
                     src="festival4.jpg"
                     alt="Festival Image 4"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(4)"
             >
                 <img
                     src="festival5.jpg"
                     alt="Festival Image 5"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(5)"
             >
                 <img
                     src="festival6.jpg"
                     alt="Festival Image 6"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(6)"
             >
                 <img
                     src="festival7.jpg"
                     alt="Festival Image 7"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
 
             <div
-                class="gallery-item"
+                class="gallery-item static-gallery-item"
                 onclick="openFestivalLightbox(7)"
             >
                 <img
                     src="festival8.jpg"
                     alt="Festival Image 8"
+                    onerror="this.closest('.gallery-item').remove()"
                 >
             </div>
 
@@ -2511,6 +2527,11 @@
     const database =
         getDatabase(app);
 
+    // Make the Firebase database available to the normal gallery script.
+    window.rmnsDatabase = database;
+    window.firebaseDatabaseApi = { ref, onValue };
+    window.dispatchEvent(new Event("rmnsFirebaseReady"));
+
 
 
     /* =====================================================
@@ -2697,94 +2718,45 @@
             document.getElementById("todayFestivalTitle");
 
         const now = new Date();
-
         const year = now.getFullYear();
-
-        const month =
-            String(now.getMonth() + 1)
-                .padStart(2, "0");
-
-        const day =
-            String(now.getDate())
-                .padStart(2, "0");
-
-        const today =
-            `${year}-${month}-${day}`;
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        const today = `${year}-${month}-${day}`;
 
         let festivalFound = false;
 
-        /* Hide the complete Today's Festival area first. */
         container.style.display = "none";
-
-        if (title) {
-            title.style.display = "none";
-        }
+        if (title) title.style.display = "none";
 
         if (data) {
-
             Object.values(data).forEach(item => {
-
-                /* Show ONLY a festival dated today. */
                 if (item && item.date === today) {
-
                     festivalFound = true;
 
-                    const dateObject =
-                        new Date(
-                            item.date + "T00:00:00"
-                        );
-
-                    const formattedDate =
-                        dateObject.toLocaleDateString(
-                            "en-IN",
-                            {
-                                weekday: "long",
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric"
-                            }
-                        );
+                    const dateObject = new Date(item.date + "T00:00:00");
+                    const formattedDate = dateObject.toLocaleDateString(
+                        "en-IN",
+                        { weekday:"long", day:"numeric", month:"long", year:"numeric" }
+                    );
 
                     container.innerHTML = `
                         <div class="festival-card">
-
-                            <div class="festival-icon">
-                                🎉
-                            </div>
-
-                            <h3>
-                                ${escapeHTML(item.name || "")}
-                            </h3>
-
-                            <h4>
-                                ${escapeHTML(item.tamil || "")}
-                            </h4>
-
-                            <div class="festival-date">
-                                ${escapeHTML(formattedDate)}
-                            </div>
-
+                            <div class="festival-icon">🎉</div>
+                            <h3>${escapeHTML(item.name || "")}</h3>
+                            <h4>${escapeHTML(item.tamil || "")}</h4>
+                            <div class="festival-date">${escapeHTML(formattedDate)}</div>
                         </div>
                     `;
-
                     container.style.display = "block";
-
-                    if (title) {
-                        title.style.display = "block";
-                    }
+                    if (title) title.style.display = "block";
                 }
             });
         }
 
-        /* No festival today = show absolutely nothing here. */
         if (!festivalFound) {
-
             container.innerHTML = "";
             container.style.display = "none";
-
-            if (title) {
-                title.style.display = "none";
-            }
+            if (title) title.style.display = "none";
         }
     }
 
@@ -3175,33 +3147,71 @@
        GALLERY
     ===================================================== */
 
-    const galleryImages = [
+    // The gallery is built from the images actually visible on the page.
+    // This keeps missing GitHub files (for example gallery7.jpg) out of the lightbox.
+    let galleryImages = [];
+    let festivalImages = [];
 
-        "gallery1.jpg",
-        "gallery2.jpg",
-        "gallery3.jpg",
-        "gallery4.jpg",
-        "gallery5.jpg",
-        "gallery6.jpg",
-        "gallery7.jpg",
-        "gallery8.jpg"
+    function syncGalleryImageArrays() {
+        galleryImages = Array.from(
+            document.querySelectorAll("#galleryGrid .gallery-item img")
+        ).map(img => img.src).filter(Boolean);
 
-    ];
+        festivalImages = Array.from(
+            document.querySelectorAll("#festivalGalleryGrid .gallery-item img")
+        ).map(img => img.src).filter(Boolean);
+    }
 
+    function renderFirebaseGallery(snapshot, type) {
+        const isFestival = type === "festival";
+        const grid = document.getElementById(isFestival ? "festivalGalleryGrid" : "galleryGrid");
+        if (!grid) return;
 
-    const festivalImages = [
+        grid.querySelectorAll(".firebase-gallery-item").forEach(el => el.remove());
 
-        "festival1.jpg",
-        "festival2.jpg",
-        "festival3.jpg",
-        "festival4.jpg",
-        "festival5.jpg",
-        "festival6.jpg",
-        "festival7.jpg",
-        "festival8.jpg"
+        const items = [];
+        if (snapshot && snapshot.exists()) {
+            snapshot.forEach(child => {
+                const data = child.val() || {};
+                if (data.imageUrl) items.push({ id: child.key, ...data });
+            });
+        }
 
-    ];
+        items.sort((a,b) => Number(a.createdAt || 0) - Number(b.createdAt || 0));
+        items.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "gallery-item firebase-gallery-item";
+            div.innerHTML = `
+                <img src="${escapeHTML(item.imageUrl)}" alt="${escapeHTML(item.caption || (isFestival ? "Festival Gallery Image" : "Association Gallery Image"))}">
+                ${item.caption ? `<div style="position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:13px;">${escapeHTML(item.caption)}</div>` : ""}
+            `;
+            div.querySelector("img").addEventListener("error", () => div.remove());
+            div.addEventListener("click", () => {
+                syncGalleryImageArrays();
+                const images = isFestival ? festivalImages : galleryImages;
+                const index = images.indexOf(item.imageUrl);
+                if (index >= 0) {
+                    isFestival ? openFestivalLightbox(index) : openLightbox(index);
+                }
+            });
+            grid.appendChild(div);
+        });
 
+        syncGalleryImageArrays();
+    }
+
+    function initDynamicGalleries() {
+        if (!window.rmnsDatabase || window.rmnsDynamicGalleriesReady) return;
+        window.rmnsDynamicGalleriesReady = true;
+
+        const { ref, onValue } = window.firebaseDatabaseApi || {};
+        if (!ref || !onValue) return;
+        onValue(ref(window.rmnsDatabase, "gallery"), snap => renderFirebaseGallery(snap, "main"));
+        onValue(ref(window.rmnsDatabase, "festivalGallery"), snap => renderFirebaseGallery(snap, "festival"));
+    }
+
+    window.addEventListener("rmnsFirebaseReady", initDynamicGalleries);
+    initDynamicGalleries();
 
     let currentImages = [];
 
@@ -3211,6 +3221,7 @@
 
     function openLightbox(index) {
 
+        syncGalleryImageArrays();
         currentImages =
             galleryImages;
 
@@ -3237,6 +3248,7 @@
 
     function openFestivalLightbox(index) {
 
+        syncGalleryImageArrays();
         currentImages =
             festivalImages;
 
