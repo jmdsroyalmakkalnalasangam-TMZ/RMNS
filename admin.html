@@ -413,17 +413,17 @@ button:hover{
     <p id="galleryMessage"></p>
 
     <div class="seed-box" style="margin-top:18px;">
-        <p><strong>Existing GitHub Gallery</strong></p>
-        <p class="status">These are your original gallery files. They stay on GitHub and are shown on the public website. New images added here use Firebase Storage.</p>
+        <p><strong>Existing GitHub Gallery (Original Images)</strong></p>
+        <p class="status">These original files are read-only here because they are stored in your GitHub repository. New images added below use Firebase Storage and can be edited/deleted from this panel.</p>
         <div class="admin-static-gallery">
-            <img src="gallery1.jpg" alt="gallery1" onerror="this.parentElement.remove()">
-            <img src="gallery2.jpg" alt="gallery2" onerror="this.parentElement.remove()">
-            <img src="gallery3.jpg" alt="gallery3" onerror="this.parentElement.remove()">
-            <img src="gallery4.jpg" alt="gallery4" onerror="this.parentElement.remove()">
-            <img src="gallery5.jpg" alt="gallery5" onerror="this.parentElement.remove()">
-            <img src="gallery6.jpg" alt="gallery6" onerror="this.parentElement.remove()">
-            <img src="gallery7.jpg" alt="gallery7" onerror="this.parentElement.remove()">
-            <img src="gallery8.jpg" alt="gallery8" onerror="this.parentElement.remove()">
+            <img src="gallery1.jpg" alt="gallery1" onerror="this.style.display='none'">
+            <img src="gallery2.jpg" alt="gallery2" onerror="this.style.display='none'">
+            <img src="gallery3.jpg" alt="gallery3" onerror="this.style.display='none'">
+            <img src="gallery4.jpg" alt="gallery4" onerror="this.style.display='none'">
+            <img src="gallery5.jpg" alt="gallery5" onerror="this.style.display='none'">
+            <img src="gallery6.jpg" alt="gallery6" onerror="this.style.display='none'">
+            <img src="gallery7.jpg" alt="gallery7" onerror="this.style.display='none'">
+            <img src="gallery8.jpg" alt="gallery8" onerror="this.style.display='none'">
         </div>
     </div>
 
@@ -450,17 +450,17 @@ button:hover{
     <p id="festivalGalleryMessage"></p>
 
     <div class="seed-box" style="margin-top:18px;">
-        <p><strong>Existing GitHub Festival Gallery</strong></p>
-        <p class="status">These are your original festival gallery files. They remain on GitHub.</p>
+        <p><strong>Existing GitHub Festival Gallery (Original Images)</strong></p>
+        <p class="status">These original files are read-only here because they are stored in your GitHub repository. New festival images added below use Firebase Storage and can be edited/deleted from this panel.</p>
         <div class="admin-static-gallery">
-            <img src="festival1.jpg" alt="festival1" onerror="this.parentElement.remove()">
-            <img src="festival2.jpg" alt="festival2" onerror="this.parentElement.remove()">
-            <img src="festival3.jpg" alt="festival3" onerror="this.parentElement.remove()">
-            <img src="festival4.jpg" alt="festival4" onerror="this.parentElement.remove()">
-            <img src="festival5.jpg" alt="festival5" onerror="this.parentElement.remove()">
-            <img src="festival6.jpg" alt="festival6" onerror="this.parentElement.remove()">
-            <img src="festival7.jpg" alt="festival7" onerror="this.parentElement.remove()">
-            <img src="festival8.jpg" alt="festival8" onerror="this.parentElement.remove()">
+            <img src="festival1.jpg" alt="festival1" onerror="this.style.display='none'">
+            <img src="festival2.jpg" alt="festival2" onerror="this.style.display='none'">
+            <img src="festival3.jpg" alt="festival3" onerror="this.style.display='none'">
+            <img src="festival4.jpg" alt="festival4" onerror="this.style.display='none'">
+            <img src="festival5.jpg" alt="festival5" onerror="this.style.display='none'">
+            <img src="festival6.jpg" alt="festival6" onerror="this.style.display='none'">
+            <img src="festival7.jpg" alt="festival7" onerror="this.style.display='none'">
+            <img src="festival8.jpg" alt="festival8" onerror="this.style.display='none'">
         </div>
     </div>
 
@@ -1137,7 +1137,7 @@ window.saveGalleryImage = async function(){
                 const task = uploadBytesResumable(fileRef, file, { contentType: file.type });
                 task.on("state_changed", snapshot => {
                     const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                    message.textContent = `${editingGalleryId || editingFestivalGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
+                    message.textContent = `${editingGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
                 }, reject, resolve);
             });
             imageUrl = await getDownloadURL(fileRef);
@@ -1361,7 +1361,7 @@ window.saveFestivalGalleryImage = async function(){
                 const task = uploadBytesResumable(fileRef, file, { contentType: file.type });
                 task.on("state_changed", snapshot => {
                     const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                    message.textContent = `${editingGalleryId || editingFestivalGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
+                    message.textContent = `${editingGalleryId ? "Updating" : "Uploading"} image... ${percent}%`;
                 }, reject, resolve);
             });
             imageUrl = await getDownloadURL(fileRef);
